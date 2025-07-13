@@ -1,0 +1,24 @@
+@import 'tailwindcss';
+
+:root {
+	--background: #ffffff;
+	--foreground: #171717;
+}
+
+@theme inline {
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--font-sans: var(--font-geist-sans);
+	--font-mono: var(--font-geist-mono);
+	--font-satoshiRegular: var(--font-satoshi-regular);
+}
+
+* {
+	@apply focus:ring-0 focus:outline-0;
+}
+
+button,
+input[type='button'],
+input[type='submit'] {
+	@apply hover:cursor-pointer;
+}
