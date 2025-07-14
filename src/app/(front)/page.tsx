@@ -1,13 +1,16 @@
 import React from 'react'
+import Hero from './sections/hero/Hero'
+import Gallery from './sections/gallery/Gallery'
 
 function HomePage() {
 	return (
-		<div>
-			<p className='text-[10rem]'>aljsdflasdjf</p>
-			<p className='text-[10rem]'>aljsdflasdjf</p>
-			<p className='text-[10rem]'>aljsdflasdjf</p>
-			<p className='text-[10rem]'>aljsdflasdjf</p>
-		</div>
+		<main id='mainContainer'>
+
+			<Hero></Hero>
+
+			<Gallery></Gallery>
+
+		</main>
 	)
 }
 

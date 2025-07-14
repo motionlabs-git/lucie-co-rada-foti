@@ -5,6 +5,8 @@ import Lenis from 'lenis'
 import { usePathname } from 'next/navigation'
 import Navigation from '@/components/front/Navigation'
 
+
+
 export default function FrontLayout({
 	children,
 }: Readonly<{
@@ -25,6 +27,8 @@ export default function FrontLayout({
 			requestAnimationFrame(raf)
 		}
 		requestAnimationFrame(raf)
+
+
 	}, [path])
 
 	return (

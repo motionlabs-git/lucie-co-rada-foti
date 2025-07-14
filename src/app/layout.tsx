@@ -5,7 +5,12 @@ const satoshiRegular = localFont({
 	src: '../assets/fonts/Satoshi-Regular.woff2',
 	variable: '--font-satoshi-regular',
 })
-// const emberly_regular = localFont({
+
+const satoshiBold = localFont({
+	src: '../assets/fonts/Satoshi-Bold.woff2',
+	variable: '--font-satoshi-bold',
+})
+
 
 export default function RootLayout({
 	children,
@@ -16,7 +21,8 @@ export default function RootLayout({
 		<html lang='cs'>
 			<body
 				className={`antialiased
-                    ${satoshiRegular.variable}
+					${satoshiBold.variable}
+                    ${satoshiRegular.className}
                 `}
 			>
 				{children}

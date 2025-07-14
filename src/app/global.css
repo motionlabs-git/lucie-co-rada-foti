@@ -11,4 +11,5 @@
     --font-sans: var(--font-geist-sans);
     --font-mono: var(--font-geist-mono);
     --font-satoshiRegular: var(--font-satoshi-regular);
+    --font-satoshiBold: var(--font-satoshi-bold)
 }
