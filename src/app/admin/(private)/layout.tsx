@@ -10,16 +10,16 @@ export default function PrivateAdminLayout({
 }>) {
 	return (
 		<>
-			<div className='flex flex-col gap-4 p-4'>
+			<div className='w-full h-full flex flex-col overflow-hidden'>
 				<Navbar />
 
-				<div className='container flex-1 flex flex-col lg:flex-row lg:items-start gap-4'>
+				<div className='flex-1 flex flex-row overflow-hidden'>
 					<Sidebar />
 
 					<Main>{children}</Main>
 				</div>
 
-				<Footer />
+				{/* <Footer /> */}
 			</div>
 		</>
 	)

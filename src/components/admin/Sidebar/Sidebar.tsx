@@ -1,15 +1,26 @@
+'use client'
+
+import React, { MouseEventHandler } from 'react'
 import Link from 'next/link'
-import React from 'react'
 
 const Sidebar = () => {
+	const handleMouseOver: MouseEventHandler<HTMLDivElement> = (e) => {
+		e.currentTarget.classList.add('!w-56')
+	}
+
+	const handleMouseOut: MouseEventHandler<HTMLDivElement> = (e) => {
+		e.currentTarget.classList.remove('!w-56')
+	}
+
 	return (
-		<nav className='sticky top-[5.5rem] w-full lg:max-w-2xs flex flex-col rounded-2xl border-2 border-white/5 p-2'>
+		<nav
+			onMouseOver={handleMouseOver}
+			onMouseOut={handleMouseOut}
+			className='relative h-full w-16 border-r border-white/10 duration-300'
+		>
 			<ul className='w-full relative flex flex-col gap-2'>
 				<li>
-					<Link
-						href={'/admin'}
-						className='block rounded-xl border-2 border-white/5 p-4'
-					>
+					<Link href={'/admin'} className='block'>
 						<span>Users</span>
 					</Link>
 				</li>
