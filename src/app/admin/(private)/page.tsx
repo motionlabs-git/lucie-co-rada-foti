@@ -3,52 +3,27 @@ import { signOut } from '@/actions/authActions'
 const AdminPage = () => {
 	return (
 		<>
-			<section>
+			<section className='w-full rounded-lg border border-white/10 p-4'>
 				<form action={signOut}>
 					<button type='submit'>logout</button>
 				</form>
 			</section>
-			<section>
-				<p className='text-7xl'>
-					Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-					Mollitia dolorum omnis veritatis repellat consectetur
-					perferendis repudiandae vero error quod maxime. Aperiam,
-					repudiandae laudantium rem tempore vero quisquam inventore
-					delectus ipsam.
+			<section className='w-full rounded-lg border border-white/10 p-4'>
+				<p>
+					Lorem ipsum dolor sit amet consectetur, adipisicing elit. At
+					repellat accusantium excepturi atque. Placeat maxime
+					excepturi repudiandae ab rem rerum nostrum perferendis, iste
+					doloremque voluptatibus vero eius quae! Quia, quisquam!
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos
+					vitae fugit accusamus adipisci nesciunt eligendi aperiam
+					rerum facere dolor, voluptas animi doloremque? At voluptate
+					quaerat blanditiis. Fugit deleniti explicabo sunt.
 				</p>
-			</section>
-			<section>
-				<p className='text-3xl'>
-					Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-					Mollitia dolorum omnis veritatis repellat consectetur
-					perferendis repudiandae vero error quod maxime. Aperiam,
-					repudiandae laudantium rem tempore vero quisquam inventore
-					delectus ipsam.
-				</p>
-				<p className='text-3xl'>
-					Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-					Mollitia dolorum omnis veritatis repellat consectetur
-					perferendis repudiandae vero error quod maxime. Aperiam,
-					repudiandae laudantium rem tempore vero quisquam inventore
-					delectus ipsam.
-				</p>
-			</section>
-			<section>
-				<p className='text-7xl'>
-					Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-					Mollitia dolorum omnis veritatis repellat consectetur
-					perferendis repudiandae vero error quod maxime. Aperiam,
-					repudiandae laudantium rem tempore vero quisquam inventore
-					delectus ipsam.
-				</p>
-			</section>
-			<section>
-				<p className='text-7xl'>
-					Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-					Mollitia dolorum omnis veritatis repellat consectetur
-					perferendis repudiandae vero error quod maxime. Aperiam,
-					repudiandae laudantium rem tempore vero quisquam inventore
-					delectus ipsam.
+				<p>
+					Lorem ipsum dolor sit amet consectetur, adipisicing elit. At
+					repellat accusantium excepturi atque. Placeat maxime
+					excepturi repudiandae ab rem rerum nostrum perferendis, iste
+					doloremque voluptatibus vero eius quae! Quia, quisquam!
 				</p>
 			</section>
 		</>

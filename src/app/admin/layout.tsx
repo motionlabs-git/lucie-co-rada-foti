@@ -15,7 +15,7 @@ export default function AdminLayout({
 		<>
 			<html lang='cs'>
 				<body
-					className={`antialiased flex flex-col items-center w-screen overflow-x-hidden bg-stone-300 text-stone-700 dark:bg-stone-950 dark:text-stone-300
+					className={`antialiased w-screen h-screen overflow-x-hidden bg-stone-300 text-stone-700 dark:bg-stone-950 dark:text-stone-300
                     ${satoshiRegular.className}
                 `}
 				>

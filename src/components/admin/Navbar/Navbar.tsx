@@ -9,26 +9,9 @@ const Navbar: React.FC = async () => {
 	} = await supabase.auth.getUser()
 
 	return (
-		<nav className='sticky top-4 z-40 w-full container flex justify-between items-center rounded-2xl border-2 border-white/5 p-4'>
+		<nav className='w-full h-16 flex justify-between items-center border-b border-white/10 px-4'>
 			<section>
-				<Link href='/'>Logo</Link>
-			</section>
-
-			<section>
-				<ul className='flex gap-4'>
-					<li>
-						<Link href='/'>Store</Link>
-					</li>
-					<li>
-						<Link href='/'>Pro</Link>
-					</li>
-					<li>
-						<Link href='/'>AI</Link>
-					</li>
-					<li>
-						<Link href='/'>Plan</Link>
-					</li>
-				</ul>
+				<Link href='https://motionlabs.cz'>Logo</Link>
 			</section>
 
 			<section>
