@@ -2,6 +2,7 @@ import Lenis from 'lenis'
 import React, { RefObject, useEffect } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import HamburgerIcon from './HamburgerIcon';
 
 
 interface Props {
@@ -34,21 +35,23 @@ function Navigation({ lenis }: Props) {
 
     }, [])
 
-
     return (
-        <header className='fixed top-4 w-full flex justify-center' onClick={() => scrollTo('#hero')}>
-            <nav className='flex items-center gap-4 border-[1px] shadow-sm border-black/30 rounded-lg p-2 backdrop-blur-sm bg-white/10'>
+        <header className='z-50 fixed bottom-4 w-full flex justify-center' onClick={() => scrollTo('#hero')}>
+            <nav className='flex items-center gap-4 border-[1px] shadow-xl border-black/30 rounded-lg p-2 backdrop-blur-xs bg-bone/20'>
 
-                <div id='navLink1' className='navLink px-4 py-3 border-2 border-emerald-600 rounded-lg font-satoshiBold backdrop-blur-sm'>
+                <HamburgerIcon></HamburgerIcon>
 
-                    Navigation
 
-                </div>
+                {/* <div className='flex items-center'>
 
-                <div id='navLink2' className='px-4 py-3 border-2 border-emerald-600 rounded-lg font-satoshiBold'>
+                    <div>
+                        adsfljasf
+                    </div>
 
-                    Navigation
+                </div> */}
 
+                <div className='px-4 py-3 border-2rounded-lg text-lg'>
+                    Menu
                 </div>
             </nav>
         </header>
