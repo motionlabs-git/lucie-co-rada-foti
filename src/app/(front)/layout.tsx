@@ -1,9 +1,17 @@
 'use client'
 
+import { usePathname } from 'next/navigation'
+import localFont from 'next/font/local'
 import { useEffect, useRef } from 'react'
 import Lenis from 'lenis'
-import { usePathname } from 'next/navigation'
 import Navigation from '@/components/front/Navigation'
+import './front.css'
+
+const satoshiRegular = localFont({
+	src: '../../assets/fonts/Satoshi-Regular.woff2',
+	variable: '--font-satoshi-regular',
+})
+// const emberly_regular = localFont({
 
 
 
@@ -33,9 +41,17 @@ export default function FrontLayout({
 
 	return (
 		<>
-			<Navigation lenis={lenis}></Navigation>
+			<html lang='cs'>
+				<body
+					className={`antialiased
+                    ${satoshiRegular.variable}
+                `}
+				>
+					<Navigation lenis={lenis}></Navigation>
 
-			<main>{children}</main>
+					<main>{children}</main>
+				</body>
+			</html>
 		</>
 	)
 }
