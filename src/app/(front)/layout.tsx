@@ -1,11 +1,18 @@
 'use client'
 
 import { usePathname } from 'next/navigation'
+import { Bellefair } from 'next/font/google'
 import localFont from 'next/font/local'
 import { useEffect, useRef } from 'react'
 import Lenis from 'lenis'
 import Navigation from '@/components/front/Navigation/Navigation'
 import './front.css'
+
+const bellefair = Bellefair({
+	weight: ['400'],
+	subsets: ['latin'],
+	variable: '--font-bellefair'
+})
 
 const satoshiRegular = localFont({
 	src: '../../assets/fonts/Satoshi-Regular.woff2',
@@ -49,7 +56,9 @@ export default function FrontLayout({
 			<html lang='cs'>
 				<body
 					className={`antialiased
-                    ${satoshiRegular.variable, satoshiBold.variable}
+						${satoshiBold.variable}
+						${bellefair.variable}
+						${satoshiRegular.variable}
                 `}
 				>
 					<Navigation lenis={lenis}></Navigation>

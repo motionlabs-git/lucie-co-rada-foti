@@ -50,7 +50,7 @@ function Navigation({ lenis }: Props) {
 
                 </div> */}
 
-                <div className='px-4 py-3 border-2rounded-lg text-lg'>
+                <div className='px-4 py-3 border-2rounded-lg text-lg font-satoshiBold'>
                     Menu
                 </div>
             </nav>

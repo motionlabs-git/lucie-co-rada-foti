@@ -1,10 +1,7 @@
 @import 'tailwindcss';
 
 
-@theme {
-	--font-satoshiRegular: var(--font-satoshi-regular);
-	--font-satoshiBold: var(--font-satoshi-bold)
-}
+@theme {}
 
 * {
 	@apply focus:ring-0 focus:outline-0;

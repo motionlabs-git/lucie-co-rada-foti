@@ -6,5 +6,54 @@
 }
 
 @theme {
-    --color-bone: var(--foreground)
+    --font-satoshiRegular: var(--font-satoshi-regular);
+    --font-satoshiBold: var(--font-satoshi-bold);
+    --font-bellefair: var(--font-bellefair);
+    --color-bone: var(--foreground);
+}
+
+@layer utilities {
+    @keyframes marqueeLeft {
+        from {
+            transform: translateX(0);
+        }
+
+        to {
+            transform: translateX(-100%);
+        }
+    }
+
+    @keyframes marqueeRight {
+        from {
+            transform: translateX(0);
+        }
+
+        to {
+            transform: translateX(100%);
+        }
+    }
+
+    @keyframes logoFirst {
+        0% {
+            transform: translateX(0) translateY(0);
+            opacity: 1;
+        }
+
+        100% {
+            transform: translateX(1.5rem) translateY(1.5rem);
+            opacity: 0;
+        }
+    }
+
+    .animate-marquee-left {
+        animation: marqueeLeft 10s linear infinite;
+    }
+
+    .animate-marquee-right {
+        animation: marqueeRight 10s linear infinite;
+    }
+
+    .animate-logo-first {
+        animation: logoFirst 3s ease-out infinite;
+    }
 }
