@@ -1,12 +1,32 @@
 import React from 'react'
 import Image from 'next/image'
 import HeroImage from '@/../public/images/Hero.jpg'
+import Logo from '@/../public/images/LogoPreview.png'
+import Marquee from '@/components/front/Marquee/Marquee'
+
 
 function Hero() {
     return (
-        <section id='section1' className='section h-screen'>
-            <Image src={HeroImage} alt={'Hero Image'} width={1024} height={860} className='h-full w-full object-cover'></Image>
+        <section className='relative h-screen '>
 
+            <Image src={HeroImage} alt={'Hero Image'} width={1024} height={860} className='select-none pointer-events-none h-full w-full object-cover absolute top-0'></Image>
+
+            <div className='relative h-full flex flex-col items-center justify-between pt-4 pb-24'>
+
+
+                <Image src={Logo} alt={'Logo Lucie co ráda fotí'} className='w-60' />
+
+
+
+                <Marquee
+                    duration='20s'
+                    sets={4}
+                    direction='left'
+                    className='gap-2 sm:gap-4 pr-2 sm:pr-4'
+                >
+                    <h2 className='text-7xl'>Lucie co ráda fotí. Vaše fotografka.</h2>
+                </Marquee>
+            </div>
         </section>
     )
 }
