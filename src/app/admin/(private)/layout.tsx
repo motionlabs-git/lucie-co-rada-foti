@@ -10,7 +10,7 @@ export default function PrivateAdminLayout({
 }>) {
 	return (
 		<>
-			<div className='h-screen max-h-screen flex flex-col gap-4 p-4'>
+			<div className='flex flex-col gap-4 p-4'>
 				<Navbar />
 
 				<div className='container flex-1 flex flex-col lg:flex-row lg:items-start gap-4'>
