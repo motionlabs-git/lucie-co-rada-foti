@@ -1,4 +1,3 @@
-import Footer from '@/components/admin/Footer/Footer'
 import Main from '@/components/admin/Main/Main'
 import Navbar from '@/components/admin/Navbar/Navbar'
 import Sidebar from '@/components/admin/Sidebar/Sidebar'
@@ -18,8 +17,6 @@ export default function PrivateAdminLayout({
 
 					<Main>{children}</Main>
 				</div>
-
-				{/* <Footer /> */}
 			</div>
 		</>
 	)

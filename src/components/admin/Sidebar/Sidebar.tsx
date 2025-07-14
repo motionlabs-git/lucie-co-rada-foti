@@ -1,6 +1,6 @@
 'use client'
 
-import React, { MouseEventHandler } from 'react'
+import { MouseEventHandler } from 'react'
 import Link from 'next/link'
 
 const Sidebar = () => {
