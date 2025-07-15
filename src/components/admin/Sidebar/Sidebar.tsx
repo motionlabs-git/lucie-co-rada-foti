@@ -1,35 +1,76 @@
 'use client'
 
-import { MouseEventHandler } from 'react'
-import Link from 'next/link'
+import { MouseEventHandler, useState } from 'react'
+import { FiUsers, FiImage, FiEdit3, FiFlag, FiSidebar } from 'react-icons/fi'
+import Link from './Link'
 
 const Sidebar = () => {
-	const handleMouseOver: MouseEventHandler<HTMLDivElement> = (e) => {
-		e.currentTarget.classList.add('!w-56')
+	const [isOpen, setIsOpen] = useState(false)
+
+	const handleMouseOver: MouseEventHandler<HTMLDivElement> = () => {
+		// setIsOpen(true)
 	}
 
-	const handleMouseOut: MouseEventHandler<HTMLDivElement> = (e) => {
-		e.currentTarget.classList.remove('!w-56')
+	const handleMouseOut: MouseEventHandler<HTMLDivElement> = () => {
+		// setIsOpen(false)
+	}
+
+	const handleToggleSidebar = () => {
+		setIsOpen((prev) => !prev)
 	}
 
 	return (
 		<nav
 			onMouseOver={handleMouseOver}
 			onMouseOut={handleMouseOut}
-			className='relative h-full w-16 border-r border-white/10 duration-300'
+			className={`relative h-full ${
+				isOpen ? 'w-64' : 'w-14'
+			} border-r border-white/10 duration-300`}
 		>
-			<ul className='w-full relative flex flex-col gap-2'>
-				<li>
-					<Link href={'/admin'} className='block'>
-						<span>Users</span>
-					</Link>
-				</li>
-				<li>
-					<Link href={'/admin'}>
-						<span>Gallery</span>
-					</Link>
-				</li>
-			</ul>
+			<section className='h-full flex flex-col justify-between p-2'>
+				<ul className='w-full relative flex flex-col gap-1'>
+					<li>
+						<Link
+							isOpen={isOpen}
+							href={'/admin'}
+							title={'Users'}
+							icon={<FiUsers />}
+						/>
+					</li>
+					<li>
+						<Link
+							isOpen={isOpen}
+							href={'/admin/blog'}
+							title={'Blog'}
+							icon={<FiEdit3 />}
+						/>
+					</li>
+					<li>
+						<Link
+							isOpen={isOpen}
+							href={'/admin/gallery'}
+							title={'Gallery'}
+							icon={<FiImage />}
+						/>
+					</li>
+					<li>
+						<Link
+							isOpen={isOpen}
+							href={'/admin/banner'}
+							title={'Banner'}
+							icon={<FiFlag />}
+						/>
+					</li>
+				</ul>
+
+				<button
+					type='button'
+					onClick={handleToggleSidebar}
+					className={`self-start h-10 aspect-square flex justify-center items-center hover:bg-white/5 border border-white/0 hover:border-white/5 opacity-80 hover:opacity-100 duration-300 rounded-lg`}
+				>
+					<FiSidebar className='text-md' />
+				</button>
+			</section>
 		</nav>
 	)
 }
