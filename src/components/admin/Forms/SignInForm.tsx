@@ -6,6 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { signInValidation, SignInSchema } from '@/schemas/sign-in.schema'
 import Input from '../Inputs/Input'
 import Image from 'next/image'
+import Logo from '../../../../public/images/logo.svg'
 
 interface SignInFormProps {
 	action: (data: SignInSchema) => Promise<void>
@@ -25,7 +26,15 @@ const SignInForm: React.FC<SignInFormProps> = ({ action }) => {
 			onSubmit={handleSubmit(action)}
 			className='w-full max-w-2xs flex flex-col items-center'
 		>
-			<h1 className='text-2xl'>Log in to App</h1>
+			<Image
+				src={Logo}
+				alt={'logo'}
+				width={100}
+				height={100}
+				className='w-24 h-auto invert'
+			/>
+
+			<h1 className='text-2xl mt-8'>Log in to App</h1>
 
 			<Input
 				{...register('email')}
