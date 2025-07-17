@@ -17,12 +17,13 @@ const Avatar = () => {
 				type='button'
 				onClick={handleAvatarClick}
 				onBlur={handleBlur}
-				className='w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/5 border border-white/5 duration-300'
+				className={`w-10 h-10 flex items-center justify-center rounded-full hover:bg-black/5
+					hover:dark:bg-white/5 border border-black/5 dark:border-white/5 duration-300`}
 			>
 				<FiUser className='text-lg opacity-80' />
 			</button>
 			{isOpen && (
-				<ul className='absolute right-0 top-13 bg-stone-900 rounded-lg border border-white/5 p-2'>
+				<ul className='absolute right-0 top-13 bg-stone-300 dark:bg-stone-900 rounded-lg border border-black/10 dark:border-white/5 p-2'>
 					<li>
 						<form action={signOut}>
 							<button type='submit'>Logout</button>

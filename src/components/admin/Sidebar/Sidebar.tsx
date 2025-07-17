@@ -25,7 +25,7 @@ const Sidebar = () => {
 			onMouseOut={handleMouseOut}
 			className={`relative h-full ${
 				isOpen ? 'w-64' : 'w-14'
-			} border-r border-white/10 duration-300`}
+			} border-r border-black/10 dark:border-white/10 duration-300`}
 		>
 			<section className='h-full flex flex-col justify-between p-2'>
 				<ul className='w-full relative flex flex-col gap-1'>
@@ -66,7 +66,8 @@ const Sidebar = () => {
 				<button
 					type='button'
 					onClick={handleToggleSidebar}
-					className={`self-start h-10 aspect-square flex justify-center items-center hover:bg-white/5 border border-white/0 hover:border-white/5 opacity-80 hover:opacity-100 duration-300 rounded-lg`}
+					className={`self-start h-10 aspect-square flex justify-center items-center hover:bg-widget
+						opacity-80 hover:opacity-100 duration-300 rounded-lg`}
 				>
 					<FiSidebar className='text-md' />
 				</button>

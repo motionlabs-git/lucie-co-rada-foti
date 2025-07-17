@@ -3,12 +3,12 @@ import { signOut } from '@/actions/authActions'
 const AdminPage = () => {
 	return (
 		<>
-			<section className='w-full rounded-lg bg-white/5 border border-white/5 p-4'>
+			<section className='w-full rounded-lg bg-widget p-4'>
 				<form action={signOut}>
 					<button type='submit'>logout</button>
 				</form>
 			</section>
-			<section className='w-full rounded-lg bg-white/5 border border-white/5 p-4'>
+			<section className='w-full rounded-lg bg-widget p-4'>
 				<p className='text-2xl'>
 					Lorem ipsum dolor sit amet consectetur, adipisicing elit. At
 					repellat accusantium excepturi atque. Placeat maxime
@@ -26,7 +26,7 @@ const AdminPage = () => {
 					doloremque voluptatibus vero eius quae! Quia, quisquam!
 				</p>
 			</section>
-			<section className='w-full rounded-lg border border-white/10 p-4'>
+			<section className='w-full rounded-lg bg-widget p-4'>
 				<p>
 					Lorem ipsum dolor sit amet consectetur, adipisicing elit. At
 					repellat accusantium excepturi atque. Placeat maxime
@@ -44,7 +44,7 @@ const AdminPage = () => {
 					doloremque voluptatibus vero eius quae! Quia, quisquam!
 				</p>
 			</section>
-			<section className='w-full rounded-lg border border-white/10 p-4'>
+			<section className='w-full rounded-lg bg-widget p-4'>
 				<p className='text-2xl'>
 					Lorem ipsum dolor sit amet consectetur, adipisicing elit. At
 					repellat accusantium excepturi atque. Placeat maxime
@@ -62,7 +62,7 @@ const AdminPage = () => {
 					doloremque voluptatibus vero eius quae! Quia, quisquam!
 				</p>
 			</section>
-			<section className='w-full rounded-lg border border-white/10 p-4'>
+			<section className='w-full rounded-lg bg-widget p-4'>
 				<p className='text-2xl'>
 					Lorem ipsum dolor sit amet consectetur, adipisicing elit. At
 					repellat accusantium excepturi atque. Placeat maxime

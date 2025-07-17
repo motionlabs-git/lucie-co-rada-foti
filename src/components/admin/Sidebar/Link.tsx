@@ -16,8 +16,8 @@ const Link: React.FC<IProps> = ({ href, title, icon, isOpen }) => {
 		<NextLink
 			href={href}
 			className={`h-10 w-full flex items-center ${
-				path === href ? 'bg-white/5 border border-white/5' : ''
-			} hover:bg-white/5 border border-white/0 hover:border-white/5 opacity-80 hover:opacity-100 duration-300 rounded-lg`}
+				path === href ? 'bg-widget' : ''
+			} hover:bg-widget opacity-80 hover:opacity-100 duration-300 rounded-lg`}
 		>
 			<span className='w-10 aspect-square flex items-center justify-center'>
 				{React.cloneElement(
