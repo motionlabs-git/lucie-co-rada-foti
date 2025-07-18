@@ -1,11 +1,15 @@
+import Rings from '@/icons/Rings'
 import React from 'react'
 
 function HamburgerIcon() {
     return (
-        <div className='flex flex-col justify-center gap-2 w-14 aspect-square h-fit border border-black/50 rounded-lg p-2 cursor-pointer backdrop-blur-xs'>
-            <div className='w-full h-[3px] rounded-full bg-black'> </div>
-            <div className='w-full h-[3px] rounded-full bg-black'> </div>
-            <div className='w-full h-[3px] rounded-full bg-black'> </div>
+        <div className='flex justify-center items-center gap-2 w-14 aspect-square h-fit border border-black/50 rounded-lg p-2 cursor-pointer backdrop-blur-xs'>
+            <div className='relative'>
+
+                <Rings className='absolute blur-sm' id='navIconSVG' width={34} height={34}></Rings>
+                <Rings className='' id='navIconSVG' width={34} height={34}></Rings>
+
+            </div>
         </div>
     )
 }

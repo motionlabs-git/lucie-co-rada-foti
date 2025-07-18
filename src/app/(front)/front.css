@@ -5,11 +5,17 @@
     --foreground: #FDF7E4;
 }
 
-@theme {
+@theme inline {
     --font-satoshiRegular: var(--font-satoshi-regular);
     --font-satoshiBold: var(--font-satoshi-bold);
     --font-bellefair: var(--font-bellefair);
     --color-bone: var(--foreground);
+
+}
+
+
+h1 {
+    @apply text-7xl font-satoshiBold
 }
 
 @layer utilities {
@@ -56,4 +62,10 @@
     .animate-logo-first {
         animation: logoFirst 3s ease-out infinite;
     }
+}
+
+.container {
+    @apply px-10 py-32;
+    max-width: 1360px;
+
 }
