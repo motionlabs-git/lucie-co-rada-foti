@@ -30,6 +30,8 @@ function Navigation({ lenis }: Props) {
         }).to('.ring-2', {
             translateX: -8,
             translateY: -8
+        }, '<').to('#navIconSVGBlur', {
+            opacity: 1
         }, '<')
             // .to('#navMenuText', {
             //     opacity: 0,

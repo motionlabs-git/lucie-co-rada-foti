@@ -1,7 +1,7 @@
 'use client'
 
 import { usePathname } from 'next/navigation'
-import { Bellefair, Merriweather, Playfair_Display } from 'next/font/google'
+import { Bellefair, Merriweather, Playfair_Display, Jost } from 'next/font/google'
 import localFont from 'next/font/local'
 import { useEffect, useRef } from 'react'
 import Lenis from 'lenis'

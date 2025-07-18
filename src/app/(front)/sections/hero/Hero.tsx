@@ -1,11 +1,31 @@
-import React from 'react'
+'use client'
+import React, { useEffect } from 'react'
 import Image from 'next/image'
 import HeroImage from '@/../public/images/Hero.jpg'
-import Logo from '@/../public/images/LogoPreview.png'
 import Marquee from '@/components/front/Marquee/Marquee'
+import Logo from '../../../../../public/images/Logo'
+import gsap from 'gsap'
+import DrawSVGPlugin from 'gsap/DrawSVGPlugin'
+
 
 
 function Hero() {
+
+    useEffect(() => {
+
+        gsap.registerPlugin(DrawSVGPlugin)
+
+        gsap.from('.HeroLogoPath', {
+            drawSVG: 0,
+            stagger: 0.3,
+            duration: 1.5,
+            ease: 'power1.inOut'
+        })
+
+    }, [])
+
+
+
     return (
         <section className='relative h-screen w-full'>
 
@@ -21,8 +41,9 @@ function Hero() {
 
             <div className='relative h-full flex flex-col items-center justify-between pt-4 pb-24'>
 
+                <Logo w={200} h={200} id='HeroLogo' pathClass='HeroLogoPath'></Logo>
 
-                <Image src={Logo} alt={'Logo Lucie co ráda fotí'} className='w-60' />
+                {/* <Image src={Logo} alt={'Logo Lucie co ráda fotí'} className='w-60' /> */}
 
 
 

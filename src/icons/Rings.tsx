@@ -8,8 +8,8 @@ interface Props {
     id?: string
 }
 
-const RingsIcon = ({ className, width, height }: Props) => (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width={width} height={height} className={className}>
+const RingsIcon = ({ className, width, height, id }: Props) => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width={width} height={height} className={className} id={id && id}>
 
         <style>{".s0{fill:#ffdb2d}.s1{fill:#ffae33}"}</style>
         <g id="SVGRepo_iconCarrier">
