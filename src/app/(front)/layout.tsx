@@ -1,14 +1,15 @@
 'use client'
 
 import { usePathname } from 'next/navigation'
-import { Bellefair } from 'next/font/google'
+import { Bellefair, Merriweather, Playfair_Display } from 'next/font/google'
 import localFont from 'next/font/local'
 import { useEffect, useRef } from 'react'
 import Lenis from 'lenis'
 import Navigation from '@/components/front/Navigation/Navigation'
 import './front.css'
+import Footer from '@/components/front/Footer/Footer'
 
-const bellefair = Bellefair({
+const bellefair = Playfair_Display({
 	weight: ['400'],
 	subsets: ['latin'],
 	variable: '--font-bellefair'
@@ -56,14 +57,16 @@ export default function FrontLayout({
 			<html lang='cs'>
 				<body
 					className={`antialiased
-						${satoshiBold.variable}
 						${bellefair.variable}
 						${satoshiRegular.variable}
+						${satoshiBold.variable}
                 `}
 				>
 					<Navigation lenis={lenis}></Navigation>
 
-					<main>{children}</main>
+					{children}
+
+					<Footer></Footer>
 				</body>
 			</html>
 		</>
