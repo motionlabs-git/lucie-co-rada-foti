@@ -88,7 +88,7 @@ function Hero() {
                     direction='left'
                     className='gap-2 sm:gap-4 pr-2 sm:pr-4'
                 >
-                    <h2 className='text-[6rem] font-bellefair italic'>Lucie co ráda fotí. Vaše fotografka.</h2>
+                    <h2 className='text-[6rem] font-promenadeItalic text-white'>Lucie co ráda fotí. Vaše fotografka.</h2>
                 </Marquee>
             </div>
         </section>

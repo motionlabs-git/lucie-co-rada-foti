@@ -25,6 +25,13 @@ const satoshiBold = localFont({
 	variable: '--font-satoshi-bold',
 })
 
+const promenadeItalic = localFont({
+	src: '../../assets/fonts/Promenade-Italic.otf',
+	variable: '--font-promenade-italic',
+})
+
+
+
 
 
 
@@ -60,6 +67,7 @@ export default function FrontLayout({
 						${bellefair.variable}
 						${satoshiRegular.variable}
 						${satoshiBold.variable}
+						${promenadeItalic.variable}
                 `}
 				>
 					<Navigation lenis={lenis}></Navigation>
