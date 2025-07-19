@@ -51,7 +51,7 @@ function Navigation({ lenis }: Props) {
                 opacity: 1,
                 stagger: 0.1
             }, '<')
-    }, [])
+    }, [navTl])
 
 
 
