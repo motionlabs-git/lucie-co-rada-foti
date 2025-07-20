@@ -9,6 +9,7 @@ import Navigation from '@/components/front/Navigation/Navigation'
 import './front.css'
 import Footer from '@/components/front/Footer/Footer'
 
+
 const bellefair = Playfair_Display({
 	weight: ['400'],
 	subsets: ['latin'],
@@ -68,6 +69,7 @@ export default function FrontLayout({
 						${satoshiRegular.variable}
 						${satoshiBold.variable}
 						${promenadeItalic.variable}
+						bg-bone
                 `}
 				>
 					<Navigation lenis={lenis}></Navigation>

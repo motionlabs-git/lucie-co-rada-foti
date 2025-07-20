@@ -5,7 +5,6 @@ import About from './sections/about/About'
 import References from './sections/references/References'
 import Pricelist from './sections/pricelist/Pricelist'
 import ContactForm from './sections/contactForm/ContactForm'
-import Gallery2 from './sections/gallery/Gallery2'
 
 function HomePage() {
 	return (
@@ -14,8 +13,6 @@ function HomePage() {
 			<Hero></Hero>
 
 			<Gallery></Gallery>
-
-			<Gallery2></Gallery2>
 
 			<References></References>
 
