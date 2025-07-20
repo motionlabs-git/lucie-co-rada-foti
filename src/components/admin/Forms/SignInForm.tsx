@@ -1,18 +1,25 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { signInValidation, SignInSchema } from '@/schemas/sign-in.schema'
+import { axiosClient } from '@/utils/axios/client'
 import Input from '../Inputs/Input'
 import Image from 'next/image'
 import Logo from '../../../../public/images/logo.svg'
+import { useRouter } from 'next/navigation'
+import { ImSpinner2 } from 'react-icons/im'
 
 interface SignInFormProps {
 	action: (data: SignInSchema) => Promise<void>
 }
 
-const SignInForm: React.FC<SignInFormProps> = ({ action }) => {
+const SignInForm: React.FC<SignInFormProps> = () => {
+	const router = useRouter()
+	const [loading, setLoading] = useState(false)
+	const [unauthorizedError, setUnauthorizedError] = useState(false)
+
 	const {
 		register,
 		handleSubmit,
@@ -21,9 +28,26 @@ const SignInForm: React.FC<SignInFormProps> = ({ action }) => {
 		resolver: zodResolver(signInValidation),
 	})
 
+	const handleFormSubmit = async (data: SignInSchema) => {
+		setLoading(true)
+
+		axiosClient
+			.post('/api/v1/auth/sign_in', data)
+			.then(() => router.push('/admin'))
+			.catch((error) => {
+				if (error.response.status === 401) {
+					return setUnauthorizedError(true)
+				}
+
+				router.push('/admin/error')
+			})
+			.finally(() => setLoading(false))
+	}
+
 	return (
 		<form
-			onSubmit={handleSubmit(action)}
+			onSubmit={handleSubmit(handleFormSubmit)} // AJAX CALL
+			// onSubmit={handleSubmit(action)} // SERVER ACTION
 			className='w-full max-w-2xs flex flex-col items-center'
 		>
 			<Image
@@ -51,11 +75,25 @@ const SignInForm: React.FC<SignInFormProps> = ({ action }) => {
 				className='mt-3'
 			/>
 
+			{unauthorizedError && (
+				<p className='self-start text-red-500 text-sm mt-2'>
+					Invalid email or password
+				</p>
+			)}
+
 			<button
 				type='submit'
-				className='w-full bg-white/90 hover:bg-white text-gray-900 rounded-lg duration-300 p-3 mt-3'
+				onClick={() => {
+					setUnauthorizedError(false)
+				}}
+				disabled={loading}
+				className='w-full flex justify-center items-center bg-white/90 hover:bg-white text-gray-900 rounded-lg duration-300 p-3 mt-3'
 			>
-				Log in
+				{loading ? (
+					<ImSpinner2 className='animate-spin text-lg' />
+				) : (
+					'Log in'
+				)}
 			</button>
 		</form>
 	)
