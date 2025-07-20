@@ -4,9 +4,16 @@
 
 .bg-widget {
 	@apply bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5;
+
+	&:not(:has(.hover\:bg-widget)) {
+		@apply !border-black/5 dark:!border-white/5;
+	}
 }
 
 .hover\:bg-widget {
-	@apply hover:bg-black/5 hover:dark:bg-white/5 border border-black/0 dark:border-white/0 hover:border-black/5
-		hover:dark:border-white/5;
+	@apply hover:bg-black/5 hover:dark:bg-white/5 border border-black/0 dark:border-white/0 hover:border-black/5 hover:dark:border-white/5;
+
+	/* &:not(:has(.bg-widget)) {
+		@apply border-black/0 dark:border-white/0;
+	} */
 }

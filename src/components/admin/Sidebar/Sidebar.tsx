@@ -1,11 +1,21 @@
 'use client'
 
-import { MouseEventHandler, useState } from 'react'
+import { MouseEventHandler, useEffect, useState } from 'react'
 import { FiUsers, FiImage, FiEdit3, FiFlag, FiSidebar } from 'react-icons/fi'
 import Link from './Link'
 
 const Sidebar = () => {
-	const [isOpen, setIsOpen] = useState(false)
+	const [isOpen, setIsOpen] = useState(true)
+
+	useEffect(() => {
+		if (!('sidebarOpen' in localStorage)) {
+			localStorage.sidebarOpen = 'true'
+			return setIsOpen(true)
+		}
+
+		const sidebarOpen = localStorage.sidebarOpen === 'true'
+		setIsOpen(sidebarOpen)
+	}, [])
 
 	const handleMouseOver: MouseEventHandler<HTMLDivElement> = () => {
 		// setIsOpen(true)
@@ -16,7 +26,13 @@ const Sidebar = () => {
 	}
 
 	const handleToggleSidebar = () => {
-		setIsOpen((prev) => !prev)
+		if (isOpen) {
+			localStorage.sidebarOpen = 'false'
+			setIsOpen(false)
+		} else {
+			localStorage.sidebarOpen = 'true'
+			setIsOpen(true)
+		}
 	}
 
 	return (
