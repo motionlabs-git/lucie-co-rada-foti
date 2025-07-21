@@ -9,6 +9,7 @@ import Navigation from '@/components/front/Navigation/Navigation'
 import './front.css'
 import Footer from '@/components/front/Footer/Footer'
 
+
 const bellefair = Playfair_Display({
 	weight: ['400'],
 	subsets: ['latin'],
@@ -24,6 +25,13 @@ const satoshiBold = localFont({
 	src: '../../assets/fonts/Satoshi-Bold.woff2',
 	variable: '--font-satoshi-bold',
 })
+
+const promenadeItalic = localFont({
+	src: '../../assets/fonts/Promenade-Italic.otf',
+	variable: '--font-promenade-italic',
+})
+
+
 
 
 
@@ -60,6 +68,8 @@ export default function FrontLayout({
 						${bellefair.variable}
 						${satoshiRegular.variable}
 						${satoshiBold.variable}
+						${promenadeItalic.variable}
+						bg-bone
                 `}
 				>
 					<Navigation lenis={lenis}></Navigation>

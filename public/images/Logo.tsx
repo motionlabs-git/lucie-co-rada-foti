@@ -1,6 +1,6 @@
 import * as React from "react"
 
-const Logo = ({ w, h, className, id, pathClass }: { w?: number, h?: number, className?: string, id: string, pathClass?: string }) => (
+const Logo = ({ w, h, className, id, pathClass }: { w?: number, h?: number, className?: string, id: string, pathClass?: string, }) => (
     <svg
         xmlns="http://www.w3.org/2000/svg"
         id={id && id}
@@ -9,11 +9,12 @@ const Logo = ({ w, h, className, id, pathClass }: { w?: number, h?: number, clas
         width={w}
         height={h}
         className={className}
+
     >
         <defs>
             <style>
                 {
-                    ".cls-1{fill:none;stroke:#000;stroke-linecap:round;stroke-miterlimit:10;stroke-width:5px}"
+                    ".cls-1{fill:none;stroke:currentColor;stroke-linecap:round;stroke-miterlimit:10;stroke-width:5px}"
                 }
             </style>
         </defs>

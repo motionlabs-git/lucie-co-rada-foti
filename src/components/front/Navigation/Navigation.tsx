@@ -1,3 +1,4 @@
+
 import Lenis from 'lenis'
 import React, { RefObject, useEffect } from 'react'
 import gsap from 'gsap'
@@ -6,14 +7,18 @@ import HamburgerIcon from './HamburgerIcon';
 import Link from 'next/link';
 
 
+
 interface Props {
     lenis: RefObject<Lenis | null>
 }
 
 function Navigation({ lenis }: Props) {
 
+
     const scrollTo = (id: string) => {
-        lenis.current?.scrollTo(id)
+
+
+        lenis.current?.scrollTo(`#` + id)
     }
 
 
@@ -51,7 +56,7 @@ function Navigation({ lenis }: Props) {
                 opacity: 1,
                 stagger: 0.1
             }, '<')
-    }, [])
+    }, [navTl])
 
 
 
@@ -71,7 +76,7 @@ function Navigation({ lenis }: Props) {
     }
 
     return (
-        <header className='z-50 fixed bottom-4 w-full flex justify-center' onClick={() => scrollTo('#hero')}>
+        <header className='z-50 fixed bottom-4 w-full flex justify-center'>
             <nav
                 onMouseEnter={mouseOver}
                 onMouseLeave={mouseLeave}
@@ -84,7 +89,7 @@ function Navigation({ lenis }: Props) {
                 <div id='navLinks' className='w-0 overflow-hidden flex gap-4 items-center justify-center'>
                     <Link href={''} className='navLink opacity-0 text-white font-satoshiBold'>Galerie</Link>
                     <Link href={''} className='navLink opacity-0 text-white font-satoshiBold'>O mně</Link>
-                    <Link href={''} className='navLink opacity-0 text-white font-satoshiBold'>Ceník</Link>
+                    <button onClick={() => scrollTo('gallery')} className='navLink opacity-0 text-white font-satoshiBold border border-white/20 rounded-xl px-4 py-3 hover:border-white duration-300'>Ceník</button>
                 </div>
 
                 <button id='navCta' className=' font-satoshiBold border-white border rounded-xl py-3 px-4  bg-white'>Kontakt</button>
