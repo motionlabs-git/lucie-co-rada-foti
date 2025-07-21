@@ -29,17 +29,6 @@ function Hero() {
         )
 
 
-
-
-        // ScrollTrigger.create({
-        //     trigger: "#uvod",
-        //     start: "top top",
-        //     end: "bottom bottom",
-        //     markers: true
-
-
-        // });
-
     }
 
     useEffect(() => {
@@ -68,15 +57,15 @@ function Hero() {
                 <Image id='heroImage' src={HeroImage} alt={'Hero Image'} width={1024} height={860} className=' absolute select-none pointer-events-none h-full w-full object-cover'></Image>
 
                 <div
-                    className='absolute w-full h-full bg-black/20'
-                    style={{ background: 'radial-gradient(circle,transparent 0%,  rgba(68, 54, 39, 0.6)' }}
+                    className='absolute w-full h-full'
+                    style={{ background: 'radial-gradient(circle,transparent 0%,rgba(68, 54, 39, 60%)' }}
                 ></div>
             </div>
 
 
             <div className='relative h-full flex flex-col items-center justify-between pt-4 pb-24'>
                 <Link href={'/'} onMouseEnter={() => animateLogo()}>
-                    <Logo w={200} h={200} id='HeroLogo' className='text-white' pathClass='HeroLogoPath'></Logo>
+                    <Logo w={300} id='HeroLogo' className='text-white' pathClass='HeroLogoPath'></Logo>
                 </Link>
 
                 {/* <Image src={Logo} alt={'Logo Lucie co ráda fotí'} className='w-60' /> */}

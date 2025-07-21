@@ -4,8 +4,6 @@ import React, { RefObject, useEffect } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import HamburgerIcon from './HamburgerIcon';
-import Link from 'next/link';
-
 
 
 interface Props {
@@ -87,9 +85,9 @@ function Navigation({ lenis }: Props) {
 
 
                 <div id='navLinks' className='w-0 overflow-hidden flex gap-4 items-center justify-center'>
-                    <Link href={''} className='navLink opacity-0 text-white font-satoshiBold'>Galerie</Link>
-                    <Link href={''} className='navLink opacity-0 text-white font-satoshiBold'>O mně</Link>
-                    <button onClick={() => scrollTo('gallery')} className='navLink opacity-0 text-white font-satoshiBold border border-white/20 rounded-xl px-4 py-3 hover:border-white duration-300'>Ceník</button>
+                    <button onClick={() => scrollTo('gallery')} className='navLink opacity-0 text-white font-satoshiBold border border-white/20 rounded-xl px-4 py-3 hover:border-white duration-300 whitespace-nowrap'>Galerie</button>
+                    <button onClick={() => scrollTo('gallery')} className='navLink opacity-0 text-white font-satoshiBold border border-white/20 rounded-xl px-4 py-3 hover:border-white duration-300 whitespace-nowrap'>Ceník</button>
+                    <button onClick={() => scrollTo('gallery')} className='navLink opacity-0 text-white font-satoshiBold border border-white/20 rounded-xl px-4 py-3 hover:border-white duration-300 whitespace-nowrap'>O mně</button>
                 </div>
 
                 <button id='navCta' className=' font-satoshiBold border-white border rounded-xl py-3 px-4  bg-white'>Kontakt</button>

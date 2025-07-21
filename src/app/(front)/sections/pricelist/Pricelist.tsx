@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import PricelistSlide from '@/components/front/Pricelist/PricelistSlide'
 import { DotButton, useDotButton } from '@/components/front/Pricelist/EmblaDotsButton'
@@ -12,9 +12,53 @@ const fakeData = [{ title: 'Rychle a bezbolestně', price: 1000 }, { title: 'Má
 ]
 
 const Pricelist = () => {
-    const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true })
+    const cursor1 = useRef<null | HTMLDivElement>(null)
+    const cursor1Position = useRef<{ x: number; y: number }>({ x: 0, y: 0 })
+    const delayedCursor1 = useRef<{ x: number; y: number }>({ x: 0, y: 0 })
 
+    const [direction, setDirection] = useState(true)
+
+    const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true })
     const { selectedIndex, onDotButtonClick } = useDotButton(emblaApi);
+
+
+    const lerp = (x: number, y: number, a: number) => {
+        return x * (1 - a) + y * a
+    }
+
+    const manageMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+        const { clientX, clientY } = e
+
+        console.log(e);
+
+
+        cursor1Position.current = {
+            x: e.clientX,
+            y: e.clientY,
+        }
+
+    }
+
+    const moveMouse = (x1: number, y1: number) => {
+        gsap.set(cursor1.current, { x: x1, y: y1 })
+
+    }
+
+    const animate = () => {
+        const { x: x1, y: y1 } = delayedCursor1.current
+
+        delayedCursor1.current = {
+            x: lerp(x1, cursor1Position.current.x, 0.02),
+            y: lerp(y1, cursor1Position.current.y, 0.02),
+        }
+        moveMouse(
+            delayedCursor1.current.x,
+            delayedCursor1.current.y,
+        )
+
+        window.requestAnimationFrame(animate)
+    }
+
 
     const cursorTl = gsap.timeline({
         defaults: {
@@ -24,14 +68,16 @@ const Pricelist = () => {
 
 
     useEffect(() => {
-        const cursor = document.getElementById('chevronCursor')
+        animate()
 
-        cursorTl.set(cursor, {
+        cursorTl.set('#chevronCursor', {
             display: 'flex',
-        }).to(cursor, {
+        }).to('#chevronCursor', {
             scale: 1,
             duration: 0.1
         })
+
+
     }, [cursorTl])
 
 
@@ -48,11 +94,21 @@ const Pricelist = () => {
     const moveCustomCursor = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         const rect = e.currentTarget.getBoundingClientRect();
 
+        manageMouseMove(e)
+
         if (e.clientX - rect.left < rect.width / 2) {
 
 
+            if (direction !== false) {
+                setDirection(false)
+            }
+
+
         } else {
-            console.log('right');
+
+            if (direction !== true) {
+                setDirection(true)
+            }
 
         }
 
@@ -65,7 +121,7 @@ const Pricelist = () => {
     return (
         <section className='container relative'>
 
-            <CustomCursor ></CustomCursor>
+            <CustomCursor direction={direction} cursorRef={cursor1} ></CustomCursor>
 
 
             <div className="embla w-full relative" onMouseEnter={showCustomCursor} onMouseLeave={hideCursor} onMouseMove={(e) => moveCustomCursor(e)} ref={emblaRef}>

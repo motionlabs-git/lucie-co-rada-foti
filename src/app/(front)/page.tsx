@@ -8,7 +8,7 @@ import ContactForm from './sections/contactForm/ContactForm'
 
 function HomePage() {
 	return (
-		<main className='flex flex-col items-center'>
+		<main className='flex flex-col items-center overflow-hidden'>
 
 			<Hero></Hero>
 
