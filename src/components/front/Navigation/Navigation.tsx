@@ -74,12 +74,12 @@ function Navigation({ lenis }: Props) {
     }
 
     return (
-        <header className='z-50 fixed bottom-4 w-full flex justify-center'>
+        <header className='z-50 fixed bottom-4 w-full flex justify-center pointer-events-none'>
             <nav
                 onMouseEnter={mouseOver}
                 onMouseLeave={mouseLeave}
                 id='navWrapper'
-                className='flex items-center gap-2 border-[1px] shadow-xl border-black/30 rounded-lg p-2 backdrop-blur-xs  bg-gradient-to-b from-slate-900/40 from-0% to-stone-700/40 to-100%'>
+                className='flex pointer-events-auto items-center gap-2 border-[1px] shadow-xl border-black/30 rounded-lg p-2 backdrop-blur-xs  bg-gradient-to-b from-slate-900/40 from-0% to-stone-700/40 to-100%'>
 
                 <HamburgerIcon></HamburgerIcon>
 

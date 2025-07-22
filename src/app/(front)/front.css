@@ -24,6 +24,20 @@ h1 {
     @apply text-7xl font-satoshiBold
 }
 
+h1, h2, h3, h4, h5, h6 {
+    em {
+        @apply font-promenadeItalic block
+    }
+
+    strong {
+        @apply font-satoshiBold
+    }
+}
+
+a {
+    @apply hover:text-orange duration-200
+}
+
 @layer utilities {
     @keyframes marqueeLeft {
         from {

@@ -58,7 +58,7 @@ function Hero() {
 
                 <div
                     className='absolute w-full h-full'
-                    style={{ background: 'radial-gradient(circle,transparent 0%,rgba(68, 54, 39, 60%)' }}
+                    style={{ background: 'radial-gradient(circle,transparent 0%,rgba(68, 54, 39, 100%)' }}
                 ></div>
             </div>
 
