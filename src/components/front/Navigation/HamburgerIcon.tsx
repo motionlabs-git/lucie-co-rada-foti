@@ -3,7 +3,7 @@ import React from 'react'
 
 function HamburgerIcon() {
     return (
-        <div className='flex justify-center items-center gap-2 w-14 aspect-square h-fit border border-black/50 rounded-lg p-2 cursor-pointer backdrop-blur-xs'>
+        <div className='flex justify-center items-center gap-2 w-14 aspect-square h-fit border border-gray-700/50 rounded-lg p-2 cursor-pointer backdrop-blur-xs'>
             <div className='relative'>
 
                 <Rings width={34} height={34}></Rings>

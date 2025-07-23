@@ -79,7 +79,7 @@ function Navigation({ lenis }: Props) {
                 onMouseEnter={mouseOver}
                 onMouseLeave={mouseLeave}
                 id='navWrapper'
-                className='flex pointer-events-auto items-center gap-2 border-[1px] shadow-xl border-black/30 rounded-lg p-2 backdrop-blur-xs  bg-gradient-to-b from-slate-900/40 from-0% to-stone-700/40 to-100%'>
+                className='flex pointer-events-auto items-center gap-2 border-[1px] shadow-md border-gray-500/30 rounded-lg p-2 backdrop-blur-md  bg-gradient-to-r from-gray-600/50 from-0% to-gray-500/20 to-100%'>
 
                 <HamburgerIcon></HamburgerIcon>
 
@@ -90,11 +90,11 @@ function Navigation({ lenis }: Props) {
                     <button onClick={() => scrollTo('gallery')} className='navLink opacity-0 text-white font-satoshiBold border border-white/20 rounded-xl px-4 py-3 hover:border-white duration-300 whitespace-nowrap'>O mně</button>
                 </div>
 
-                <button id='navCta' className=' font-satoshiBold border-white border rounded-xl py-3 px-4  bg-white'>Kontakt</button>
-
-                {/* <div id='navMenuText' className='px-4 py-3 border-2rounded-lg text-lg font-satoshiBold text-white'>
-                    Menu
-                </div> */}
+                <button
+                    id='navCta'
+                    className=' font-satoshiBold border-white border rounded-xl py-3 px-6 bg-white'
+                    onClick={() => scrollTo('contact')}
+                >Kontakt</button>
             </nav>
         </header>
     )

@@ -4,18 +4,20 @@ import React from 'react'
 
 const ContactForm = () => {
     return (
-        <section className='container flex gap-2'>
+        <section id='contact' className='container flex gap-10'>
             <div className='flex-1'>
-                <h2 className='text-5xl leading-[1.5em]'>
-                    <strong>Potřebuješ fotku?</strong>
+                <h2 className='text-5xl leading-[1.5em] blur-xs'>
+                    <strong>Chceš fotku?</strong>
                     <em className='indent-4 text-6xl text-orange'>
-                        Kontaktuj mě!
+                        Kontaktuj mě a ...
                     </em>
                     <em className='indent-8 text-6xl text-brown'>
-                        Contact me!
+                        *cvak
                     </em>
                 </h2>
-                <p className='text-gray-600 mt-2'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolore animi nemo veniam expedita, cum eaque quia culpa blanditiis totam distinctio rerum quidem, vero asperiores nisi ipsum veritatis molestiae in dicta.</p>
+                <p className='text-gray-600 mt-2'>
+                    Tento formulář slouží pouze jako poptávka focení. Napiš mi prosím svou představu o focení, lokaci, vhodný termín a případné detaily. Budu tě kontaktovat zpět ;-)
+                </p>
             </div>
 
 

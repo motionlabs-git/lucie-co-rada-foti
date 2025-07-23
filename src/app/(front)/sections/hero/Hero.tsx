@@ -40,11 +40,11 @@ function Hero() {
                 trigger: "#uvod",
                 start: "top top",
                 end: "bottom top",
-                scrub: 1
-
+                scrub: 1,
             },
             scale: 1.3,
         })
+
     }, [])
 
 
@@ -64,7 +64,7 @@ function Hero() {
 
 
             <div className='relative h-full flex flex-col items-center justify-between pt-4 pb-24'>
-                <Link href={'/'} onMouseEnter={() => animateLogo()}>
+                <Link className='self-center' href={'/'} onMouseEnter={() => animateLogo()}>
                     <Logo w={300} id='HeroLogo' className='text-white' pathClass='HeroLogoPath'></Logo>
                 </Link>
 

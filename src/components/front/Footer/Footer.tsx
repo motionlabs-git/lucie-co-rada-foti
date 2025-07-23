@@ -14,7 +14,7 @@ const Footer = () => {
         gsap.to('#navWrapper', {
             scrollTrigger: {
                 trigger: '#footer',
-                start: 'top bottom',
+                start: '50% bottom',
                 end: 'bottom bottom',
                 toggleActions: 'play play play reverse'
 
