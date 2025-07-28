@@ -117,8 +117,16 @@ const Form = () => {
 
             </fieldset>
 
+            <button
+                type="submit"
+                className='group relative w-full mt-4 rounded-xl'
+            >
+                <div className='absolute w-full h-full rounded-xl bg-black blur-xs duration-300 group-hover:blur-none'></div>
+                <p className='relative font-satoshiBold font-semibold text-white py-3'>Odeslat</p>
 
-            <input className='w-full mt-4 bg-black rounded-xl py-3 font-satoshiBold font-semibold text-white blur-xs duration-300 hover:blur-none' type="submit" value='Odeslat' />
+            </button>
+
+
 
 
         </form>

@@ -155,9 +155,49 @@ const Gallery = () => {
 
     }, [])
 
+
+    const openImage = (e: React.MouseEvent<HTMLDivElement, MouseEvent>, index: number) => {
+
+        console.log(index);
+
+
+        const rect = e.currentTarget.getBoundingClientRect()
+
+
+        console.log(rect);
+
+        const modalTl = gsap.timeline({ defaults: { duration: 1.5 }, paused: true })
+
+        modalTl.to('#imageModal', {
+            opacity: 100,
+            pointerEvents: 'auto',
+        }).fromTo('#imageModalImg', {
+            width: rect.width,
+            height: rect.height,
+            top: rect.top,
+            left: rect.left,
+            translateX: 0,
+            translateY: 0,
+        }, {
+            width: '48rem',
+            height: '48rem',
+            top: '50%',
+            left: '50%',
+            translateX: '-50%',
+            translateY: '-50%',
+            ease: 'power1.inOut',
+        }, '<')
+
+
+        modalTl.play()
+
+    }
+
     const closeImage = () => {
+
         gsap.to('#imageModal', {
             opacity: 0,
+            pointerEvents: 'none',
             onComplete: () => {
                 setSelectedImage(null)
             }
@@ -170,46 +210,49 @@ const Gallery = () => {
 
     return (
 
-        <div id='gallery' className="p-4 columns-2 sm:columns-3 lg:columns-4 gap-4 space-y-4">
+        <div id='gallery' className="relative p-4 columns-2 sm:columns-3 lg:columns-4 gap-4 space-y-4">
 
 
-            {selectedImage !== null &&
-                <div id='imageModal' className='select-none fixed z-50 w-screen h-screen top-0 left-0 px-10 py-10 flex justify-center items-center bg-black/50 backdrop-blur-md'>
+            <div id='imageModal' className='select-none pointer-events-none opacity-0 fixed z-50 w-screen h-screen top-0 left-0 px-10 py-10 flex justify-center items-center bg-black/50 backdrop-blur-md'>
 
-                    <button onClick={closeImage} className='absolute top-10 right-10 text-white font-6xl'><CrossIcon size={34} className='duration-300 text-white hover:text-orange hover:scale-95'></CrossIcon></button>
+                <button onClick={closeImage} className='absolute top-10 right-10 text-white font-6xl'><CrossIcon size={34} className='duration-300 text-white hover:text-orange hover:scale-95'></CrossIcon></button>
 
-                    <div className='flex items-center'>
-                        <button className='w-14' onClick={() => setSelectedImage((prev) => prev === 0 ? imgData.length - 1 : prev && prev - 1)}>
-                            <div className='pl-2 hover:pl-0 hover:pr-2 duration-200'>
-                                <Chevron className='text-white rotate-180' w={40}></Chevron>
-                            </div>
-                        </button>
-                        <Image
-                            width={1200}
-                            height={1200}
-                            className="h-full w-3xl max-h-[80vh] object-cover rounded-2xl"
-                            src={imgData[selectedImage].src}
-                            alt={imgData[selectedImage].title}
-                        />
+                <div className='flex items-center'>
+                    <button className='w-14' onClick={() => setSelectedImage((prev) => prev === 0 ? imgData.length - 1 : prev && prev - 1)}>
+                        <div className='pl-2 hover:pl-0 hover:pr-2 duration-200'>
+                            <Chevron className='text-white rotate-180' w={40}></Chevron>
+                        </div>
+                    </button>
 
-                        <button className='w-14' onClick={() => setSelectedImage((prev) => prev === imgData.length - 1 ? 0 : (prev !== null ? prev + 1 : null))}>
-                            <div className='pr-2 hover:pr-0 hover:pl-2 duration-200'>
-                                <Chevron className='text-white' w={40}></Chevron>
+                    <div id='imageModalImg' className='bg-red-400 rounded-2xl max-h-[80vh] absolute z-50'>  </div>
 
-                            </div>
-                        </button>
-                    </div>
-                </div>}
+                    {/* <Image
+                        width={1200}
+                        height={1200}
+                        className="h-full w-3xl max-h-[80vh] object-cover rounded-2xl"
+                        src={imgData[selectedImage]?.src}
+                        alt={imgData[selectedImage]?.title}
+                    /> */}
+
+                    <button className='w-14' onClick={() => setSelectedImage((prev) => prev === imgData.length - 1 ? 0 : (prev !== null ? prev + 1 : null))}>
+                        <div className='pr-2 hover:pr-0 hover:pl-2 duration-200'>
+                            <Chevron className='text-white' w={40}></Chevron>
+
+                        </div>
+                    </button>
+                </div>
+            </div>
 
             {imgData.map((img, index) => (
-                <div onClick={() => {
+                <div onClick={(e) => {
                     setSelectedImage(index)
+                    openImage(e, index)
                 }} key={index} className="group relative galleryImage translate-y-28 overflow-hidden rounded-2xl break-inside-avoid cursor-pointer">
 
                     <Image
                         width={800}
                         height={800}
-                        className="w-full h-auto hover:scale-105 duration-300 "
+                        className="w-full h-auto group-hover:scale-105 duration-300"
                         src={img.src}
                         alt={img.title}
                     />
