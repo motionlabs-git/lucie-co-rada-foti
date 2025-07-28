@@ -111,6 +111,9 @@ const Gallery = () => {
     const [selectedImage, setSelectedImage] = useState<null | number>(null)
 
 
+    console.log(selectedImage);
+
+
     useEffect(() => {
 
         gsap.to(document.body, {
