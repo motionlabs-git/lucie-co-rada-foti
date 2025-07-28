@@ -2,7 +2,9 @@ import React from 'react'
 
 const References = () => {
     return (
-        <section>References</section>
+        <section className='text-white text-center'>
+
+            References</section>
     )
 }
 

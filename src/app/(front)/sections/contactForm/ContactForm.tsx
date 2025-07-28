@@ -7,7 +7,7 @@ const ContactForm = () => {
         <section id='contact' className='container flex gap-10'>
             <div className='flex-1'>
                 <h2 className='text-5xl leading-[1.5em] blur-xs'>
-                    <strong>Chceš fotku?</strong>
+                    <strong className='invertText'>Chceš fotku?</strong>
                     <em className='indent-4 text-6xl text-orange'>
                         Kontaktuj mě a ...
                     </em>
