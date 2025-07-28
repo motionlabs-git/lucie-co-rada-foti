@@ -27,7 +27,7 @@ const Pricelist = () => {
     }
 
     const manageMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-        const { clientX, clientY } = e
+        // const { clientX, clientY } = e
 
         console.log(e);
 
