@@ -1,15 +1,14 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { createServerClient } from '@/utils/supabase/server'
 import Logo from '../../../../public/images/logo.svg'
 import Avatar from './Avatar'
 import ThemeButton from './ThemeButton'
 
 const Navbar: React.FC = async () => {
-	const supabase = await createServerClient()
-	const {
-		data: { user },
-	} = await supabase.auth.getUser()
+	// const supabase = await createServerClient()
+	// const {
+	// 	data: { user },
+	// } = await supabase.auth.getUser()
 
 	return (
 		<nav className='w-full h-14 flex justify-between items-center border-b border-black/10 dark:border-white/10 px-4'>

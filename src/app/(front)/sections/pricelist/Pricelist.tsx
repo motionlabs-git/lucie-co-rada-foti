@@ -82,7 +82,6 @@ const Pricelist = () => {
 
 
 
-
     const showCustomCursor = () => {
         cursorTl.play()
     }
