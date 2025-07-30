@@ -4,6 +4,7 @@ import Image from 'next/image'
 import gsap from 'gsap'
 import ImageModal from '@/components/front/Gallery/ImageModal';
 import Logo from '../../../../../public/images/Logo';
+import Marquee from '@/components/front/Marquee/Marquee';
 
 
 
@@ -37,7 +38,8 @@ const Gallery = () => {
                 trigger: '#gallery',
                 start: 'top top',
                 end: 'bottom bottom',
-                scrub: 0.1
+                scrub: 1
+
             },
             translateY: 0
         })
@@ -97,26 +99,37 @@ const Gallery = () => {
 
                 <div className='w-full flex gap-4'>
                     <div className='h-screen w-full items-end flex flex-1'>
-                        <div className='h-fit w-full flex flex-col gap-4 galleryColumn translate-y-[90%]'>
+                        <div className='h-fit w-full flex flex-col gap-4 galleryColumn translate-y-[98%]'>
                             {imgData.map((img, index) => (
                                 <div
+                                    key={index}
                                     onClick={() => {
                                         setSelectedImage(index)
                                     }}
-                                    key={index}
-                                    className="group relative galleryImage overflow-hidden rounded-xl cursor-pointer w-full h-auto"
+                                    className='relative rounded-xl cursor-pointer group'
                                 >
+                                    <div
+                                        className="rounded-xl overflow-hidden w-full h-auto duration-300 group-hover:blur-xs"
+                                    >
+                                        <Image
+                                            key={index}
+                                            width={800}
+                                            height={800}
+                                            className="w-full duration-300"
+                                            src={img.src}
+                                            alt={img.title}
+                                        />
 
-                                    <Image
-                                        key={index}
-                                        width={800}
-                                        height={800}
-                                        className="w-full group-hover:scale-105 duration-300"
-                                        src={img.src}
-                                        alt={img.title}
-                                    />
+                                    </div>
 
-
+                                    <div className='absolute top-0 left-0 w-full h-full flex justify-center items-end opacity-0 group-hover:opacity-100 duration-300 '>
+                                        <Marquee
+                                            sets={4}
+                                            containerClassName='gap-4'
+                                        >
+                                            <h2 className='text-orange font-promenadeItalic text-7xl'>Titulek obrázku ~ </h2>
+                                        </Marquee>
+                                    </div>
                                 </div>
                             ))}
                         </div>
@@ -147,28 +160,38 @@ const Gallery = () => {
                             ))}
                         </div>
                     </div>
-
-                    <div className='h-screen items-end flex flex-1'>
+                    <div className='h-screen w-full items-end flex flex-1'>
                         <div className='h-fit w-full flex flex-col gap-4 galleryColumn translate-y-[90%]'>
                             {imgData.map((img, index) => (
                                 <div
+                                    key={index}
                                     onClick={() => {
                                         setSelectedImage(index)
                                     }}
-                                    key={index}
-                                    className="group relative galleryImage overflow-hidden rounded-xl cursor-pointer w-full h-auto"
+                                    className='relative rounded-xl cursor-pointer group'
                                 >
+                                    <div
+                                        className="rounded-xl w-full h-auto duration-300 group-hover:blur-xs"
+                                    >
+                                        <Image
+                                            key={index}
+                                            width={800}
+                                            height={800}
+                                            className="w-full duration-300"
+                                            src={img.src}
+                                            alt={img.title}
+                                        />
 
-                                    <Image
-                                        key={index}
-                                        width={800}
-                                        height={800}
-                                        className="w-full  group-hover:scale-105 duration-300"
-                                        src={img.src}
-                                        alt={img.title}
-                                    />
+                                    </div>
 
-
+                                    <div className='absolute top-0 left-0 w-full h-full flex justify-center items-end opacity-0 group-hover:opacity-100 duration-300 '>
+                                        <Marquee
+                                            sets={4}
+                                            containerClassName='gap-4'
+                                        >
+                                            <h2 className='text-orange font-promenadeItalic text-7xl'>Titulek obrázku ~ </h2>
+                                        </Marquee>
+                                    </div>
                                 </div>
                             ))}
                         </div>

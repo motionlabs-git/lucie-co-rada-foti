@@ -99,7 +99,7 @@ const Form = () => {
             <fieldset className='mt-3'>
                 <label
                     htmlFor="textarea"
-                    className='font-promenadeItalic text-xl'
+                    className='invertText font-promenadeItalic text-xl'
                 >Text</label>
 
 
