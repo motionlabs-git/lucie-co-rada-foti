@@ -112,7 +112,6 @@ const Gallery = () => {
                                         className="rounded-xl overflow-hidden w-full h-auto duration-300 group-hover:blur-xs"
                                     >
                                         <Image
-                                            key={index}
                                             width={800}
                                             height={800}
                                             className="w-full duration-300"
