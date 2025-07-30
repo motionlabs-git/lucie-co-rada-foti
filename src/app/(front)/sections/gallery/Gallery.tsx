@@ -91,7 +91,7 @@ const Gallery = () => {
                 <div id='heroModal' className='w-full h-full top-0 left-0 absolute flex justify-center items-center'>
                     <div className='flex items-center'>
                         <Logo id={'logo'} className='w-80'></Logo>
-                        <h1 className='leading-tight whitespace-nowrap'><strong>Lucie</strong><em>"co ráda fotí"</em></h1>
+                        <h1 className='leading-tight whitespace-nowrap'><strong>Lucie</strong><em>`&#34;`co ráda fotí`&#34;`</em></h1>
                     </div>
                 </div>
 
