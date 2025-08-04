@@ -19,7 +19,6 @@ const Footer = () => {
                 start: '50% bottom',
                 end: 'bottom bottom',
                 toggleActions: 'play play play reverse',
-                markers: true
 
             },
             opacity: 0,
