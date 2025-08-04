@@ -114,14 +114,10 @@ const Pricelist = () => {
     }
 
 
-
-
-
     return (
         <section className='container relative'>
 
             <CustomCursor direction={direction} cursorRef={cursor1} ></CustomCursor>
-
 
             <div className="embla w-full relative" onMouseEnter={showCustomCursor} onMouseLeave={hideCursor} onMouseMove={(e) => moveCustomCursor(e)} ref={emblaRef}>
 
@@ -132,14 +128,6 @@ const Pricelist = () => {
                     )}
                 </div>
 
-                {/* <div className='absolute top-0 left-0 w-full h-full flex'>
-                    <button className='flex-1 h-full bg-green-400/50'>
-
-                    </button>
-                    <button className='flex-1 h-full bg-blue-400/50'>
-
-                    </button>
-                </div> */}
             </div>
 
             <div className="mt-10 flex justify-center items-center gap-1">
@@ -158,34 +146,6 @@ const Pricelist = () => {
             </div>
 
         </section>
-
-
-        // <section className='container flex gap-10'>
-
-        //     <div className='flex-2 flex flex-col gap-2'>
-
-        //         <h2>Ceník</h2>
-
-        //         {fakeData.map((item, index) =>
-        //             <button onClick={() => setSelected(index)} key={index} className={`${selected === index ? 'bg-gray-100' : 'bg-gray-50'} w-full flex justify-between items-center hover:bg-gray-100 bg-gray-50 border-black/20 border-2 rounded-2xl shadow-md p-4 duration-300`}>
-        //                 <span className='font-satoshiBold text-xl'>
-
-        //                     {item.title}
-        //                 </span>
-        //                 <span className='font-satoshiBold text-xl'>
-        //                     {selected === index ? '-' : '+'}
-        //                 </span>
-        //             </button>
-        //         )}
-
-        //     </div>
-
-
-
-        //     <PricelistCard title={fakeData[selected].title} ></PricelistCard>
-
-
-        // </section>
     )
 }
 
