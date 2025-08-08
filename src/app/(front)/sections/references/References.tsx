@@ -20,7 +20,7 @@ const References = () => {
                             width={800}
                             height={800}
                             className="w-full"
-                            src={'https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image.jpg'}
+                            src={'ttps://lirp.cdn-website.com/28cd0bb4/dms3rep/multi/opt/traditional+american+wedding-1920w.jpeg'}
                             alt={'https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image.jpg'}
                         />
                     </div>

@@ -14,8 +14,8 @@ const About = () => {
             paused: true,
             scrollTrigger: {
                 trigger: "#about",
-                start: "top center",
-                end: "bottom center",
+                start: "top top",
+                end: "+=50% top",
                 scrub: 1,
             }
         }).to('#aboutPart1', {
@@ -31,7 +31,7 @@ const About = () => {
             opacity: 1,
             scale: 1,
             filter: 'blur(0px)'
-        }, '<')
+        })
 
         gsap.to('.aboutPart2TitleSpan', {
             stagger: 0.07,

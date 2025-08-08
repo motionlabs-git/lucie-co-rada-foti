@@ -11,19 +11,20 @@ import Marquee from '@/components/front/Marquee/Marquee';
 
 const imgData = [
     {
-        src: 'https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image.jpg',
+        src: 'https://www.brides.com/thmb/LMyiMPxRFx82BLiHZC8lySJFnGo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/marriage-pose-photo-recirc-kyle-john-1-29-4f97523aa049471992292e8d6ddc41ee.jpg',
         title: 'Forest Path'
     },
     {
-        src: 'https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-1.jpg',
+        src: 'https://lirp.cdn-website.com/28cd0bb4/dms3rep/multi/opt/traditional+american+wedding-1920w.jpeg',
         title: 'Golden Dunes'
     },
     {
-        src: 'https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-2.jpg',
+        src: 'https://www.brides.com/thmb/LMyiMPxRFx82BLiHZC8lySJFnGo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/marriage-pose-photo-recirc-kyle-john-1-29-4f97523aa049471992292e8d6ddc41ee.jpg',
+
         title: 'Urban Skyline'
     },
     {
-        src: 'https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-3.jpg',
+        src: 'https://lirp.cdn-website.com/28cd0bb4/dms3rep/multi/opt/traditional+american+wedding-1920w.jpeg',
         title: 'Mountain Lake'
     }
 ];
@@ -159,6 +160,7 @@ const Gallery = () => {
                             ))}
                         </div>
                     </div>
+
                     <div className='h-screen w-full items-end flex flex-1'>
                         <div className='h-fit w-full flex flex-col gap-4 galleryColumn translate-y-[90%]'>
                             {imgData.map((img, index) => (
