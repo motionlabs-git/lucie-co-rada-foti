@@ -97,7 +97,7 @@ function Navigation({ lenis }: Props) {
         //         >Kontakt</button>
         //     </nav>
         // </header>
-        <header className='z-50 fixed bottom-4 w-full flex justify-center pointer-events-none'>
+        <header className='z-40 fixed bottom-4 w-full flex justify-center pointer-events-none'>
             <nav
                 onMouseEnter={mouseOver}
                 onMouseLeave={mouseLeave}
@@ -111,14 +111,14 @@ function Navigation({ lenis }: Props) {
 
 
 
-                    <div className='relative w-14 aspect-square h-auto bg-white border-black border-[1px] rounded-lg gap-2 flex flex-col justify-center items-center'>
+                    <button className='relative w-14 aspect-square h-auto bg-white border-black/30 border-[1px] rounded-lg gap-2 flex flex-col justify-center items-center'>
                         <div className='h-[2px] rounded-full w-1/2 bg-black'>
                         </div>
                         <div className='h-[2px] rounded-full w-1/2 bg-black'>
                         </div>
                         <div className='h-[2px] rounded-full w-1/2 bg-black'>
                         </div>
-                    </div>
+                    </button>
 
 
                     <div id='navLinks' className='relative w-0 overflow-hidden flex gap-4 items-center justify-center'>

@@ -38,6 +38,10 @@ a {
     @apply hover:text-orange duration-200
 }
 
+.blurryItem {
+    filter: blur(4px);
+}
+
 @layer utilities {
     @keyframes marqueeLeft {
         from {

@@ -8,6 +8,8 @@ import Lenis from 'lenis'
 import Navigation from '@/components/front/Navigation/Navigation'
 import './front.css'
 import Footer from '@/components/front/Footer/Footer'
+import initAnimations from '@/utils/initAnimations'
+import Loader from '@/components/Loader'
 
 
 const bellefair = Playfair_Display({
@@ -44,19 +46,22 @@ export default function FrontLayout({
 	const path = usePathname()
 	const lenis = useRef<null | Lenis>(null)
 
+
 	useEffect(() => {
 		//Lenis
 		lenis.current = new Lenis()
 		if (!lenis.current) return
 
-		function raf(time: number) {
-			if (!lenis.current) return
+		// function raf(time: number) {
+		// 	if (!lenis.current) return
 
-			lenis.current.raf(time)
-			requestAnimationFrame(raf)
-		}
-		requestAnimationFrame(raf)
+		// 	lenis.current.raf(time)
+		// 	requestAnimationFrame(raf)
+		// }
+		// requestAnimationFrame(raf)
 
+
+		initAnimations()
 
 	}, [path])
 
@@ -72,6 +77,7 @@ export default function FrontLayout({
 						bg-bone
                 `}
 				>
+					<Loader lenis={lenis}></Loader>
 					<Navigation lenis={lenis}></Navigation>
 
 					{children}
