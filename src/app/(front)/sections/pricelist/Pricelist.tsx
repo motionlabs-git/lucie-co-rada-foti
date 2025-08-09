@@ -119,7 +119,11 @@ const Pricelist = () => {
 
             <CustomCursor direction={direction} cursorRef={cursor1} ></CustomCursor>
 
-            <div className="embla w-full relative" onMouseEnter={showCustomCursor} onMouseLeave={hideCursor} onMouseMove={(e) => moveCustomCursor(e)} ref={emblaRef}>
+            <div
+                className="embla w-full relative"
+                onMouseEnter={showCustomCursor}
+                onMouseLeave={hideCursor} onMouseMove={(e) => moveCustomCursor(e)}
+                ref={emblaRef}>
 
                 <div className="embla__container pointer-events-none">
 

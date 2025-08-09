@@ -32,7 +32,7 @@ const Loader = ({ lenis }: { lenis: RefObject<Lenis | null> }) => {
                     })
                 }
             })
-        }, 3000);
+        }, 500);
 
     }, [lenis])
 
