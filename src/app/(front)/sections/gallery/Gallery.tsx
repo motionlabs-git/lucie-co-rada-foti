@@ -172,10 +172,9 @@ const Gallery = () => {
                                     className='relative rounded-xl cursor-pointer group'
                                 >
                                     <div
-                                        className="rounded-xl w-full h-auto duration-300 group-hover:blur-xs"
+                                        className="rounded-xl overflow-hidden w-full h-auto duration-300 group-hover:blur-xs"
                                     >
                                         <Image
-                                            key={index}
                                             width={800}
                                             height={800}
                                             className="w-full duration-300"
@@ -197,6 +196,8 @@ const Gallery = () => {
                             ))}
                         </div>
                     </div>
+
+
                 </div>
             </div>
         </div>

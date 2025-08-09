@@ -3,7 +3,7 @@ import Lenis from 'lenis'
 import React, { RefObject, useEffect } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import HamburgerIcon from './HamburgerIcon';
+// import HamburgerIcon from './HamburgerIcon';
 
 
 interface Props {
@@ -35,25 +35,14 @@ function Navigation({ lenis }: Props) {
             translateY: -8
         }, '<').to('#navIconSVGBlur', {
             opacity: 1
+        }, '<').to('#navWrapper', {
+            gap: 2 + 'rem'
+        }).to('#navLinks', {
+            width: 300
+        }, '<').to('.navLink', {
+            opacity: 1,
+            stagger: 0.1
         }, '<')
-            // .to('#navMenuText', {
-            //     opacity: 0,
-            //     display: 'none'
-            // })
-            // .to('#navCta', {
-            //     display: 'block',
-            //     opacity: 1
-            // }, '<')
-            .to('#navWrapper', {
-                gap: 2 + 'rem'
-            })
-            .to('#navLinks', {
-                width: 300
-            }, '<')
-            .to('.navLink', {
-                opacity: 1,
-                stagger: 0.1
-            }, '<')
     }, [navTl])
 
 

@@ -38,17 +38,24 @@ const References = () => {
             startDelay: 0,
             direction: 'forward',
             stopOnInteraction: false,
-            stopOnMouseEnter: false,
+            stopOnMouseEnter: true,
         }),
     ]);
     let counter = 0
 
 
+
     return (
 
-        <section className='w-full relative pb-10'>
+        <section className='w-full relative'>
+
+
+            <div >
+                <h1 className='text-black invertText text-center'><em className='text-6xl'>Reference</em></h1>
+            </div>
+
             <div
-                className="embla w-full relative"
+                className="embla w-full relative py-10"
                 ref={emblaRef}>
 
                 <div className="embla__container_references items-center">
@@ -78,7 +85,6 @@ const References = () => {
                 </div>
 
             </div>
-
         </section>
     )
 }
