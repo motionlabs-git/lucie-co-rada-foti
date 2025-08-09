@@ -32,7 +32,7 @@ const Loader = ({ lenis }: { lenis: RefObject<Lenis | null> }) => {
                     })
                 }
             })
-        }, 20000);
+        }, 2000);
 
         // gsap.to()
 
