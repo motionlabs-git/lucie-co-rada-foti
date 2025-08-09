@@ -23,10 +23,6 @@ const About = () => {
             filter: 'blur(10px)',
             scale: 0.8,
             opacity: 0
-        }, '<').set('#aboutPart1', {
-            display: 'none'
-        }).set('#aboutPart2', {
-            display: 'flex'
         }, '<').to('#aboutPart2', {
             opacity: 1,
             scale: 1,
@@ -53,7 +49,7 @@ const About = () => {
     return (
 
 
-        <div id='about' className='h-[300vh] w-full'>
+        <div id='about' className='h-auto w-full'>
 
             <div id='aboutPart1' className='flex flex-col items-center justify-center sticky top-0 h-screen'>
                 <h1 className='text-orange/30 text-nowrap text-center'><em className='text-[12vw]'>Lucie co ráda fotí</em></h1>
@@ -61,7 +57,7 @@ const About = () => {
             </div>
 
 
-            <div id='aboutPart2' className='container mx-auto blur-2xl opacity-0 sticky top-0 hidden w-full items-center justify-center flex-col scale-90'>
+            <div id='aboutPart2' className='container mx-auto blur-2xl sticky top-0 w-full items-center justify-center flex-col scale-90'>
 
                 <Image
                     src={'https://scontent.fsvg1-1.fna.fbcdn.net/v/t39.30808-6/380943477_6493124047410121_8106659734817583276_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=SlQRR_9Bhb0Q7kNvwH8xXQc&_nc_oc=AdnHEUQTEHBC6Dh9P5MWkJ3LcFzZ-YTh9kA-6g3monBEgOouSQb61AW2-cMF4ll0OkA&_nc_zt=23&_nc_ht=scontent.fsvg1-1.fna&_nc_gid=CMHeo3GepitEgHGnXQLUlg&oh=00_AfSX83mPeRlTnejAWFZPvkpdo3i2PCwVVev8RVkXEvoSYg&oe=6886E49B'}
@@ -72,9 +68,12 @@ const About = () => {
 
                 >
                 </Image>
-                <h1 id='aboutPart2Title' className='mt-4'> {aboutLucka.split(' ').map((w: string, i: number) => <span key={i} className='aboutPart2TitleSpan opacity-40 blur-sm'>
-                    {w + ' '}
-                </span>)}</h1>
+
+                <h1 id='aboutPart2Title' className='mt-4'> {aboutLucka.split(' ').map((w: string, i: number) =>
+                    <span key={i} className='aboutPart2TitleSpan opacity-40 blur-sm'>
+                        {w + ' '}
+                    </span>)}
+                </h1>
             </div>
         </div>
     )

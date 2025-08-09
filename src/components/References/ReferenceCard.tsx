@@ -12,7 +12,7 @@ const ReferenceCard = ({ title, description, image, counter }: { title: string, 
                     { flex: '0 0 24%' })}
         >
             <div className='absolute w-full h-full top-0 left-0  group-hover:blur-md duration-300 bg-black rounded-lg'>
-                <Image src={image} alt={title} width={500} height={800} className='rounded-lg group-hover:opacity-50 duration-300' />
+                <Image src={image} alt={title} width={500} height={800} className='w-full h-full rounded-lg group-hover:opacity-50 duration-300' />
             </div>
 
             <div className='relative'>

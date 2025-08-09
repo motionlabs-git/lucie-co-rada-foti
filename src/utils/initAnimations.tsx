@@ -8,7 +8,6 @@ const initAnimations = () => {
 
 
     blurryItemsArray.forEach((item) => {
-
         gsap.to(item, {
             filter: 'blur(0px)',
             duration: 0.2,
@@ -22,7 +21,6 @@ const initAnimations = () => {
         })
 
     })
-
 
 }
 
