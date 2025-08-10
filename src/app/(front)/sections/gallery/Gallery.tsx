@@ -91,12 +91,13 @@ const Gallery = () => {
 					id='heroModal'
 					className='w-full h-full top-0 left-0 absolute flex justify-center items-center'
 				>
-					<div className='flex items-center'>
-						<Logo id={'logo'} className='w-80'></Logo>
+					<div className='flex flex-col items-center'>
+						<Logo id={'logo'} className='w-96'></Logo>
 						<h1 className='leading-tight whitespace-nowrap'>
-							<strong>Lucie</strong>
-							<em>&#34;co ráda fotí&#34;</em>
+							<em className='text-6xl'>Lucie co ráda fotí</em>
 						</h1>
+
+						<p className='text-xs'>Jaký font zvolit?</p>
 					</div>
 				</div>
 

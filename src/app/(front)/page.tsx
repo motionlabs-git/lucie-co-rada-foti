@@ -12,6 +12,7 @@ import Footer from '@/components/front/Footer/Footer'
 import Mouse from '@/components/front/Mouse/Mouse'
 import initAnimations from '@/utils/initAnimations'
 import Loader from '@/components/Loader'
+import References from './sections/references/References'
 
 function HomePage() {
 	const path = usePathname()
@@ -51,6 +52,8 @@ function HomePage() {
 				/>
 
 				<ContactForm />
+
+				<References></References>
 			</main>
 
 			<Footer />

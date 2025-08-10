@@ -35,11 +35,15 @@ const ReferenceCard = ({
 				/>
 			</div>
 
-			<div className='relative'>
-				<h3 className='font-bellefair text-orange text-2xl text-center opacity-0 group-hover:opacity-100 duration-300 group-hover:delay-200'>
-					{title}
-				</h3>
-				<p className='text-white font-bellefair opacity-0 group-hover:opacity-100 duration-300 group-hover:delay-400'>
+			<div className='relative w-2/3'>
+				<div className='flex items-center gap-2 opacity-0 group-hover:opacity-100 group-hover:delay-200 duration-300'>
+					<div className='w-10 h-10 min-w-10 bg-red-400 border-white/40 border-2 rounded-xl'></div>
+					<h3 className='font-bellefair text-orange text-2xl'>
+						{title}
+					</h3>
+				</div>
+
+				<p className='text-white font-bellefair mt-2 opacity-0 group-hover:opacity-100 group-hover:delay-400 duration-300'>
 					{description}
 				</p>
 			</div>

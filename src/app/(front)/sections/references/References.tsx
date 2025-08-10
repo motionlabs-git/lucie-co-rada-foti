@@ -21,17 +21,20 @@ const fakeData = [
 	},
 	{
 		title: 'title1',
-		description: 'alsdfjls asldjflasdjf asldjfl asdjlfjasd ',
+		description:
+			'alsdfjls asldjflasdjf asldjfl asdjlfjasd asdf asdfj asldlfka jsdl;jf;as dj;flajsd; fj;asld ;flasjd;l fjas;dlj flasdlfjaslfasdflasdf',
 		image: 'https://www.brides.com/thmb/LMyiMPxRFx82BLiHZC8lySJFnGo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/marriage-pose-photo-recirc-kyle-john-1-29-4f97523aa049471992292e8d6ddc41ee.jpg',
 	},
 	{
 		title: 'title1',
-		description: 'alsdfjls asldjflasdjf asldjfl asdjlfjasd ',
+		description:
+			'alsdfjls asldjflasdjf asldjfl asdjlfjasd asdf asdfj asldlfka jsdl;jf;as dj;flajsd; fj;asld ;flasjd;l fjas;dlj flasdlfjaslfasdflasdf',
 		image: 'https://www.brides.com/thmb/LMyiMPxRFx82BLiHZC8lySJFnGo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/marriage-pose-photo-recirc-kyle-john-1-29-4f97523aa049471992292e8d6ddc41ee.jpg',
 	},
 	{
 		title: 'title1',
-		description: 'alsdfjls asldjflasdjf asldjfl asdjlfjasd ',
+		description:
+			'alsdfjls asldjflasdjf asldjfl asdjlfjasd asdf asdfj asldlfka jsdl;jf;as dj;flajsd; fj;asld ;flasjd;l fjas;dlj flasdlfjaslfasdflasdf',
 		image: 'https://www.brides.com/thmb/LMyiMPxRFx82BLiHZC8lySJFnGo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/marriage-pose-photo-recirc-kyle-john-1-29-4f97523aa049471992292e8d6ddc41ee.jpg',
 	},
 ]

@@ -7,7 +7,6 @@ import FacebookIcon from '@/icons/Facebook'
 import gsap from 'gsap'
 import Link from 'next/link'
 import { ScrollTrigger } from 'gsap/all'
-import References from '@/app/(front)/sections/references/References'
 
 const Footer = () => {
 	const CurrentYear = new Date().getFullYear()
@@ -54,8 +53,6 @@ const Footer = () => {
 			id='footer'
 			className='relative  flex flex-col items-center overflow-hidden'
 		>
-			<References></References>
-
 			<div className='relative w-full flex justify-center pt-24 pb-12 overflow-hidden'>
 				<div className='max-w-[1360] w-full px-10 flex justify-between gap-20'>
 					<div className='invertText text-black'>

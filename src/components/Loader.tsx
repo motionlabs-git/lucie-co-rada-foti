@@ -29,9 +29,21 @@ const Loader = ({ lenis }: { lenis: RefObject<Lenis | null> }) => {
 					})
 				},
 			})
-		}, 200)
+		}, 3000)
 
-		// gsap.to()
+		gsap.to('#loader', {
+			width: '100%',
+			repeat: -1,
+			duration: 2,
+			ease: 'power1.inOut',
+		})
+		gsap.to('#loaderText', {
+			opacity: 1,
+			repeat: -1,
+			duration: 0.8,
+			ease: 'power1.in',
+			yoyo: true,
+		})
 	}, [lenis])
 
 	if (isActive)
@@ -40,16 +52,27 @@ const Loader = ({ lenis }: { lenis: RefObject<Lenis | null> }) => {
 				id='loader'
 				className='fixed top-0 left-0 w-full h-screen bg-bone z-50 flex items-center justify-center'
 			>
-				<h1 className='absolute top-4 left-4 text-2xl leading-0'>
+				<h1
+					id='loaderText'
+					className='absolute top-4 left-4 text-2xl leading-0 opacity-0'
+				>
 					<strong className='text-2xl'>Načítání...</strong>
 				</h1>
 
-				<h1 className='flex gap-4 items-baseline'>
-					<em className=''>Připravit</em>
-					<em className=''>Úsměr</em>
-					<em className=''>Sýr!</em>
-				</h1>
-				{/* <h1 className='flex gap-4 items-baseline'><strong>Vyfotím vaše</strong><em className='text-orange'>Svatby</em><em className='text-orange'>Akce</em><em className='text-orange'>Večírky</em></h1> */}
+				<div className='w-full flex flex-col items-center gap-10'>
+					<h1 className='flex gap-4 items-baseline '>
+						<em className=''>Připravit</em>
+						<em className=''>Úsměv</em>
+						<em className=''>Sýr!</em>
+					</h1>
+
+					<div className='w-1/10 bg-lightOrange h-1.5 rounded-full'>
+						<div
+							id='loader'
+							className='h-full w-0 bg-orange rounded-full'
+						></div>
+					</div>
+				</div>
 			</section>
 		)
 }

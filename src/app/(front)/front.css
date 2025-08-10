@@ -2,10 +2,11 @@
 
 
 :root {
-    --bone: #faf6f1;
+    --bone: #faeddc;
     --beige: #F3E9DC;
     --orange: #D96F32;
-    --brown: #443627
+    --lightOrange: #F0C6A9;
+    --brown: #443627;
 }
 
 @theme inline {
@@ -13,9 +14,11 @@
     --font-satoshiBold: var(--font-satoshi-bold);
     --font-bellefair: var(--font-bellefair);
     --font-promenadeItalic: var(--font-promenade-italic);
+    
     --color-bone: var(--bone);
     --color-beige: var(--beige);
     --color-orange: var(--orange);
+    --color-lightOrange: var(--lightOrange);
     --color-brown: var(--brown)
 }
 

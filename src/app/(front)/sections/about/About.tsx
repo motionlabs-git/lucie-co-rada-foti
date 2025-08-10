@@ -15,7 +15,6 @@ const About = () => {
 				start: 'top top',
 				end: '+=50% top',
 				scrub: 1,
-				markers: true,
 			},
 		})
 			.to(
@@ -53,7 +52,7 @@ const About = () => {
 				id='aboutPart1'
 				className='flex flex-col items-center justify-center sticky top-0 h-screen'
 			>
-				<h1 className='text-orange/30 text-nowrap text-center'>
+				<h1 className='text-lightOrange text-nowrap text-center'>
 					<em className='text-[12vw]'>Lucie co ráda fotí</em>
 				</h1>
 				<p className='mt-6 text-center max-w-6xl'>
