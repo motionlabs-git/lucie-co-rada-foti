@@ -7,6 +7,7 @@ import FacebookIcon from '@/icons/Facebook'
 import gsap from 'gsap'
 import Link from 'next/link'
 import { ScrollTrigger } from 'gsap/all'
+import References from '@/app/(front)/sections/references/References'
 
 const Footer = () => {
 	const CurrentYear = new Date().getFullYear()

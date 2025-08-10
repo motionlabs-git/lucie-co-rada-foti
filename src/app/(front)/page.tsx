@@ -10,7 +10,8 @@ import ContactForm from './sections/contactForm/ContactForm'
 import Navigation from '@/components/front/Navigation/Navigation'
 import Footer from '@/components/front/Footer/Footer'
 import Mouse from '@/components/front/Mouse/Mouse'
-import References from './sections/references/References'
+import initAnimations from '@/utils/initAnimations'
+import Loader from '@/components/Loader'
 
 function HomePage() {
 	const path = usePathname()
@@ -27,19 +28,14 @@ function HomePage() {
 	useEffect(() => {
 		//Lenis
 		lenis.current = new Lenis()
-		if (!lenis.current) return
 
-		function raf(time: number) {
-			if (!lenis.current) return
-
-			lenis.current.raf(time)
-			requestAnimationFrame(raf)
-		}
-		requestAnimationFrame(raf)
+		initAnimations()
 	}, [path])
 
 	return (
 		<>
+			<Loader lenis={lenis} />
+
 			<Navigation lenis={lenis} />
 
 			<main className='flex flex-col items-center'>
@@ -53,8 +49,6 @@ function HomePage() {
 					onMouseEnter={() => handleSetMouse('DEFAULT', true)}
 					onMouseLeave={() => handleSetMouse('DEFAULT', false)}
 				/>
-
-				<References />
 
 				<ContactForm />
 			</main>
