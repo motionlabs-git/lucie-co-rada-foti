@@ -1,156 +1,67 @@
 'use client'
-import React, { useEffect, useRef, useState } from 'react'
+
+import React from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import PricelistSlide from '@/components/front/Pricelist/PricelistSlide'
-import { DotButton, useDotButton } from '@/components/front/Pricelist/EmblaDotsButton'
-import CustomCursor from '@/components/front/CustomCursor'
-import gsap from 'gsap'
+import {
+	DotButton,
+	useDotButton,
+} from '@/components/front/Pricelist/EmblaDotsButton'
 
+interface IProps {
+	onMouseEnter?: () => void
+	onMouseLeave?: () => void
+}
 
-const fakeData = [{ title: 'Rychle a bezbolestně', price: 1000 }, { title: 'Mám rád kompromis', price: 2000 }, { title: 'Před foťákem jako doma', price: 3000 }
-
+const fakeData = [
+	{ title: 'Rychle a bezbolestně', price: 1000 },
+	{ title: 'Mám rád kompromis', price: 2000 },
+	{ title: 'Před foťákem jako doma', price: 3000 },
 ]
 
-const Pricelist = () => {
-    const cursor1 = useRef<null | HTMLDivElement>(null)
-    const cursor1Position = useRef<{ x: number; y: number }>({ x: 0, y: 0 })
-    const delayedCursor1 = useRef<{ x: number; y: number }>({ x: 0, y: 0 })
+const Pricelist: React.FC<IProps> = ({ onMouseEnter, onMouseLeave }) => {
+	const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true })
+	const { selectedIndex, onDotButtonClick } = useDotButton(emblaApi)
 
-    const [direction, setDirection] = useState(true)
+	return (
+		<section className='container relative'>
+			<div
+				className='embla w-full relative cursor-none'
+				onMouseEnter={onMouseEnter}
+				onMouseLeave={onMouseLeave}
+				ref={emblaRef}
+			>
+				<div className='embla__container pointer-events-none'>
+					{fakeData.map((slide, i) => (
+						<PricelistSlide
+							title={slide.title}
+							price={slide.price}
+							key={i}
+						></PricelistSlide>
+					))}
+				</div>
+			</div>
 
-    const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true })
-    const { selectedIndex, onDotButtonClick } = useDotButton(emblaApi);
-
-
-    const lerp = (x: number, y: number, a: number) => {
-        return x * (1 - a) + y * a
-    }
-
-    const manageMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-        // const { clientX, clientY } = e
-
-        console.log(e);
-
-
-        cursor1Position.current = {
-            x: e.clientX,
-            y: e.clientY,
-        }
-
-    }
-
-    const moveMouse = (x1: number, y1: number) => {
-        gsap.set(cursor1.current, { x: x1, y: y1 })
-
-    }
-
-    const animate = () => {
-        const { x: x1, y: y1 } = delayedCursor1.current
-
-        delayedCursor1.current = {
-            x: lerp(x1, cursor1Position.current.x, 0.02),
-            y: lerp(y1, cursor1Position.current.y, 0.02),
-        }
-        moveMouse(
-            delayedCursor1.current.x,
-            delayedCursor1.current.y,
-        )
-
-        window.requestAnimationFrame(animate)
-    }
-
-
-    const cursorTl = gsap.timeline({
-        defaults: {
-            duration: 0.2
-        }, paused: true
-    })
-
-
-    useEffect(() => {
-        animate()
-
-        cursorTl.set('#chevronCursor', {
-            display: 'flex',
-        }).to('#chevronCursor', {
-            scale: 1,
-            duration: 0.1
-        })
-
-
-    }, [cursorTl])
-
-
-
-    const showCustomCursor = () => {
-        cursorTl.play()
-    }
-
-    const hideCursor = () => {
-        cursorTl.reverse()
-    }
-
-    const moveCustomCursor = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-        const rect = e.currentTarget.getBoundingClientRect();
-
-        manageMouseMove(e)
-
-        if (e.clientX - rect.left < rect.width / 2) {
-
-
-            if (direction !== false) {
-                setDirection(false)
-            }
-
-
-        } else {
-
-            if (direction !== true) {
-                setDirection(true)
-            }
-
-        }
-
-    }
-
-
-    return (
-        <section className='container relative'>
-
-            <CustomCursor direction={direction} cursorRef={cursor1} ></CustomCursor>
-
-            <div
-                className="embla w-full relative"
-                onMouseEnter={showCustomCursor}
-                onMouseLeave={hideCursor} onMouseMove={(e) => moveCustomCursor(e)}
-                ref={emblaRef}>
-
-                <div className="embla__container pointer-events-none">
-
-                    {fakeData.map((slide, i) =>
-                        <PricelistSlide title={slide.title} price={slide.price} key={i}></PricelistSlide>
-                    )}
-                </div>
-
-            </div>
-
-            <div className="mt-10 flex justify-center items-center gap-1">
-                {fakeData.map((_, index) => (
-                    <div key={index} className='w-5 aspect-square h-auto flex justify-center items-center'>
-
-                        <DotButton
-                            key={index}
-                            onClick={() => onDotButtonClick(index)}
-                            className={`aspect-square rounded-full duration-200 ${index === selectedIndex ? ' bg-orange w-4' : 'bg-brown w-3'
-                                }`}
-                        />
-
-                    </div>
-                ))}
-            </div>
-
-        </section>
-    )
+			<div className='mt-10 flex justify-center items-center gap-1'>
+				{fakeData.map((_, index) => (
+					<div
+						key={index}
+						className='w-5 aspect-square h-auto flex justify-center items-center'
+					>
+						<DotButton
+							key={index}
+							onClick={() => onDotButtonClick(index)}
+							className={`aspect-square rounded-full duration-200 ${
+								index === selectedIndex
+									? ' bg-orange w-4'
+									: 'bg-brown w-3'
+							}`}
+						/>
+					</div>
+				))}
+			</div>
+		</section>
+	)
 }
 
 export default Pricelist
