@@ -1,14 +1,7 @@
 'use client'
 
 import { MouseEventHandler, useEffect, useState } from 'react'
-import {
-	FiUsers,
-	FiImage,
-	FiEdit3,
-	FiFlag,
-	FiSidebar,
-	FiServer,
-} from 'react-icons/fi'
+import { FiImage, FiSidebar, FiServer } from 'react-icons/fi'
 import Link from './Link'
 
 const Sidebar = () => {
