@@ -26,7 +26,7 @@ const Pricelist: React.FC<IProps> = ({ onMouseEnter, onMouseLeave }) => {
 	return (
 		<section className='container relative'>
 			<div
-				className='embla w-full relative'
+				className='embla w-full relative cursor-none'
 				onMouseEnter={onMouseEnter}
 				onMouseLeave={onMouseLeave}
 				ref={emblaRef}
