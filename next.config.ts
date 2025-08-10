@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    domains: ['instagram.fbrq1-1.fna.fbcdn.net', 'scontent-arn2-1.cdninstagram.com', 'flowbite.s3.amazonaws.com', 'scontent.fsvg1-1.fna.fbcdn.net']
+    domains: ['brides.com', 'lirp.cdn-website.com', 'www.brides.com', 'scontent.fsvg1-1.fna.fbcdn.net', 'instagram.fbrq1-1.fna.fbcdn.net', 'flowbite.s3.amazonaws.com']
 
   },
 };

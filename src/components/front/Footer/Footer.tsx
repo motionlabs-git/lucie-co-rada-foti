@@ -49,13 +49,13 @@ const Footer = () => {
 	}, [])
 
 	return (
-		<footer id='footer'>
-			<div className='relative flex justify-center pt-24 pb-12 overflow-hidden'>
-				<div
-					id='footerBlur'
-					className='absolute bottom-0 w-2/3 aspect-square h-auto rounded-full bg-orange/50 translate-y-[95%] blur-3xl pointer-events-none'
-				></div>
+		<footer
+			id='footer'
+			className='relative  flex flex-col items-center overflow-hidden'
+		>
+			<References></References>
 
+			<div className='relative w-full flex justify-center pt-24 pb-12 overflow-hidden'>
 				<div className='max-w-[1360] w-full px-10 flex justify-between gap-20'>
 					<div className='invertText text-black'>
 						<ul className='list-none'>
@@ -117,6 +117,11 @@ const Footer = () => {
 					</div>
 				</div>
 			</div>
+
+			<div
+				id='footerBlur'
+				className='absolute bottom-0 w-2/3 aspect-square h-auto rounded-full bg-orange/50 translate-y-[95%] blur-3xl pointer-events-none select-none'
+			></div>
 		</footer>
 	)
 }

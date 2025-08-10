@@ -29,7 +29,7 @@ const Form = () => {
             className='flex-1'
 
         >
-            <fieldset>
+            <fieldset className='blurryItem'>
 
                 <label
                     htmlFor="name"
@@ -51,7 +51,7 @@ const Form = () => {
                 </div>
             </fieldset>
 
-            <fieldset className='mt-3'>
+            <fieldset className='mt-3 blurryItem'>
                 <label
                     htmlFor="phone"
                     className='font-promenadeItalic text-xl'
@@ -73,7 +73,7 @@ const Form = () => {
 
             </fieldset>
 
-            <fieldset className='mt-3'>
+            <fieldset className='mt-3 blurryItem'>
                 <label
                     htmlFor="email"
                     className='font-promenadeItalic text-xl'
@@ -96,7 +96,7 @@ const Form = () => {
             </fieldset>
 
 
-            <fieldset className='mt-3'>
+            <fieldset className='mt-3 blurryItem'>
                 <label
                     htmlFor="textarea"
                     className='invertText font-promenadeItalic text-xl'

@@ -38,6 +38,10 @@ a {
     @apply hover:text-orange duration-200
 }
 
+.blurryItem {
+    filter: blur(4px);
+}
+
 @layer utilities {
     @keyframes marqueeLeft {
         from {
@@ -84,7 +88,7 @@ a {
     }
 
     .embla {
-        overflow: hidden;
+        overflow-x: hidden;
         margin: auto;
     }
 
@@ -96,13 +100,19 @@ a {
 
     }
 
+    .embla__container_references {
+        display: flex;
+        gap: 2rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
     .embla__slide {
         flex: 0 0 100%;
         min-width: 0;
         padding-left: 2rem;
         padding-right: 2rem;
     }
-
 
     .embla__dot:after {
         box-shadow: inset 0 0 0 0.2rem var(--detail-medium-contrast);
