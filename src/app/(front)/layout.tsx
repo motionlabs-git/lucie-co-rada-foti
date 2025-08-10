@@ -10,6 +10,7 @@ import './front.css'
 import Footer from '@/components/front/Footer/Footer'
 import initAnimations from '@/utils/initAnimations'
 import Loader from '@/components/Loader'
+import MobileNavigation from '@/components/front/Navigation/MobileNavigation'
 
 
 const bellefair = Playfair_Display({
@@ -78,7 +79,10 @@ export default function FrontLayout({
                 `}
 				>
 					<Loader lenis={lenis}></Loader>
+
+
 					<Navigation lenis={lenis}></Navigation>
+					<MobileNavigation lenis={lenis}></MobileNavigation>
 
 					{children}
 

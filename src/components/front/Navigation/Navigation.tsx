@@ -15,17 +15,13 @@ function Navigation({ lenis }: Props) {
 
     const scrollTo = (id: string) => {
 
-
         lenis.current?.scrollTo(`#` + id)
     }
-
-
 
     const navTl = gsap.timeline({ paused: true, defaults: { duration: 0.2 } });
 
     useEffect(() => {
         gsap.registerPlugin(ScrollTrigger)
-
 
         navTl.to('.ring-1', {
             translateX: -8,
@@ -46,15 +42,8 @@ function Navigation({ lenis }: Props) {
     }, [navTl])
 
 
-
-
-
-
-
     const mouseOver = () => {
         navTl.play()
-
-
     }
 
     const mouseLeave = () => {
