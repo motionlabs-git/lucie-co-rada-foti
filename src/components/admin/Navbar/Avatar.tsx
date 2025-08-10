@@ -2,7 +2,7 @@
 
 import { signOut } from '@/actions/authActions'
 import { useState } from 'react'
-import { FiUser } from 'react-icons/fi'
+import { FiLogOut, FiUser } from 'react-icons/fi'
 
 const Avatar = () => {
 	const [isOpen, setIsOpen] = useState(false)
@@ -26,7 +26,13 @@ const Avatar = () => {
 				<ul className='absolute right-0 top-13 bg-stone-300 dark:bg-stone-900 rounded-lg border border-black/10 dark:border-white/5 p-2'>
 					<li>
 						<form action={signOut}>
-							<button type='submit'>Logout</button>
+							<button
+								type='submit'
+								className='flex items-center gap-2'
+							>
+								<FiLogOut />
+								Logout
+							</button>
 						</form>
 					</li>
 				</ul>
