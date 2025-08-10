@@ -71,7 +71,7 @@ const About = () => {
 				<div className='w-full aspect-video'>
 					<Image
 						src={
-							'https://scontent.fsvg1-1.fna.fbcdn.net/v/t39.30808-6/380943477_6493124047410121_8106659734817583276_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=SlQRR_9Bhb0Q7kNvwH8xXQc&_nc_oc=AdnHEUQTEHBC6Dh9P5MWkJ3LcFzZ-YTh9kA-6g3monBEgOouSQb61AW2-cMF4ll0OkA&_nc_zt=23&_nc_ht=scontent.fsvg1-1.fna&_nc_gid=CMHeo3GepitEgHGnXQLUlg&oh=00_AfSX83mPeRlTnejAWFZPvkpdo3i2PCwVVev8RVkXEvoSYg&oe=6886E49B'
+							'https://scontent.fsvg1-1.fna.fbcdn.net/v/t39.30808-6/380943477_6493124047410121_8106659734817583276_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=hZZ4A16TWyAQ7kNvwFqulXS&_nc_oc=AdkUem5__Rlr5dfn3QT7JzKvOL6DK3rinLrZnVdZUbbXghtuF7QAc9P52NDTMeCm27I&_nc_zt=23&_nc_ht=scontent.fsvg1-1.fna&_nc_gid=wR2Xe7I4yM28IhaJHOggRQ&oh=00_AfX-q5jXcCHMggfjpcq6KqQszpbYfh9FTtbonp9QTsoCaA&oe=689E9F9B'
 						}
 						alt={'O lucce'}
 						width={1000}
