@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import PricelistSlide from '@/components/front/Pricelist/PricelistSlide'
 import {
@@ -23,10 +23,18 @@ const Pricelist: React.FC<IProps> = ({ onMouseEnter, onMouseLeave }) => {
 	const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true })
 	const { selectedIndex, onDotButtonClick } = useDotButton(emblaApi)
 
+	// useEffect(() => {
+	// 	if (!emblaApi) return
+
+	// 	emblaApi.on('scroll', (e) => {
+	// 		console.log('Embla scroll event:', e)
+	// 	})
+	// }, [emblaApi])
+
 	return (
-		<section className='container relative'>
+		<section className='container relative flex flex-col items-center justify-center gap-6'>
 			<div
-				className='embla w-full relative cursor-none'
+				className='embla pricelist w-full relative cursor-none'
 				onMouseEnter={onMouseEnter}
 				onMouseLeave={onMouseLeave}
 				ref={emblaRef}
@@ -42,7 +50,7 @@ const Pricelist: React.FC<IProps> = ({ onMouseEnter, onMouseLeave }) => {
 				</div>
 			</div>
 
-			<div className='mt-10 flex justify-center items-center gap-1'>
+			<div className='flex justify-center items-center gap-1'>
 				{fakeData.map((_, index) => (
 					<div
 						key={index}

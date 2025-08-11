@@ -60,7 +60,7 @@ const References = () => {
 			</div>
 
 			<div className='embla w-full relative py-10' ref={emblaRef}>
-				<div className='embla__container_references items-center'>
+				<div className='embla__container_references items-center px-8'>
 					{fakeData.map((slide, i) => {
 						counter++
 
