@@ -47,7 +47,7 @@ const About = () => {
 	}, [])
 
 	return (
-		<div id='about' className='h-auto w-full'>
+		<div id='about' className='h-auto w-full px-4 md:px-10'>
 			<div
 				id='aboutPart1'
 				className='flex flex-col items-center justify-center sticky top-0 h-screen'

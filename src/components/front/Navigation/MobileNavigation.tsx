@@ -1,6 +1,6 @@
 import Lenis from 'lenis'
-import React, { RefObject, useEffect } from 'react'
-import gsap from 'gsap'
+import React, { RefObject, useEffect, useState } from 'react'
+import HamburgerIcon from './HamburgerIcon'
 
 interface Props {
 	lenis: RefObject<Lenis | null>
@@ -26,57 +26,50 @@ const menuList = [
 ]
 
 const MobileNavigation = ({ lenis }: Props) => {
-	let isOpened = false
+	const [isOpened, setIsOpened] = useState(false)
 
-	const navTl = gsap.timeline({ paused: true, defaults: { duration: 2 } })
+	const openMenu = () => {
+		setIsOpened(true)
 
-	const handleMenu = () => {
-		if (isOpened === false) {
-			navTl.play()
-			lenis.current?.stop()
+		lenis.current?.stop()
+	}
 
-			isOpened = true
-		} else {
-			navTl.reverse()
+	const closeMenu = () => {
+		setIsOpened(false)
 
-			isOpened = false
-		}
+		setTimeout(() => {
+			document.getElementById('mobileMenuModal')?.classList.add('hide')
+		}, 300)
+
+		lenis.current?.start()
 	}
 
 	const scrollTo = (id: string) => {
-		console.log(id)
+		closeMenu()
 
 		lenis.current?.start()
-		lenis.current?.scrollTo(`#${id}`, {
-			onComplete: () => {
-				navTl.reverse()
-				isOpened = false
-			},
-		})
+		lenis.current?.scrollTo(`#${id}`)
 	}
 
-	useEffect(() => {
-		navTl.to('#mobileNav', {
-			opacity: 100,
-		})
-	}, [navTl])
-
 	return (
-		<div className='fixed md:hidden w-full h-[100lvh] top-0 left-0 z-40 '>
+		<div className='fixed md:hidden w-full top-0 left-0 z-40 '>
 			{
 				<div
-					id='mobileNav'
-					className=' opacity-0 h-full w-full flex items-center bg-red-400/50 backdrop-blur-md'
+					id='mobileMenuModal'
+					className={`h-[100lvh] w-full items-center backdrop-blur-md flex  ${
+						isOpened ? 'open' : 'close'
+					}`}
 				>
-					<ul className='w-full flex justify-center flex-col gap-2 items-center'>
+					<ul className='w-full flex justify-center flex-col gap-10 items-center'>
 						{menuList.map((item, i) => {
-							const styler = i % 2
-							console.log(styler)
+							const side = i % 2
 
 							return (
 								<li
 									key={i}
-									className='cursor-pointer w-full text-center bg-green-300 font-bellefair text-2xl font-bold py-2 '
+									className={`cursor-pointer w-full text-center font-bellefair text-2xl font-bold py-2 ${
+										side === 0 ? 'pl-28' : 'pr-28'
+									}`}
 									onClick={() => scrollTo(item.id)}
 								>
 									{item.title}
@@ -88,14 +81,10 @@ const MobileNavigation = ({ lenis }: Props) => {
 			}
 
 			<div className='absolute top-4 right-4'>
-				<button
-					className='relative w-14 aspect-square h-auto bg-white border-black/30 border-[1px] rounded-lg gap-2 flex flex-col justify-center items-center'
-					onClick={handleMenu}
-				>
-					<div className='h-[2px] rounded-full w-1/2 bg-black'></div>
-					<div className='h-[2px] rounded-full w-1/2 bg-black'></div>
-					<div className='h-[2px] rounded-full w-1/2 bg-black'></div>
-				</button>
+				<HamburgerIcon
+					handleClick={isOpened ? closeMenu : openMenu}
+					isOpened={isOpened}
+				></HamburgerIcon>
 			</div>
 		</div>
 	)

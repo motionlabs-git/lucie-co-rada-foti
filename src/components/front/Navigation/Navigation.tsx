@@ -1,7 +1,8 @@
 import Lenis from 'lenis'
-import React, { RefObject, useEffect } from 'react'
+import React, { RefObject, useEffect, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import HamburgerIcon from './HamburgerIcon'
 // import HamburgerIcon from './HamburgerIcon';
 
 interface Props {
@@ -9,6 +10,8 @@ interface Props {
 }
 
 function Navigation({ lenis }: Props) {
+	const [isOpened, setIsOpened] = useState(false)
+
 	const scrollTo = (id: string) => {
 		lenis.current?.scrollTo(`#` + id)
 	}
@@ -19,25 +22,6 @@ function Navigation({ lenis }: Props) {
 		gsap.registerPlugin(ScrollTrigger)
 
 		navTl
-			.to('.ring-1', {
-				translateX: -8,
-				translateY: -8,
-			})
-			.to(
-				'.ring-2',
-				{
-					translateX: -8,
-					translateY: -8,
-				},
-				'<'
-			)
-			.to(
-				'#navIconSVGBlur',
-				{
-					opacity: 1,
-				},
-				'<'
-			)
 			.to('#navWrapper', {
 				gap: 2 + 'rem',
 			})
@@ -67,29 +51,7 @@ function Navigation({ lenis }: Props) {
 	}
 
 	return (
-		// <header className='z-50 fixed bottom-4 w-full flex justify-center pointer-events-none'>
-		//     <nav
-		//         onMouseEnter={mouseOver}
-		//         onMouseLeave={mouseLeave}
-		//         id='navWrapper'
-		//         className='flex pointer-events-auto items-center gap-2 border-[1px] shadow-md border-gray-500/30 rounded-lg p-2 backdrop-blur-md  bg-gradient-to-r from-gray-600/50 from-0% to-gray-500/20 to-100%'>
-
-		//         <HamburgerIcon></HamburgerIcon>
-
-		//         <div id='navLinks' className='w-0 overflow-hidden flex gap-4 items-center justify-center'>
-		//             <button onClick={() => scrollTo('gallery')} className='navLink opacity-0 text-white font-satoshiBold border border-white/20 rounded-xl px-4 py-3 hover:border-white duration-300 whitespace-nowrap'>Galerie</button>
-		//             <button onClick={() => scrollTo('gallery')} className='navLink opacity-0 text-white font-satoshiBold border border-white/20 rounded-xl px-4 py-3 hover:border-white duration-300 whitespace-nowrap'>Ceník</button>
-		//             <button onClick={() => scrollTo('gallery')} className='navLink opacity-0 text-white font-satoshiBold border border-white/20 rounded-xl px-4 py-3 hover:border-white duration-300 whitespace-nowrap'>O mně</button>
-		//         </div>
-
-		//         <button
-		//             id='navCta'
-		//             className=' font-satoshiBold border-white border rounded-xl py-3 px-6 bg-white'
-		//             onClick={() => scrollTo('contact')}
-		//         >Kontakt</button>
-		//     </nav>
-		// </header>
-		<header className='z-40 fixed bottom-4 w-full flex justify-center pointer-events-none'>
+		<header className='z-40 fixed bottom-4 w-full md:flex hidden justify-center pointer-events-none'>
 			<nav
 				onMouseEnter={mouseOver}
 				onMouseLeave={mouseLeave}
@@ -97,11 +59,10 @@ function Navigation({ lenis }: Props) {
 				className='relative pointer-events-auto rounded-lg bg-bone'
 			>
 				<div className=' relative w-full h-full p-2 flex gap-2 items-center bg-white border-black/10 border-[1px] rounded-lg'>
-					<button className='relative w-14 aspect-square h-auto bg-white border-black/30 border-[1px] rounded-lg gap-2 flex flex-col justify-center items-center'>
-						<div className='h-[2px] rounded-full w-1/2 bg-black'></div>
-						<div className='h-[2px] rounded-full w-1/2 bg-black'></div>
-						<div className='h-[2px] rounded-full w-1/2 bg-black'></div>
-					</button>
+					<HamburgerIcon
+						handleClick={() => null}
+						isOpened={isOpened}
+					></HamburgerIcon>
 
 					<div
 						id='navLinks'
@@ -109,19 +70,19 @@ function Navigation({ lenis }: Props) {
 					>
 						<button
 							onClick={() => scrollTo('gallery')}
-							className='navLink opacity-0 text-black font-satoshiBold border border-black/20 rounded-xl px-4 py-3 hover:border-black duration-300 whitespace-nowrap'
+							className='navLink h-12 opacity-0 text-black font-satoshiBold border border-black/20 rounded-xl px-4 py-3 hover:border-black duration-300 whitespace-nowrap'
 						>
 							Galerie
 						</button>
 						<button
 							onClick={() => scrollTo('gallery')}
-							className='navLink opacity-0 text-black font-satoshiBold border border-black/20 rounded-xl px-4 py-3 hover:border-black duration-300 whitespace-nowrap'
+							className='navLink h-12 opacity-0 text-black font-satoshiBold border border-black/20 rounded-xl px-4 py-3 hover:border-black duration-300 whitespace-nowrap'
 						>
 							Ceník
 						</button>
 						<button
 							onClick={() => scrollTo('gallery')}
-							className='navLink opacity-0 text-black font-satoshiBold border border-black/20 rounded-xl px-4 py-3 hover:border-black duration-300 whitespace-nowrap'
+							className='navLink h-12 opacity-0 text-black font-satoshiBold border border-black/20 rounded-xl px-4 py-3 hover:border-black duration-300 whitespace-nowrap'
 						>
 							O mně
 						</button>
@@ -129,7 +90,7 @@ function Navigation({ lenis }: Props) {
 
 					<button
 						id='navCta'
-						className='relative font-satoshiBold border-black hover:bg-lightOrange duration-300 hover:border-lightOrange hover:text-black text-white border rounded-lg py-3 px-6 bg-black'
+						className='relative h-12 font-satoshiBold border-black hover:bg-lightOrange duration-300 hover:border-lightOrange hover:text-black text-white border rounded-lg px-6 bg-black'
 						onClick={() => scrollTo('contact')}
 					>
 						Kontakt

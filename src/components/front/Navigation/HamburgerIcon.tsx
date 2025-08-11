@@ -1,17 +1,45 @@
-import Rings from '@/icons/Rings'
-import React from 'react'
+import React, { useState } from 'react'
 
-function HamburgerIcon() {
-    return (
-        <div className='flex justify-center items-center gap-2 w-14 aspect-square h-fit border border-gray-700/50 rounded-lg p-2 cursor-pointer backdrop-blur-xs'>
-            <div className='relative'>
+function HamburgerIcon({
+	handleClick,
+	isOpened,
+}: {
+	handleClick: () => void
+	isOpened: boolean
+}) {
+	const [isClicked, setIsClicked] = useState(false)
 
-                <Rings width={34} height={34}></Rings>
-                <Rings className='absolute top-0 blur-sm opacity-60' id='navIconSVGBlur' width={34} height={34}></Rings>
-
-            </div>
-        </div>
-    )
+	return (
+		<button
+			className={`shadow-md relative w-14 aspect-square h-auto bg-white border-black/30 border-[1px] rounded-lg gap-2 flex flex-col justify-center items-center ${
+				isClicked ? 'scale-95' : 'scale-100'
+			}`}
+			onClick={handleClick}
+			onMouseDownCapture={() => setIsClicked(true)}
+			onMouseUpCapture={() => setIsClicked(false)}
+		>
+			<div
+				className={`h-[2px] rounded-full bg-black duration-300 ${
+					isOpened ? 'w-0' : 'w-1/2'
+				}`}
+			></div>
+			<div
+				className={`h-[2px] rounded-full w-1/2 bg-black absolute duration-300 ${
+					isOpened ? 'rotate-45 delay-300' : 'rotate-0'
+				}`}
+			></div>
+			<div
+				className={`h-[2px] rounded-full w-1/2 bg-black duration-300 ${
+					isOpened ? '-rotate-45 delay-300' : 'rotate-0'
+				}`}
+			></div>
+			<div
+				className={`h-[2px] rounded-full bg-black duration-300 ${
+					isOpened ? 'w-0' : 'w-1/2'
+				}`}
+			></div>
+		</button>
+	)
 }
 
 export default HamburgerIcon

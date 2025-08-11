@@ -11,8 +11,8 @@ const initAnimations = () => {
 			paused: true,
 			scrollTrigger: {
 				trigger: item,
-				start: 'top center',
-				end: 'bottom center',
+				start: 'top 75%',
+				end: 'bottom 75%',
 				scrub: 0.5,
 			},
 		})

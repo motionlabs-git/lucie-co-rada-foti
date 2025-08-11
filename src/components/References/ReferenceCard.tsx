@@ -14,16 +14,13 @@ const ReferenceCard = ({
 }) => {
 	return (
 		<div
-			className='relative flex items-center justify-center aspect-square group select-none'
-			style={
+			className={`relative flex items-center justify-center aspect-square h-full w-auto group select-none ${
 				counter === 0
-					? { flex: '0 0 20%' }
+					? 'flex-[0_0_50%] md:flex-[0_0_31%] lg:flex-[0_0_20%]'
 					: counter === 1
-					? {
-							flex: '0 0 22%',
-					  }
-					: { flex: '0 0 24%' }
-			}
+					? 'flex-[0_0_50%] md:flex-[0_0_33%] lg:flex-[0_0_22%]'
+					: 'flex-[0_0_50%] md:flex-[0_0_35%] lg:flex-[0_0_24%]'
+			}`}
 		>
 			<div className='absolute w-full h-full max-h-[60vh] top-0 left-0  group-hover:blur-md duration-300 bg-black rounded-lg'>
 				<Image
@@ -31,7 +28,7 @@ const ReferenceCard = ({
 					alt={title}
 					width={500}
 					height={800}
-					className='w-full h-full rounded-lg group-hover:opacity-50 duration-300'
+					className='w-full h-full object-cover object-center rounded-lg group-hover:opacity-50 duration-300'
 				/>
 			</div>
 

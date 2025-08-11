@@ -54,8 +54,8 @@ const Footer = () => {
 			className='relative  flex flex-col items-center overflow-hidden'
 		>
 			<div className='relative w-full flex justify-center pt-24 pb-12 overflow-hidden'>
-				<div className='max-w-[1360] w-full px-10 flex justify-between gap-20'>
-					<div className='invertText text-black'>
+				<div className='max-w-[1360] w-full px-4 md:px-10 flex flex-col sm:flex-row justify-between gap-10 md:gap-20'>
+					<div className='invertText text-black order-2 sm:order-1'>
 						<ul className='list-none'>
 							<li>Lucie Pantálek Monsportová</li>
 							<li>
@@ -67,7 +67,7 @@ const Footer = () => {
 						</ul>
 					</div>
 
-					<div className='flex items-end'>
+					<div className='flex justify-center sm:items-end order-3 sm:order-2 w-full sm:w-fit '>
 						<div className='flex items-center gap-2 mt-2'>
 							<SocialsIcon
 								href={
@@ -93,8 +93,8 @@ const Footer = () => {
 						</div>
 					</div>
 
-					<div className='flex items-end'>
-						<ul className='list-none text-right text-black invertText'>
+					<div className='flex items-end order-2 sm:order-3'>
+						<ul className='list-none sm:text-right text-black invertText'>
 							<li>
 								&#169;{' '}
 								{CurrentYear === 2025

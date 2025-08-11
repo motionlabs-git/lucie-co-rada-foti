@@ -1,28 +1,73 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import Image from 'next/image'
 import gsap from 'gsap'
 import ImageModal from '@/components/front/Gallery/ImageModal'
-import Logo from '../../../../../public/images/Logo'
-import Marquee from '@/components/front/Marquee/Marquee'
+import Hero from '../hero/Hero'
+import GalleryColumn from '@/components/front/Gallery/GalleryColumn'
+import GalleryMiddleColumn from '@/components/front/Gallery/GalleryMiddleColumn'
 
 const imgData = [
 	{
 		src: 'https://www.brides.com/thmb/LMyiMPxRFx82BLiHZC8lySJFnGo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/marriage-pose-photo-recirc-kyle-john-1-29-4f97523aa049471992292e8d6ddc41ee.jpg',
 		title: 'Forest Path',
+		id: 1,
 	},
 	{
 		src: 'https://lirp.cdn-website.com/28cd0bb4/dms3rep/multi/opt/traditional+american+wedding-1920w.jpeg',
 		title: 'Golden Dunes',
+		id: 2,
 	},
 	{
 		src: 'https://www.brides.com/thmb/LMyiMPxRFx82BLiHZC8lySJFnGo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/marriage-pose-photo-recirc-kyle-john-1-29-4f97523aa049471992292e8d6ddc41ee.jpg',
-
 		title: 'Urban Skyline',
+		id: 3,
 	},
 	{
 		src: 'https://lirp.cdn-website.com/28cd0bb4/dms3rep/multi/opt/traditional+american+wedding-1920w.jpeg',
 		title: 'Mountain Lake',
+		id: 4,
+	},
+
+	{
+		src: 'https://www.brides.com/thmb/LMyiMPxRFx82BLiHZC8lySJFnGo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/marriage-pose-photo-recirc-kyle-john-1-29-4f97523aa049471992292e8d6ddc41ee.jpg',
+		title: 'Forest Path',
+		id: 5,
+	},
+	{
+		src: 'https://lirp.cdn-website.com/28cd0bb4/dms3rep/multi/opt/traditional+american+wedding-1920w.jpeg',
+		title: 'Golden Dunes',
+		id: 6,
+	},
+	{
+		src: 'https://www.brides.com/thmb/LMyiMPxRFx82BLiHZC8lySJFnGo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/marriage-pose-photo-recirc-kyle-john-1-29-4f97523aa049471992292e8d6ddc41ee.jpg',
+		title: 'Urban Skyline',
+		id: 7,
+	},
+	{
+		src: 'https://lirp.cdn-website.com/28cd0bb4/dms3rep/multi/opt/traditional+american+wedding-1920w.jpeg',
+		title: 'Mountain Lake',
+		id: 8,
+	},
+
+	{
+		src: 'https://www.brides.com/thmb/LMyiMPxRFx82BLiHZC8lySJFnGo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/marriage-pose-photo-recirc-kyle-john-1-29-4f97523aa049471992292e8d6ddc41ee.jpg',
+		title: 'Forest Path',
+		id: 9,
+	},
+	{
+		src: 'https://lirp.cdn-website.com/28cd0bb4/dms3rep/multi/opt/traditional+american+wedding-1920w.jpeg',
+		title: 'Golden Dunes',
+		id: 10,
+	},
+	{
+		src: 'https://www.brides.com/thmb/LMyiMPxRFx82BLiHZC8lySJFnGo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/marriage-pose-photo-recirc-kyle-john-1-29-4f97523aa049471992292e8d6ddc41ee.jpg',
+		title: 'Urban Skyline',
+		id: 11,
+	},
+	{
+		src: 'https://lirp.cdn-website.com/28cd0bb4/dms3rep/multi/opt/traditional+american+wedding-1920w.jpeg',
+		title: 'Mountain Lake',
+		id: 12,
 	},
 ]
 
@@ -38,6 +83,27 @@ const Gallery = () => {
 				scrub: 1,
 			},
 			translateY: 0,
+		})
+
+		const middleColumn = document.getElementById('galleryMiddleColumn')
+		const middleColumnFill = document.getElementById(
+			'galleryMiddleColumnFill'
+		)
+
+		if (!middleColumn || !middleColumnFill) return
+
+		gsap.to('#galleryMiddleColumn', {
+			scrollTrigger: {
+				trigger: '#gallery',
+				start: 'top top',
+				end: 'bottom bottom',
+				scrub: 1,
+			},
+			translateY:
+				0 +
+				middleColumn?.clientHeight -
+				middleColumnFill?.clientHeight -
+				8,
 		})
 
 		gsap.to('#heroModal', {
@@ -66,8 +132,8 @@ const Gallery = () => {
 		<div id='gallery' className='relative w-full h-[300vh]'>
 			{selectedImage && (
 				<ImageModal
-					img={imgData[selectedImage].src}
-					title={imgData[selectedImage].title}
+					img={imgData[selectedImage - 1].src}
+					title={imgData[selectedImage - 1].title}
 					nextImage={() =>
 						setSelectedImage((prev) =>
 							prev === imgData.length - 1
@@ -87,113 +153,30 @@ const Gallery = () => {
 			)}
 
 			<div className='sticky top-0 h-screen overflow-y-hidden px-4'>
-				<div
-					id='heroModal'
-					className='w-full h-full top-0 left-0 absolute flex justify-center items-center'
-				>
-					<div className='flex flex-col items-center'>
-						<Logo id={'logo'} className='w-96'></Logo>
-						<h1 className='leading-tight whitespace-nowrap'>
-							<em className='text-6xl'>Lucie co ráda fotí</em>
-						</h1>
-
-						<p className='text-xs'>Jaký font zvolit?</p>
-					</div>
-				</div>
+				<Hero></Hero>
 
 				<div className='w-full flex gap-4'>
-					<div className='h-screen w-full items-end flex flex-1'>
-						<div className='h-fit w-full flex flex-col gap-4 galleryColumn translate-y-[98%]'>
-							{imgData.map((img, index) => (
-								<div
-									key={index}
-									onClick={() => {
-										setSelectedImage(index)
-									}}
-									className='relative rounded-xl cursor-pointer group'
-								>
-									<div className='w-full h-auto duration-300 group-hover:blur-xs'>
-										<Image
-											width={800}
-											height={800}
-											className='w-full duration-300 rounded-xl'
-											src={img.src}
-											alt={img.title}
-										/>
-									</div>
+					<GalleryColumn
+						galleryData={imgData.slice(0, 4)}
+						className='md:translate-y-[98%]'
+						handleClick={(id) => {
+							console.log(id)
 
-									<div className='absolute top-0 left-0 w-full h-full flex justify-center items-end opacity-0 group-hover:opacity-100 duration-300 '>
-										<Marquee
-											sets={4}
-											containerClassName='gap-4'
-										>
-											<h2 className='text-orange font-promenadeItalic text-7xl'>
-												Titulek obrázku ~{' '}
-											</h2>
-										</Marquee>
-									</div>
-								</div>
-							))}
-						</div>
-					</div>
+							setSelectedImage(id)
+						}}
+					/>
 
-					<div className='h-screen items-end flex flex-1'>
-						<div className='h-fit w-full flex flex-col gap-4 galleryColumn translate-y-[-30%]'>
-							{imgData.map((img, index) => (
-								<div
-									onClick={() => {
-										setSelectedImage(index)
-									}}
-									key={index}
-									className='group relative galleryImage overflow-hidden rounded-xl cursor-pointer w-full h-auto'
-								>
-									<Image
-										key={index}
-										width={800}
-										height={800}
-										className='w-full group-hover:scale-105 duration-300'
-										src={img.src}
-										alt={img.title}
-									/>
-								</div>
-							))}
-						</div>
-					</div>
+					<GalleryMiddleColumn
+						galleryData={imgData.slice(4, 8)}
+						className='md:translate-y-[-15%]'
+						handleClick={(id) => setSelectedImage(id)}
+					></GalleryMiddleColumn>
 
-					<div className='h-screen w-full items-end flex flex-1'>
-						<div className='h-fit w-full flex flex-col gap-4 galleryColumn translate-y-[90%]'>
-							{imgData.map((img, index) => (
-								<div
-									key={index}
-									onClick={() => {
-										setSelectedImage(index)
-									}}
-									className='relative rounded-xl cursor-pointer group'
-								>
-									<div className='w-full h-auto duration-300 group-hover:blur-xs'>
-										<Image
-											width={800}
-											height={800}
-											className='w-full duration-300 rounded-xl'
-											src={img.src}
-											alt={img.title}
-										/>
-									</div>
-
-									<div className='absolute top-0 left-0 w-full h-full flex justify-center items-end opacity-0 group-hover:opacity-100 duration-300 '>
-										<Marquee
-											sets={4}
-											containerClassName='gap-4'
-										>
-											<h2 className='text-orange font-promenadeItalic text-7xl'>
-												Titulek obrázku ~{' '}
-											</h2>
-										</Marquee>
-									</div>
-								</div>
-							))}
-						</div>
-					</div>
+					<GalleryColumn
+						galleryData={imgData.slice(8, 12)}
+						className='md:translate-y-[90%]'
+						handleClick={(id) => setSelectedImage(id)}
+					/>
 				</div>
 			</div>
 		</div>

@@ -3,9 +3,12 @@ import React from 'react'
 
 const ContactForm = () => {
 	return (
-		<section id='contact' className='container flex gap-10'>
+		<section
+			id='contact'
+			className='container flex flex-col lg:flex-row gap-10'
+		>
 			<div className='flex-1'>
-				<h2 className='text-5xl leading-[1.5em]'>
+				<h2 className='leading-[1.5em]'>
 					<strong className='invertText blurryItem'>
 						Chceš fotku?
 					</strong>

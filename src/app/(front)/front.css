@@ -24,7 +24,11 @@
 
 
 h1 {
-    @apply text-7xl font-satoshiBold
+    @apply text-5xl md:text-7xl font-satoshiBold
+}
+
+h2{ 
+    @apply text-3xl md:text-5xl
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -153,3 +157,41 @@ a {
         opacity: 100;
     }
 }
+
+
+/* MOBILE MENU */
+#mobileMenuModal.open {
+    animation-name: mobileMenuAnimationOpen;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+    display: flex;
+}
+
+#mobileMenuModal.close {
+    animation-name: mobileMenuAnimationClose;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+}
+
+#mobileMenuModal.hide{
+    display: none;
+}
+
+@keyframes mobileMenuAnimationOpen {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 100;
+    }
+}
+
+@keyframes mobileMenuAnimationClose {
+    0% {
+        opacity: 100;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+

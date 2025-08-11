@@ -13,6 +13,7 @@ import Mouse from '@/components/front/Mouse/Mouse'
 import initAnimations from '@/utils/initAnimations'
 import Loader from '@/components/Loader'
 import References from './sections/references/References'
+import MobileNavigation from '@/components/front/Navigation/MobileNavigation'
 
 function HomePage() {
 	const path = usePathname()
@@ -37,6 +38,7 @@ function HomePage() {
 		<>
 			<Loader lenis={lenis} />
 
+			<MobileNavigation lenis={lenis} />
 			<Navigation lenis={lenis} />
 
 			<main className='flex flex-col items-center'>

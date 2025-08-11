@@ -3,8 +3,11 @@ import Lenis from 'lenis'
 import React, { RefObject, useEffect, useState } from 'react'
 import gsap from 'gsap'
 
+const text = ['Tři', 'Dva', 'Jedna', 'Úsměv']
+
 const Loader = ({ lenis }: { lenis: RefObject<Lenis | null> }) => {
 	const [isActive, setIsActive] = useState(true)
+	const [index, setIndex] = useState(0)
 
 	useEffect(() => {
 		setTimeout(() => {
@@ -29,7 +32,7 @@ const Loader = ({ lenis }: { lenis: RefObject<Lenis | null> }) => {
 					})
 				},
 			})
-		}, 3000)
+		}, 40)
 
 		gsap.to('#loader', {
 			width: '100%',
@@ -44,6 +47,21 @@ const Loader = ({ lenis }: { lenis: RefObject<Lenis | null> }) => {
 			ease: 'power1.in',
 			yoyo: true,
 		})
+
+		const tl = gsap.timeline({ repeat: -1 })
+
+		tl.to('#loadingText', {
+			opacity: 0,
+			duration: 0.4,
+			onComplete: () => {
+				setIndex((prev) => (prev + 1) % text.length)
+			},
+		})
+			.to('#loadingText', {
+				opacity: 1,
+				duration: 0.4,
+			})
+			.delay(1)
 	}, [lenis])
 
 	if (isActive)
@@ -61,9 +79,7 @@ const Loader = ({ lenis }: { lenis: RefObject<Lenis | null> }) => {
 
 				<div className='w-full flex flex-col items-center gap-10'>
 					<h1 className='flex gap-4 items-baseline '>
-						<em className=''>Připravit</em>
-						<em className=''>Úsměv</em>
-						<em className=''>Sýr!</em>
+						<em id='loadingText'>{text[index]}</em>
 					</h1>
 
 					<div className='w-1/10 bg-lightOrange h-1.5 rounded-full'>
