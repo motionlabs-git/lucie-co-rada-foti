@@ -10,7 +10,7 @@ interface Props {
 }
 
 function Navigation({ lenis }: Props) {
-	const [isOpened, setIsOpened] = useState(false)
+	const [isOpened] = useState(false)
 
 	const scrollTo = (id: string) => {
 		lenis.current?.scrollTo(`#` + id)
