@@ -58,7 +58,7 @@ function Navigation({ lenis }: Props) {
 				id='navWrapper'
 				className='relative pointer-events-auto rounded-lg bg-bone'
 			>
-				<div className=' relative w-full h-full p-2 flex gap-2 items-center bg-white border-black/10 border-[1px] rounded-lg'>
+				<div className=' relative w-full h-full p-2 flex gap-1 items-center bg-white border-black/10 border-[1px] rounded-xl'>
 					<HamburgerIcon
 						handleClick={() => null}
 						isOpened={isOpened}
@@ -66,7 +66,7 @@ function Navigation({ lenis }: Props) {
 
 					<div
 						id='navLinks'
-						className='relative w-0 overflow-hidden flex gap-4 items-center justify-center'
+						className='relative w-0 overflow-hidden flex gap-2 items-center justify-center'
 					>
 						<button
 							onClick={() => scrollTo('gallery')}

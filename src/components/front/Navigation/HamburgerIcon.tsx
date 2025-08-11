@@ -11,7 +11,7 @@ function HamburgerIcon({
 
 	return (
 		<button
-			className={`shadow-md relative w-14 aspect-square h-auto bg-white border-black/30 border-[1px] rounded-lg gap-2 flex flex-col justify-center items-center ${
+			className={`shadow-md relative h-12 aspect-square bg-white border-black/30 border-[1px] rounded-lg gap-1 flex flex-col justify-center items-center ${
 				isClicked ? 'scale-95' : 'scale-100'
 			}`}
 			onClick={handleClick}
@@ -20,22 +20,22 @@ function HamburgerIcon({
 		>
 			<div
 				className={`h-[2px] rounded-full bg-black duration-300 ${
-					isOpened ? 'w-0' : 'w-1/2'
+					isOpened ? 'w-0' : 'w-2/5'
 				}`}
 			></div>
 			<div
-				className={`h-[2px] rounded-full w-1/2 bg-black absolute duration-300 ${
+				className={`h-[2px] rounded-full w-2/5 bg-black absolute duration-300 ${
 					isOpened ? 'rotate-45 delay-300' : 'rotate-0'
 				}`}
 			></div>
 			<div
-				className={`h-[2px] rounded-full w-1/2 bg-black duration-300 ${
+				className={`h-[2px] rounded-full w-2/5 bg-black duration-300 ${
 					isOpened ? '-rotate-45 delay-300' : 'rotate-0'
 				}`}
 			></div>
 			<div
 				className={`h-[2px] rounded-full bg-black duration-300 ${
-					isOpened ? 'w-0' : 'w-1/2'
+					isOpened ? 'w-0' : 'w-2/5'
 				}`}
 			></div>
 		</button>
