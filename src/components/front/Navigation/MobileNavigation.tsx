@@ -1,5 +1,5 @@
 import Lenis from 'lenis'
-import React, { RefObject, useEffect, useState } from 'react'
+import React, { RefObject, useState } from 'react'
 import HamburgerIcon from './HamburgerIcon'
 
 interface Props {
