@@ -15,7 +15,6 @@ const About = () => {
 				start: 'top top',
 				end: '+=50% top',
 				scrub: 1,
-				markers: true,
 			},
 		})
 			.to(
