@@ -112,8 +112,8 @@ a {
 				width: 1.5rem;
 				background: linear-gradient(
 					to right,
-					rgba(250, 246, 241, 1),
-					rgba(250, 246, 241, 0)
+					rgba(250, 237, 220, 1),
+					rgba(250, 237, 220, 0)
 				);
 			}
 
@@ -127,8 +127,8 @@ a {
 				width: 1.5rem;
 				background: linear-gradient(
 					to left,
-					rgba(250, 246, 241, 1),
-					rgba(250, 246, 241, 0)
+					rgba(250, 237, 220, 1),
+					rgba(250, 237, 220, 0)
 				);
 			}
 		}
