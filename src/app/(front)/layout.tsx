@@ -1,6 +1,7 @@
 import { Playfair_Display } from 'next/font/google'
 import localFont from 'next/font/local'
 import './front.css'
+import { Metadata } from 'next'
 
 const bellefair = Playfair_Display({
 	weight: ['400'],
@@ -22,6 +23,25 @@ const promenadeItalic = localFont({
 	src: '../../assets/fonts/Promenade-Italic.otf',
 	variable: '--font-promenade-italic',
 })
+
+export const metadata: Metadata = {
+	title: 'Title',
+	description: 'Description',
+	icons: [
+		{
+			rel: 'icon',
+			type: 'image/x-icon',
+			url: 'favicon.ico',
+			media: '(prefers-color-scheme: light)',
+		},
+		{
+			rel: 'icon',
+			type: 'image/x-icon',
+			url: 'favicon-dark.ico',
+			media: '(prefers-color-scheme: dark)',
+		},
+	],
+}
 
 export default function FrontLayout({
 	children,
