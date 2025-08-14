@@ -60,7 +60,7 @@ const Form = () => {
 					}
 				)
 		} catch (e: unknown) {
-			setError('root', { message: e.message })
+			if (e instanceof TypeError) setError('root', { message: e.message })
 		}
 	}
 
