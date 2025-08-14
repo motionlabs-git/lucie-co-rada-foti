@@ -55,7 +55,7 @@ const SeoForm: NextPage<SeoFormProps> = ({ id, defaultValues }) => {
 	return (
 		<form
 			onSubmit={handleSubmit(handleFormSubmit)}
-			className='flex flex-col gap-4'
+			className='flex flex-col gap-4 animate-fade-in'
 		>
 			<div>
 				<label>Title</label>
