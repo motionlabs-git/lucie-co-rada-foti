@@ -30,7 +30,6 @@ const MobileNavigation = ({ lenis }: Props) => {
 
 	const openMenu = () => {
 		setIsOpened(true)
-
 		lenis.current?.stop()
 	}
 
@@ -56,7 +55,7 @@ const MobileNavigation = ({ lenis }: Props) => {
 			{
 				<div
 					id='mobileMenuModal'
-					className={`h-[100lvh] w-full items-center backdrop-blur-md flex  ${
+					className={`h-[100lvh] w-full items-center backdrop-blur-md flex ${
 						isOpened ? 'open' : 'close'
 					}`}
 				>

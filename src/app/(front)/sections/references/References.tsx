@@ -55,7 +55,7 @@ const References = () => {
 		<section className='w-full relative'>
 			<div>
 				<h1 className='text-black invertText text-center'>
-					<em className='text-6xl'>Reference</em>
+					<em>Reference</em>
 				</h1>
 			</div>
 

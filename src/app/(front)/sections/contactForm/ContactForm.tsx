@@ -9,13 +9,13 @@ const ContactForm = () => {
 		>
 			<div className='flex-1'>
 				<h2 className='leading-[1.5em]'>
-					<strong className='invertText blurryItem'>
+					<strong className='invertText blurryItem text-3xl md:text-6xl '>
 						Chceš fotku?
 					</strong>
-					<em className='indent-4 text-6xl text-orange blurryItem'>
+					<em className='indent-4 text-3xl md:text-6xl text-orange blurryItem'>
 						Kontaktuj mě a ...
 					</em>
-					<em className='indent-8 text-6xl text-brown blurryItem'>
+					<em className='indent-8 text-3xl md:text-6xl text-brown blurryItem'>
 						*blik
 					</em>
 				</h2>
