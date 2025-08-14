@@ -2,14 +2,13 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import z from 'zod'
 import emailjs from '@emailjs/browser'
-
-const phoneRegex = /^(?:\d\s*){9}$/
+import { useRef } from 'react'
 
 const FormInputs = z.object({
 	name: z.string().nonempty('Toto pole je povinné'),
 	phone: z
 		.string()
-		.regex(phoneRegex, 'Neplatné telefonní číslo')
+		.regex(/^(?:\d\s*){9}$/, 'Neplatné telefonní číslo')
 		.nonempty('Toto pole je povinné'),
 	email: z.email().nonempty('Toto pole je povinné'),
 	text: z
@@ -22,39 +21,55 @@ const FormInputs = z.object({
 type Inputs = z.infer<typeof FormInputs>
 
 const Form = () => {
+	const formRef = useRef<null | HTMLFormElement>(null)
 	const {
 		register,
 		handleSubmit,
-		formState: { errors },
+		formState: { errors, isSubmitting },
+		reset,
+		setError,
 	} = useForm<Inputs>({
 		resolver: zodResolver(FormInputs),
 		mode: 'onSubmit',
 	})
 
-	const onSubmit: SubmitHandler<Inputs> = (data: Inputs) => {
-		console.log(data)
+	const onSubmit: SubmitHandler<Inputs> = async () => {
+		await emailjs.init({
+			publicKey: process.env.EMAILJS_PUBLIC_KEY!,
+			// Do not allow headless browsers
+			blockHeadless: true,
+		})
 
-		emailjs
-			.sendForm(
-				'EMAILJS_SERVICE_ID',
-				'EMAILJS_TEMPLATE_ID',
-				JSON.stringify(data),
-				{
-					publicKey: 'EMAILJS_PUBLIC_KEY',
-				}
-			)
-			.then(
-				() => {
-					console.log('SUCCESS!')
-				},
-				(error) => {
-					console.log('FAILED...', error.text)
-				}
-			)
+		try {
+			if (!formRef.current) {
+				throw new Error('missing form')
+			}
+
+			await emailjs
+				.sendForm(
+					process.env.EMAILJS_SERVICE_ID!,
+					process.env.EMAILJS_TEMPLATE_ID!,
+					formRef.current
+				)
+				.then(
+					() => {
+						reset()
+					},
+					(error) => {
+						throw new Error('Něco se pokazilo', error)
+					}
+				)
+		} catch (e: unknown) {
+			setError('root', { message: e.message })
+		}
 	}
 
 	return (
-		<form onSubmit={handleSubmit(onSubmit)} className='flex-1'>
+		<form
+			ref={formRef}
+			onSubmit={handleSubmit(onSubmit)}
+			className='flex-1'
+		>
 			<fieldset className='blurryItem'>
 				<label htmlFor='name' className='font-promenadeItalic text-xl'>
 					Jméno
@@ -159,7 +174,7 @@ const Form = () => {
 			>
 				<div className='absolute w-full h-full rounded-xl bg-black group-hover:bg-lightOrange group-hover:blur-xs duration-400 blur-none'></div>
 				<p className='relative font-satoshiBold font-semibold text-white py-3 group-hover:text-black duration-400'>
-					Odeslat
+					{isSubmitting ? 'Odesílání' : 'Odeslat'}
 				</p>
 			</button>
 

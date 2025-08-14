@@ -3,7 +3,6 @@ import React, { RefObject, useEffect, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import HamburgerIcon from './HamburgerIcon'
-// import HamburgerIcon from './HamburgerIcon';
 
 interface Props {
 	lenis: RefObject<Lenis | null>
