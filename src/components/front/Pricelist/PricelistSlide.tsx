@@ -26,6 +26,12 @@ const PricelistSlide = ({ title, price }: Props) => {
 				<h2 className='self-start text-4xl lg:text-5xl text-orange font-promenadeItalic font-bold'>
 					{title}
 				</h2>
+
+				<ul className='font-promenadeItalic text-xl lg:text-2xl w-10/12 list-disc'>
+					<li>Lorem ipsum dolor sit amet </li>
+					<li>Lorem ipsum dolor sit amet </li>
+				</ul>
+
 				<p className='font-promenadeItalic text-xl lg:text-2xl w-10/12'>
 					Lorem ipsum dolor sit amet consectetur, adipisicing elit.
 					Iste magnam vitae assumenda repudiandae aliquam inventore
