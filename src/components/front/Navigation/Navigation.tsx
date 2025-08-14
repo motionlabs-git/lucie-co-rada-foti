@@ -3,14 +3,13 @@ import React, { RefObject, useEffect, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import HamburgerIcon from './HamburgerIcon'
-// import HamburgerIcon from './HamburgerIcon';
 
 interface Props {
 	lenis: RefObject<Lenis | null>
 }
 
 function Navigation({ lenis }: Props) {
-	const [isOpened, setIsOpened] = useState(false)
+	const [isOpened] = useState(false)
 
 	const scrollTo = (id: string) => {
 		lenis.current?.scrollTo(`#` + id)
