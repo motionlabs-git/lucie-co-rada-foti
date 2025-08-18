@@ -1,8 +1,8 @@
 const GalleryPage = () => {
 	return (
 		<>
-			<section className='w-full rounded-lg bg-widget p-4'>
-				Gallery page
+			<section className='w-full rounded-2xl bg-widget p-4'>
+				<h2 className='text-xl'>Gallery</h2>
 			</section>
 		</>
 	)
