@@ -119,7 +119,7 @@ const Gallery = () => {
 				scale: 0.8,
 			})
 		})
-	}, [])
+	}, [mm])
 
 	const closeImage = () => {
 		gsap.to('#imageModal', {
