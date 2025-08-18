@@ -61,14 +61,10 @@ const MobileNavigation = ({ lenis }: Props) => {
 				>
 					<ul className='w-full flex justify-center flex-col gap-10 items-center'>
 						{menuList.map((item, i) => {
-							const side = i % 2
-
 							return (
 								<li
 									key={i}
-									className={`cursor-pointer w-full text-center font-bellefair text-2xl font-bold py-2 ${
-										side === 0 ? 'pl-28' : 'pr-28'
-									}`}
+									className={`cursor-pointer w-full text-center font-bellefair text-2xl font-bold py-2`}
 									onClick={() => scrollTo(item.id)}
 								>
 									{item.title}

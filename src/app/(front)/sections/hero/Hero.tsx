@@ -28,20 +28,21 @@ function Hero() {
 	return (
 		<div
 			id='heroModal'
-			className='w-full h-full top-0 left-0 absolute flex justify-center items-center'
+			className='w-full md:h-full h-[80vh] top-0 left-0 md:absolute flex justify-center items-center'
 		>
 			<div
 				className='flex flex-col items-center gap-4'
 				onMouseEnter={animateLogo}
 			>
 				<Logo
-					w={200}
 					id='HeroLogo'
-					className='text-white'
+					className='text-white w-[30vw] md:w-40'
 					pathClass='HeroLogoPath'
 				></Logo>
 				<h1 className='leading-tight whitespace-nowrap'>
-					<em className='text-6xl'>Lucie co ráda fotí</em>
+					<em className='text-[10vw] md:text-6xl'>
+						Lucie co ráda fotí
+					</em>
 				</h1>
 
 				<div id='mouse-scroll'>

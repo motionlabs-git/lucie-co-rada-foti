@@ -18,7 +18,7 @@ const GalleryColumn = ({
 	return (
 		<div className='h-screen w-full items-end flex flex-1'>
 			<div
-				className={`h-fit w-full flex flex-col gap-4 galleryColumn pb-2 ${className}`}
+				className={`h-fit w-full flex md:flex-col gap-4 galleryColumn pb-2 ${className}`}
 			>
 				{galleryData.map((img, index) => (
 					<div

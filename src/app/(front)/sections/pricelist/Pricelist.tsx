@@ -19,7 +19,7 @@ const fakeData = [
 	{ title: 'Před foťákem jako doma', price: 3000 },
 ]
 
-const Pricelist: React.FC<IProps> = ({ onMouseEnter, onMouseLeave }) => {
+const Pricelist: React.FC<IProps> = () => {
 	const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true })
 	const { selectedIndex, onDotButtonClick } = useDotButton(emblaApi)
 
@@ -45,8 +45,6 @@ const Pricelist: React.FC<IProps> = ({ onMouseEnter, onMouseLeave }) => {
 			<div className=' relative flex flex-col items-center justify-center gap-6'>
 				<div
 					className='embla pricelist w-full relative cursor-none'
-					onMouseEnter={onMouseEnter}
-					onMouseLeave={onMouseLeave}
 					ref={emblaRef}
 				>
 					<div className='embla__container pointer-events-none'>
@@ -71,8 +69,8 @@ const Pricelist: React.FC<IProps> = ({ onMouseEnter, onMouseLeave }) => {
 								onClick={() => onDotButtonClick(index)}
 								className={`aspect-square rounded-full duration-200 ${
 									index === selectedIndex
-										? ' bg-orange w-4'
-										: 'bg-brown w-3'
+										? ' bg-orange w-3'
+										: 'bg-brown w-2'
 								}`}
 							/>
 						</div>

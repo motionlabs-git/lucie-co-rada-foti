@@ -73,48 +73,51 @@ const imgData = [
 
 const Gallery = () => {
 	const [selectedImage, setSelectedImage] = useState<null | number>(null)
+	const mm = gsap.matchMedia()
 
 	useEffect(() => {
-		gsap.to('.galleryColumn', {
-			scrollTrigger: {
-				trigger: '#gallery',
-				start: 'top top',
-				end: 'bottom bottom',
-				scrub: 1,
-			},
-			translateY: 0,
-		})
+		mm.add('(min-width: 768px)', () => {
+			gsap.to('.galleryColumn', {
+				scrollTrigger: {
+					trigger: '#gallery',
+					start: 'top top',
+					end: 'bottom bottom',
+					scrub: 1,
+				},
+				translateY: 0,
+			})
 
-		const middleColumn = document.getElementById('galleryMiddleColumn')
-		const middleColumnFill = document.getElementById(
-			'galleryMiddleColumnFill'
-		)
+			const middleColumn = document.getElementById('galleryMiddleColumn')
+			const middleColumnFill = document.getElementById(
+				'galleryMiddleColumnFill'
+			)
 
-		if (!middleColumn || !middleColumnFill) return
+			if (!middleColumn || !middleColumnFill) return
 
-		gsap.to('#galleryMiddleColumn', {
-			scrollTrigger: {
-				trigger: '#gallery',
-				start: 'top top',
-				end: 'bottom bottom',
-				scrub: 1,
-			},
-			translateY:
-				0 +
-				middleColumn?.clientHeight -
-				middleColumnFill?.clientHeight -
-				8,
-		})
+			gsap.to('#galleryMiddleColumn', {
+				scrollTrigger: {
+					trigger: '#gallery',
+					start: 'top top',
+					end: 'bottom bottom',
+					scrub: 1,
+				},
+				translateY:
+					0 +
+					middleColumn?.clientHeight -
+					middleColumnFill?.clientHeight -
+					8,
+			})
 
-		gsap.to('#heroModal', {
-			scrollTrigger: {
-				trigger: '#gallery',
-				start: 'top top',
-				end: '5% top',
-				scrub: 1,
-			},
-			opacity: 0,
-			scale: 0.8,
+			gsap.to('#heroModal', {
+				scrollTrigger: {
+					trigger: '#gallery',
+					start: 'top top',
+					end: '5% top',
+					scrub: 1,
+				},
+				opacity: 0,
+				scale: 0.8,
+			})
 		})
 	}, [])
 
@@ -129,7 +132,7 @@ const Gallery = () => {
 	}
 
 	return (
-		<div id='gallery' className='relative w-full h-[300vh]'>
+		<div id='gallery' className='relative w-full md:h-[300vh]'>
 			{selectedImage && (
 				<ImageModal
 					img={imgData[selectedImage - 1].src}
@@ -152,10 +155,10 @@ const Gallery = () => {
 				></ImageModal>
 			)}
 
-			<div className='sticky top-0 h-screen overflow-y-hidden px-4'>
+			<div className='md:sticky top-0 md:h-screen overflow-y-hidden px-4'>
 				<Hero></Hero>
 
-				<div className='w-full flex gap-4'>
+				<div className='w-full md:flex-row flex-col flex gap-4'>
 					<GalleryColumn
 						galleryData={imgData.slice(0, 4)}
 						className='md:translate-y-[98%]'
