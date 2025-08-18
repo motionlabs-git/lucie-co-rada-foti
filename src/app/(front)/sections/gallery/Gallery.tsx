@@ -131,40 +131,35 @@ const Gallery = () => {
 		})
 	}
 
+	console.log(selectedImage)
+
 	return (
 		<div id='gallery' className='relative w-full md:h-[300vh]'>
 			{selectedImage && (
 				<ImageModal
 					img={imgData[selectedImage - 1].src}
 					title={imgData[selectedImage - 1].title}
-					nextImage={() =>
-						setSelectedImage((prev) =>
-							prev === imgData.length - 1
-								? 0
-								: prev !== null
-								? prev + 1
-								: null
-						)
-					}
-					prevImage={() =>
-						setSelectedImage((prev) =>
-							prev === 0 ? imgData.length - 1 : prev && prev - 1
-						)
-					}
+					nextImage={() => {
+						if (selectedImage === imgData.length) {
+							setSelectedImage(1)
+						} else setSelectedImage((prev) => prev && prev + 1)
+					}}
+					prevImage={() => {
+						if (selectedImage === 1) {
+							setSelectedImage(imgData.length)
+						} else setSelectedImage((prev) => prev && prev - 1)
+					}}
 					handleCloseImage={closeImage}
 				></ImageModal>
 			)}
 
 			<div className='md:sticky top-0 md:h-screen overflow-y-hidden px-4'>
 				<Hero></Hero>
-
-				<div className='w-full md:flex-row flex-col flex gap-4'>
+				<div className='w-full flex gap-4'>
 					<GalleryColumn
 						galleryData={imgData.slice(0, 4)}
 						className='md:translate-y-[98%]'
 						handleClick={(id) => {
-							console.log(id)
-
 							setSelectedImage(id)
 						}}
 					/>
@@ -180,6 +175,12 @@ const Gallery = () => {
 						className='md:translate-y-[90%]'
 						handleClick={(id) => setSelectedImage(id)}
 					/>
+				</div>
+
+				<div className='flex md:hidden justify-center mt-10'>
+					<button className='px-6 py-2 border-black rounded-xl border-2 font-bold'>
+						Více
+					</button>
 				</div>
 			</div>
 		</div>

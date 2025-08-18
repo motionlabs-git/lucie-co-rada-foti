@@ -16,7 +16,7 @@ const GalleryMiddleColumn = ({
 	handleClick: (id: number) => void
 }) => {
 	return (
-		<div className='h-screen items-end flex flex-1'>
+		<div className='hidden md:flex h-screen items-end flex-1'>
 			<div
 				id='galleryMiddleColumn'
 				className={`h-fit w-full flex flex-col gap-4 ${className}`}

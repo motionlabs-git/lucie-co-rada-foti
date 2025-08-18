@@ -16,9 +16,9 @@ const GalleryColumn = ({
 	handleClick: (id: number) => void
 }) => {
 	return (
-		<div className='h-screen w-full items-end flex flex-1'>
+		<div className='md:h-screen w-full md:items-end flex flex-1'>
 			<div
-				className={`h-fit w-full flex md:flex-col gap-4 galleryColumn pb-2 ${className}`}
+				className={`h-fit w-full flex flex-col gap-4 galleryColumn pb-2 ${className}`}
 			>
 				{galleryData.map((img, index) => (
 					<div

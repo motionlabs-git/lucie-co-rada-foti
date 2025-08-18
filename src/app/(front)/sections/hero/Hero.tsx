@@ -45,7 +45,7 @@ function Hero() {
 					</em>
 				</h1>
 
-				<div id='mouse-scroll'>
+				<div id='mouse-scroll' className='z-0'>
 					<div className='mouse'>
 						<div className='mouse-in'></div>
 					</div>

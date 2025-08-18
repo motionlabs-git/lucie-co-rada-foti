@@ -228,12 +228,11 @@ a {
 /* Scrolldown icon */
 
 #mouse-scroll {
-
 	margin: auto;
 	left: 50%;
 	top: 80px;
 	-webkit-transform: translateX(-50%);
-	z-index: 9999;
+
 }
 
 #mouse-scroll span {
