@@ -9,8 +9,8 @@ interface Params {
 }
 
 export async function POST(
-	{ params }: { params: Promise<Params> },
 	request: NextRequest,
+	{ params }: { params: Promise<Params> }
 ) {
 	const { id } = await params
 	const data = await request.json()
