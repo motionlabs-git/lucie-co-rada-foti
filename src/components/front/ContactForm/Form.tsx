@@ -78,7 +78,7 @@ const Form = () => {
 				<div className='relative flex justify-center overflow-hidden rounded-xl mt-2'>
 					<input
 						readOnly={isSubmitting ? true : false}
-						className='peer z-20 py-3 px-4 shadow-md border-stone-400 border rounded-xl block w-full focus:border-stone-700 duration-200 bg-stone-300/30 backdrop-blur-2xl font-satoshiBold font-semibold text-xl placeholder:text-black/40'
+						className='invertText peer z-20 py-3 px-4 shadow-md border-stone-400 border rounded-xl block w-full focus:border-stone-700 duration-200 bg-stone-300/30 backdrop-blur-2xl font-satoshiBold font-semibold text-xl placeholder:text-black/40'
 						type='text'
 						placeholder='Jméno'
 						id='name'
@@ -102,7 +102,7 @@ const Form = () => {
 				<div className='relative flex justify-center overflow-hidden rounded-xl mt-2'>
 					<input
 						readOnly={isSubmitting ? true : false}
-						className='peer z-20 py-3 px-4 shadow-md border-stone-400 border rounded-xl block w-full focus:border-stone-700 duration-200 bg-stone-300/30 backdrop-blur-2xl font-satoshiBold font-semibold text-xl placeholder:text-black/40'
+						className='invertText peer z-20 py-3 px-4 shadow-md border-stone-400 border rounded-xl block w-full focus:border-stone-700 duration-200 bg-stone-300/30 backdrop-blur-2xl font-satoshiBold font-semibold text-xl placeholder:text-black/40'
 						type='text'
 						placeholder='Telefon'
 						id='phone'
@@ -128,7 +128,7 @@ const Form = () => {
 				<div className='relative flex justify-center overflow-hidden rounded-xl mt-2'>
 					<input
 						readOnly={isSubmitting ? true : false}
-						className='peer z-20 py-3 px-4 shadow-md border-stone-400 border rounded-xl block w-full focus:border-stone-700 duration-200 bg-stone-300/30 backdrop-blur-2xl font-satoshiBold font-semibold text-xl placeholder:text-black/40'
+						className='invertText peer z-20 py-3 px-4 shadow-md border-stone-400 border rounded-xl block w-full focus:border-stone-700 duration-200 bg-stone-300/30 backdrop-blur-2xl font-satoshiBold font-semibold text-xl placeholder:text-black/40'
 						type='text'
 						placeholder='Email'
 						id='email'
@@ -155,7 +155,7 @@ const Form = () => {
 				<div className='relative flex justify-center overflow-hidden rounded-xl mt-2'>
 					<textarea
 						readOnly={isSubmitting ? true : false}
-						className='peer z-20 py-3 px-4 max-h-[10em] shadow-md border-stone-400 border rounded-xl block w-full focus:border-stone-700 duration-200 bg-stone-300/30 backdrop-blur-2xl font-satoshiBold font-semibold text-xl placeholder:text-black/40'
+						className='invertText peer z-20 py-3 px-4 max-h-[10em] shadow-md border-stone-400 border rounded-xl block w-full focus:border-stone-700 duration-200 bg-stone-300/30 backdrop-blur-2xl font-satoshiBold font-semibold text-xl placeholder:text-black/40'
 						placeholder='Zpráva'
 						rows={5}
 						maxLength={300}
@@ -174,7 +174,7 @@ const Form = () => {
 
 			<button
 				type='submit'
-				className='group relative w-full mt-4 rounded-xl'
+				className='group relative w-full mt-4 rounded-xl invertText'
 			>
 				<div className='absolute w-full h-full rounded-xl bg-black group-hover:bg-lightOrange group-hover:blur-xs duration-400 blur-none'></div>
 				<p className='relative font-satoshiBold font-semibold text-white py-3 group-hover:text-black duration-400'>

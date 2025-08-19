@@ -33,7 +33,8 @@ const Footer = () => {
 					backgroundColor: 'black',
 				})
 				gsap.to('.invertText', {
-					color: 'white',
+					filter: 'invert(1)',
+					duration: 0.3,
 				})
 			},
 
@@ -42,7 +43,8 @@ const Footer = () => {
 					backgroundColor: 'var(--bone)',
 				})
 				gsap.to('.invertText', {
-					color: 'black',
+					filter: 'invert(0)',
+					duration: 0.3,
 				})
 			},
 		})
