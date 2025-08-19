@@ -64,7 +64,7 @@ const MobileNavigation = ({ lenis }: Props) => {
 							return (
 								<li
 									key={i}
-									className={`cursor-pointer w-full text-center font-bellefair text-2xl font-bold py-2`}
+									className={`invertText cursor-pointer w-full text-center font-bellefair text-2xl font-bold py-2`}
 									onClick={() => scrollTo(item.id)}
 								>
 									{item.title}
