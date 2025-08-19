@@ -2,12 +2,14 @@ import { NextRequest, NextResponse } from 'next/server'
 import { seoValidation } from '@/schemas/seo.schema'
 import { createServerClient } from '@/utils/supabase/server'
 
+
+
 interface Params {
 	id: string
 }
 
 export async function POST(
-	{ params }: { params: Params },
+	{ params }: { params: Promise<Params> },
 	request: NextRequest,
 ) {
 	const { id } = await params
