@@ -1,7 +1,7 @@
 'use client'
 
 import { MouseEventHandler, useEffect, useState } from 'react'
-import { FiImage, FiSidebar, FiServer } from 'react-icons/fi'
+import { FiImage, FiSidebar, FiServer, FiDollarSign } from 'react-icons/fi'
 import Link from './Link'
 
 const Sidebar = () => {
@@ -45,22 +45,6 @@ const Sidebar = () => {
 		>
 			<section className='h-full flex flex-col justify-between p-2'>
 				<ul className='w-full relative flex flex-col gap-1'>
-					{/* <li>
-						<Link
-							isOpen={isOpen}
-							href={'/admin'}
-							title={'Users'}
-							icon={<FiUsers />}
-						/>
-					</li> */}
-					{/* <li>
-						<Link
-							isOpen={isOpen}
-							href={'/admin/blog'}
-							title={'Blog'}
-							icon={<FiEdit3 />}
-						/>
-					</li> */}
 					<li>
 						<Link
 							isOpen={isOpen}
@@ -77,14 +61,14 @@ const Sidebar = () => {
 							icon={<FiImage />}
 						/>
 					</li>
-					{/* <li>
+					<li>
 						<Link
 							isOpen={isOpen}
-							href={'/admin/banner'}
-							title={'Banner'}
-							icon={<FiFlag />}
+							href={'/admin/pricelist'}
+							title={'Pricelist'}
+							icon={<FiDollarSign />}
 						/>
-					</li> */}
+					</li>
 				</ul>
 
 				<button
