@@ -131,8 +131,6 @@ const Gallery = () => {
 		})
 	}
 
-	console.log(selectedImage)
-
 	return (
 		<div id='gallery' className='relative w-full md:h-[300vh]'>
 			{selectedImage && (

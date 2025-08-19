@@ -7,6 +7,7 @@ import {
 	DotButton,
 	useDotButton,
 } from '@/components/front/Pricelist/EmblaDotsButton'
+import PricelistSelector from '@/components/front/Pricelist/PricelistSelector'
 
 interface IProps {
 	onMouseEnter?: () => void
@@ -29,24 +30,10 @@ const Pricelist: React.FC<IProps> = () => {
 				<em>Ceník</em>
 			</h1>
 
-			<div className='w-full mt-8 flex border-b border-black/30 '>
-				<button className='flex-1 text-center'>
-					<p className='font-bold'>Svatební focení</p>
-					<div className='w-full h-0.5 bg-orange'></div>
-				</button>
-
-				<div className='h-full border-r border-black/30'></div>
-
-				<button className='flex-1'>
-					<p>Ostatní focení</p>
-				</button>
-			</div>
+			<PricelistSelector></PricelistSelector>
 
 			<div className=' relative flex flex-col items-center justify-center gap-6'>
-				<div
-					className='embla pricelist w-full relative cursor-none'
-					ref={emblaRef}
-				>
+				<div className='embla pricelist w-full relative' ref={emblaRef}>
 					<div className='embla__container pointer-events-none'>
 						{fakeData.map((slide, i) => (
 							<PricelistSlide
@@ -67,10 +54,10 @@ const Pricelist: React.FC<IProps> = () => {
 							<DotButton
 								key={index}
 								onClick={() => onDotButtonClick(index)}
-								className={`aspect-square rounded-full duration-200 ${
+								className={`aspect-square rounded-[3px] duration-200 ${
 									index === selectedIndex
-										? ' bg-orange w-3'
-										: 'bg-brown w-2'
+										? ' bg-orange w-[0.6rem]'
+										: 'bg-lightOrange w-2'
 								}`}
 							/>
 						</div>
