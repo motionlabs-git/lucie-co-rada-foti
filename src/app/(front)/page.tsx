@@ -32,8 +32,6 @@ function HomePage() {
 			<Navigation lenis={lenis} />
 
 			<main className='flex flex-col items-center'>
-				{/* <Hero></Hero> */}
-
 				<Gallery />
 
 				<About />

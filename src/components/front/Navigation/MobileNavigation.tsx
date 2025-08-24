@@ -1,5 +1,5 @@
 import Lenis from 'lenis'
-import React, { RefObject, useState } from 'react'
+import React, { RefObject, useEffect, useState } from 'react'
 import HamburgerIcon from './HamburgerIcon'
 
 interface Props {
@@ -50,8 +50,12 @@ const MobileNavigation = ({ lenis }: Props) => {
 		lenis.current?.scrollTo(`#${id}`)
 	}
 
+	useEffect(() => {
+		document.getElementById('mobileMenuModal')?.classList.add('hide')
+	}, [])
+
 	return (
-		<div className='fixed md:hidden w-full top-0 left-0 z-40 '>
+		<div className='fixed md:hidden w-full top-0 left-0 z-40'>
 			{
 				<div
 					id='mobileMenuModal'

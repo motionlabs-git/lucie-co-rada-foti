@@ -153,6 +153,7 @@ const Gallery = () => {
 
 			<div className='md:sticky top-0 md:h-screen overflow-y-hidden px-4'>
 				<Hero></Hero>
+
 				<div className='w-full flex gap-4'>
 					<GalleryColumn
 						galleryData={imgData.slice(0, 4)}

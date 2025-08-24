@@ -38,7 +38,7 @@ h4,
 h5,
 h6 {
 	em {
-		@apply font-promenadeItalic block;
+		@apply font-promenadeItalic;
 	}
 
 	strong {
@@ -243,8 +243,8 @@ a {
 	-webkit-transform: rotate(45deg);
 	transform: rotate(45deg);
 	transform: rotate(45deg);
-	border-right: 2px solid gray;
-	border-bottom: 2px solid gray;
+	border-right: 2px solid black;
+	border-bottom: 2px solid black;
 	margin: 0 0 3px 5px;
 }
 
@@ -255,7 +255,7 @@ a {
 	-webkit-transform: none;
 	-ms-transform: none;
 	transform: none;
-	border: 2px solid gray;
+	border: 2px solid black;
 	top: 170px;
 }
 
@@ -263,9 +263,7 @@ a {
 	margin-top: 6px;
 }
 
-#mouse-scroll .down-arrow-1,
-#mouse-scroll .down-arrow-2,
-#mouse-scroll .down-arrow-3 {
+#mouse-scroll .down-arrow-1{
 	-webkit-animation: mouse-scroll 1s infinite;
 	-moz-animation: mouse-scroll 1s infinite;
 }
@@ -276,24 +274,13 @@ a {
 	-webkit-animation-direction: alternate;
 }
 
-#mouse-scroll .down-arrow-2 {
-	-webkit-animation-delay: .2s;
-	-moz-animation-delay: .2s;
-	-webkit-animation-direction: alternate;
-}
-
-#mouse-scroll .down-arrow-3 {
-	-webkit-animation-delay: .3s;
-	-moz-animation-dekay: .3s;
-	-webkit-animation-direction: alternate;
-}
 
 #mouse-scroll .mouse-in {
 	height: 5px;
 	width: 2px;
 	display: block;
 	margin: 5px auto;
-	background: gray;
+	background: black;
 	position: relative;
 }
 

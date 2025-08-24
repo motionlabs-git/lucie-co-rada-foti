@@ -27,6 +27,23 @@ const promenadeItalic = localFont({
 export const metadata: Metadata = {
 	title: 'Title',
 	description: 'Description',
+	keywords: '',
+	authors: [
+		{
+			name: 'MotionLabs',
+			url: 'https://motionlabs.cz',
+		},
+	],
+	twitter: {
+		card: 'summary_large_image',
+	},
+	openGraph: {
+		title: 'Lucie co ráda fotí',
+		description: '',
+		images: [
+			`https://raw.githubusercontent.com/motionlabs-git/habartovi/refs/heads/master/public/images/OpenGraphImage.webp`,
+		],
+	},
 	icons: [
 		{
 			rel: 'icon',
