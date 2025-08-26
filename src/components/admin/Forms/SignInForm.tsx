@@ -11,11 +11,11 @@ import Logo from '../../../../public/images/logo.svg'
 import { useRouter } from 'next/navigation'
 import { ImSpinner2 } from 'react-icons/im'
 
-interface SignInFormProps {
+interface IProps {
 	action: (data: SignInSchema) => Promise<void>
 }
 
-const SignInForm: React.FC<SignInFormProps> = () => {
+const SignInForm: React.FC<IProps> = () => {
 	const router = useRouter()
 	const [loading, setLoading] = useState(false)
 	const [unauthorizedError, setUnauthorizedError] = useState(false)

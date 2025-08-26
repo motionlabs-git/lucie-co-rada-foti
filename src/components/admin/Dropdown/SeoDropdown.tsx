@@ -21,7 +21,7 @@ const SeoDropdown: React.FC<IProps> = ({
 	const handleClick = () => setOpened((prev) => !prev)
 
 	return (
-		<div className='bg-white/5 rounded-xl p-4'>
+		<div className='bg-white/5 dark:bg-black/50 rounded-xl p-4'>
 			<button
 				type='button'
 				onClick={handleClick}
