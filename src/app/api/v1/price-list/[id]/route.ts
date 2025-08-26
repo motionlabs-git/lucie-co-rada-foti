@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createServerClient } from '@/utils/supabase/server'
 import { priceListValidation } from '@/schemas/price-list.schema'
+import { PostgrestSingleResponse } from '@supabase/supabase-js'
+import { PriceListCategorySchema } from '@/schemas/price-list-category.schema'
 
 interface Params {
 	id: string
@@ -30,11 +32,15 @@ export async function POST(
 	}
 
 	// GET CATEGORY
-	const { data: categoryData1, error: categoryErr1 } = await supabase
-		.from('price_list_category')
-		.select('*')
-		.contains('item_order', [Number(id)])
-		.single()
+	const {
+		data: categoryData1,
+		error: categoryErr1,
+	}: PostgrestSingleResponse<PriceListCategorySchema & { id: number }> =
+		await supabase
+			.from('price_list_category')
+			.select('*')
+			.contains('item_order', [Number(id)])
+			.single()
 	if (categoryErr1) {
 		return NextResponse.json({ code: categoryErr1.code }, { status: 400 })
 	}
