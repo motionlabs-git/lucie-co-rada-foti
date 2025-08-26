@@ -64,8 +64,8 @@ const Sidebar = () => {
 					<li>
 						<Link
 							isOpen={isOpen}
-							href={'/admin/pricelist'}
-							title={'Pricelist'}
+							href={'/admin/price-list'}
+							title={'Price list'}
 							icon={<FiDollarSign />}
 						/>
 					</li>

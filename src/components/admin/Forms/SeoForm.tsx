@@ -11,12 +11,12 @@ import Input from '../Inputs/Input'
 import { FiSave } from 'react-icons/fi'
 import Textarea from '../Inputs/Textarea'
 
-interface SeoFormProps {
+interface IProps {
 	id: number
 	defaultValues?: SeoSchema
 }
 
-const SeoForm: NextPage<SeoFormProps> = ({ id, defaultValues }) => {
+const SeoForm: NextPage<IProps> = ({ id, defaultValues }) => {
 	const [loading, setLoading] = useState(false)
 	const [response, setResponse] = useState(false)
 	const [error, setError] = useState(false)
@@ -92,13 +92,13 @@ const SeoForm: NextPage<SeoFormProps> = ({ id, defaultValues }) => {
 
 			{error && (
 				<span className='text-red-500 animate-res-fade-out'>
-					An error occurred while saving the SEO data.
+					An error occurred while saving the data.
 				</span>
 			)}
 
 			{response && (
 				<span className='text-green-500 animate-res-fade-out'>
-					SEO data saved successfully!
+					Data saved successfully
 				</span>
 			)}
 
