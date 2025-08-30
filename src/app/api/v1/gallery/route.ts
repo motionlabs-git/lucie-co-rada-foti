@@ -20,7 +20,8 @@ export async function POST(request: NextRequest) {
 		}
 
 		return HttpSuccess()
-	} catch {
+	} catch (err) {
+		console.log(err)
 		return HttpInternalServerError()
 	}
 }

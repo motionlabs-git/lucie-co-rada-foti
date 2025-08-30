@@ -34,7 +34,8 @@ export async function uploadFile(file: File) {
 			},
 		])
 		if (error) throw new Error('Failed to save file to database')
-	} catch {
+	} catch (err) {
+		console.log(err)
 		throw new Error('File upload failed')
 	} finally {
 		await unlink(filePath)
