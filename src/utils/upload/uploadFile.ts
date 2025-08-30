@@ -1,6 +1,5 @@
 import crypto from 'crypto'
 import { writeFile, unlink } from 'fs/promises'
-import path from 'path'
 import { v2 as cloudinary } from 'cloudinary'
 import { createServerClient } from '../supabase/server'
 
@@ -16,7 +15,7 @@ export async function uploadFile(file: File) {
 	const arrayBuffer = await file.arrayBuffer()
 	const buffer = Buffer.from(arrayBuffer)
 	const fileName = `${hash}_${file.name.replaceAll(' ', '_')}`
-	const filePath = path.join(process.cwd(), 'public/upload/' + fileName)
+	const filePath = process.cwd() + '/public/upload/' + fileName
 
 	try {
 		await writeFile(filePath, buffer)
