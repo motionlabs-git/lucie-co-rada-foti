@@ -1,8 +1,13 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextRequest } from 'next/server'
 import { createServerClient } from '@/utils/supabase/server'
 import { priceListValidation } from '@/schemas/price-list.schema'
 import { PostgrestSingleResponse } from '@supabase/supabase-js'
 import { PriceListCategorySchema } from '@/schemas/price-list-category.schema'
+import {
+	HttpSupabaseError,
+	HttpValidationError,
+} from '@/utils/api/errorResponse'
+import { HttpSuccess } from '@/utils/api/successResponse'
 
 interface Params {
 	id: string
@@ -16,9 +21,7 @@ export async function POST(
 	const data = await request.json()
 
 	const result = priceListValidation.safeParse(data)
-	if (!result.success) {
-		return NextResponse.json({ code: 'VALIDATION_ERROR' }, { status: 400 })
-	}
+	if (!result.success) return HttpValidationError()
 
 	const supabase = await createServerClient()
 
@@ -27,9 +30,7 @@ export async function POST(
 		.from('price_list')
 		.update(result.data)
 		.eq('id', id)
-	if (priceListErr) {
-		return NextResponse.json({ code: priceListErr.code }, { status: 400 })
-	}
+	if (priceListErr) return HttpSupabaseError(priceListErr)
 
 	// GET CATEGORY
 	const {
@@ -41,13 +42,9 @@ export async function POST(
 			.select('*')
 			.contains('item_order', [Number(id)])
 			.single()
-	if (categoryErr1) {
-		return NextResponse.json({ code: categoryErr1.code }, { status: 400 })
-	}
+	if (categoryErr1) return HttpSupabaseError(categoryErr1)
 
-	if (categoryData1.id === data.category) {
-		return NextResponse.json({ code: 'SUCCESS' }, { status: 200 })
-	}
+	if (categoryData1.id === data.category) return HttpSuccess()
 
 	// FILTER OLD CATEGORY
 	const { error: categoryErr2 } = await supabase
@@ -58,9 +55,7 @@ export async function POST(
 			),
 		})
 		.eq('id', categoryData1.id)
-	if (categoryErr2) {
-		return NextResponse.json({ code: categoryErr2.code }, { status: 400 })
-	}
+	if (categoryErr2) return HttpSupabaseError(categoryErr2)
 
 	// ADD TO NEW CATEGORY
 	const { data: categoryData3, error: categoryErr3 } = await supabase
@@ -68,9 +63,7 @@ export async function POST(
 		.select('*')
 		.eq('id', data.category)
 		.single()
-	if (categoryErr3) {
-		return NextResponse.json({ code: categoryErr3.code }, { status: 400 })
-	}
+	if (categoryErr3) return HttpSupabaseError(categoryErr3)
 
 	const { error: categoryErr4 } = await supabase
 		.from('price_list_category')
@@ -80,9 +73,7 @@ export async function POST(
 				: [Number(id)],
 		})
 		.eq('id', data.category)
-	if (categoryErr4) {
-		return NextResponse.json({ code: categoryErr4.code }, { status: 400 })
-	}
+	if (categoryErr4) return HttpSupabaseError(categoryErr4)
 
-	return NextResponse.json({ code: 'SUCCESS' }, { status: 200 })
+	return HttpSuccess()
 }

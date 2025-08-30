@@ -92,7 +92,7 @@ const SeoForm: NextPage<IProps> = ({ id, defaultValues }) => {
 
 			{error && (
 				<span className='text-red-500 animate-res-fade-out'>
-					An error occurred while saving the data.
+					An error occurred while saving the data
 				</span>
 			)}
 

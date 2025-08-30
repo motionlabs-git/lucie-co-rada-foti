@@ -73,7 +73,7 @@ const DroppableContainer: React.FC<IProps> = ({ category, priceList }) => {
 		}
 	}
 
-	if (!category.item_order) return null
+	if (!category.item_order || !items.length) return null
 
 	return (
 		<DndContext
