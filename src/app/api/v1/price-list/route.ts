@@ -1,13 +1,18 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextRequest } from 'next/server'
 import { createServerClient } from '@/utils/supabase/server'
 import { priceListValidation } from '@/schemas/price-list.schema'
+import {
+	HttpSupabaseError,
+	HttpValidationError,
+} from '@/utils/api/errorResponse'
+import { HttpSuccess } from '@/utils/api/successResponse'
 
 export async function POST(request: NextRequest) {
 	const data = await request.json()
 
 	const result = priceListValidation.safeParse(data)
 	if (!result.success) {
-		return NextResponse.json({ code: 'VALIDATION_ERROR' }, { status: 400 })
+		return HttpValidationError()
 	}
 
 	const supabase = await createServerClient()
@@ -18,9 +23,7 @@ export async function POST(request: NextRequest) {
 		.insert([data])
 		.select()
 		.single()
-	if (priceListErr) {
-		return NextResponse.json({ code: priceListErr.code }, { status: 400 })
-	}
+	if (priceListErr) return HttpSupabaseError(priceListErr)
 
 	// GET CATEGORY
 	const { data: categoryData, error: categoryErr1 } = await supabase
@@ -28,9 +31,7 @@ export async function POST(request: NextRequest) {
 		.select('item_order')
 		.eq('id', data.category)
 		.single()
-	if (categoryErr1) {
-		return NextResponse.json({ code: categoryErr1.code }, { status: 400 })
-	}
+	if (categoryErr1) return HttpSupabaseError(categoryErr1)
 
 	// UPDATE CATEGORY
 	const { error: categoryErr2 } = await supabase
@@ -41,9 +42,7 @@ export async function POST(request: NextRequest) {
 				: [priceListData.id],
 		})
 		.eq('id', data.category)
-	if (categoryErr2) {
-		return NextResponse.json({ code: categoryErr2.code }, { status: 400 })
-	}
+	if (categoryErr2) return HttpSupabaseError(categoryErr2)
 
-	return NextResponse.json({ code: 'SUCCESS' }, { status: 200 })
+	return HttpSuccess()
 }

@@ -75,23 +75,21 @@ const PriceListPage = () => {
 					</Link>
 				</div>
 
-				<div className='flex flex-col gap-2 mt-4'>
-					{categoryLoading && priceListLoading ? (
-						<p>Loading...</p>
-					) : (
-						<>
-							{categoryData &&
-								priceListData &&
-								categoryData.map((category) => (
-									<DroppableContainer
-										key={category.id}
-										category={category}
-										priceList={priceListData}
-									/>
-								))}
-						</>
-					)}
-				</div>
+				{categoryLoading && priceListLoading ? (
+					<p className='mt-4'>Loading...</p>
+				) : (
+					<div className='flex flex-col gap-2 mt-4'>
+						{categoryData &&
+							priceListData &&
+							categoryData.map((category) => (
+								<DroppableContainer
+									key={category.id}
+									category={category}
+									priceList={priceListData}
+								/>
+							))}
+					</div>
+				)}
 			</section>
 		</>
 	)

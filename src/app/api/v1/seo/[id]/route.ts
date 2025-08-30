@@ -1,6 +1,11 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextRequest } from 'next/server'
 import { seoValidation } from '@/schemas/seo.schema'
 import { createServerClient } from '@/utils/supabase/server'
+import {
+	HttpSupabaseError,
+	HttpValidationError,
+} from '@/utils/api/errorResponse'
+import { HttpSuccess } from '@/utils/api/successResponse'
 
 interface Params {
 	id: string
@@ -15,14 +20,12 @@ export async function POST(
 
 	const result = seoValidation.safeParse(data)
 	if (!result.success) {
-		return NextResponse.json({ code: 'VALIDATION_ERROR' }, { status: 400 })
+		return HttpValidationError()
 	}
 
 	const supabase = await createServerClient()
 	const { error } = await supabase.from('seo').update(data).eq('id', id)
-	if (error) {
-		return NextResponse.json({ code: error.code }, { status: 400 })
-	}
+	if (error) return HttpSupabaseError(error)
 
-	return NextResponse.json({ code: 'SUCCESS' }, { status: 200 })
+	return HttpSuccess()
 }
