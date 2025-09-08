@@ -1,6 +1,9 @@
 import { NextPage } from 'next'
 import Edit from './edit'
 import { createServerClient } from '@/utils/supabase/server'
+import { PostgrestSingleResponse } from '@supabase/supabase-js'
+import { PriceListSchema } from '@/schemas/price-list.schema'
+import { Model } from '@/schemas/model'
 
 const PriceListEditPage: NextPage<{
 	params: Promise<{ id: string }>
@@ -8,7 +11,10 @@ const PriceListEditPage: NextPage<{
 	const { id } = await params
 
 	const supabase = await createServerClient()
-	const { data: defaultValues, error } = await supabase
+	const {
+		data: defaultValues,
+		error,
+	}: PostgrestSingleResponse<Model<PriceListSchema>> = await supabase
 		.from('price_list')
 		.select('*')
 		.eq('id', id)

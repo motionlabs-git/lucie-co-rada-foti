@@ -5,6 +5,7 @@ import {
 } from '@/utils/api/errorResponse'
 import { HttpSuccess } from '@/utils/api/successResponse'
 import { uploadFile } from '@/utils/upload/uploadFile'
+import { createServerClient } from '@/utils/supabase/server'
 
 export async function POST(request: NextRequest) {
 	try {
@@ -16,7 +17,13 @@ export async function POST(request: NextRequest) {
 		for (const file of files) {
 			if (!(file instanceof Blob)) return HttpValidationError()
 
-			await uploadFile(file)
+			const response = await uploadFile(file, 'gallery_photo')
+
+			const supabase = await createServerClient()
+			const { error } = await supabase
+				.from('image_upload')
+				.insert([response])
+			if (error) throw new Error('Failed to save file to database')
 		}
 
 		return HttpSuccess()

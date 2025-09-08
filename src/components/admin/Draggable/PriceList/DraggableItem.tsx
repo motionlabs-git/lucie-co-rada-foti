@@ -6,6 +6,7 @@ import { CSS } from '@dnd-kit/utilities'
 import { GoGrabber } from 'react-icons/go'
 import { PriceListSchema } from '@/schemas/price-list.schema'
 import Link from 'next/link'
+import { Model } from '@/schemas/model'
 
 const DraggableItem = ({
 	id,
@@ -13,7 +14,7 @@ const DraggableItem = ({
 	disabled,
 }: {
 	id: string
-	item?: PriceListSchema & { id: number }
+	item?: Model<PriceListSchema>
 	disabled: boolean
 }) => {
 	const { attributes, listeners, setNodeRef, transform, transition } =

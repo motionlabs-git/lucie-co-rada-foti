@@ -1,7 +1,7 @@
 'use client'
 
 import { NextPage } from 'next'
-import { useForm } from 'react-hook-form'
+import { useForm, UseFormSetValue } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Input from '../Inputs/Input'
 import { FiSave } from 'react-icons/fi'
@@ -12,10 +12,13 @@ import {
 import Textarea from '../Inputs/Textarea'
 import Select from '../Inputs/Select'
 import { ImSpinner2 } from 'react-icons/im'
+import DropImageSingle from '../Inputs/DropImageSingle'
+import { FileWithPath } from 'react-dropzone'
+import { useState } from 'react'
 
 interface IProps {
 	defaultValues?: PriceListSchema
-	onSubmit: (data: PriceListSchema) => void
+	onSubmit: (data: FormData) => void
 	loading: boolean
 	response: boolean
 	error: boolean
@@ -28,8 +31,12 @@ const PriceListForm: NextPage<IProps> = ({
 	response,
 	error,
 }) => {
+	const [file, setFile] = useState<FileWithPath | null>(null)
+
 	const {
 		register,
+		watch,
+		setValue,
 		handleSubmit,
 		formState: { errors },
 	} = useForm<PriceListSchema>({
@@ -37,9 +44,23 @@ const PriceListForm: NextPage<IProps> = ({
 		resolver: zodResolver(priceListValidation),
 	})
 
+	const handleSetFile = (file: FileWithPath | null) => setFile(file)
+
+	const handleSubmitForm = (data: PriceListSchema) => {
+		const formData = new FormData()
+
+		formData.append('data', JSON.stringify(data))
+
+		if (file) {
+			formData.append('file', file)
+		}
+
+		onSubmit(formData)
+	}
+
 	return (
 		<form
-			onSubmit={handleSubmit(onSubmit)}
+			onSubmit={handleSubmit(handleSubmitForm)}
 			className='flex flex-col gap-4 mt-4'
 		>
 			<div>
@@ -88,12 +109,21 @@ const PriceListForm: NextPage<IProps> = ({
 
 			<div>
 				<label>Image</label>
-				<Input
-					{...register('image')}
-					placeholder='Image'
-					type='text'
-					error={errors.image}
-					className='resize-none mt-1'
+				<DropImageSingle
+					name='image'
+					values={{
+						image_name: watch('image_name') ?? null,
+						image_public_id: watch('image_public_id') ?? null,
+						image_url: watch('image_url') ?? null,
+					}}
+					setValue={
+						setValue as unknown as UseFormSetValue<
+							Record<string, string | null>
+						>
+					}
+					file={file}
+					setFile={handleSetFile}
+					className='mt-1'
 				/>
 			</div>
 

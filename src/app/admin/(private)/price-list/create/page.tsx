@@ -1,8 +1,7 @@
 'use client'
 
 import PriceListForm from '@/components/admin/Forms/PriceListForm'
-import { PriceListSchema } from '@/schemas/price-list.schema'
-import { axiosClient } from '@/utils/axios/client'
+import { axiosFileClient } from '@/utils/axios/client'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 
@@ -12,10 +11,10 @@ const PriceListCreatePage = () => {
 	const [response, setResponse] = useState(false)
 	const [error, setError] = useState(false)
 
-	const handleFormSubmit = async (data: PriceListSchema) => {
+	const handleFormSubmit = async (data: FormData) => {
 		setLoading(true)
 
-		await axiosClient
+		await axiosFileClient
 			.post('/api/v1/price-list', data)
 			.then(() => {
 				setResponse(true)

@@ -17,9 +17,10 @@ import {
 } from '@dnd-kit/sortable'
 import DraggableItem from './DraggableItem'
 import { PriceListSchema } from '@/schemas/price-list.schema'
+import { Model } from '@/schemas/model'
 
 interface IProps {
-	priceListData: (PriceListSchema & { id: number })[]
+	priceListData: Model<PriceListSchema>[]
 	categoryData: { id: number; name: string; order: number[] }[]
 }
 
@@ -123,7 +124,6 @@ const DraggablePriceList: React.FC<IProps> = ({
 						newIndex
 					),
 				}
-				console.log('newItems', newItems)
 				setItems(newItems)
 			}
 		}

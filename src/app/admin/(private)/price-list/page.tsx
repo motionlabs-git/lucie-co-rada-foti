@@ -1,9 +1,10 @@
 'use client'
 
+import { Model } from '@/schemas/model'
 import { PriceListCategorySchema } from '@/schemas/price-list-category.schema'
 import { PriceListSchema } from '@/schemas/price-list.schema'
 import { createClient } from '@/utils/supabase/client'
-import { PostgrestSingleResponse } from '@supabase/supabase-js'
+import { PostgrestResponse } from '@supabase/supabase-js'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
@@ -18,12 +19,12 @@ const PriceListPage = () => {
 	const router = useRouter()
 
 	const [priceListData, setPriceListData] = useState<
-		(PriceListSchema & { id: number })[] | null
+		Model<PriceListSchema>[] | null
 	>(null)
 	const [priceListLoading, setPriceListLoading] = useState(true)
 
 	const [categoryData, setCategoryData] = useState<
-		(PriceListCategorySchema & { id: number })[] | null
+		Model<PriceListCategorySchema>[] | null
 	>(null)
 	const [categoryLoading, setCategoryLoading] = useState(true)
 
@@ -34,18 +35,18 @@ const PriceListPage = () => {
 			const {
 				data: priceListData,
 				error: priceListErr,
-			}: PostgrestSingleResponse<(PriceListSchema & { id: number })[]> =
-				await supabase.from('price_list').select('*')
+			}: PostgrestResponse<Model<PriceListSchema>> = await supabase
+				.from('price_list')
+				.select('*')
 
 			const {
 				data: categoryData,
 				error: categoryErr,
-			}: PostgrestSingleResponse<
-				(PriceListCategorySchema & { id: number })[]
-			> = await supabase
-				.from('price_list_category')
-				.select('*')
-				.order('created_at', { ascending: true })
+			}: PostgrestResponse<Model<PriceListCategorySchema>> =
+				await supabase
+					.from('price_list_category')
+					.select('*')
+					.order('created_at', { ascending: true })
 
 			if (priceListErr || categoryErr) {
 				router.push('/admin/error')
