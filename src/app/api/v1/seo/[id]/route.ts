@@ -19,6 +19,7 @@ export async function POST(
 	const data = await request.json()
 
 	const result = seoValidation.safeParse(data)
+
 	if (!result.success) {
 		return HttpValidationError()
 	}

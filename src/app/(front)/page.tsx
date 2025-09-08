@@ -1,51 +1,58 @@
-'use client'
-import React, { useEffect, useRef } from 'react'
-import { usePathname } from 'next/navigation'
-import Lenis from 'lenis'
-import Gallery from './sections/gallery/Gallery'
-import About from './sections/about/About'
-import Pricelist from './sections/pricelist/Pricelist'
-import ContactForm from './sections/contactForm/ContactForm'
-import Navigation from '@/components/front/Navigation/Navigation'
-import Footer from '@/components/front/Footer/Footer'
-import initAnimations from '@/utils/initAnimations'
-import Loader from '@/components/Loader'
-import References from './sections/references/References'
-import MobileNavigation from '@/components/front/Navigation/MobileNavigation'
+import React from 'react'
+import LoaderProvider from '@/components/front/Loader/LoaderProvider'
+import { createServerClient } from '@/utils/supabase/server'
+import { PostgrestSingleResponse } from '@supabase/supabase-js'
+import { SeoSchema } from '@/schemas/seo.schema'
 
-function HomePage() {
-	const path = usePathname()
-	const lenis = useRef<null | Lenis>(null)
+export const generateMetadata = async () => {
+	const supabase = await createServerClient()
 
-	useEffect(() => {
-		//Lenis
-		lenis.current = new Lenis()
+	const { data }: PostgrestSingleResponse<SeoSchema> = await supabase
+		.from('seo')
+		.select('*')
+		.eq('path', '/')
+		.single()
 
-		initAnimations()
-	}, [path])
+	// TODO:Dodělat deraultní data
+	return {
+		title: data?.title ?? 'Lucie co ráda fotí | ',
+		description: data?.description ?? '',
+		keywords: data?.keywords ?? '',
+		authors: [
+			{
+				name: 'MotionLabs',
+				url: 'https://motionlabs.cz',
+			},
+		],
+		twitter: {
+			card: 'summary_large_image',
+		},
+		openGraph: {
+			title: 'Lucie co ráda fotí',
+			description: '',
+			images: [
+				`https://raw.githubusercontent.com/motionlabs-git/habartovi/refs/heads/master/public/images/OpenGraphImage.webp`,
+			],
+		},
+		icons: [
+			{
+				rel: 'icon',
+				type: 'image/x-icon',
+				url: 'favicon.ico',
+				media: '(prefers-color-scheme: light)',
+			},
+			{
+				rel: 'icon',
+				type: 'image/x-icon',
+				url: 'favicon-dark.ico',
+				media: '(prefers-color-scheme: dark)',
+			},
+		],
+	}
+}
 
-	return (
-		<>
-			<Loader lenis={lenis} />
-
-			<MobileNavigation lenis={lenis} />
-			<Navigation lenis={lenis} />
-
-			<main className='flex flex-col items-center'>
-				<Gallery />
-
-				<About />
-
-				<Pricelist />
-
-				<ContactForm />
-
-				<References></References>
-			</main>
-
-			<Footer />
-		</>
-	)
+async function HomePage() {
+	return <LoaderProvider />
 }
 
 export default HomePage

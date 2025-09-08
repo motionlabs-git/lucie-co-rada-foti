@@ -27,7 +27,7 @@ const DraggableItem = ({
 				transition,
 			}}
 			{...attributes}
-			className='group flex items-center justify-between bg-stone-900 select-none cursor-pointer rounded-lg p-2'
+			className='group flex items-center justify-between bg-white/50 dark:bg-stone-900 select-none cursor-pointer rounded-lg p-2'
 		>
 			{item && (
 				<Link

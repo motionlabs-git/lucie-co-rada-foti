@@ -1,5 +1,4 @@
 'use client'
-
 import React from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import PricelistSlide from '@/components/front/Pricelist/PricelistSlide'

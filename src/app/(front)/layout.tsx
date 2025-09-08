@@ -24,42 +24,6 @@ const promenadeItalic = localFont({
 	variable: '--font-promenade-italic',
 })
 
-export const metadata: Metadata = {
-	title: 'Title',
-	description: 'Description',
-	keywords: '',
-	authors: [
-		{
-			name: 'MotionLabs',
-			url: 'https://motionlabs.cz',
-		},
-	],
-	twitter: {
-		card: 'summary_large_image',
-	},
-	openGraph: {
-		title: 'Lucie co ráda fotí',
-		description: '',
-		images: [
-			`https://raw.githubusercontent.com/motionlabs-git/habartovi/refs/heads/master/public/images/OpenGraphImage.webp`,
-		],
-	},
-	icons: [
-		{
-			rel: 'icon',
-			type: 'image/x-icon',
-			url: 'favicon.ico',
-			media: '(prefers-color-scheme: light)',
-		},
-		{
-			rel: 'icon',
-			type: 'image/x-icon',
-			url: 'favicon-dark.ico',
-			media: '(prefers-color-scheme: dark)',
-		},
-	],
-}
-
 export default function FrontLayout({
 	children,
 }: Readonly<{

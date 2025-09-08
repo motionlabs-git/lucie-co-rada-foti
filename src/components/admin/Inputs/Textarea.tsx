@@ -8,7 +8,7 @@ const Textarea: React.FC<
 		<>
 			<textarea
 				{...props}
-				className={`w-full bg-white/5 p-3 rounded-lg border border-white/5 ${
+				className={`w-full dark:bg-white/5 bg-white/50 p-3 rounded-lg border border-white/5 ${
 					error ? '!border-red-500/50 focus:!border-red-500' : ''
 				} focus:border-white/20 duration-300 appearance-none ${
 					props.className ?? ''

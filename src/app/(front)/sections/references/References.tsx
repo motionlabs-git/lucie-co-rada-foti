@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import AutoScroll from 'embla-carousel-auto-scroll'

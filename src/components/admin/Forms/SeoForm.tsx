@@ -10,6 +10,9 @@ import { axiosClient } from '@/utils/axios/client'
 import Input from '../Inputs/Input'
 import { FiSave } from 'react-icons/fi'
 import Textarea from '../Inputs/Textarea'
+import ProgressBar from '../Inputs/ProgressBar'
+
+import { FiPlus } from 'react-icons/fi'
 
 interface IProps {
 	id: number
@@ -24,6 +27,7 @@ const SeoForm: NextPage<IProps> = ({ id, defaultValues }) => {
 	const {
 		register,
 		handleSubmit,
+		watch,
 		formState: { errors },
 	} = useForm<SeoSchema>({
 		defaultValues,
@@ -58,6 +62,19 @@ const SeoForm: NextPage<IProps> = ({ id, defaultValues }) => {
 			className='flex flex-col gap-4 animate-fade-in'
 		>
 			<div>
+				<label>Favicon (.ico)</label>
+
+				<div
+					className={`mt-2 aspect-square w-24 h-auto flex items-center justify-center rounded-xl dark:bg-black/50 border-dashed border-3  cursor-pointer duration-300 p-4`}
+				>
+					{/* <input /> */}
+					{/* TODO: Funkcionalia inputu */}
+					<div>
+						<FiPlus size={30}></FiPlus>
+					</div>
+				</div>
+			</div>
+			<div>
 				<label>Title</label>
 				<Input
 					{...register('title')}
@@ -65,6 +82,12 @@ const SeoForm: NextPage<IProps> = ({ id, defaultValues }) => {
 					type='text'
 					error={errors.title}
 					className='mt-1'
+				/>
+
+				<ProgressBar
+					characters={watch('title').length}
+					low={20}
+					enought={[50, 60]}
 				/>
 			</div>
 
@@ -76,6 +99,12 @@ const SeoForm: NextPage<IProps> = ({ id, defaultValues }) => {
 					type='text'
 					error={errors.description}
 					className='mt-1'
+				/>
+
+				<ProgressBar
+					characters={watch('description').length}
+					low={50}
+					enought={[70, 155]}
 				/>
 			</div>
 

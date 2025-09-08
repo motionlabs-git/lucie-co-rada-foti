@@ -87,7 +87,7 @@ const SignInForm: React.FC<IProps> = () => {
 					setUnauthorizedError(false)
 				}}
 				disabled={loading}
-				className='w-full flex justify-center items-center bg-white/90 hover:bg-white text-gray-900 rounded-lg duration-300 p-3 mt-3'
+				className='w-full flex justify-center items-center bg-white/90 hover:bg-white text-gray-900 rounded-lg duration-300 p-3 mt-3 h-12'
 			>
 				{loading ? (
 					<ImSpinner2 className='animate-spin text-lg' />
