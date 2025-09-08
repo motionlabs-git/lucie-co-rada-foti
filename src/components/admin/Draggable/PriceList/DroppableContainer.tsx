@@ -21,10 +21,11 @@ import {
 import DraggableItem from './DraggableItem'
 import { PriceListSchema } from '@/schemas/price-list.schema'
 import { createClient } from '@/utils/supabase/client'
+import { Model } from '@/schemas/model'
 
 interface IProps {
-	category: PriceListCategorySchema & { id: number }
-	priceList: (PriceListSchema & { id: number })[]
+	category: Model<PriceListCategorySchema>
+	priceList: Model<PriceListSchema>[]
 }
 
 const DroppableContainer: React.FC<IProps> = ({ category, priceList }) => {

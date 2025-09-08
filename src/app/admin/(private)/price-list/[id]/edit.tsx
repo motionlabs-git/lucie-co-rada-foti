@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import PriceListForm from '@/components/admin/Forms/PriceListForm'
 import { PriceListSchema } from '@/schemas/price-list.schema'
 import { useRouter } from 'next/navigation'
-import { axiosClient } from '@/utils/axios/client'
+import { axiosFileClient } from '@/utils/axios/client'
 
 interface IProps {
 	id: string
@@ -17,10 +17,10 @@ const Edit: React.FC<IProps> = ({ id, defaultValues }) => {
 	const [response, setResponse] = useState(false)
 	const [error, setError] = useState(false)
 
-	const handleFormSubmit = async (data: PriceListSchema) => {
+	const handleFormSubmit = async (data: FormData) => {
 		setLoading(true)
 
-		axiosClient
+		axiosFileClient
 			.post(`/api/v1/price-list/${id}`, data)
 			.then(() => {
 				setResponse(true)

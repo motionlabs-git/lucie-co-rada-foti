@@ -5,7 +5,13 @@ export const priceListValidation = z.object({
 	subtitle: z.string().trim().optional(),
 	description: z.string().trim().nonempty('Description is required'),
 	price: z.number().min(0, 'Price must be a positive number'),
-	image: z.string().trim().optional(),
+	image_name: z.string().trim().nonempty('Image name is required').nullable(),
+	image_public_id: z
+		.string()
+		.trim()
+		.nonempty('Image public_id is required')
+		.nullable(),
+	image_url: z.string().trim().nonempty('Image URL is required').nullable(),
 	category: z.number().int(),
 })
 

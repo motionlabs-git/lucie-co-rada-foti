@@ -1,8 +1,9 @@
 import SeoDropdown from '@/components/admin/Dropdown/SeoDropdown'
 import SeoForm from '@/components/admin/Forms/SeoForm'
+import { Model } from '@/schemas/model'
 import { SeoSchema } from '@/schemas/seo.schema'
 import { createServerClient } from '@/utils/supabase/server'
-import { PostgrestSingleResponse } from '@supabase/supabase-js'
+import { PostgrestResponse } from '@supabase/supabase-js'
 import { redirect } from 'next/navigation'
 
 const SeoPage = async () => {
@@ -10,9 +11,8 @@ const SeoPage = async () => {
 	const {
 		data,
 		error,
-	}: PostgrestSingleResponse<
-		(SeoSchema & { id: number; path: string; name: string })[]
-	> = await supabase.from('seo').select('*').range(0, 5)
+	}: PostgrestResponse<Model<SeoSchema> & { path: string; name: string }> =
+		await supabase.from('seo').select('*').range(0, 5)
 
 	if (error) {
 		redirect('/admin/error')
