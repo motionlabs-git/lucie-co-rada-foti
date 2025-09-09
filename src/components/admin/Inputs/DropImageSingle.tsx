@@ -50,9 +50,9 @@ const DropImageSingle: React.FC<IProps> = ({
 		values[`${name}_url`]
 	) {
 		return (
-			<div className='relative'>
+			<div className='relative w-full max-w-2xs aspect-square'>
 				<div
-					className={`w-full max-w-2xs aspect-square rounded-xl overflow-hidden ${
+					className={`w-full h-full rounded-xl overflow-hidden ${
 						className ?? ''
 					}`}
 				>
@@ -65,25 +65,23 @@ const DropImageSingle: React.FC<IProps> = ({
 					/>
 				</div>
 
-				{/* TODO: style btn */}
 				<button
 					type='button'
 					aria-label='Remove image'
 					onClick={handleDeleteImage}
-					className='absolute top-2 right-2 dark:bg-white rounded-full'
+					className='absolute -top-4 -right-4 w-8 h-8 flex items-center justify-center dark:bg-white rounded-full'
 				>
-					<FiX />
+					<FiX className='text-lg text-stone-950' />
 				</button>
 			</div>
 		)
 	}
 
 	if (file) {
-		// TODO: show uploading state
 		return (
-			<div className='relative'>
+			<div className='relative w-full max-w-2xs aspect-square'>
 				<div
-					className={`w-full max-w-2xs aspect-square rounded-xl overflow-hidden ${
+					className={`w-full h-full rounded-xl overflow-hidden ${
 						className ?? ''
 					}`}
 				>
@@ -96,14 +94,13 @@ const DropImageSingle: React.FC<IProps> = ({
 					/>
 				</div>
 
-				{/* TODO: style btn */}
 				<button
 					type='button'
 					aria-label='Remove image'
 					onClick={handleDeleteFile}
-					className='absolute top-2 right-2 dark:bg-white rounded-full'
+					className='absolute -top-4 -right-4 w-8 h-8 flex items-center justify-center dark:bg-white rounded-full'
 				>
-					<FiX />
+					<FiX className='text-lg text-stone-950' />
 				</button>
 			</div>
 		)

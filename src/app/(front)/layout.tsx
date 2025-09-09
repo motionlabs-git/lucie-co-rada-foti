@@ -1,7 +1,6 @@
 import { Playfair_Display } from 'next/font/google'
 import localFont from 'next/font/local'
 import './front.css'
-import { Metadata } from 'next'
 
 const bellefair = Playfair_Display({
 	weight: ['400'],
