@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import MobileNavigation from '../Navigation/MobileNavigation'
 import Navigation from '../Navigation/Navigation'
 import About from '@/app/(front)/sections/About'
@@ -9,29 +9,30 @@ import References from '@/app/(front)/sections/References'
 import Footer from '../Footer/Footer'
 import { usePathname } from 'next/navigation'
 import Lenis from 'lenis'
-import initAnimations from '@/utils/initAnimations'
 import Loader from './Loader'
 import Gallery from '@/app/(front)/sections/Gallery'
+import fetchImages from '@/utils/fetchImages'
 
 const LoaderProvider = () => {
+	const [isLoaded, setIsLoaded] = useState(false)
 	const path = usePathname()
 	const lenis = useRef<null | Lenis>(null)
+
+	const imgData = fetchImages()
 
 	useEffect(() => {
 		//Lenis
 		lenis.current = new Lenis()
-
-		initAnimations()
 	}, [path])
 
 	return (
 		<>
-			<Loader lenis={lenis}></Loader>
+			<Loader isLoaded={isLoaded} lenis={lenis}></Loader>
 			<MobileNavigation lenis={lenis} />
 			<Navigation lenis={lenis} />
 
 			<main className='flex flex-col items-center'>
-				<Gallery />
+				{imgData && <Gallery imgData={imgData} />}
 
 				<About />
 

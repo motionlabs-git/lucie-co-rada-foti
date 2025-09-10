@@ -2,12 +2,21 @@
 import Lenis from 'lenis'
 import React, { RefObject, useEffect, useState } from 'react'
 import gsap from 'gsap'
+import initAnimations from '@/utils/initAnimations'
 
 const text = ['Tři', 'Dva', 'Jedna', 'Úsměv!']
 
-const Loader = ({ lenis }: { lenis: RefObject<Lenis | null> }) => {
+const Loader = ({
+	lenis,
+	isLoaded,
+}: {
+	lenis: RefObject<Lenis | null>
+	isLoaded: boolean
+}) => {
 	const [isActive, setIsActive] = useState(true)
 	const [index, setIndex] = useState(0)
+
+	console.log(isLoaded)
 
 	useEffect(() => {
 		gsap.to('#loaderProgress', {
@@ -31,6 +40,8 @@ const Loader = ({ lenis }: { lenis: RefObject<Lenis | null> }) => {
 				lenis.current?.scrollTo(0, {
 					immediate: true,
 					onComplete: () => {
+						initAnimations()
+
 						gsap.to('#loader', {
 							opacity: 0,
 							scale: 1.2,
