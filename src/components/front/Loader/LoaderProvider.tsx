@@ -2,16 +2,16 @@
 import React, { useEffect, useRef } from 'react'
 import MobileNavigation from '../Navigation/MobileNavigation'
 import Navigation from '../Navigation/Navigation'
-import Gallery from '@/app/(front)/sections/gallery/Gallery'
-import About from '@/app/(front)/sections/about/About'
-import Pricelist from '@/app/(front)/sections/pricelist/Pricelist'
-import ContactForm from '@/app/(front)/sections/contactForm/ContactForm'
-import References from '@/app/(front)/sections/references/References'
+import About from '@/app/(front)/sections/About'
+import Pricelist from '@/app/(front)/sections/Pricelist'
+import ContactForm from '@/app/(front)/sections/ContactForm'
+import References from '@/app/(front)/sections/References'
 import Footer from '../Footer/Footer'
 import { usePathname } from 'next/navigation'
 import Lenis from 'lenis'
 import initAnimations from '@/utils/initAnimations'
 import Loader from './Loader'
+import Gallery from '@/app/(front)/sections/Gallery'
 
 const LoaderProvider = () => {
 	const path = usePathname()

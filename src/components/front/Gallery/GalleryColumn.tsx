@@ -1,17 +1,14 @@
 import React from 'react'
 import Image from 'next/image'
 import Marquee from '../Marquee/Marquee'
+import { GalleryImage } from '@/types/gallery-image'
 
 const GalleryColumn = ({
 	galleryData,
 	className,
 	handleClick,
 }: {
-	galleryData: {
-		src: string
-		title: string
-		id: number
-	}[]
+	galleryData: GalleryImage[]
 	className: string
 	handleClick: (id: number) => void
 }) => {
@@ -33,8 +30,8 @@ const GalleryColumn = ({
 								width={800}
 								height={800}
 								className='w-full duration-300 rounded-xl'
-								src={img.src}
-								alt={img.title}
+								src={img.url}
+								alt={img.name}
 							/>
 						</div>
 

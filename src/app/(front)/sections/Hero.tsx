@@ -1,6 +1,6 @@
 'use client'
 import React, { useEffect } from 'react'
-import Logo from '../../../../../public/images/Logo'
+import Logo from '../../../../public/images/Logo'
 import gsap from 'gsap'
 import DrawSVGPlugin from 'gsap/DrawSVGPlugin'
 import ScrollTrigger from 'gsap/dist/ScrollTrigger'
