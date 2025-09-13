@@ -5,7 +5,6 @@ import PriceListForm from '@/components/admin/Forms/PriceListForm'
 import { PriceListSchema } from '@/schemas/price-list.schema'
 import { useRouter } from 'next/navigation'
 import { axiosFileClient } from '@/utils/axios/client'
-import { createClient } from '@/utils/supabase/client'
 
 interface IProps {
 	id: string
@@ -41,37 +40,37 @@ const Edit: React.FC<IProps> = ({ id, defaultValues }) => {
 			})
 	}
 
-	const deleteForm = async (
-		e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-	) => {
-		e.preventDefault()
+	const deleteForm = () => {
+		// //TODO:Delete
+		// const supabase = createClient()
 
-		//TODO:Delete
-		const supabase = createClient()
+		// setLoading(true)
 
-		setLoading(true)
+		// try {
+		// 	await supabase
+		// 		.from('price_list')
+		// 		.delete()
+		// 		.eq('id', id)
+		// 		.then((res) => {
+		// 			console.log(res)
+		// 		})
 
-		try {
-			await supabase
-				.from('price_list')
-				.delete()
-				.eq('id', id)
-				.then((res) => {
-					console.log(res)
-				})
+		// 	const {
+		// 		data: pricelistCategories,
+		// 		error,
+		// 	}: PostgrestSingleResponse<PriceListCategorySchema[]> =
+		// 		await supabase.from('price_list_category').select('*')
 
-			// TODO:mazani z tabulky kategorii
+		// 	pricelistCategories[category].item_order
 
-			// const { data, error } = await supabase
-			// 	.from('price_list_category')
-			// 	.update({ item_order: '1' })
-			// 	.eq('some_column', 'someValue')
-			// 	.select()
-		} catch (error) {
-			console.log(error)
-			setError(true)
-		} finally {
-		}
+		// 	// TODO:mazani z tabulky kategorii
+		// } catch (error) {
+		// 	console.log(error)
+		// 	setError(true)
+		// } finally {
+		// }
+
+		axiosFileClient.delete(`/api/v1/price-list/${id}`)
 	}
 
 	return (

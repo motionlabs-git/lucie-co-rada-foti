@@ -28,7 +28,7 @@ const DraggableItem = ({
 				transition,
 			}}
 			{...attributes}
-			className='group flex items-center justify-between bg-white/50 dark:bg-stone-900 select-none cursor-pointer rounded-lg p-2'
+			className='group flex items-center justify-between bg-white/50 dark:bg-stone-900 select-none cursor-pointer rounded-lg p-2 '
 		>
 			{item && (
 				<Link
@@ -38,7 +38,8 @@ const DraggableItem = ({
 					{item.title}
 				</Link>
 			)}
-			<div {...listeners}>
+
+			<div {...listeners} className='p-1'>
 				<GoGrabber size={24} />
 			</div>
 		</div>

@@ -14,12 +14,12 @@ import Select from '../Inputs/Select'
 import { ImSpinner2 } from 'react-icons/im'
 import DropImageSingle from '../Inputs/DropImageSingle'
 import { FileWithPath } from 'react-dropzone'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 interface IProps {
 	defaultValues?: PriceListSchema
 	onSubmit: (data: FormData) => void
-	handleDelete?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
+	handleDelete?: () => void
 	loading: boolean
 	response: boolean
 	error: boolean
@@ -59,6 +59,14 @@ const PriceListForm: NextPage<IProps> = ({
 
 		onSubmit(formData)
 	}
+
+	useEffect(() => {
+		if (!defaultValues) {
+			setValue('image_name', null)
+			setValue('image_url', null)
+			setValue('image_public_id', null)
+		}
+	}, [defaultValues, setValue])
 
 	return (
 		<form
@@ -160,7 +168,8 @@ const PriceListForm: NextPage<IProps> = ({
 			<div className='flex gap-4 justify-end'>
 				{handleDelete && (
 					<button
-						onClick={(e) => handleDelete(e)}
+						type='button'
+						onClick={handleDelete}
 						className='self-end flex justify-center items-center gap-2 bg-red-400/80 hover:bg-red-400 text-white rounded-lg duration-300 py-3 h-12 px-6'
 					>
 						<p>Delete</p>

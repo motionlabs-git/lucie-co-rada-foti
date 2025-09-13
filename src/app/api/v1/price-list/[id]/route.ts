@@ -7,6 +7,7 @@ import {
 import { PostgrestSingleResponse } from '@supabase/supabase-js'
 import { PriceListCategorySchema } from '@/schemas/price-list-category.schema'
 import {
+	HttpInternalServerError,
 	HttpSupabaseError,
 	HttpValidationError,
 } from '@/utils/api/errorResponse'
@@ -121,6 +122,53 @@ export async function POST(
 
 		return HttpSuccess()
 	} catch {
-		return HttpValidationError()
+		return HttpInternalServerError()
+	}
+}
+
+export async function DELETE(
+	request: NextRequest,
+	{ params }: { params: Promise<Params> }
+) {
+	try {
+		const supabase = await createServerClient()
+		const { id } = await params
+
+		const {
+			data: categoryData1,
+			error: categoryErr1,
+		}: PostgrestSingleResponse<Model<PriceListCategorySchema>> =
+			await supabase
+				.from('price_list_category')
+				.select('*')
+				.contains('item_order', [Number(id)])
+				.single()
+
+		if (categoryErr1) return HttpSupabaseError(categoryErr1)
+
+		if (!categoryData1.item_order) return HttpValidationError()
+
+		// FILTER OLD CATEGORY
+		const { error: categoryErr2 } = await supabase
+			.from('price_list_category')
+			.update({
+				item_order: categoryData1.item_order?.filter(
+					(item) => item !== Number(id)
+				),
+			})
+			.eq('id', categoryData1.id)
+		if (categoryErr2) return HttpSupabaseError(categoryErr2)
+
+		//DELETE PRICELIST
+		const { error: pricelistErr1 } = await supabase
+			.from('price_list')
+			.delete()
+			.eq('id', id)
+
+		if (pricelistErr1) return HttpSupabaseError(pricelistErr1)
+
+		return HttpSuccess()
+	} catch {
+		return HttpInternalServerError()
 	}
 }
