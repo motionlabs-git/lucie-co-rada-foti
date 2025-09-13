@@ -8,7 +8,7 @@ import Loader from './Loader'
 import Footer from '../Footer/Footer'
 
 const LoaderProvider = ({ children }: { children: React.JSX.Element }) => {
-	const [isLoaded, setIsLoaded] = useState(false)
+	const [isLoaded] = useState(false)
 
 	const path = usePathname()
 	const lenis = useRef<null | Lenis>(null)

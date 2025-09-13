@@ -10,7 +10,6 @@ import References from './sections/References'
 import Gallery from './sections/Gallery'
 import { GalleryImage } from '@/types/gallery-image'
 import Pricelist from './sections/Pricelist'
-import { PriceListCategorySchema } from '@/schemas/price-list-category.schema'
 import { PricelistCategoryType } from '@/types/pricelist-category'
 
 export const generateMetadata = async () => {
