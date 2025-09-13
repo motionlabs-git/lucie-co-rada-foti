@@ -2,23 +2,21 @@
 import React, { useEffect, useRef, useState } from 'react'
 import MobileNavigation from '../Navigation/MobileNavigation'
 import Navigation from '../Navigation/Navigation'
-import About from '@/app/(front)/sections/About'
-import Pricelist from '@/app/(front)/sections/Pricelist'
-import ContactForm from '@/app/(front)/sections/ContactForm'
-import References from '@/app/(front)/sections/References'
-import Footer from '../Footer/Footer'
 import { usePathname } from 'next/navigation'
 import Lenis from 'lenis'
 import Loader from './Loader'
-import Gallery from '@/app/(front)/sections/Gallery'
-import fetchImages from '@/utils/fetchImages'
+import Footer from '../Footer/Footer'
 
-const LoaderProvider = () => {
+const LoaderProvider = ({ children }: { children: React.JSX.Element }) => {
 	const [isLoaded, setIsLoaded] = useState(false)
+
 	const path = usePathname()
 	const lenis = useRef<null | Lenis>(null)
 
-	const imgData = fetchImages()
+	// const imgData = fetchImages()
+	// const pricelistData = fetchPricelist()
+
+	// console.log(pricelistData)
 
 	useEffect(() => {
 		//Lenis
@@ -30,18 +28,7 @@ const LoaderProvider = () => {
 			<Loader isLoaded={isLoaded} lenis={lenis}></Loader>
 			<MobileNavigation lenis={lenis} />
 			<Navigation lenis={lenis} />
-
-			<main className='flex flex-col items-center'>
-				{imgData && <Gallery imgData={imgData} />}
-
-				<About />
-
-				<Pricelist />
-
-				<ContactForm />
-
-				<References />
-			</main>
+			{children}
 
 			<Footer />
 		</>

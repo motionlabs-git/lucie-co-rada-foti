@@ -1,6 +1,7 @@
 'use client'
 
 import PriceListForm from '@/components/admin/Forms/PriceListForm'
+import CloseButton from '@/components/admin/Pricelist/CloseButton'
 import { axiosFileClient } from '@/utils/axios/client'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
@@ -34,7 +35,11 @@ const PriceListCreatePage = () => {
 	return (
 		<>
 			<section className='w-full rounded-2xl bg-widget p-4'>
-				<h2 className='text-xl'>Create new price list</h2>
+				<div className='flex justify-between'>
+					<h2 className='text-xl'>Create new price list</h2>
+
+					<CloseButton></CloseButton>
+				</div>
 
 				<PriceListForm
 					onSubmit={handleFormSubmit}

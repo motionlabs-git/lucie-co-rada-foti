@@ -4,7 +4,7 @@ import { NextPage } from 'next'
 import { useForm, UseFormSetValue } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Input from '../Inputs/Input'
-import { FiSave } from 'react-icons/fi'
+import { FiSave, FiTrash2 } from 'react-icons/fi'
 import {
 	PriceListSchema,
 	priceListValidation,
@@ -19,6 +19,7 @@ import { useState } from 'react'
 interface IProps {
 	defaultValues?: PriceListSchema
 	onSubmit: (data: FormData) => void
+	handleDelete?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
 	loading: boolean
 	response: boolean
 	error: boolean
@@ -30,6 +31,7 @@ const PriceListForm: NextPage<IProps> = ({
 	loading,
 	response,
 	error,
+	handleDelete,
 }) => {
 	const [file, setFile] = useState<FileWithPath | null>(null)
 
@@ -155,17 +157,29 @@ const PriceListForm: NextPage<IProps> = ({
 				</span>
 			)}
 
-			<button
-				type='submit'
-				className='self-end flex justify-center items-center gap-2 bg-white/90 hover:bg-white text-gray-900 rounded-lg duration-300 py-3 px-6'
-			>
-				{loading ? (
-					<ImSpinner2 className='animate-spin text-lg' />
-				) : (
-					'Save'
+			<div className='flex gap-4 justify-end'>
+				{handleDelete && (
+					<button
+						onClick={(e) => handleDelete(e)}
+						className='self-end flex justify-center items-center gap-2 bg-red-400/80 hover:bg-red-400 text-white rounded-lg duration-300 py-3 h-12 px-6'
+					>
+						<p>Delete</p>
+						<FiTrash2 className='text-lg' />
+					</button>
 				)}
-				<FiSave className='text-lg' />
-			</button>
+
+				<button
+					type='submit'
+					className='self-end flex justify-center items-center gap-2 bg-white/90 hover:bg-white text-gray-900 rounded-lg duration-300 h-12 px-6'
+				>
+					{loading ? (
+						<ImSpinner2 className='animate-spin text-lg' />
+					) : (
+						'Save'
+					)}
+					<FiSave className='text-lg' />
+				</button>
+			</div>
 		</form>
 	)
 }

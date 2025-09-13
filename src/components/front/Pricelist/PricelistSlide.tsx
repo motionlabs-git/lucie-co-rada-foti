@@ -1,12 +1,8 @@
 import React from 'react'
 import Image from 'next/image'
+import { PriceListSchema } from '@/schemas/price-list.schema'
 
-interface Props {
-	title: string
-	price: number
-}
-
-const PricelistSlide = ({ title, price }: Props) => {
+const PricelistSlide = ({ data }: { data: PriceListSchema }) => {
 	return (
 		<div className='embla__slide flex flex-col md:flex-row-reverse items-center select-none gap-8 p-8'>
 			<div className='w-full md:flex-1 flex items-center justify-center'>
@@ -24,7 +20,7 @@ const PricelistSlide = ({ title, price }: Props) => {
 			</div>
 			<div className='md:flex-1 flex flex-col items-center gap-4'>
 				<h2 className='self-start text-4xl lg:text-5xl text-orange font-promenadeItalic font-bold'>
-					{title}
+					{data.title}
 				</h2>
 
 				<ul className='font-promenadeItalic text-xl lg:text-2xl w-10/12 list-disc'>
@@ -33,11 +29,10 @@ const PricelistSlide = ({ title, price }: Props) => {
 				</ul>
 
 				<p className='font-promenadeItalic text-xl lg:text-2xl w-10/12'>
-					Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-					Iste magnam vitae assumenda repudiandae aliquam inventore
+					{data.description}
 				</p>
 				<p className='self-end font-promenadeItalic text-3xl lg:text-4xl'>
-					{price},-
+					{data.price},-
 				</p>
 			</div>
 		</div>

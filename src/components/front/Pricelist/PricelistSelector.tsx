@@ -1,33 +1,32 @@
-import React, { useState } from 'react'
+import { PricelistCategoryType } from '@/types/pricelist-category'
+import React from 'react'
 
-const PricelistSelector = () => {
-	const [selectedPricelist, setSelectedPricelist] = useState(0)
-
+const PricelistSelector = ({
+	categories,
+	selectCategory,
+	selectedCategory,
+}: {
+	categories: PricelistCategoryType[] | null
+	selectCategory: (id: number) => void
+	selectedCategory: number
+}) => {
 	return (
-		<div className='w-full mt-8 flex border-b border-lightOrange'>
-			<button
-				onClick={() => setSelectedPricelist(0)}
-				className={`w-full py-2 box-content border-b-[2px] duration-200 font-bold  ${
-					selectedPricelist === 0
-						? 'border-orange font-bold'
-						: 'border-transparent'
-				}`}
-			>
-				<span className=''>Svatební focení</span>
-			</button>
-
-			<div className='h-full border-r border-black/30'></div>
-
-			<button
-				onClick={() => setSelectedPricelist(1)}
-				className={`w-full py-2 border-b-[2px] duration-200 font-bold ${
-					selectedPricelist === 1
-						? ' border-orange font-bold'
-						: 'border-transparent'
-				}`}
-			>
-				<span>Ostatní focení</span>
-			</button>
+		<div className='w-full mt-10 flex border-b border-lightOrange'>
+			{categories?.map((item) => {
+				return (
+					<button
+						key={item.id}
+						onClick={() => selectCategory(item.id)}
+						className={`w-full py-2 box-content duration-200 font-bellefair italic text-3xl relative hover:text-orange/80 border-b  ${
+							selectedCategory === item.id
+								? 'text-orange border-orange'
+								: 'text-black border-transparent hover:border-lightOrange'
+						}`}
+					>
+						<span>{item.name}</span>
+					</button>
+				)
+			})}
 		</div>
 	)
 }
