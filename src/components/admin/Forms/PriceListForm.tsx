@@ -46,6 +46,15 @@ const PriceListForm: NextPage<IProps> = ({
 		resolver: zodResolver(priceListValidation),
 	})
 
+	useEffect(() => {
+		if (!defaultValues || !defaultValues.image_url)
+			setValue('image_url', null)
+		if (!defaultValues || !defaultValues.image_public_id)
+			setValue('image_public_id', null)
+		if (!defaultValues || !defaultValues.image_name)
+			setValue('image_name', null)
+	}, [defaultValues, setValue])
+
 	const handleSetFile = (file: FileWithPath | null) => setFile(file)
 
 	const handleSubmitForm = (data: PriceListSchema) => {

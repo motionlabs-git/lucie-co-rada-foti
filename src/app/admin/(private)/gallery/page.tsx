@@ -1,16 +1,47 @@
+import PageLink from '@/components/admin/Pagination/PageLink'
+import { ImageUploadSchema } from '@/schemas/image-upload.schema'
+import { Model } from '@/schemas/model'
 import { createServerClient } from '@/utils/supabase/server'
+import { PostgrestResponse } from '@supabase/supabase-js'
+import { NextPage } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { redirect } from 'next/navigation'
-import { FiUpload } from 'react-icons/fi'
+import {
+	FiChevronLeft,
+	FiChevronRight,
+	FiChevronsLeft,
+	FiChevronsRight,
+	FiUpload,
+} from 'react-icons/fi'
 
-const GalleryPage = async () => {
+const GalleryPage: NextPage<{
+	searchParams: Promise<Record<string, string | string[] | undefined>>
+}> = async ({ searchParams }) => {
+	const { page } = await searchParams
+
+	const pageSize = 20
+	const parsedPage = page && !isNaN(+page) && +page ? +page : 1
+	const startIndex = (parsedPage - 1) * pageSize
+	const endIndex = parsedPage * pageSize - 1
+
 	const supabase = await createServerClient()
-	const { data: galleryData, error: galleryError } = await supabase
+	const {
+		data: pageData,
+		error: galleryError,
+	}: PostgrestResponse<Model<ImageUploadSchema>> = await supabase
 		.from('image_upload')
 		.select('*')
+		.range(startIndex, endIndex)
 
-	if (galleryError) redirect('/admin/error')
+	const {
+		count,
+		error: paginationError,
+	}: PostgrestResponse<Model<ImageUploadSchema>> = await supabase
+		.from('image_upload')
+		.select('*', { count: 'exact', head: true })
+
+	if (galleryError || paginationError) redirect('/admin/error')
 
 	return (
 		<>
@@ -27,19 +58,83 @@ const GalleryPage = async () => {
 				</div>
 
 				{/* TODO: */}
-				{galleryData && (
-					<ul className='w-full grid grid-cols-[repeat(auto-fill,minmax(10rem,2fr))] gap-4 mt-4'>
-						{galleryData.map((image) => (
-							<li key={image.id}>
+				{pageData && (
+					<ul className='w-full grid grid-cols-[repeat(auto-fill,minmax(12rem,2fr))] gap-4 mt-8'>
+						{pageData.map((image) => (
+							<li
+								key={image.id}
+								className='w-full aspect-square rounded-lg overflow-hidden'
+							>
 								<Image
 									src={image.url}
 									alt={image.name}
 									width={500}
 									height={500}
+									className='w-full h-full object-cover object-center'
 								/>
 							</li>
 						))}
 					</ul>
+				)}
+
+				{/* TODO: */}
+				{count && (
+					<div className='flex justify-center mt-6'>
+						<nav className='inline-flex gap-2'>
+							{parsedPage > 1 && (
+								<>
+									<PageLink href='/admin/gallery?page=1'>
+										<FiChevronsLeft />
+									</PageLink>
+
+									<PageLink
+										href={`/admin/gallery?page=${
+											parsedPage - 1
+										}`}
+									>
+										<FiChevronLeft />
+									</PageLink>
+								</>
+							)}
+
+							{Array.from(
+								{ length: Math.ceil(count / pageSize) },
+								(_, i) => i + 1
+							).map((pageNum) =>
+								pageNum === parsedPage ||
+								(pageNum >= parsedPage - 2 &&
+									pageNum <= parsedPage + 2) ? (
+									<PageLink
+										key={pageNum}
+										href={`/admin/gallery?page=${pageNum}`}
+										current={pageNum === parsedPage}
+									>
+										{pageNum}
+									</PageLink>
+								) : null
+							)}
+
+							{parsedPage < Math.ceil(count / pageSize) && (
+								<>
+									<PageLink
+										href={`/admin/gallery?page=${
+											parsedPage + 1
+										}`}
+									>
+										<FiChevronRight />
+									</PageLink>
+
+									<PageLink
+										href={`/admin/gallery?page=${Math.ceil(
+											count / pageSize
+										)}`}
+									>
+										<FiChevronsRight />
+									</PageLink>
+								</>
+							)}
+						</nav>
+					</div>
 				)}
 			</section>
 		</>
