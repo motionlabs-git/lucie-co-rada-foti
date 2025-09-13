@@ -14,7 +14,7 @@ import Select from '../Inputs/Select'
 import { ImSpinner2 } from 'react-icons/im'
 import DropImageSingle from '../Inputs/DropImageSingle'
 import { FileWithPath } from 'react-dropzone'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 interface IProps {
 	defaultValues?: PriceListSchema
@@ -43,6 +43,15 @@ const PriceListForm: NextPage<IProps> = ({
 		defaultValues,
 		resolver: zodResolver(priceListValidation),
 	})
+
+	useEffect(() => {
+		if (!defaultValues || !defaultValues.image_url)
+			setValue('image_url', null)
+		if (!defaultValues || !defaultValues.image_public_id)
+			setValue('image_public_id', null)
+		if (!defaultValues || !defaultValues.image_name)
+			setValue('image_name', null)
+	}, [defaultValues, setValue])
 
 	const handleSetFile = (file: FileWithPath | null) => setFile(file)
 

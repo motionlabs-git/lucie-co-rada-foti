@@ -58,7 +58,7 @@ export async function POST(request: NextRequest) {
 		const { error: categoryErr2 } = await supabase
 			.from('price_list_category')
 			.update({
-				order: categoryData.item_order
+				item_order: categoryData.item_order
 					? [...categoryData.item_order, priceListData.id]
 					: [priceListData.id],
 			})

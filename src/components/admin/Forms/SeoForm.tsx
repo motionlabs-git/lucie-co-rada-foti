@@ -12,8 +12,6 @@ import { FiSave } from 'react-icons/fi'
 import Textarea from '../Inputs/Textarea'
 import ProgressBar from '../Inputs/ProgressBar'
 
-import { FiPlus } from 'react-icons/fi'
-
 interface IProps {
 	id: number
 	defaultValues?: SeoSchema
@@ -61,19 +59,6 @@ const SeoForm: NextPage<IProps> = ({ id, defaultValues }) => {
 			onSubmit={handleSubmit(handleFormSubmit)}
 			className='flex flex-col gap-4 animate-fade-in'
 		>
-			<div>
-				<label>Favicon (.ico)</label>
-
-				<div
-					className={`mt-2 aspect-square w-24 h-auto flex items-center justify-center rounded-xl dark:bg-black/50 border-dashed border-3  cursor-pointer duration-300 p-4`}
-				>
-					{/* <input /> */}
-					{/* TODO: Funkcionalia inputu */}
-					<div>
-						<FiPlus size={30}></FiPlus>
-					</div>
-				</div>
-			</div>
 			<div>
 				<label>Title</label>
 				<Input
