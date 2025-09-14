@@ -56,7 +56,11 @@ const DraggableItem = ({
 				)}
 			</div>
 
-			<DeletePriceInput handleDelete={deletePrice} />
+			{/* TODO: Vyber lepsi typ a smaz horsi  */}
+			<div className='flex gap-1'>
+				<DeletePriceInput handleDelete={deletePrice} />
+				<DeletePriceInput handleDelete={deletePrice} type={2} />
+			</div>
 		</div>
 	)
 }
