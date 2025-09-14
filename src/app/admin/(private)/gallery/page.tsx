@@ -63,7 +63,7 @@ const GalleryPage: NextPage<{
 						{pageData.map((image) => (
 							<li
 								key={image.id}
-								className='w-full aspect-square rounded-lg overflow-hidden'
+								className='w-full aspect-square border border-white/5 hover:border-white/20 duration-300 rounded-lg overflow-hidden'
 							>
 								<Image
 									src={image.url}

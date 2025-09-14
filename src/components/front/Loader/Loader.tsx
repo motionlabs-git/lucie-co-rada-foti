@@ -78,7 +78,10 @@ const Loader = ({
 			>
 				<div className='w-full flex flex-col items-center gap-10'>
 					<h1 className='flex gap-4 items-baseline'>
-						<em id='loadingText' className='text-6xl md:text-[5vw]'>
+						<em
+							id='loadingText'
+							className='text-6xl md:text-[5vw] px-6'
+						>
 							{text[index]}
 						</em>
 					</h1>

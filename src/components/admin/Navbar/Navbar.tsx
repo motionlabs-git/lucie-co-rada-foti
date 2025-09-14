@@ -2,7 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Logo from '../../../../public/images/logo.svg'
 import Avatar from './Avatar'
-import ThemeButton from './ThemeButton'
+// import ThemeButton from './ThemeButton'
 
 const Navbar: React.FC = async () => {
 	// const supabase = await createServerClient()
@@ -25,7 +25,7 @@ const Navbar: React.FC = async () => {
 			</section>
 
 			<section className='flex items-center gap-4'>
-				<ThemeButton />
+				{/* <ThemeButton /> */}
 
 				<Avatar />
 			</section>
