@@ -2,7 +2,7 @@
 import React from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import AutoScroll from 'embla-carousel-auto-scroll'
-import ReferenceCard from '@/components/References/ReferenceCard'
+import ReferenceCard from '@/components/front/References/ReferenceCard'
 
 const fakeData = [
 	{

@@ -41,35 +41,6 @@ const Edit: React.FC<IProps> = ({ id, defaultValues }) => {
 	}
 
 	const deleteForm = () => {
-		// //TODO:Delete
-		// const supabase = createClient()
-
-		// setLoading(true)
-
-		// try {
-		// 	await supabase
-		// 		.from('price_list')
-		// 		.delete()
-		// 		.eq('id', id)
-		// 		.then((res) => {
-		// 			console.log(res)
-		// 		})
-
-		// 	const {
-		// 		data: pricelistCategories,
-		// 		error,
-		// 	}: PostgrestSingleResponse<PriceListCategorySchema[]> =
-		// 		await supabase.from('price_list_category').select('*')
-
-		// 	pricelistCategories[category].item_order
-
-		// 	// TODO:mazani z tabulky kategorii
-		// } catch (error) {
-		// 	console.log(error)
-		// 	setError(true)
-		// } finally {
-		// }
-
 		axiosFileClient.delete(`/api/v1/price-list/${id}`)
 	}
 

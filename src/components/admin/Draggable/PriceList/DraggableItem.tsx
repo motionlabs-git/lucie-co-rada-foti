@@ -3,10 +3,12 @@
 import React from 'react'
 import { useSortable } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
-import { GoGrabber } from 'react-icons/go'
 import { PriceListSchema } from '@/schemas/price-list.schema'
 import Link from 'next/link'
 import { Model } from '@/schemas/model'
+import { FiCode } from 'react-icons/fi'
+import { axiosFileClient } from '@/utils/axios/client'
+import DeletePriceInput from '../../Inputs/DeletePriceInput'
 
 const DraggableItem = ({
 	id,
@@ -20,6 +22,12 @@ const DraggableItem = ({
 	const { attributes, listeners, setNodeRef, transform, transition } =
 		useSortable({ id, disabled })
 
+	const deletePrice = () => {
+		//TODO:User friendly ... loading, response, error
+
+		axiosFileClient.delete(`/api/v1/price-list/${id}`)
+	}
+
 	return (
 		<div
 			ref={setNodeRef}
@@ -28,19 +36,30 @@ const DraggableItem = ({
 				transition,
 			}}
 			{...attributes}
-			className='group flex items-center justify-between bg-white/50 dark:bg-stone-900 select-none cursor-pointer rounded-lg p-2 '
+			className='group flex items-center justify-between bg-white/50 hover:bg-stone-800 duration-200 dark:bg-stone-900 select-none cursor-pointer rounded-lg p-2 '
 		>
-			{item && (
-				<Link
-					href={`/admin/price-list/${item.id}`}
-					className='flex-1 group-hover:underline'
+			<div className='flex items-center gap-2'>
+				<div
+					className='p-1 flex flex-col justify-center items-center text-white/50 hover:text-white duration-200'
+					{...listeners}
 				>
-					{item.title}
-				</Link>
-			)}
+					<FiCode size={18} className='rotate-90' />
+				</div>
 
-			<div {...listeners} className='p-1'>
-				<GoGrabber size={24} />
+				{item && (
+					<Link
+						href={`/admin/price-list/${item.id}`}
+						className='flex-1 group-hover:underline'
+					>
+						{item.title}
+					</Link>
+				)}
+			</div>
+
+			{/* TODO: Vyber lepsi typ a smaz horsi  */}
+			<div className='flex gap-1'>
+				<DeletePriceInput handleDelete={deletePrice} />
+				<DeletePriceInput handleDelete={deletePrice} type={2} />
 			</div>
 		</div>
 	)
