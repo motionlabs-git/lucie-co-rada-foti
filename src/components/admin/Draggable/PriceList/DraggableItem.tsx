@@ -23,46 +23,39 @@ const DraggableItem = ({
 		useSortable({ id, disabled })
 
 	const deletePrice = () => {
-		//TODO:User friendly ... loading, response, error
-
 		axiosFileClient.delete(`/api/v1/price-list/${id}`)
 	}
 
-	return (
-		<div
-			ref={setNodeRef}
-			style={{
-				transform: CSS.Transform.toString(transform),
-				transition,
-			}}
-			{...attributes}
-			className='group flex items-center justify-between bg-white/50 hover:bg-stone-800 transition-colors duration-200 dark:bg-stone-900 select-none cursor-pointer rounded-lg p-2 '
-		>
-			<div className='flex items-center gap-2'>
-				<div
-					className='p-1 flex flex-col justify-center items-center text-white/50 hover:text-white duration-200'
-					{...listeners}
-				>
-					<FiCode size={18} className='rotate-90' />
+	if (item)
+		return (
+			<Link
+				href={`/admin/price-list/${item.id}`}
+				ref={setNodeRef}
+				style={{
+					transform: CSS.Transform.toString(transform),
+					transition,
+				}}
+				{...attributes}
+				className='group flex items-center justify-between bg-white/50 hover:bg-stone-800 transition-colors duration-200 dark:bg-stone-900 select-none cursor-pointer rounded-lg p-2 '
+			>
+				<div className='flex items-center gap-2'>
+					<div
+						className='p-1 flex flex-col justify-center items-center text-white/50 hover:text-white duration-200'
+						{...listeners}
+					>
+						<FiCode size={18} className='rotate-90' />
+					</div>
+
+					<p className='flex-1 group-hover:underline text-nowrap'>
+						{item.title}
+					</p>
+
+					<p className=''> - {item.price} CZK</p>
 				</div>
 
-				{item && (
-					<Link
-						href={`/admin/price-list/${item.id}`}
-						className='flex-1 group-hover:underline'
-					>
-						{item.title}
-					</Link>
-				)}
-			</div>
-
-			{/* TODO: Vyber lepsi typ a smaz horsi  */}
-			<div className='flex gap-1'>
 				<DeletePriceInput handleDelete={deletePrice} />
-				<DeletePriceInput handleDelete={deletePrice} type={2} />
-			</div>
-		</div>
-	)
+			</Link>
+		)
 }
 
 export default DraggableItem

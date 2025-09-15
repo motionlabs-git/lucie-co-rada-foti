@@ -1,3 +1,4 @@
+import GalleryGridForm from '@/components/admin/Forms/GalleryGridForm'
 import PageLink from '@/components/admin/Pagination/PageLink'
 import { ImageUploadSchema } from '@/schemas/image-upload.schema'
 import { Model } from '@/schemas/model'
@@ -41,10 +42,25 @@ const GalleryPage: NextPage<{
 		.from('image_upload')
 		.select('*', { count: 'exact', head: true })
 
-	if (galleryError || paginationError) redirect('/admin/error')
+	const { data: gridData, error: gridError } = await supabase
+		.from('gallery_grid')
+		.select('*')
+		.order('id', { ascending: true })
+
+	console.log(gridData)
+
+	if (galleryError || paginationError || gridError) redirect('/admin/error')
 
 	return (
 		<>
+			<section className='w-full rounded-2xl bg-widget p-4'>
+				<h2 className='text-xl'>Gallery grid</h2>
+				<GalleryGridForm
+					gridData={gridData}
+					uploadedImages={pageData}
+				></GalleryGridForm>
+			</section>
+
 			<section className='w-full rounded-2xl bg-widget p-4'>
 				<div className='flex items-center justify-between gap-2'>
 					<h2 className='text-xl'>Gallery</h2>
