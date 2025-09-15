@@ -1,54 +1,60 @@
 'use client'
-import { useRouter } from 'next/navigation'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FiSave } from 'react-icons/fi'
 import { ImSpinner2 } from 'react-icons/im'
 import ImageSelector from '../Inputs/ImageSelector'
-import { galleryGridImage } from '@/types/gallery-grid'
-import { ImageType } from '@/types/image'
+import { createClient } from '@/utils/supabase/client'
+import { PostgrestResponse } from '@supabase/supabase-js'
+import { GalleryGridUploadJoin } from '@/types/gallery-grid-upload-join'
 
-const GalleryGridForm = ({
-	gridData,
-	uploadedImages,
-}: {
-	gridData: galleryGridImage[]
-	uploadedImages: ImageType[]
-}) => {
-	const router = useRouter()
-	const [loading, setLoading] = useState(false)
-	const [response, setResponse] = useState(false)
-	const [error, setError] = useState(false)
+const GalleryGridForm = () => {
+	const supabase = createClient()
+	// const router = useRouter()
+	const [loading] = useState(false)
+	const [gridData, setGridData] = useState<null | GalleryGridUploadJoin[]>(
+		null
+	)
+	const [updateGrid, setUpdateGrid] = useState(0)
+	// const [response, setResponse] = useState(false)
+	// const [error, setError] = useState(false)
 
-	const [grid, setGrid] = useState(gridData)
+	useEffect(() => {
+		const fetchGridData = async () => {
+			const { data, error } = (await supabase
+				.from('gallery_grid')
+				.select(
+					`
+					  id,
+					  image_upload (
+					  id,
+					  url
+					  )
+				  `
+				)
+				.order('id', {
+					ascending: true,
+				})) as PostgrestResponse<GalleryGridUploadJoin>
 
-	const deleteImage = (id: number) => {
-		const index = grid.findIndex((item) => {
-			return item.id === id
-		})
+			setGridData(data)
+		}
 
-		console.log(
-			(grid[index] = {
-				id: id,
-				created_at: null,
-				image_id: null,
-			})
-		)
+		fetchGridData()
+	}, [updateGrid, supabase])
 
-		setGrid([
-			...grid,
-			(grid[index] = {
-				id: id,
-				created_at: null,
-				image_id: null,
-			}),
-		])
+	const deleteImage = async (id: number) => {
+		const { error } = await supabase
+			.from('gallery_grid')
+			.update({ image_id: null })
+			.eq('id', id)
+
+		setUpdateGrid((prev) => ++prev)
 	}
 
 	return (
 		<form className='flex flex-col mt-4'>
 			<div className='flex gap-4'>
 				<fieldset className='flex flex-col flex-1 gap-4'>
-					{grid.slice(0, 4).map((item, index) => {
+					{gridData?.slice(0, 4).map((item, index) => {
 						return (
 							<ImageSelector
 								key={item.id}
@@ -57,10 +63,7 @@ const GalleryGridForm = ({
 										? 'aspect-[4/5]'
 										: 'aspect-[5/4]'
 								}
-								image={uploadedImages.find((img) => {
-									if (img.id === item.image_id)
-										return img.id === item.image_id
-								})}
+								item={item}
 								handleDelete={() => deleteImage(item.id)}
 							></ImageSelector>
 						)
@@ -68,53 +71,38 @@ const GalleryGridForm = ({
 				</fieldset>
 
 				<fieldset className='flex flex-col flex-1 gap-4'>
-					{grid.slice(4, 8).map((item, index) => {
+					{gridData?.slice(4, 8).map((item, index) => {
 						return (
 							<ImageSelector
 								key={item.id}
 								aspect={
-									index % 2 === 1
+									index % 2 === 0
 										? 'aspect-[4/5]'
 										: 'aspect-[5/4]'
 								}
-								image={uploadedImages.find((img) => {
-									return img.id === item.image_id
-								})}
+								item={item}
 								handleDelete={() => deleteImage(item.id)}
 							></ImageSelector>
 						)
 					})}
 				</fieldset>
-
-				{/* <fieldset className='flex flex-col flex-1 gap-4'>
-					{grid.slice(8, 12).map((item) => {
+				<fieldset className='flex flex-col flex-1 gap-4'>
+					{gridData?.slice(8, 12).map((item, index) => {
 						return (
 							<ImageSelector
 								key={item.id}
-								aspect={'aspect-[4/5]'}
-								image={
-									uploadedImages.find((img) => {
-										if (img.id === item.image_id)
-											return img.id === item.image_id
-									})?.url
+								aspect={
+									index % 2 === 0
+										? 'aspect-[4/5]'
+										: 'aspect-[5/4]'
 								}
+								item={item}
+								handleDelete={() => deleteImage(item.id)}
 							></ImageSelector>
 						)
 					})}
-				</fieldset> */}
+				</fieldset>
 			</div>
-
-			<button
-				type='submit'
-				className='self-end flex justify-center items-center gap-2 bg-white/90 hover:bg-white text-gray-900 rounded-lg duration-300 h-12 px-6'
-			>
-				{loading ? (
-					<ImSpinner2 className='animate-spin text-lg' />
-				) : (
-					'Save'
-				)}
-				<FiSave className='text-lg' />
-			</button>
 		</form>
 	)
 }

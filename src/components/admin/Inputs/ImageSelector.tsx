@@ -1,22 +1,22 @@
-import { ImageType } from '@/types/image'
+import { GalleryGridUploadJoin } from '@/types/gallery-grid-upload-join'
 import Image from 'next/image'
 import React from 'react'
 import { FiPlus } from 'react-icons/fi'
 
 const ImageSelector = ({
 	aspect,
-	image,
+	item,
 	handleDelete,
 }: {
 	aspect: string
-	image: ImageType
+	item: GalleryGridUploadJoin
 	handleDelete: () => void
 }) => {
 	return (
 		<div
 			className={` ${aspect} w-full relative flex items-center justify-center rounded-xl bg-black/50 border-dashed border-3 border-stone-800 text-stone-800 hover:border-stone-700 hover:bg-black/40 hover:text-stone-700 cursor-pointer duration-300 overflow-hidden`}
 		>
-			{image && (
+			{item.image_upload && (
 				<button
 					type='button'
 					aria-label='Delete image'
@@ -27,10 +27,10 @@ const ImageSelector = ({
 				</button>
 			)}
 
-			{image ? (
+			{item.image_upload ? (
 				<Image
 					className='w-full h-full object-cover'
-					src={image.url}
+					src={item.image_upload?.url}
 					width={400}
 					height={400}
 					alt={''}

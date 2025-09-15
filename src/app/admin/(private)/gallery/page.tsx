@@ -42,23 +42,13 @@ const GalleryPage: NextPage<{
 		.from('image_upload')
 		.select('*', { count: 'exact', head: true })
 
-	const { data: gridData, error: gridError } = await supabase
-		.from('gallery_grid')
-		.select('*')
-		.order('id', { ascending: true })
-
-	console.log(gridData)
-
-	if (galleryError || paginationError || gridError) redirect('/admin/error')
+	if (galleryError || paginationError) redirect('/admin/error')
 
 	return (
 		<>
 			<section className='w-full rounded-2xl bg-widget p-4'>
 				<h2 className='text-xl'>Gallery grid</h2>
-				<GalleryGridForm
-					gridData={gridData}
-					uploadedImages={pageData}
-				></GalleryGridForm>
+				<GalleryGridForm></GalleryGridForm>
 			</section>
 
 			<section className='w-full rounded-2xl bg-widget p-4'>
