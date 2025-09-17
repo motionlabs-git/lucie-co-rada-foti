@@ -48,7 +48,7 @@ const GalleryPage: NextPage<{
 		<>
 			<section className='w-full rounded-2xl bg-widget p-4'>
 				<h2 className='text-xl'>Gallery grid</h2>
-				<GalleryGridForm></GalleryGridForm>
+				<GalleryGridForm galleryData={pageData}></GalleryGridForm>
 			</section>
 
 			<section className='w-full rounded-2xl bg-widget p-4'>

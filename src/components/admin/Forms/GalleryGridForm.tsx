@@ -1,13 +1,18 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import { FiSave } from 'react-icons/fi'
-import { ImSpinner2 } from 'react-icons/im'
-import ImageSelector from '../Inputs/ImageSelector'
 import { createClient } from '@/utils/supabase/client'
 import { PostgrestResponse } from '@supabase/supabase-js'
 import { GalleryGridUploadJoin } from '@/types/gallery-grid-upload-join'
+import ImageSlot from '../Inputs/ImageSlot'
+import ImagePicker from '../Inputs/ImagePicker'
+import { ImageUploadSchema } from '@/schemas/image-upload.schema'
+import { Model } from '@/schemas/model'
 
-const GalleryGridForm = () => {
+const GalleryGridForm = ({
+	galleryData,
+}: {
+	galleryData: Model<ImageUploadSchema>[]
+}) => {
 	const supabase = createClient()
 	// const router = useRouter()
 	const [loading] = useState(false)
@@ -15,6 +20,8 @@ const GalleryGridForm = () => {
 		null
 	)
 	const [updateGrid, setUpdateGrid] = useState(0)
+	const [imagePickerOpened, setImagePickerOpened] = useState(false)
+
 	// const [response, setResponse] = useState(false)
 	// const [error, setError] = useState(false)
 
@@ -51,12 +58,19 @@ const GalleryGridForm = () => {
 	}
 
 	return (
-		<form className='flex flex-col mt-4'>
+		<div className='flex flex-col mt-4'>
+			{imagePickerOpened && (
+				<ImagePicker
+					handleClose={() => setImagePickerOpened(false)}
+					galleryData={galleryData}
+				></ImagePicker>
+			)}
+
 			<div className='flex gap-4'>
 				<fieldset className='flex flex-col flex-1 gap-4'>
 					{gridData?.slice(0, 4).map((item, index) => {
 						return (
-							<ImageSelector
+							<ImageSlot
 								key={item.id}
 								aspect={
 									index % 2 === 0
@@ -65,7 +79,10 @@ const GalleryGridForm = () => {
 								}
 								item={item}
 								handleDelete={() => deleteImage(item.id)}
-							></ImageSelector>
+								handleOpenPicker={() =>
+									setImagePickerOpened(true)
+								}
+							></ImageSlot>
 						)
 					})}
 				</fieldset>
@@ -73,23 +90,26 @@ const GalleryGridForm = () => {
 				<fieldset className='flex flex-col flex-1 gap-4'>
 					{gridData?.slice(4, 8).map((item, index) => {
 						return (
-							<ImageSelector
+							<ImageSlot
 								key={item.id}
 								aspect={
-									index % 2 === 0
+									index % 2 === 1
 										? 'aspect-[4/5]'
 										: 'aspect-[5/4]'
 								}
 								item={item}
 								handleDelete={() => deleteImage(item.id)}
-							></ImageSelector>
+								handleOpenPicker={() =>
+									setImagePickerOpened(true)
+								}
+							></ImageSlot>
 						)
 					})}
 				</fieldset>
 				<fieldset className='flex flex-col flex-1 gap-4'>
 					{gridData?.slice(8, 12).map((item, index) => {
 						return (
-							<ImageSelector
+							<ImageSlot
 								key={item.id}
 								aspect={
 									index % 2 === 0
@@ -98,12 +118,15 @@ const GalleryGridForm = () => {
 								}
 								item={item}
 								handleDelete={() => deleteImage(item.id)}
-							></ImageSelector>
+								handleOpenPicker={() =>
+									setImagePickerOpened(true)
+								}
+							></ImageSlot>
 						)
 					})}
 				</fieldset>
 			</div>
-		</form>
+		</div>
 	)
 }
 

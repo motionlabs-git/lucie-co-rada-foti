@@ -3,18 +3,21 @@ import Image from 'next/image'
 import React from 'react'
 import { FiPlus } from 'react-icons/fi'
 
-const ImageSelector = ({
+const ImageSlot = ({
 	aspect,
 	item,
 	handleDelete,
+	handleOpenPicker,
 }: {
 	aspect: string
 	item: GalleryGridUploadJoin
 	handleDelete: () => void
+	handleOpenPicker: () => void
 }) => {
 	return (
 		<div
-			className={` ${aspect} w-full relative flex items-center justify-center rounded-xl bg-black/50 border-dashed border-3 border-stone-800 text-stone-800 hover:border-stone-700 hover:bg-black/40 hover:text-stone-700 cursor-pointer duration-300 overflow-hidden`}
+			className={` ${aspect} w-full relative flex items-center justify-center rounded-xl bg-black/50 border-dashed border-3 border-stone-800 text-stone-800 hover:border-stone-700 hover:bg-black/40 hover:text-stone-700 cursor-pointer duration-300 overflow-hidden select-none`}
+			onClick={handleOpenPicker}
 		>
 			{item.image_upload && (
 				<button
@@ -42,4 +45,4 @@ const ImageSelector = ({
 	)
 }
 
-export default ImageSelector
+export default ImageSlot
