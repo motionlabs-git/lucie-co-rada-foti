@@ -20,7 +20,9 @@ const GalleryGridForm = ({
 		null
 	)
 	const [updateGrid, setUpdateGrid] = useState(0)
-	const [imagePickerOpened, setImagePickerOpened] = useState(false)
+	const [imagePickerOpened, setImagePickerOpened] = useState<null | number>(
+		null
+	)
 
 	// const [response, setResponse] = useState(false)
 	// const [error, setError] = useState(false)
@@ -57,12 +59,29 @@ const GalleryGridForm = ({
 		setUpdateGrid((prev) => ++prev)
 	}
 
+	const selectImage = async (id: number) => {
+		console.log(id)
+
+		console.log(imagePickerOpened)
+
+		const { error } = await supabase
+			.from('gallery_grid')
+			.update({ image_id: id })
+			.eq('id', imagePickerOpened)
+
+		setImagePickerOpened(null)
+		setUpdateGrid((prev) => ++prev)
+
+		//TODO: update tabulky
+	}
+
 	return (
 		<div className='flex flex-col mt-4'>
 			{imagePickerOpened && (
 				<ImagePicker
-					handleClose={() => setImagePickerOpened(false)}
+					handleClose={() => setImagePickerOpened(null)}
 					galleryData={galleryData}
+					handleSelect={selectImage}
 				></ImagePicker>
 			)}
 
@@ -80,7 +99,7 @@ const GalleryGridForm = ({
 								item={item}
 								handleDelete={() => deleteImage(item.id)}
 								handleOpenPicker={() =>
-									setImagePickerOpened(true)
+									setImagePickerOpened(item.id)
 								}
 							></ImageSlot>
 						)
@@ -100,7 +119,7 @@ const GalleryGridForm = ({
 								item={item}
 								handleDelete={() => deleteImage(item.id)}
 								handleOpenPicker={() =>
-									setImagePickerOpened(true)
+									setImagePickerOpened(item.id)
 								}
 							></ImageSlot>
 						)
@@ -119,7 +138,7 @@ const GalleryGridForm = ({
 								item={item}
 								handleDelete={() => deleteImage(item.id)}
 								handleOpenPicker={() =>
-									setImagePickerOpened(true)
+									setImagePickerOpened(item.id)
 								}
 							></ImageSlot>
 						)
