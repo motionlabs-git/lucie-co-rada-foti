@@ -1,4 +1,5 @@
 'use client'
+
 import React, { useState } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import PricelistSlide from '@/components/front/Pricelist/PricelistSlide'
@@ -9,21 +10,26 @@ import {
 import PricelistSelector from '@/components/front/Pricelist/PricelistSelector'
 import { PriceListSchema } from '@/schemas/price-list.schema'
 import { PricelistCategoryType } from '@/types/pricelist-category'
+import { Model } from '@/schemas/model'
 
 const Pricelist = ({
-	pricelistData,
+	pricelistData: { pricelist, categories },
 }: {
 	pricelistData: {
-		pricelist: PriceListSchema[] | null
-		categories: PricelistCategoryType[] | null
+		pricelist: Model<PriceListSchema>[] | null
+		categories: Model<PricelistCategoryType>[] | null
 	}
 }) => {
 	const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true })
 	const { selectedIndex, onDotButtonClick } = useDotButton(emblaApi)
-	const [selectedCategory, setSelectedCategory] = useState(1)
 
-	const selectCategory = (id: number) => {
-		setSelectedCategory(id)
+	const [selectedCategory, setSelectedCategory] =
+		useState<PricelistCategoryType | null>(
+			Array.isArray(categories) ? categories[0] : null
+		)
+
+	const selectCategory = (category: PricelistCategoryType) => {
+		setSelectedCategory(category)
 	}
 
 	return (
@@ -33,9 +39,9 @@ const Pricelist = ({
 			</h1>
 
 			<PricelistSelector
-				categories={pricelistData.categories}
+				categories={categories}
 				selectCategory={selectCategory}
-				selectedCategory={selectedCategory}
+				selectedCategoryId={selectedCategory?.id ?? null}
 			></PricelistSelector>
 
 			<div
@@ -44,25 +50,28 @@ const Pricelist = ({
 			>
 				<div className='embla pricelist w-full relative' ref={emblaRef}>
 					<div className='embla__container pointer-events-none'>
-						{pricelistData.pricelist
-							?.filter((item) => {
-								return item.category === selectedCategory
-							})
-							.map((slide, i) => (
-								<PricelistSlide
-									data={slide}
-									key={i}
-								></PricelistSlide>
-							))}
+						{selectedCategory &&
+							selectedCategory.item_order.map((id) => {
+								const slide = pricelist?.find(
+									(item) =>
+										item.id === id &&
+										item.category === selectedCategory.id
+								)
+								if (!slide) return null
+
+								return (
+									<PricelistSlide
+										data={slide}
+										key={slide.id}
+									></PricelistSlide>
+								)
+							})}
 					</div>
 				</div>
 
 				<div className='flex justify-center items-center gap-1'>
-					{pricelistData.pricelist
-						?.filter((item) => {
-							return item.category === selectedCategory
-						})
-						.map((_, index) => (
+					{selectedCategory &&
+						selectedCategory.item_order.map((_, index) => (
 							<div
 								key={index}
 								className='w-5 aspect-square h-auto flex justify-center items-center'
