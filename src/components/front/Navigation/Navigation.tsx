@@ -51,7 +51,7 @@ function Navigation({ lenis }: Props) {
 	}
 
 	return (
-		<header className='z-40 fixed bottom-4 w-full md:flex hidden justify-center pointer-events-none'>
+		<header className='z-30 fixed bottom-4 w-full md:flex hidden justify-center pointer-events-none'>
 			<nav
 				onMouseEnter={mouseOver}
 				onMouseLeave={mouseLeave}

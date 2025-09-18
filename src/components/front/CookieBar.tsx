@@ -49,29 +49,35 @@ const CookieBar = () => {
 			<aside
 				className={`${
 					!isAgreed ? 'showCookieBar' : 'hideCookieBar hidden'
-				} w-full sm:max-w-96 fixed left-0 bottom-0 pl-4 pb-4 z-10`}
+				} w-full sm:max-w-96 fixed right-0 bottom-0 pr-4 pl-4 sm:pl-0 pb-4 z-40`}
 			>
-				<div className='w-full dark:bg-black/30 bg-black/10  dark:border-gray-800/50 border-gray-500/10 shadow-sm border-2 p-4 backdrop-blur-sm rounded-2xl '>
-					<h4>Nastavení cookies</h4>
-					<p className='text-black'>
-						Tyto webové stránky používají soubory cookies pro
-						analýzu návštěvnosti webových stránek a zjištění zdroje
-						návštěvnosti.
-					</p>
+				<div className='relative w-full bg-white border border-black/30 shadow-md p-4 rounded-2xl '>
+					<div className='absolute w-full h-full top-0 left-0 bg-white rounded-2xl blur-lg'></div>
 
-					<div className='mt-4 flex gap-2'>
-						<button
-							onClick={disagreeCookies}
-							className=' border-2 dark:border-white border-black hover:bg-white/20 rounded-lg dark:text-white font-semibold px-4 py-2'
-						>
-							Nesouhlasím
-						</button>
-						<button
-							onClick={agreeCookies}
-							className='bg-white  rounded-lg dark:text-black font-semibold px-4 py-2 '
-						>
-							Souhlasím
-						</button>
+					<div className='relative'>
+						<h4 className='font-bellefair text-lg'>
+							Nastavení cookies
+						</h4>
+						<p className='text-black text-sm mt-2'>
+							Tyto webové stránky používají soubory cookies pro
+							analýzu návštěvnosti webových stránek a zjištění
+							zdroje návštěvnosti.
+						</p>
+
+						<div className='mt-4 flex gap-2'>
+							<button
+								onClick={disagreeCookies}
+								className=' border border-black rounded-lg px-4 py-2'
+							>
+								Nesouhlasím
+							</button>
+							<button
+								onClick={agreeCookies}
+								className='bg-orange text-white font-satoshiBold rounded-lg border border-black px-4 py-2 '
+							>
+								Souhlasím
+							</button>
+						</div>
 					</div>
 				</div>
 			</aside>
