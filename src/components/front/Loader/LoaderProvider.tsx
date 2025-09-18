@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation'
 import Lenis from 'lenis'
 import Loader from './Loader'
 import Footer from '../Footer/Footer'
+import CookieBar from '../CookieBar'
 
 const LoaderProvider = ({ children }: { children: React.JSX.Element }) => {
 	const [isLoaded] = useState(false)
@@ -26,6 +27,8 @@ const LoaderProvider = ({ children }: { children: React.JSX.Element }) => {
 	return (
 		<>
 			<Loader isLoaded={isLoaded} lenis={lenis}></Loader>
+
+			<CookieBar></CookieBar>
 			<MobileNavigation lenis={lenis} />
 			<Navigation lenis={lenis} />
 			{children}
