@@ -20,6 +20,7 @@ const Footer = () => {
 				toggleActions: 'play play play reverse',
 			},
 			opacity: 0,
+			filter: 'blur(8px)',
 			pointerEvents: 'none',
 		})
 
@@ -61,10 +62,20 @@ const Footer = () => {
 						<ul className='list-none'>
 							<li>Lucie Pantálek Monsportová</li>
 							<li>
-								<Link href={''}>lucie@radafoti.cz</Link>
+								<Link
+									className='hover:text-invertedOrange!'
+									href={''}
+								>
+									lucie@radafoti.cz
+								</Link>
 							</li>
 							<li>
-								<Link href={''}>+420 111 111 111</Link>
+								<Link
+									className='hover:text-invertedOrange!'
+									href={''}
+								>
+									+420 111 111 111
+								</Link>
 							</li>
 						</ul>
 					</div>
@@ -107,6 +118,7 @@ const Footer = () => {
 							<li>
 								Created by{' '}
 								<Link
+									className='hover:text-invertedOrange!'
 									target='_blank'
 									href={'https://motionlabs.cz/'}
 								>

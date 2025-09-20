@@ -4,6 +4,7 @@
 	--bone: #faeddc;
 	--beige: #f3e9dc;
 	--orange: #d96f32;
+	--invertedOrange: #2690cd;
 	--lightOrange: #f0c6a9;
 	--brown: #443627;
 }
@@ -17,6 +18,7 @@
 	--color-bone: var(--bone);
 	--color-beige: var(--beige);
 	--color-orange: var(--orange);
+	--color-invertedOrange: var(--invertedOrange);
 	--color-lightOrange: var(--lightOrange);
 	--color-brown: var(--brown);
 }
@@ -27,8 +29,6 @@ h1 {
 
 h2 {
 	@apply text-2xl md:text-5xl;
-
-
 }
 
 h1,
@@ -172,7 +172,6 @@ a {
 	}
 }
 
-
 #imageModal {
 	animation-name: galleryModal;
 	animation-duration: 0.3s;
@@ -232,7 +231,6 @@ a {
 	left: 50%;
 	top: 80px;
 	-webkit-transform: translateX(-50%);
-
 }
 
 #mouse-scroll span {
@@ -263,17 +261,16 @@ a {
 	margin-top: 6px;
 }
 
-#mouse-scroll .down-arrow-1{
+#mouse-scroll .down-arrow-1 {
 	-webkit-animation: mouse-scroll 1s infinite;
 	-moz-animation: mouse-scroll 1s infinite;
 }
 
 #mouse-croll .down-arrow-1 {
-	-webkit-animation-delay: .1s;
-	-moz-animation-delay: .1s;
+	-webkit-animation-delay: 0.1s;
+	-moz-animation-delay: 0.1s;
 	-webkit-animation-direction: alternate;
 }
-
 
 #mouse-scroll .mouse-in {
 	height: 5px;
@@ -311,7 +308,7 @@ a {
 	}
 
 	50% {
-		opacity: .5;
+		opacity: 0.5;
 	}
 
 	100% {
@@ -332,5 +329,3 @@ a {
 		opacity: 1;
 	}
 }
-
-

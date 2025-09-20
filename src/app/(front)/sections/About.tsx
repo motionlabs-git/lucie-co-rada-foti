@@ -4,7 +4,7 @@ import Image from 'next/image'
 import gsap from 'gsap'
 
 const aboutLucka =
-	'Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem eligendi et, possimus laborum esse iste accusamus! Suscipit magni similique, reprehenderit error dolore quasi quia quaerat neque quam ab recusandae incidunt.'
+	'Fotit se mnou se bát nemusíš. Sejdeme se, projdeme se, pokecáme a během toho Ti udělám krásnou vzpomínku na život, přesně takový jaký v té chvíli byl.'
 
 const About = () => {
 	useEffect(() => {
@@ -53,14 +53,16 @@ const About = () => {
 				className='flex flex-col items-center justify-center sticky top-0 h-screen'
 			>
 				<h1 className='text-lightOrange text-nowrap text-center'>
+					<em className='text-left block indent-10'>Ahoj, jsem</em>
+
 					<em className='text-[12vw]'>Lucie co ráda fotí</em>
 				</h1>
-				<p className='mt-6 text-center max-w-6xl'>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit.
-					Eligendi a ipsam dolorum voluptate praesentium
-					exercitationem velit voluptates, voluptatum ex sunt quam
-					nobis dolorem! Quasi quisquam eveniet velit accusamus magni.
-					Molestias?
+				<p className='mt-6 text-center max-w-6xl text-lg'>
+					S foťákem v ruce se světem potuluju už dobrých 10 let. Proto
+					si myslím, že bych ti mohla pomoct zachytit důležité
+					okamžiky tvého života. Nejraději fotím svatby a rodiny, ale
+					libuju si i v párech a portrétech. Kdyby tě cokoliv
+					zajímalo, neváhej mě kontaktovat přes formulář níže!
 				</p>
 			</div>
 
@@ -85,7 +87,7 @@ const About = () => {
 					{aboutLucka.split(' ').map((w: string, i: number) => (
 						<span
 							key={i}
-							className='aboutPart2TitleSpan opacity-40 blur-sm'
+							className='aboutPart2TitleSpan opacity-40 blur-sm text-3xl sm:text-6xl'
 						>
 							{w + ' '}
 						</span>

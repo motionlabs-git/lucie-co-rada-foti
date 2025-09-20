@@ -17,7 +17,7 @@ const menuList = [
 		id: 'about',
 	},
 	{
-		title: 'Kontaktní formulář',
+		title: 'Kontakt',
 		id: 'contact',
 	},
 	{

@@ -53,7 +53,7 @@ const References = () => {
 	let counter = 0
 
 	return (
-		<section className='w-full relative'>
+		<section id='references' className='w-full relative'>
 			<div>
 				<h1 className='text-black invertText text-center'>
 					<em>Reference</em>

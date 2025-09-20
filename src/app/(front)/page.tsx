@@ -42,20 +42,6 @@ export const generateMetadata = async () => {
 				`https://raw.githubusercontent.com/motionlabs-git/habartovi/refs/heads/master/public/images/OpenGraphImage.webp`,
 			],
 		},
-		icons: [
-			{
-				rel: 'icon',
-				type: 'image/x-icon',
-				url: 'favicon.ico',
-				media: '(prefers-color-scheme: light)',
-			},
-			{
-				rel: 'icon',
-				type: 'image/x-icon',
-				url: 'favicon-dark.ico',
-				media: '(prefers-color-scheme: dark)',
-			},
-		],
 	}
 }
 

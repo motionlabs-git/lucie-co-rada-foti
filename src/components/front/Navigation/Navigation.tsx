@@ -28,7 +28,7 @@ function Navigation({ lenis }: Props) {
 			.to(
 				'#navLinks',
 				{
-					width: 300,
+					width: 400,
 				},
 				'<'
 			)
@@ -75,21 +75,26 @@ function Navigation({ lenis }: Props) {
 							Galerie
 						</button>
 						<button
-							onClick={() => scrollTo('gallery')}
+							onClick={() => scrollTo('about')}
+							className='navLink h-12 opacity-0 text-black font-satoshiBold border border-black/20 rounded-xl px-4 py-3 hover:border-black duration-300 whitespace-nowrap'
+						>
+							O mně
+						</button>
+						<button
+							onClick={() => scrollTo('pricelist')}
 							className='navLink h-12 opacity-0 text-black font-satoshiBold border border-black/20 rounded-xl px-4 py-3 hover:border-black duration-300 whitespace-nowrap'
 						>
 							Ceník
 						</button>
 						<button
-							onClick={() => scrollTo('gallery')}
+							onClick={() => scrollTo('references')}
 							className='navLink h-12 opacity-0 text-black font-satoshiBold border border-black/20 rounded-xl px-4 py-3 hover:border-black duration-300 whitespace-nowrap'
 						>
-							O mně
+							Reference
 						</button>
 					</div>
 
 					<button
-						id='navCta'
 						className='relative h-12 font-satoshiBold border-black hover:bg-lightOrange duration-300 hover:border-lightOrange hover:text-black text-white border rounded-lg px-6 bg-black'
 						onClick={() => scrollTo('contact')}
 					>

@@ -28,33 +28,38 @@ const DraggableItem = ({
 
 	if (item)
 		return (
-			<Link
-				href={`/admin/price-list/${item.id}`}
+			<div
 				ref={setNodeRef}
 				style={{
 					transform: CSS.Transform.toString(transform),
 					transition,
 				}}
 				{...attributes}
-				className='group flex items-center justify-between bg-white/50 hover:bg-stone-800 transition-colors duration-200 dark:bg-stone-900 select-none cursor-pointer rounded-lg p-2 '
+				className='group flex gap-2 items-center justify-between bg-white/50 hover:bg-stone-800 transition-colors duration-200 dark:bg-stone-900 select-none cursor-pointer rounded-lg px-2 '
 			>
-				<div className='flex items-center gap-2'>
+				<div className='flex flex-1 items-center gap-2'>
 					<div
+						onClick={(e) => e.preventDefault()}
 						className='p-1 flex flex-col justify-center items-center text-white/50 hover:text-white duration-200'
 						{...listeners}
 					>
 						<FiCode size={18} className='rotate-90' />
 					</div>
 
-					<p className='flex-1 group-hover:underline text-nowrap'>
-						{item.title}
-					</p>
+					<Link
+						href={`/admin/price-list/${item.id}`}
+						className='flex gap-1 flex-1 py-3'
+					>
+						<p className=' group-hover:underline text-nowrap'>
+							{item.title}
+						</p>
 
-					<p className=''> - {item.price} CZK</p>
+						<p className=''> - {item.price} CZK</p>
+					</Link>
 				</div>
 
 				<DeletePriceInput handleDelete={deletePrice} />
-			</Link>
+			</div>
 		)
 }
 

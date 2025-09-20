@@ -9,6 +9,7 @@ import {
 import PricelistSelector from '@/components/front/Pricelist/PricelistSelector'
 import { PriceListSchema } from '@/schemas/price-list.schema'
 import { PricelistCategoryType } from '@/types/pricelist-category'
+import gsap from 'gsap'
 
 const Pricelist = ({
 	pricelistData,
@@ -23,11 +24,25 @@ const Pricelist = ({
 	const [selectedCategory, setSelectedCategory] = useState(1)
 
 	const selectCategory = (id: number) => {
-		setSelectedCategory(id)
+		if (id !== selectedCategory)
+			gsap.to('#pricelist-slider', {
+				filter: 'blur(8px)',
+				opacity: 0,
+
+				onComplete: () => {
+					setSelectedCategory(id)
+					emblaApi?.scrollTo(0, true)
+
+					gsap.to('#pricelist-slider', {
+						filter: 'blur(0px)',
+						opacity: 1,
+					})
+				},
+			})
 	}
 
 	return (
-		<section className='container'>
+		<section className='container' id='pricelist'>
 			<h1 className='text-center'>
 				<em className=''>Ceník služeb</em>
 			</h1>
@@ -39,7 +54,7 @@ const Pricelist = ({
 			></PricelistSelector>
 
 			<div
-				id='pricelist'
+				id='pricelist-slider'
 				className=' relative flex flex-col items-center justify-center gap-6'
 			>
 				<div className='embla pricelist w-full relative' ref={emblaRef}>
