@@ -16,9 +16,9 @@ const PricelistSelector = ({
 				return (
 					<button
 						key={item.id}
-						onClick={() => selectCategory(item.id)}
+						onClick={() => selectCategory(item)}
 						className={`w-full py-2 box-content duration-200 font-bellefair italic text-xl sm:text-3xl relative hover:text-orange/80 border-b  ${
-							selectedCategory === item.id
+							selectedCategoryId === item.id
 								? 'text-orange border-orange'
 								: 'text-black border-transparent hover:border-lightOrange'
 						}`}

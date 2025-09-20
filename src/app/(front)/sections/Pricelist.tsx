@@ -29,22 +29,21 @@ const Pricelist = ({
 			Array.isArray(categories) ? categories[0] : null
 		)
 
-	const selectCategory = (id: number) => {
-		if (id !== selectedCategory)
-			gsap.to('#pricelist-slider', {
-				filter: 'blur(8px)',
-				opacity: 0,
+	const selectCategory = (category: PricelistCategoryType) => {
+		gsap.to('#pricelist-slider', {
+			filter: 'blur(8px)',
+			opacity: 0,
 
-				onComplete: () => {
-					setSelectedCategory(id)
-					emblaApi?.scrollTo(0, true)
+			onComplete: () => {
+				setSelectedCategory(category)
+				emblaApi?.scrollTo(0, true)
 
-					gsap.to('#pricelist-slider', {
-						filter: 'blur(0px)',
-						opacity: 1,
-					})
-				},
-			})
+				gsap.to('#pricelist-slider', {
+					filter: 'blur(0px)',
+					opacity: 1,
+				})
+			},
+		})
 	}
 
 	return (
