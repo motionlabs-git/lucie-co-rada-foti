@@ -4,11 +4,11 @@ import React from 'react'
 const PricelistSelector = ({
 	categories,
 	selectCategory,
-	selectedCategory,
+	selectedCategoryId,
 }: {
 	categories: PricelistCategoryType[] | null
-	selectCategory: (id: number) => void
-	selectedCategory: number
+	selectCategory: (category: PricelistCategoryType) => void
+	selectedCategoryId: number | null
 }) => {
 	return (
 		<div className='w-full mt-10 flex border-b border-lightOrange'>

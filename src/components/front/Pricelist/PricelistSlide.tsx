@@ -23,10 +23,11 @@ const PricelistSlide = ({ data }: { data: PriceListSchema }) => {
 					{data.title}
 				</h2>
 
-				<ul className='font-promenadeItalic text-xl lg:text-2xl w-10/12 list-disc'>
+				{/* TODO: */}
+				{/* <ul className='font-promenadeItalic text-xl lg:text-2xl w-10/12 list-disc'>
 					<li>Lorem ipsum dolor sit amet </li>
 					<li>Lorem ipsum dolor sit amet </li>
-				</ul>
+				</ul> */}
 
 				<p className='font-promenadeItalic text-xl lg:text-2xl w-10/12'>
 					{data.description}

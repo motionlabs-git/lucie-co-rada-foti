@@ -11,6 +11,7 @@ import Gallery from './sections/Gallery'
 import { GalleryImage } from '@/types/gallery-image'
 import Pricelist from './sections/Pricelist'
 import { PricelistCategoryType } from '@/types/pricelist-category'
+import { Model } from '@/schemas/model'
 
 export const generateMetadata = async () => {
 	const supabase = await createServerClient()
@@ -51,12 +52,15 @@ async function HomePage() {
 	const { data: galleryData }: PostgrestSingleResponse<GalleryImage[]> =
 		await supabase.from('image_upload').select('*')
 
-	const { data: pricelist }: PostgrestSingleResponse<PriceListSchema[]> =
-		await supabase.from('price_list').select('*')
+	const {
+		data: pricelist,
+	}: PostgrestSingleResponse<Model<PriceListSchema>[]> = await supabase
+		.from('price_list')
+		.select('*')
 
 	const {
 		data: pricelistCategories,
-	}: PostgrestSingleResponse<PricelistCategoryType[]> = await supabase
+	}: PostgrestSingleResponse<Model<PricelistCategoryType>[]> = await supabase
 		.from('price_list_category')
 		.select('*')
 		.order('id', { ascending: true })
