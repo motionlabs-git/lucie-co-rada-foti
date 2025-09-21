@@ -12,6 +12,8 @@ const Footer = () => {
 	const CurrentYear = new Date().getFullYear()
 
 	useEffect(() => {
+		gsap.registerPlugin(ScrollTrigger)
+
 		gsap.to('#navWrapper', {
 			scrollTrigger: {
 				trigger: '#footer',
@@ -54,7 +56,7 @@ const Footer = () => {
 	return (
 		<footer
 			id='footer'
-			className='relative  flex flex-col items-center overflow-hidden'
+			className='relative w-full flex flex-col items-center overflow-hidden'
 		>
 			<div className='relative w-full flex justify-center pt-24 pb-12 overflow-hidden'>
 				<div className='max-w-[1360] w-full px-4 md:px-10 flex flex-col sm:flex-row justify-between gap-10 md:gap-20'>
@@ -108,6 +110,15 @@ const Footer = () => {
 
 					<div className='flex items-end order-2 sm:order-3'>
 						<ul className='list-none sm:text-right text-black invertText'>
+							<li>
+								<Link
+									className='hover:text-invertedOrange!'
+									href={'/gdpr'}
+									target='_blank'
+								>
+									GDPR
+								</Link>
+							</li>
 							<li>
 								&#169;{' '}
 								{CurrentYear === 2025

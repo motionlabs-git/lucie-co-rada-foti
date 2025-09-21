@@ -4,6 +4,7 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import z from 'zod'
 import emailjs from '@emailjs/browser'
 import { useRef } from 'react'
+import Link from 'next/link'
 
 const FormInputs = z.object({
 	name: z.string().nonempty('Toto pole je povinné'),
@@ -196,6 +197,13 @@ const Form = () => {
 					{errors.root.message}
 				</p>
 			)}
+
+			<p className='text-xs invertText mt-2'>
+				*Odesláním formuláře souhlasím se{' '}
+				<Link target='_blank' href={'/gdpr'}>
+					Zásadama ochrany osobních údajů
+				</Link>
+			</p>
 		</form>
 	)
 }
