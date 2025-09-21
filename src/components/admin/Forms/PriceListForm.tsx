@@ -2,15 +2,16 @@
 
 import { NextPage } from 'next'
 import {
+	Control,
 	FieldValue,
 	FieldValues,
-	useFieldArray,
 	useForm,
+	UseFormRegister,
 	UseFormSetValue,
 } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Input from '../Inputs/Input'
-import { FiPlus, FiSave, FiTrash2, FiX } from 'react-icons/fi'
+import { FiSave, FiTrash2 } from 'react-icons/fi'
 import {
 	PriceListSchema,
 	priceListValidation,
@@ -21,6 +22,7 @@ import { ImSpinner2 } from 'react-icons/im'
 import DropImageSingle from '../Inputs/DropImageSingle'
 import { FileWithPath } from 'react-dropzone'
 import { useEffect, useState } from 'react'
+import FieldArray from '../Inputs/FieldArray'
 
 interface IProps {
 	defaultValues?: PriceListSchema
@@ -52,15 +54,6 @@ const PriceListForm: NextPage<IProps> = ({
 		defaultValues,
 		resolver: zodResolver(priceListValidation),
 	})
-
-	const { fields, append, remove } = useFieldArray({
-		control,
-		name: 'items',
-	})
-
-	const handleAppendItem = () => append({ id: Date.now(), name: '' })
-
-	const handleRemoveItem = (index: number) => remove(index)
 
 	useEffect(() => {
 		if (!defaultValues || !defaultValues.image_url)
@@ -132,48 +125,22 @@ const PriceListForm: NextPage<IProps> = ({
 			</div>
 
 			<div>
-				{/* TODO: REFACTOR */}
 				<label>Items</label>
-				<div className='flex flex-col items-stretch px-2'>
-					{fields.length > 0 && (
-						<ul className='w-full flex flex-col'>
-							{fields.map((field, index) => (
-								<li
-									key={field.id}
-									className='flex items-center animate-fade-in gap-2'
-								>
-									<Input
-										{...register(
-											`items.${index}.name` as const
-										)}
-										placeholder={`Item ${index + 1}`}
-										type='text'
-										error={
-											errors.items && errors.items[index]
-												? (errors.items[index]
-														?.name as FieldValue<FieldValues>)
-												: undefined
-										}
-										className='mt-1'
-									/>
-									<button
-										onClick={() => handleRemoveItem(index)}
-										className='h-8 w-8 flex items-center justify-center bg-red-500 rounded'
-									>
-										<FiX />
-									</button>
-								</li>
-							))}
-						</ul>
-					)}
-					<button
-						type='button'
-						onClick={handleAppendItem}
-						className='flex items-center justify-center gap-1 bg-red-500 rounded py-1 px-2 mt-2'
-					>
-						<FiPlus /> Add item
-					</button>
-				</div>
+				<FieldArray
+					name='items'
+					control={
+						control as unknown as Control<
+							Record<string, unknown>,
+							unknown
+						>
+					}
+					register={
+						register as unknown as UseFormRegister<
+							Record<string, unknown>
+						>
+					}
+					errors={errors as unknown as FieldValue<FieldValues>}
+				/>
 			</div>
 
 			<div>
