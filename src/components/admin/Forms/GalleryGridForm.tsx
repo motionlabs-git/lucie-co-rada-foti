@@ -15,7 +15,7 @@ const GalleryGridForm = ({
 }) => {
 	const supabase = createClient()
 	// const router = useRouter()
-	const [loading] = useState(false)
+	// const [loading] = useState(false)
 	const [gridData, setGridData] = useState<null | GalleryGridUploadJoin[]>(
 		null
 	)
@@ -29,7 +29,7 @@ const GalleryGridForm = ({
 
 	useEffect(() => {
 		const fetchGridData = async () => {
-			const { data, error } = (await supabase
+			const { data } = (await supabase
 				.from('gallery_grid')
 				.select(
 					`
@@ -51,7 +51,7 @@ const GalleryGridForm = ({
 	}, [updateGrid, supabase])
 
 	const deleteImage = async (id: number) => {
-		const { error } = await supabase
+		const {} = await supabase
 			.from('gallery_grid')
 			.update({ image_id: null })
 			.eq('id', id)
@@ -64,7 +64,7 @@ const GalleryGridForm = ({
 
 		console.log(imagePickerOpened)
 
-		const { error } = await supabase
+		const {} = await supabase
 			.from('gallery_grid')
 			.update({ image_id: id })
 			.eq('id', imagePickerOpened)
