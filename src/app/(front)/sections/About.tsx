@@ -53,7 +53,7 @@ const About = () => {
 				className='flex flex-col items-center justify-center sticky top-0 h-screen'
 			>
 				<h1 className='text-lightOrange text-nowrap text-center'>
-					<em className='text-left block indent-10'>Ahoj, jsem</em>
+					<em className='text-center block'>Ahoj, jsem</em>
 
 					<em className='text-[12vw]'>Lucie co ráda fotí</em>
 				</h1>
@@ -72,10 +72,8 @@ const About = () => {
 			>
 				<div className='w-full aspect-video'>
 					<Image
-						src={
-							'https://scontent.fsvg1-1.fna.fbcdn.net/v/t39.30808-6/380943477_6493124047410121_8106659734817583276_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=hZZ4A16TWyAQ7kNvwFqulXS&_nc_oc=AdkUem5__Rlr5dfn3QT7JzKvOL6DK3rinLrZnVdZUbbXghtuF7QAc9P52NDTMeCm27I&_nc_zt=23&_nc_ht=scontent.fsvg1-1.fna&_nc_gid=wR2Xe7I4yM28IhaJHOggRQ&oh=00_AfX-q5jXcCHMggfjpcq6KqQszpbYfh9FTtbonp9QTsoCaA&oe=689E9F9B'
-						}
-						alt={'O lucce'}
+						src='/images/AboutLucie.webp'
+						alt='O lucce'
 						width={1000}
 						height={500}
 						className='w-full h-full object-cover rounded-2xl'

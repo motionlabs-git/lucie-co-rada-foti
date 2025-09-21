@@ -3,42 +3,7 @@ import React from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import AutoScroll from 'embla-carousel-auto-scroll'
 import ReferenceCard from '@/components/front/References/ReferenceCard'
-
-const fakeData = [
-	{
-		title: 'title1',
-		description: 'alsdfjls asldjflasdjf asldjfl asdjlfjasd ',
-		image: 'https://www.brides.com/thmb/LMyiMPxRFx82BLiHZC8lySJFnGo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/marriage-pose-photo-recirc-kyle-john-1-29-4f97523aa049471992292e8d6ddc41ee.jpg',
-	},
-	{
-		title: 'title1',
-		description: 'alsdfjls asldjflasdjf asldjfl asdjlfjasd ',
-		image: 'https://www.brides.com/thmb/LMyiMPxRFx82BLiHZC8lySJFnGo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/marriage-pose-photo-recirc-kyle-john-1-29-4f97523aa049471992292e8d6ddc41ee.jpg',
-	},
-	{
-		title: 'title1',
-		description: 'alsdfjls asldjflasdjf asldjfl asdjlfjasd ',
-		image: 'https://www.brides.com/thmb/LMyiMPxRFx82BLiHZC8lySJFnGo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/marriage-pose-photo-recirc-kyle-john-1-29-4f97523aa049471992292e8d6ddc41ee.jpg',
-	},
-	{
-		title: 'title1',
-		description:
-			'alsdfjls asldjflasdjf asldjfl asdjlfjasd asdf asdfj asldlfka jsdl;jf;as dj;flajsd; fj;asld ;flasjd;l fjas;dlj flasdlfjaslfasdflasdf',
-		image: 'https://www.brides.com/thmb/LMyiMPxRFx82BLiHZC8lySJFnGo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/marriage-pose-photo-recirc-kyle-john-1-29-4f97523aa049471992292e8d6ddc41ee.jpg',
-	},
-	{
-		title: 'title1',
-		description:
-			'alsdfjls asldjflasdjf asldjfl asdjlfjasd asdf asdfj asldlfka jsdl;jf;as dj;flajsd; fj;asld ;flasjd;l fjas;dlj flasdlfjaslfasdflasdf',
-		image: 'https://www.brides.com/thmb/LMyiMPxRFx82BLiHZC8lySJFnGo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/marriage-pose-photo-recirc-kyle-john-1-29-4f97523aa049471992292e8d6ddc41ee.jpg',
-	},
-	{
-		title: 'title1',
-		description:
-			'alsdfjls asldjflasdjf asldjfl asdjlfjasd asdf asdfj asldlfka jsdl;jf;as dj;flajsd; fj;asld ;flasjd;l fjas;dlj flasdlfjaslfasdflasdf',
-		image: 'https://www.brides.com/thmb/LMyiMPxRFx82BLiHZC8lySJFnGo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/marriage-pose-photo-recirc-kyle-john-1-29-4f97523aa049471992292e8d6ddc41ee.jpg',
-	},
-]
+import { ReferencesData } from '@/data/ReferencesData'
 
 const References = () => {
 	const [emblaRef] = useEmblaCarousel({ loop: true, dragFree: true }, [
@@ -62,7 +27,7 @@ const References = () => {
 
 			<div className='embla w-full relative py-10' ref={emblaRef}>
 				<div className='embla__container_references items-center px-8'>
-					{fakeData.map((slide, i) => {
+					{ReferencesData.map((slide, i) => {
 						counter++
 
 						if (counter === 3) {
@@ -75,6 +40,7 @@ const References = () => {
 								title={slide.title}
 								description={slide.description}
 								image={slide.image}
+								avatar={slide.avatarImage}
 								counter={counter}
 							/>
 						)

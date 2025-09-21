@@ -5,16 +5,18 @@ const ReferenceCard = ({
 	title,
 	description,
 	image,
+	avatar,
 	counter,
 }: {
 	title: string
 	description: string
 	image: string
+	avatar: string
 	counter: number
 }) => {
 	return (
 		<div
-			className={`relative flex items-center justify-center aspect-square h-full w-auto group select-none ${
+			className={`relative flex items-center justify-center aspect-square h-full w-auto group select-none p-4 ${
 				counter === 0
 					? 'flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_31%] xl:flex-[0_0_20%]'
 					: counter === 1
@@ -26,21 +28,30 @@ const ReferenceCard = ({
 				<Image
 					src={image}
 					alt={title}
-					width={500}
+					width={800}
 					height={800}
 					className='w-full h-full object-cover object-center rounded-lg opacity-50 lg:opacity-100 lg:group-hover:opacity-50 duration-300'
 				/>
 			</div>
 
-			<div className='relative w-2/3'>
+			<div className='relative w-2/3 max-h-full overflow-y-hidden flex flex-col'>
 				<div className='flex items-center gap-2 lg:opacity-0 lg:group-hover:opacity-100 group-hover:delay-200 duration-300'>
-					<div className='w-10 h-10 min-w-10 bg-red-400 border-white/40 border-2 rounded-xl'></div>
-					<h3 className='font-bellefair text-orange text-2xl'>
+					<div className='w-10 h-10 min-w-10  border-white/40 border-2 rounded-full'>
+						<Image
+							src={avatar}
+							alt={`Profile image ${title}`}
+							width={100}
+							height={100}
+							className='w-full h-full object-cover'
+						/>
+					</div>
+
+					<h3 className='font-bellefair text-orange text-xl md:text-2xl'>
 						{title}
 					</h3>
 				</div>
 
-				<p className='text-white font-bellefair mt-2 lg:opacity-0 lg:group-hover:opacity-100 group-hover:delay-400 duration-300'>
+				<p className='overflow-y-hidden text-ellipsis text-white font-bellefair mt-2 lg:opacity-0 lg:group-hover:opacity-100 group-hover:delay-400 duration-300'>
 					{description}
 				</p>
 			</div>
