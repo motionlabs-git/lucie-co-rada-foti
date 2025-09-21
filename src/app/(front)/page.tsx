@@ -24,7 +24,11 @@ export const generateMetadata = async () => {
 
 	// TODO:Dodělat defaultní data
 	return {
-		title: data?.title ?? 'Lucie co ráda fotí | ',
+		title: {
+			template: '%s | Lucie co ráda fotí',
+			default:
+				data?.title ?? 'Lucie co ráda fotí | Vaše svatební fotografka',
+		},
 		description: data?.description ?? '',
 		keywords: data?.keywords ?? '',
 		authors: [

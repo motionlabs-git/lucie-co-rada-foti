@@ -1,5 +1,10 @@
 import Footer from '@/components/front/Footer/Footer'
+import { Metadata } from 'next'
 import React from 'react'
+
+export const metadata: Metadata = {
+	title: 'Lucie co ráda fotí | GDPR',
+}
 
 const GDPR = () => {
 	return (
