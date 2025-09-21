@@ -37,7 +37,6 @@ const Form = () => {
 	const onSubmit: SubmitHandler<Inputs> = async () => {
 		await emailjs.init({
 			publicKey: process.env.EMAILJS_PUBLIC_KEY!,
-			// Do not allow headless browsers
 			blockHeadless: true,
 		})
 
@@ -72,14 +71,17 @@ const Form = () => {
 			className='flex-1 relative'
 		>
 			<fieldset className='blurryItem'>
-				<label htmlFor='name' className='font-promenadeItalic text-xl'>
+				<label
+					htmlFor='name'
+					className='invertText font-promenadeItalic text-lg sm:text-xl'
+				>
 					Jméno
 				</label>
 
 				<div className='relative flex justify-center overflow-hidden rounded-xl mt-2'>
 					<input
 						readOnly={isSubmitting ? true : false}
-						className='invertText peer z-20 py-3 px-4 shadow-md border-stone-400 border rounded-xl block w-full focus:border-stone-700 duration-200 bg-stone-300/30 backdrop-blur-2xl font-satoshiBold font-semibold text-xl placeholder:text-black/40'
+						className='invertText peer z-20 py-2 sm:py-3 px-3 sm:px-4 shadow-md border-stone-400 border rounded-xl block w-full focus:border-stone-700 duration-200 bg-stone-300/30 backdrop-blur-2xl font-satoshiBold font-semibold text-lg sm:text-xl placeholder:text-black/40'
 						type='text'
 						placeholder='Jméno'
 						id='name'
@@ -96,14 +98,17 @@ const Form = () => {
 			</fieldset>
 
 			<fieldset className='mt-3 blurryItem'>
-				<label htmlFor='phone' className='font-promenadeItalic text-xl'>
+				<label
+					htmlFor='phone'
+					className='invertText font-promenadeItalic text-lg sm:text-xl'
+				>
 					Telefon
 				</label>
 
-				<div className='relative flex justify-center overflow-hidden rounded-xl mt-2'>
+				<div className='relative flex justify-center overflow-hidden rounded-xl mt-1 sm:mt-2'>
 					<input
 						readOnly={isSubmitting ? true : false}
-						className='invertText peer z-20 py-3 px-4 shadow-md border-stone-400 border rounded-xl block w-full focus:border-stone-700 duration-200 bg-stone-300/30 backdrop-blur-2xl font-satoshiBold font-semibold text-xl placeholder:text-black/40'
+						className='invertText peer z-20 py-2 sm:py-3 px-3 sm:px-4 shadow-md border-stone-400 border rounded-xl block w-full focus:border-stone-700 duration-200 bg-stone-300/30 backdrop-blur-2xl font-satoshiBold font-semibold text-lg sm:text-xl placeholder:text-black/40'
 						type='text'
 						placeholder='Telefon'
 						id='phone'
@@ -122,14 +127,17 @@ const Form = () => {
 			</fieldset>
 
 			<fieldset className='mt-3 blurryItem'>
-				<label htmlFor='email' className='font-promenadeItalic text-xl'>
+				<label
+					htmlFor='email'
+					className='invertText font-promenadeItalic text-lg sm:text-xl'
+				>
 					Email
 				</label>
 
-				<div className='relative flex justify-center overflow-hidden rounded-xl mt-2'>
+				<div className='relative flex justify-center overflow-hidden rounded-xl mt-1 sm:mt-2'>
 					<input
 						readOnly={isSubmitting ? true : false}
-						className='invertText peer z-20 py-3 px-4 shadow-md border-stone-400 border rounded-xl block w-full focus:border-stone-700 duration-200 bg-stone-300/30 backdrop-blur-2xl font-satoshiBold font-semibold text-xl placeholder:text-black/40'
+						className='invertText peer z-20 py-2 sm:py-3 px-3 sm:px-4 shadow-md border-stone-400 border rounded-xl block w-full focus:border-stone-700 duration-200 bg-stone-300/30 backdrop-blur-2xl font-satoshiBold font-semibold text-lg sm:text-xl placeholder:text-black/40'
 						type='text'
 						placeholder='Email'
 						id='email'
@@ -148,15 +156,15 @@ const Form = () => {
 			<fieldset className='mt-3 blurryItem'>
 				<label
 					htmlFor='textarea'
-					className='invertText font-promenadeItalic text-xl'
+					className='invertText font-promenadeItalic text-lg sm:text-xl'
 				>
 					Zpráva
 				</label>
 
-				<div className='relative flex justify-center overflow-hidden rounded-xl mt-2'>
+				<div className='relative flex justify-center overflow-hidden rounded-xl mt-1 sm:mt-2'>
 					<textarea
 						readOnly={isSubmitting ? true : false}
-						className='invertText peer z-20 py-3 px-4 max-h-[10em] shadow-md border-stone-400 border rounded-xl block w-full focus:border-stone-700 duration-200 bg-stone-300/30 backdrop-blur-2xl font-satoshiBold font-semibold text-xl placeholder:text-black/40'
+						className='invertText peer z-20 py-2 sm:py-3 px-3 sm:px-4 max-h-[10em] shadow-md border-stone-400 border rounded-xl block w-full focus:border-stone-700 duration-200 bg-stone-300/30 backdrop-blur-2xl font-satoshiBold font-semibold text-lg sm:text-xl placeholder:text-black/40'
 						placeholder='Zpráva'
 						rows={5}
 						maxLength={300}

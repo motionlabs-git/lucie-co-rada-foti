@@ -34,7 +34,7 @@ const ReferenceCard = ({
 				/>
 			</div>
 
-			<div className='relative w-2/3 max-h-full overflow-y-hidden flex flex-col'>
+			<div className='relative w-[80%] max-h-full overflow-y-hidden flex flex-col'>
 				<div className='flex items-center gap-2 lg:opacity-0 lg:group-hover:opacity-100 group-hover:delay-200 duration-300'>
 					<div className='w-10 h-10 min-w-10  border-white/40 border-2 rounded-full'>
 						<Image
@@ -46,12 +46,12 @@ const ReferenceCard = ({
 						/>
 					</div>
 
-					<h3 className='font-bellefair text-orange text-xl md:text-2xl'>
+					<h3 className='font-bellefair text-orange text-xl sm:text-lg md:text-2xl'>
 						{title}
 					</h3>
 				</div>
 
-				<p className='overflow-y-hidden text-ellipsis text-white font-bellefair mt-2 lg:opacity-0 lg:group-hover:opacity-100 group-hover:delay-400 duration-300'>
+				<p className='line-clamp-15 sm:line-clamp-8 md:line-clamp-10 lg:line-clamp-8 xl:line-clamp-12 text-white font-bellefair mt-2 lg:opacity-0 lg:group-hover:opacity-100 group-hover:delay-400 duration-300'>
 					{description}
 				</p>
 			</div>
