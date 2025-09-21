@@ -2,8 +2,11 @@ import React, { InputHTMLAttributes } from 'react'
 import { FieldError } from 'react-hook-form'
 
 const Input: React.FC<
-	InputHTMLAttributes<HTMLInputElement> & { error?: FieldError }
-> = ({ error, ...props }) => {
+	InputHTMLAttributes<HTMLInputElement> & {
+		error?: FieldError
+		showErrorMessage?: boolean
+	}
+> = ({ error, showErrorMessage = true, ...props }) => {
 	return (
 		<>
 			<input
@@ -14,7 +17,7 @@ const Input: React.FC<
 					props.className ?? ''
 				}`}
 			/>
-			{error && error.message && (
+			{showErrorMessage && error && error.message && (
 				<span className='w-full text-sm mt-1'>
 					<span className='text-red-500/50'>*</span> {error.message}
 				</span>

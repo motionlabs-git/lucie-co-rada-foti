@@ -23,11 +23,13 @@ const PricelistSlide = ({ data }: { data: PriceListSchema }) => {
 					{data.title}
 				</h2>
 
-				{/* TODO: */}
-				{/* <ul className='font-promenadeItalic text-xl lg:text-2xl w-10/12 list-disc'>
-					<li>Lorem ipsum dolor sit amet </li>
-					<li>Lorem ipsum dolor sit amet </li>
-				</ul> */}
+				{data.items && data.items.length > 0 ? (
+					<ul className='font-promenadeItalic text-xl lg:text-2xl w-10/12 list-disc'>
+						{data.items.map((item) => (
+							<li key={item.id}>{item.value}</li>
+						))}
+					</ul>
+				) : null}
 
 				<p className='font-promenadeItalic text-xl lg:text-2xl w-10/12'>
 					{data.description}

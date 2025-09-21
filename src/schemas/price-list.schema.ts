@@ -7,7 +7,7 @@ export const priceListValidation = z.object({
 	items: z.array(
 		z.object({
 			id: z.number().int(),
-			name: z.string().trim().nonempty('Item name is required'),
+			value: z.string().trim().nonempty('Item value is required'),
 		})
 	),
 	price: z.number().min(0, 'Price must be a positive number'),
