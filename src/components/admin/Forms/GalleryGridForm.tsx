@@ -58,12 +58,8 @@ const GalleryGridForm = ({
 
 		setUpdateGrid((prev) => ++prev)
 	}
-
+	//TODO: user respnse
 	const selectImage = async (id: number) => {
-		console.log(id)
-
-		console.log(imagePickerOpened)
-
 		const {} = await supabase
 			.from('gallery_grid')
 			.update({ image_id: id })
@@ -71,8 +67,6 @@ const GalleryGridForm = ({
 
 		setImagePickerOpened(null)
 		setUpdateGrid((prev) => ++prev)
-
-		//TODO: update tabulky
 	}
 
 	return (
