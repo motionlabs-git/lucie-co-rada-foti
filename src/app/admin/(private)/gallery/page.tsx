@@ -1,4 +1,4 @@
-import GalleryGridForm from '@/components/admin/Forms/GalleryGridForm'
+import GalleryGrid from '@/components/admin/Gallery/GalleryGrid'
 import PageLink from '@/components/admin/Pagination/PageLink'
 import { ImageUploadSchema } from '@/schemas/image-upload.schema'
 import { Model } from '@/schemas/model'
@@ -48,7 +48,8 @@ const GalleryPage: NextPage<{
 		<>
 			<section className='w-full rounded-2xl bg-widget p-4'>
 				<h2 className='text-xl'>Gallery grid</h2>
-				<GalleryGridForm galleryData={pageData}></GalleryGridForm>
+
+				<GalleryGrid />
 			</section>
 
 			<section className='w-full rounded-2xl bg-widget p-4'>
