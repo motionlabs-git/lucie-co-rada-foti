@@ -1,145 +1,157 @@
-'use client'
+import {
+	GalleryGridSchema,
+	galleryGridValidation,
+} from '@/schemas/gallery-grid.schema'
+import Image from 'next/image'
+import { zodResolver } from '@hookform/resolvers/zod'
 import React, { useEffect, useState } from 'react'
+import { useForm } from 'react-hook-form'
+import Input from '../Inputs/Input'
 import { createClient } from '@/utils/supabase/client'
 import { PostgrestResponse } from '@supabase/supabase-js'
-import { GalleryGridUploadJoin } from '@/types/gallery-grid-upload-join'
-import ImageSlot from '../Inputs/ImageSlot'
-import ImagePicker from '../Inputs/ImagePicker'
-import { ImageUploadSchema } from '@/schemas/image-upload.schema'
 import { Model } from '@/schemas/model'
+import { ImageUploadSchema } from '@/schemas/image-upload.schema'
+import { ImSpinner2 } from 'react-icons/im'
+import { FiSave } from 'react-icons/fi'
+import { GalleryGridUploadJoin } from '@/types/gallery-grid-upload-join'
 
-const GalleryGridForm = ({
-	galleryData,
-}: {
-	galleryData: Model<ImageUploadSchema>[]
+interface IProps {
+	defaultValues: GalleryGridUploadJoin
+	onSubmit: (data: GalleryGridSchema) => void
+	loading: boolean
+	response: boolean
+	error: boolean
+}
+
+const GalleryGridForm: React.FC<IProps> = ({
+	defaultValues,
+	onSubmit,
+	loading,
+	response,
+	error,
 }) => {
 	const supabase = createClient()
-	// const router = useRouter()
-	// const [loading] = useState(false)
-	const [gridData, setGridData] = useState<null | GalleryGridUploadJoin[]>(
-		null
-	)
-	const [updateGrid, setUpdateGrid] = useState(0)
-	const [imagePickerOpened, setImagePickerOpened] = useState<null | number>(
-		null
-	)
 
-	// const [response, setResponse] = useState(false)
-	// const [error, setError] = useState(false)
+	const [startIndex] = useState(0)
+	const [endIndex] = useState(15)
+	const [pageData, setPageData] = useState<null | Model<ImageUploadSchema>[]>(
+		null
+	)
+	const [selectedImage, setSelectedImage] =
+		useState<null | ImageUploadSchema>(defaultValues.image_upload ?? null)
+
+	const {
+		handleSubmit,
+		register,
+		setValue,
+		formState: { errors },
+	} = useForm<GalleryGridSchema>({
+		defaultValues,
+		resolver: zodResolver(galleryGridValidation),
+	})
 
 	useEffect(() => {
-		const fetchGridData = async () => {
-			const { data } = (await supabase
-				.from('gallery_grid')
-				.select(
-					`
-					  id,
-					  image_upload (
-					  id,
-					  url
-					  )
-				  `
-				)
-				.order('id', {
-					ascending: true,
-				})) as PostgrestResponse<GalleryGridUploadJoin>
+		const fetchGalleryData = async () => {
+			const { data }: PostgrestResponse<Model<ImageUploadSchema>> =
+				await supabase
+					.from('image_upload')
+					.select('*')
+					.range(startIndex, endIndex)
 
-			setGridData(data)
+			setPageData(data)
 		}
 
-		fetchGridData()
-	}, [updateGrid, supabase])
-
-	const deleteImage = async (id: number) => {
-		const {} = await supabase
-			.from('gallery_grid')
-			.update({ image_id: null })
-			.eq('id', id)
-
-		setUpdateGrid((prev) => ++prev)
-	}
-	//TODO: user respnse
-	const selectImage = async (id: number) => {
-		const {} = await supabase
-			.from('gallery_grid')
-			.update({ image_id: id })
-			.eq('id', imagePickerOpened)
-
-		setImagePickerOpened(null)
-		setUpdateGrid((prev) => ++prev)
-	}
+		fetchGalleryData()
+	}, [supabase, startIndex, endIndex])
 
 	return (
-		<div className='flex flex-col mt-4'>
-			{imagePickerOpened && (
-				<ImagePicker
-					handleClose={() => setImagePickerOpened(null)}
-					galleryData={galleryData}
-					handleSelect={selectImage}
-				></ImagePicker>
+		<form
+			onSubmit={handleSubmit(onSubmit)}
+			className='flex flex-col gap-4 overflow-y-auto mt-4'
+		>
+			<div>
+				<label>Title</label>
+				<Input
+					{...register('title')}
+					placeholder='Title'
+					type='text'
+					error={errors.title}
+					className='mt-1'
+				/>
+			</div>
+
+			<div>
+				<label>Selected image</label>
+				<div className='w-full max-w-3xs aspect-square bg-black/50 rounded-lg overflow-hidden mt-1'>
+					{selectedImage && (
+						<Image
+							src={selectedImage.url}
+							alt={selectedImage.name}
+							width={500}
+							height={500}
+							className='w-full h-full object-cover object-center'
+						/>
+					)}
+				</div>
+			</div>
+
+			<div>
+				<label>Gallery</label>
+				<div className='overflow-y-scroll mt-1'>
+					<ul className='w-full grid grid-cols-[repeat(auto-fill,minmax(12rem,2fr))] gap-4'>
+						{pageData?.map((image) => (
+							<li
+								key={image.id}
+								className='w-full aspect-square border border-white/5 hover:border-white/20 duration-300 rounded-lg overflow-hidden cursor-pointer select-none'
+							>
+								<button
+									type='button'
+									className='w-full h-full'
+									onClick={() => {
+										setValue('image_id', image.id)
+										setSelectedImage(image)
+									}}
+								>
+									<Image
+										src={image.url}
+										alt={image.name}
+										width={500}
+										height={500}
+										className='w-full h-full object-cover object-center'
+									/>
+								</button>
+							</li>
+						))}
+					</ul>
+				</div>
+			</div>
+
+			{error && (
+				<span className='text-red-500 animate-res-fade-out'>
+					An error occurred while saving the data.
+				</span>
 			)}
 
-			<div className='flex gap-4'>
-				<fieldset className='flex flex-col flex-1 gap-4'>
-					{gridData?.slice(0, 4).map((item, index) => {
-						return (
-							<ImageSlot
-								key={item.id}
-								aspect={
-									index % 2 === 0
-										? 'aspect-[4/5]'
-										: 'aspect-[5/4]'
-								}
-								item={item}
-								handleDelete={() => deleteImage(item.id)}
-								handleOpenPicker={() =>
-									setImagePickerOpened(item.id)
-								}
-							></ImageSlot>
-						)
-					})}
-				</fieldset>
+			{response && (
+				<span className='text-green-500 animate-res-fade-out'>
+					Data saved successfully
+				</span>
+			)}
 
-				<fieldset className='flex flex-col flex-1 gap-4'>
-					{gridData?.slice(4, 8).map((item, index) => {
-						return (
-							<ImageSlot
-								key={item.id}
-								aspect={
-									index % 2 === 1
-										? 'aspect-[4/5]'
-										: 'aspect-[5/4]'
-								}
-								item={item}
-								handleDelete={() => deleteImage(item.id)}
-								handleOpenPicker={() =>
-									setImagePickerOpened(item.id)
-								}
-							></ImageSlot>
-						)
-					})}
-				</fieldset>
-				<fieldset className='flex flex-col flex-1 gap-4'>
-					{gridData?.slice(8, 12).map((item, index) => {
-						return (
-							<ImageSlot
-								key={item.id}
-								aspect={
-									index % 2 === 0
-										? 'aspect-[4/5]'
-										: 'aspect-[5/4]'
-								}
-								item={item}
-								handleDelete={() => deleteImage(item.id)}
-								handleOpenPicker={() =>
-									setImagePickerOpened(item.id)
-								}
-							></ImageSlot>
-						)
-					})}
-				</fieldset>
+			<div className='flex gap-4 justify-end'>
+				<button
+					type='submit'
+					className='self-end flex justify-center items-center gap-2 bg-white/90 hover:bg-white text-gray-900 rounded-lg duration-300 h-12 px-6'
+				>
+					{loading ? (
+						<ImSpinner2 className='animate-spin text-lg' />
+					) : (
+						'Save'
+					)}
+					<FiSave className='text-lg' />
+				</button>
 			</div>
-		</div>
+		</form>
 	)
 }
 
