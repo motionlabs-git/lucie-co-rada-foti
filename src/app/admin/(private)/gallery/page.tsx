@@ -1,5 +1,5 @@
 import GalleryGrid from '@/components/admin/Gallery/GalleryGrid'
-import PageLink from '@/components/admin/Pagination/PageLink'
+import SSRPagination from '@/components/admin/Pagination/SSRPagination'
 import { ImageUploadSchema } from '@/schemas/image-upload.schema'
 import { Model } from '@/schemas/model'
 import { createServerClient } from '@/utils/supabase/server'
@@ -8,13 +8,7 @@ import { NextPage } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { redirect } from 'next/navigation'
-import {
-	FiChevronLeft,
-	FiChevronRight,
-	FiChevronsLeft,
-	FiChevronsRight,
-	FiUpload,
-} from 'react-icons/fi'
+import { FiUpload } from 'react-icons/fi'
 
 const GalleryPage: NextPage<{
 	searchParams: Promise<Record<string, string | string[] | undefined>>
@@ -64,7 +58,6 @@ const GalleryPage: NextPage<{
 					</Link>
 				</div>
 
-				{/* TODO: */}
 				{pageData && (
 					<ul className='w-full grid grid-cols-[repeat(auto-fill,minmax(12rem,2fr))] gap-4 mt-8'>
 						{pageData.map((image) => (
@@ -84,65 +77,12 @@ const GalleryPage: NextPage<{
 					</ul>
 				)}
 
-				{/* TODO: */}
-				{count && (
-					<div className='flex justify-center mt-6'>
-						<nav className='inline-flex gap-2'>
-							{parsedPage > 1 && (
-								<>
-									<PageLink href='/admin/gallery?page=1'>
-										<FiChevronsLeft />
-									</PageLink>
-
-									<PageLink
-										href={`/admin/gallery?page=${
-											parsedPage - 1
-										}`}
-									>
-										<FiChevronLeft />
-									</PageLink>
-								</>
-							)}
-
-							{Array.from(
-								{ length: Math.ceil(count / pageSize) },
-								(_, i) => i + 1
-							).map((pageNum) =>
-								pageNum === parsedPage ||
-								(pageNum >= parsedPage - 2 &&
-									pageNum <= parsedPage + 2) ? (
-									<PageLink
-										key={pageNum}
-										href={`/admin/gallery?page=${pageNum}`}
-										current={pageNum === parsedPage}
-									>
-										{pageNum}
-									</PageLink>
-								) : null
-							)}
-
-							{parsedPage < Math.ceil(count / pageSize) && (
-								<>
-									<PageLink
-										href={`/admin/gallery?page=${
-											parsedPage + 1
-										}`}
-									>
-										<FiChevronRight />
-									</PageLink>
-
-									<PageLink
-										href={`/admin/gallery?page=${Math.ceil(
-											count / pageSize
-										)}`}
-									>
-										<FiChevronsRight />
-									</PageLink>
-								</>
-							)}
-						</nav>
-					</div>
-				)}
+				<SSRPagination
+					count={count}
+					page={parsedPage}
+					pageSize={pageSize}
+					href={'/admin/gallery'}
+				/>
 			</section>
 		</>
 	)
