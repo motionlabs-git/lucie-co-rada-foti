@@ -74,9 +74,9 @@ const Footer = () => {
 							<li>
 								<Link
 									className='hover:text-invertedOrange!'
-									href={''}
+									href={'tel:720661661'}
 								>
-									+420 111 111 111
+									720 661 661
 								</Link>
 							</li>
 						</ul>

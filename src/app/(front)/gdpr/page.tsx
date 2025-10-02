@@ -1,5 +1,6 @@
 import Footer from '@/components/front/Footer/Footer'
 import { Metadata } from 'next'
+import Link from 'next/link'
 import React from 'react'
 
 export const metadata: Metadata = {
@@ -20,13 +21,13 @@ const GDPR = () => {
 							1. Správce osobních údajů
 						</span>
 						<br />
-						Správcem osobních údajů je:{' '}
-						<strong>[Název firmy / jméno a příjmení]</strong>
+						Správcem osobních údajů je:
+						<strong>Bc. Lucie Pantálek Monsportová</strong>
 						<br />
-						Sídlo: [Ulice, PSČ, Město] <br />
-						IČ: [doplňte] <br />
-						E-mail: [doplňte] <br />
-						Telefon: [doplňte]
+						Sídlo: Sportovní 448, Suchdol nad Odrou, 74201 <br />
+						IČ: 17866065 <br />
+						E-mail: lucie@radafoti.cz <br />
+						Telefon: 720661661
 					</p>
 
 					<p>
@@ -103,9 +104,13 @@ const GDPR = () => {
 						<br />
 						Pokud máte jakékoli dotazy k ochraně osobních údajů,
 						kontaktujte nás: <br />
-						[Název firmy / jméno] <br />
-						E-mail: [doplňte] <br />
-						Telefon: [doplňte]
+						Lucie co ráda fotí <br />
+						E-mail:{' '}
+						<Link href='&#77;&#65;&#73;&#108;&#116;&#79;&#58;&#108;&#117;&#99;&#105;&#101;&#64;&#114;&#97;&#100;&#97;&#102;&#111;&#116;&#105;&#46;&#99;&#122;'>
+							&#108;&#117;&#99;&#105;&#101;&#64;&#114;&#97;&#100;&#97;&#102;&#111;&#116;&#105;&#46;&#99;&#122;
+						</Link>{' '}
+						<br />
+						Telefon: <Link href={'tel:720661661'}>720 661 661</Link>
 					</p>
 				</div>
 			</section>
