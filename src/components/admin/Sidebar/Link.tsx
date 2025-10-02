@@ -27,7 +27,9 @@ const Link: React.FC<IProps> = ({ href, title, icon, isOpen }) => {
 					} as HTMLAttributes<HTMLElement>
 				)}
 			</span>
-			{isOpen && <span>{title}</span>}
+			<span className={`${isOpen ? 'md:block' : 'md:hidden'}`}>
+				{title}
+			</span>
 		</NextLink>
 	)
 }
