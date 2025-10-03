@@ -4,7 +4,7 @@ import Image from 'next/image'
 import gsap from 'gsap'
 
 const aboutLucka =
-	'Fotit se mnou se bát nemusíš. Sejdeme se, projdeme se, pokecáme a během toho Ti udělám krásnou vzpomínku na život, přesně takový jaký v té chvíli byl.'
+	'Fotit se mnou se bát nemusíš. Sejdeme se, pokecáme a během toho Ti udělám krásnou vzpomínku na život, přesně takový jaký v té chvíli byl.'
 
 const About = () => {
 	useEffect(() => {

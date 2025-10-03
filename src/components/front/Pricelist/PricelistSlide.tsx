@@ -3,17 +3,19 @@ import Image from 'next/image'
 import { PriceListSchema } from '@/schemas/price-list.schema'
 
 const PricelistSlide = ({ data }: { data: PriceListSchema }) => {
+	console.log(data.image_url)
+
+	if (!data.image_url || !data.image_name) return
+
 	return (
 		<div className='embla__slide flex flex-col md:flex-row-reverse items-center select-none gap-8 p-8'>
 			<div className='w-full md:flex-1 flex items-center justify-center'>
 				<div className='w-full aspect-video md:aspect-square md:max-w-xs rounded-2xl overflow-hidden shadow-lg'>
 					<Image
-						src={
-							'https://www.brides.com/thmb/LMyiMPxRFx82BLiHZC8lySJFnGo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/marriage-pose-photo-recirc-kyle-john-1-29-4f97523aa049471992292e8d6ddc41ee.jpg'
-						}
+						src={data.image_url}
 						width={800}
 						height={800}
-						alt={'Slide'}
+						alt={data.image_name}
 						className='w-full h-full object-cover'
 					></Image>
 				</div>
@@ -31,11 +33,17 @@ const PricelistSlide = ({ data }: { data: PriceListSchema }) => {
 					</ul>
 				) : null}
 
-				<p className='font-promenadeItalic text-xl lg:text-2xl w-10/12'>
-					{data.description}
-				</p>
+				{data.description && (
+					<p className='font-promenadeItalic text-xl lg:text-2xl w-10/12'>
+						{data.description}
+					</p>
+				)}
+
 				<p className='self-end font-promenadeItalic text-3xl lg:text-4xl'>
-					{data.price},-
+					{data.price
+						.toString()
+						.replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}{' '}
+					Kč
 				</p>
 			</div>
 		</div>

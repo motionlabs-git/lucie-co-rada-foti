@@ -23,13 +23,15 @@ const GalleryColumn = ({
 						onClick={() => {
 							handleClick(img.id)
 						}}
-						className='relative rounded-xl cursor-pointer group'
+						className={`relative w-full h-auto ${
+							index % 2 === 0 ? 'aspect-[4/5]' : 'aspect-[5/4]'
+						} overflow-hidden rounded-xl cursor-pointer group`}
 					>
-						<div className='w-full h-auto duration-300 group-hover:blur-xs'>
+						<div className='w-full h-full duration-300 group-hover:blur-xs'>
 							<Image
 								width={800}
 								height={800}
-								className='w-full duration-300 rounded-xl'
+								className='w-full h-full object-cover duration-300 rounded-xl'
 								src={img.url}
 								alt={img.name}
 							/>

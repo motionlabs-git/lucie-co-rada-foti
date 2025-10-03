@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import PricelistSlide from '@/components/front/Pricelist/PricelistSlide'
 import {
@@ -12,6 +12,7 @@ import { PriceListSchema } from '@/schemas/price-list.schema'
 import { PricelistCategoryType } from '@/types/pricelist-category'
 import gsap from 'gsap'
 import { Model } from '@/schemas/model'
+import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'
 
 const Pricelist = ({
 	pricelistData: { pricelist, categories },
@@ -23,6 +24,14 @@ const Pricelist = ({
 }) => {
 	const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true })
 	const { selectedIndex, onDotButtonClick } = useDotButton(emblaApi)
+
+	const scrollPrev = useCallback(() => {
+		if (emblaApi) emblaApi.scrollPrev()
+	}, [emblaApi])
+
+	const scrollNext = useCallback(() => {
+		if (emblaApi) emblaApi.scrollNext()
+	}, [emblaApi])
 
 	const [selectedCategory, setSelectedCategory] =
 		useState<PricelistCategoryType | null>(
@@ -83,24 +92,39 @@ const Pricelist = ({
 					</div>
 				</div>
 
-				<div className='flex justify-center items-center gap-1'>
-					{selectedCategory &&
-						selectedCategory.item_order.map((_, index) => (
-							<div
-								key={index}
-								className='w-5 aspect-square h-auto flex justify-center items-center'
-							>
-								<DotButton
+				<div className='flex justify-center items-center gap-8'>
+					<button
+						onClick={scrollPrev}
+						className='p-2 bg-orange hover:bg-orange/80 hover:scale-95 duration-200 rounded-md text-white'
+					>
+						<FiChevronLeft size={18}></FiChevronLeft>
+					</button>
+					<div className='flex items-center gap-1'>
+						{selectedCategory &&
+							selectedCategory.item_order.map((_, index) => (
+								<div
 									key={index}
-									onClick={() => onDotButtonClick(index)}
-									className={`aspect-square rounded-[3px] duration-200 ${
-										index === selectedIndex
-											? ' bg-orange w-[0.6rem]'
-											: 'bg-lightOrange w-2'
-									}`}
-								/>
-							</div>
-						))}
+									className='w-5 aspect-square h-auto flex justify-center items-center'
+								>
+									<DotButton
+										key={index}
+										onClick={() => onDotButtonClick(index)}
+										className={`aspect-square rounded-[3px] duration-200 ${
+											index === selectedIndex
+												? ' bg-orange w-[0.6rem]'
+												: 'bg-lightOrange w-2'
+										}`}
+									/>
+								</div>
+							))}
+					</div>
+
+					<button
+						onClick={scrollNext}
+						className='p-2 bg-orange hover:bg-orange/80 hover:scale-95 duration-200 rounded-md text-white'
+					>
+						<FiChevronRight size={18}></FiChevronRight>
+					</button>
 				</div>
 			</div>
 		</section>

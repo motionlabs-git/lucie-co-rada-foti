@@ -52,17 +52,6 @@ function Hero() {
 					</strong>{' '}
 					<em className='text-4xl'>fotografka.</em>
 				</h2>
-
-				<div className='absolute bottom-42 left-1/2'>
-					<div id='mouse-scroll' className='z-50'>
-						<div className='mouse'>
-							<div className='mouse-in'></div>
-						</div>
-						<div>
-							<span className='down-arrow-1'></span>
-						</div>
-					</div>
-				</div>
 			</div>
 		</div>
 	)
