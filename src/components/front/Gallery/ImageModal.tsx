@@ -22,6 +22,8 @@ const ImageModal = ({
 			className='select-none fixed z-50 w-screen h-screen top-0 left-0 px-10 py-10 flex justify-center items-center bg-black/50 backdrop-blur-md'
 		>
 			<button
+				type='button'
+				aria-label='Close image'
 				onClick={handleCloseImage}
 				className='absolute top-10 right-10 text-white font-6xl'
 			>
@@ -32,7 +34,12 @@ const ImageModal = ({
 			</button>
 
 			<div className='flex items-center'>
-				<button className='w-14' onClick={prevImage}>
+				<button
+					type='button'
+					aria-label='Next image'
+					className='w-14'
+					onClick={prevImage}
+				>
 					<div className='pl-2 hover:pl-0 hover:pr-2 duration-200'>
 						<Chevron
 							className='text-white rotate-180'
@@ -56,7 +63,12 @@ const ImageModal = ({
 					alt={title}
 				/>
 
-				<button className='w-14' onClick={nextImage}>
+				<button
+					type='button'
+					aria-label='Previous image'
+					className='w-14'
+					onClick={nextImage}
+				>
 					<div className='pr-2 hover:pr-0 hover:pl-2 duration-200'>
 						<Chevron className='text-white' w={40}></Chevron>
 					</div>

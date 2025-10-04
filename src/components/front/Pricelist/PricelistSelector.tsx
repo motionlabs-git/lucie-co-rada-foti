@@ -15,6 +15,8 @@ const PricelistSelector = ({
 			{categories?.map((item) => {
 				return (
 					<button
+						type='button'
+						aria-label='Select pricelist category'
 						key={item.id}
 						onClick={() => selectCategory(item)}
 						className={`w-full py-2 box-content duration-200 font-bellefair italic text-xl sm:text-3xl relative hover:text-orange/80 border-b  ${

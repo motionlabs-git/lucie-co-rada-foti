@@ -50,6 +50,7 @@ const GalleryPage: NextPage<{
 				<div className='flex items-center justify-between gap-2'>
 					<h2 className='text-xl'>Gallery</h2>
 					<Link
+						aria-label='Upload image'
 						href='/admin/gallery/create'
 						className='self-end flex justify-center items-center gap-2 bg-green-600 hover:bg-green-500 text-gray-100 rounded-lg duration-300 py-2 px-4'
 					>

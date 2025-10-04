@@ -69,24 +69,32 @@ function Navigation({ lenis }: Props) {
 						className='relative w-0 overflow-hidden flex gap-2 items-center justify-center'
 					>
 						<button
+							type='button'
+							aria-label='Navigation button'
 							onClick={() => scrollTo('gallery')}
 							className='navLink h-12 opacity-0 text-black font-satoshiBold border border-black/20 rounded-xl px-4 py-3 hover:border-black duration-300 whitespace-nowrap'
 						>
 							Galerie
 						</button>
 						<button
+							type='button'
+							aria-label='Navigation button'
 							onClick={() => scrollTo('about')}
 							className='navLink h-12 opacity-0 text-black font-satoshiBold border border-black/20 rounded-xl px-4 py-3 hover:border-black duration-300 whitespace-nowrap'
 						>
 							O mně
 						</button>
 						<button
+							type='button'
+							aria-label='Navigation button'
 							onClick={() => scrollTo('pricelist')}
 							className='navLink h-12 opacity-0 text-black font-satoshiBold border border-black/20 rounded-xl px-4 py-3 hover:border-black duration-300 whitespace-nowrap'
 						>
 							Ceník
 						</button>
 						<button
+							type='button'
+							aria-label='Navigation button'
 							onClick={() => scrollTo('references')}
 							className='navLink h-12 opacity-0 text-black font-satoshiBold border border-black/20 rounded-xl px-4 py-3 hover:border-black duration-300 whitespace-nowrap'
 						>

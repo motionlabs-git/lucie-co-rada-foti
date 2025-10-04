@@ -11,6 +11,8 @@ function HamburgerIcon({
 
 	return (
 		<button
+			type='button'
+			aria-label='Mobile menu'
 			className={`shadow-md relative h-12 aspect-square bg-white/50 backdrop-blur-md border-black/30 border-[1px] rounded-lg gap-1 flex flex-col justify-center items-center ${
 				isClicked ? 'scale-95' : 'scale-100'
 			}`}

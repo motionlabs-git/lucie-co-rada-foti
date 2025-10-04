@@ -81,6 +81,8 @@ const Form = () => {
 						</p>
 
 						<button
+							type='button'
+							aria-label='Send new form'
 							className='relative h-12 font-satoshiBold border-black hover:bg-lightOrange duration-300 hover:border-lightOrange hover:text-black text-white border rounded-lg px-6 bg-black'
 							onClick={() => reset()}
 						>
@@ -200,6 +202,7 @@ const Form = () => {
 				)}
 
 				<button
+					aria-label='Submit form'
 					type='submit'
 					className='group relative w-full mt-4 rounded-xl invertText'
 				>
@@ -217,7 +220,7 @@ const Form = () => {
 
 				<p className='text-xs invertText mt-2'>
 					*Odesláním formuláře souhlasím se{' '}
-					<Link target='_blank' href={'/gdpr'}>
+					<Link aria-label='GDPR' target='_blank' href={'/gdpr'}>
 						Zásadama ochrany osobních údajů
 					</Link>
 				</p>

@@ -94,6 +94,8 @@ const Pricelist = ({
 
 				<div className='flex justify-center items-center gap-8'>
 					<button
+						type='button'
+						aria-label='Show previous slide'
 						onClick={scrollPrev}
 						className='p-2 bg-orange hover:bg-orange/80 hover:scale-95 duration-200 rounded-md text-white'
 					>
@@ -120,6 +122,8 @@ const Pricelist = ({
 					</div>
 
 					<button
+						type='button'
+						aria-label='Show next slide'
 						onClick={scrollNext}
 						className='p-2 bg-orange hover:bg-orange/80 hover:scale-95 duration-200 rounded-md text-white'
 					>

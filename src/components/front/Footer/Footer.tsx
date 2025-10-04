@@ -67,6 +67,7 @@ const Footer = () => {
 
 							<li className='mt-2 group w-fit'>
 								<Link
+									aria-label='Email'
 									className='flex items-center gap-2'
 									href='&#77;&#65;&#73;&#108;&#116;&#79;&#58;&#108;&#117;&#99;&#105;&#101;&#64;&#114;&#97;&#100;&#97;&#102;&#111;&#116;&#105;&#46;&#99;&#122;'
 								>
@@ -81,6 +82,7 @@ const Footer = () => {
 
 							<li className='mt-2 group w-fit'>
 								<Link
+									aria-label='Phone'
 									className='hover:text-invertedOrange! flex items-center gap-2'
 									href={'tel:720661661'}
 								>
@@ -126,6 +128,7 @@ const Footer = () => {
 						<ul className='list-none sm:text-right text-black invertText'>
 							<li>
 								<Link
+									aria-label='GDPR'
 									className='hover:text-invertedOrange!'
 									href={'/gdpr'}
 									target='_blank'
@@ -143,6 +146,7 @@ const Footer = () => {
 							<li>
 								Created by{' '}
 								<Link
+									aria-label='Motion Labs'
 									className='hover:text-invertedOrange!'
 									target='_blank'
 									href={'https://motionlabs.cz/'}

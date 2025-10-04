@@ -72,6 +72,8 @@ const CookieBar = () => {
 
 							<div className='mt-4 flex gap-2'>
 								<button
+									type='button'
+									aria-label='Disagree with cookies'
 									onClick={disagreeCookies}
 									className=' border border-black rounded-lg px-4 py-2'
 								>
@@ -79,6 +81,8 @@ const CookieBar = () => {
 								</button>
 
 								<button
+									type='button'
+									aria-label='Agree with cookies'
 									onClick={agreeCookies}
 									className='relative group text-white font-satoshiBold rounded-lg px-4 py-[calc(0.5rem + 1px)] '
 								>
