@@ -8,10 +8,10 @@ import About from './sections/About'
 import ContactForm from './sections/ContactForm'
 import References from './sections/References'
 import Gallery from './sections/Gallery'
-import { GalleryImage } from '@/types/gallery-image'
 import Pricelist from './sections/Pricelist'
 import { PricelistCategoryType } from '@/types/pricelist-category'
 import { Model } from '@/schemas/model'
+import { GalleryGridImage } from '@/types/gallery-grid'
 
 export const generateMetadata = async () => {
 	const supabase = await createServerClient()
@@ -27,7 +27,8 @@ export const generateMetadata = async () => {
 		title: {
 			template: '%s | Lucie co ráda fotí',
 			default:
-				data?.title ?? 'Lucie co ráda fotí | Vaše svatební fotografka',
+				data?.title ??
+				'Lucie co ráda fotí | Vaše svatební a rodinná fotografka',
 		},
 		description: data?.description ?? '',
 		keywords: data?.keywords ?? '',
@@ -52,9 +53,12 @@ export const generateMetadata = async () => {
 
 async function HomePage() {
 	const supabase = await createServerClient()
-
-	const { data: galleryData }: PostgrestSingleResponse<GalleryImage[]> =
-		await supabase.from('image_upload').select('*')
+	// TODO:Nejaka typova picovina, help me
+	const { data: galleryData }: PostgrestSingleResponse<GalleryGridImage[]> =
+		await supabase
+			.from('gallery_grid')
+			.select('id, title, image_id(url)')
+			.order('id', { ascending: true })
 
 	const {
 		data: pricelist,

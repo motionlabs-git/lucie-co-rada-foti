@@ -14,11 +14,6 @@ const LoaderProvider = ({ children }: { children: React.JSX.Element }) => {
 	const path = usePathname()
 	const lenis = useRef<null | Lenis>(null)
 
-	// const imgData = fetchImages()
-	// const pricelistData = fetchPricelist()
-
-	// console.log(pricelistData)
-
 	useEffect(() => {
 		//Lenis
 		lenis.current = new Lenis()

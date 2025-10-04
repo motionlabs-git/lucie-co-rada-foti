@@ -23,6 +23,11 @@
 	--color-brown: var(--brown);
 }
 
+html,
+body {
+	scroll-behavior: smooth;
+}
+
 h1 {
 	@apply text-3xl md:text-7xl font-satoshiBold;
 }

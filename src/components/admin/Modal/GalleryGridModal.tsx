@@ -85,7 +85,7 @@ const GalleryGridModal: React.FC<IProps> = ({
 	if (!opened) return null
 
 	return (
-		<div className='bg-stone-800/20 animate-fade-in flex justify-center items-center backdrop-blur-xs fixed left-0 top-0 w-full h-screen z-10 p-10'>
+		<div className='bg-stone-800/20 animate-fade-in flex justify-center items-center backdrop-blur-xs fixed left-0 top-0 w-full h-screen z-50 p-10'>
 			<div className='flex flex-col max-h-full bg-stone-800/50 border border-white/20 rounded-2xl p-8 w-7xl'>
 				<div className='flex items-center justify-between'>
 					<h2 className='text-xl'>Select image</h2>

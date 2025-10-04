@@ -3,8 +3,6 @@ import Image from 'next/image'
 import { PriceListSchema } from '@/schemas/price-list.schema'
 
 const PricelistSlide = ({ data }: { data: PriceListSchema }) => {
-	console.log(data.image_url)
-
 	if (!data.image_url || !data.image_name) return
 
 	return (

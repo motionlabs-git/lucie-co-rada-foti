@@ -64,32 +64,33 @@ const Footer = () => {
 					<div className='invertText text-black order-2 sm:order-1'>
 						<ul className='list-none'>
 							<li>Lucie Pantálek Monsportová</li>
-							<li className='mt-2'>
+
+							<li className='mt-2 group w-fit'>
 								<Link
-									className='group flex items-center gap-2'
+									className='flex items-center gap-2'
 									href='&#77;&#65;&#73;&#108;&#116;&#79;&#58;&#108;&#117;&#99;&#105;&#101;&#64;&#114;&#97;&#100;&#97;&#102;&#111;&#116;&#105;&#46;&#99;&#122;'
 								>
-									{/* TODO: */}
-									<span className='p-1 bg-invertedOrange rounded-md group-hover:text-black duration-200'>
-										<FiMail
-											size={16}
-											className='group-hover:text-black duration-200'
-										></FiMail>
+									<span className='p-1 bg-invertedOrange group-hover:bg-invertedOrange/80 group-hover:scale-95 rounded-md text-black duration-200'>
+										<FiMail size={16}></FiMail>
 									</span>
 									<span className='group-hover:text-invertedOrange! duration'>
 										&#108;&#117;&#99;&#105;&#101;&#64;&#114;&#97;&#100;&#97;&#102;&#111;&#116;&#105;&#46;&#99;&#122;
 									</span>
 								</Link>
 							</li>
-							<li className='mt-2'>
+
+							<li className='mt-2 group w-fit'>
 								<Link
 									className='hover:text-invertedOrange! flex items-center gap-2'
 									href={'tel:720661661'}
 								>
-									<span className='p-1 bg-invertedOrange rounded-md'>
+									<span className='p-1 bg-invertedOrange group-hover:bg-invertedOrange/80 group-hover:scale-95 rounded-md text-black duration-200'>
 										<FiPhone size={16}></FiPhone>
 									</span>
-									<span>720 661 661</span>
+
+									<span className='group-hover:text-invertedOrange! duration'>
+										720 661 661
+									</span>
 								</Link>
 							</li>
 						</ul>

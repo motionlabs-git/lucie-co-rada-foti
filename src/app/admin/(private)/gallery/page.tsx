@@ -8,7 +8,7 @@ import { NextPage } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { redirect } from 'next/navigation'
-import { FiUpload } from 'react-icons/fi'
+import { FiPlus, FiUpload } from 'react-icons/fi'
 
 const GalleryPage: NextPage<{
 	searchParams: Promise<Record<string, string | string[] | undefined>>
@@ -63,8 +63,22 @@ const GalleryPage: NextPage<{
 						{pageData.map((image) => (
 							<li
 								key={image.id}
-								className='w-full aspect-square border border-white/5 hover:border-white/20 duration-300 rounded-lg overflow-hidden'
+								className='relative w-full aspect-square border border-white/5 hover:border-white/20 duration-300 rounded-lg overflow-hidden'
 							>
+								<button
+									type='button'
+									aria-label='Delete image'
+									className='absolute z-10 top-4 right-4 flex items-center justify-center border-white border rounded-full p-1 text-white bg-stone-800/50 backdrop-blur-sm'
+									// onClick={() => {
+									// 	// TODO:DELETE obrázku
+									// 	return
+									// }}
+								>
+									<FiPlus
+										className='rotate-45'
+										size={18}
+									></FiPlus>
+								</button>
 								<Image
 									src={image.url}
 									alt={image.name}

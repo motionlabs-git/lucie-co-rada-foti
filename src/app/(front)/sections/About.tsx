@@ -62,7 +62,7 @@ const About = () => {
 					si myslím, že bych ti mohla pomoct zachytit důležité
 					okamžiky tvého života. Nejraději fotím svatby a rodiny, ale
 					libuju si i v párech a portrétech. Kdyby tě cokoliv
-					zajímalo, neváhej mě kontaktovat přes formulář níže!
+					zajímalo, neváhej mě kontaktovat!
 				</p>
 			</div>
 

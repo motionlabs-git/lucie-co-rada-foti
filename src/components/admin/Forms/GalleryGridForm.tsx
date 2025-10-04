@@ -33,7 +33,7 @@ const GalleryGridForm: React.FC<IProps> = ({
 	const supabase = createClient()
 
 	const [startIndex] = useState(0)
-	const [endIndex] = useState(15)
+	const [endIndex] = useState(25)
 	const [pageData, setPageData] = useState<null | Model<ImageUploadSchema>[]>(
 		null
 	)
@@ -63,6 +63,7 @@ const GalleryGridForm: React.FC<IProps> = ({
 
 		fetchGalleryData()
 	}, [supabase, startIndex, endIndex])
+	console.log(pageData)
 
 	return (
 		<form
@@ -79,7 +80,6 @@ const GalleryGridForm: React.FC<IProps> = ({
 					className='mt-1'
 				/>
 			</div>
-
 			<div>
 				<label>Selected image</label>
 				<div className='w-full max-w-3xs aspect-square bg-black/50 rounded-lg overflow-hidden mt-1'>
@@ -94,10 +94,9 @@ const GalleryGridForm: React.FC<IProps> = ({
 					)}
 				</div>
 			</div>
-
 			<div>
 				<label>Gallery</label>
-				<div className='overflow-y-scroll mt-1'>
+				<div className='overflow-y-scroll max-h-96 mt-1'>
 					<ul className='w-full grid grid-cols-[repeat(auto-fill,minmax(12rem,2fr))] gap-4'>
 						{pageData?.map((image) => (
 							<li
@@ -124,20 +123,19 @@ const GalleryGridForm: React.FC<IProps> = ({
 						))}
 					</ul>
 				</div>
+				Pagination
+				{/* TODO:Pagination, nebo jiné řešení... */}
 			</div>
-
 			{error && (
 				<span className='text-red-500 animate-res-fade-out'>
 					An error occurred while saving the data.
 				</span>
 			)}
-
 			{response && (
 				<span className='text-green-500 animate-res-fade-out'>
 					Data saved successfully
 				</span>
 			)}
-
 			<div className='flex gap-4 justify-end'>
 				<button
 					type='submit'
