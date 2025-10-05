@@ -17,24 +17,24 @@ const SlideSet = () => {
 		})
 	}
 
-	const animate = () => {
-		if (
-			containerRef.current &&
-			!containerRef.current.classList.contains('paused')
-		) {
-			const containerWidth = containerRef.current.offsetWidth
+	useEffect(() => {
+		const animate = () => {
+			if (
+				containerRef.current &&
+				!containerRef.current.classList.contains('paused')
+			) {
+				const containerWidth = containerRef.current.offsetWidth
 
-			if (numRef.current >= containerWidth) {
-				numRef.current = 0
+				if (numRef.current >= containerWidth) {
+					numRef.current = 0
+				}
+				containerRef.current.style.transform = `translate3d(-${numRef.current}px, 0px, 0px)`
+				numRef.current += 1
 			}
-			containerRef.current.style.transform = `translate3d(-${numRef.current}px, 0px, 0px)`
-			numRef.current += 1
+
+			requestAnimationFrame(animate)
 		}
 
-		requestAnimationFrame(animate)
-	}
-
-	useEffect(() => {
 		animate()
 	}, [])
 

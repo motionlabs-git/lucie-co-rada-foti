@@ -74,7 +74,7 @@ const GalleryGridForm: React.FC<IProps> = ({
 		}
 
 		fetchCount()
-	}, [])
+	}, [supabase])
 
 	useEffect(() => {
 		const fetchGalleryData = async () => {
