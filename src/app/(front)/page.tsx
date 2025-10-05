@@ -1,7 +1,10 @@
 import React from 'react'
 import LoaderProvider from '@/components/front/Loader/LoaderProvider'
 import { createServerClient } from '@/utils/supabase/server'
-import { PostgrestSingleResponse } from '@supabase/supabase-js'
+import {
+	PostgrestResponse,
+	PostgrestSingleResponse,
+} from '@supabase/supabase-js'
 import { SeoSchema } from '@/schemas/seo.schema'
 import { PriceListSchema } from '@/schemas/price-list.schema'
 import About from './sections/About'
@@ -53,12 +56,12 @@ export const generateMetadata = async () => {
 
 async function HomePage() {
 	const supabase = await createServerClient()
-	// TODO:Nejaka typova picovina, help me
-	const { data: galleryData }: PostgrestSingleResponse<GalleryGridImage[]> =
-		await supabase
-			.from('gallery_grid')
-			.select('id, title, image_id(url)')
-			.order('id', { ascending: true })
+	const { data: galleryData } = (await supabase
+		.from('gallery_grid')
+		.select('id, title, image_id(url)')
+		.order('id', {
+			ascending: true,
+		})) as PostgrestResponse<GalleryGridImage>
 
 	const {
 		data: pricelist,

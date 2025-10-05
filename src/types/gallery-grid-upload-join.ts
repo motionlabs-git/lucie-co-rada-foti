@@ -4,6 +4,6 @@ import { ImageUploadSchema } from '@/schemas/image-upload.schema'
 
 export type GalleryGridUploadJoin = Model<
 	Omit<GalleryGridImage, 'image_upload'> & {
-		image_upload: ImageUploadSchema | null
+		image_upload: (ImageUploadSchema & { id: number }) | null
 	}
 >
