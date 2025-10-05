@@ -14,6 +14,7 @@ import { ImageUploadSchema } from '@/schemas/image-upload.schema'
 import { ImSpinner2 } from 'react-icons/im'
 import { FiSave } from 'react-icons/fi'
 import { GalleryGridUploadJoin } from '@/types/gallery-grid-upload-join'
+import CSRPagination from '../Pagination/CSRPagination'
 
 interface IProps {
 	defaultValues: GalleryGridUploadJoin
@@ -32,11 +33,13 @@ const GalleryGridForm: React.FC<IProps> = ({
 }) => {
 	const supabase = createClient()
 
-	const [startIndex] = useState(0)
-	const [endIndex] = useState(25)
+	const pageSize = 20
+	const [page, setPage] = useState(1)
+
 	const [pageData, setPageData] = useState<null | Model<ImageUploadSchema>[]>(
 		null
 	)
+	const [count, setCount] = useState(0)
 	const [selectedImage, setSelectedImage] =
 		useState<null | ImageUploadSchema>(defaultValues.image_upload ?? null)
 
@@ -46,9 +49,32 @@ const GalleryGridForm: React.FC<IProps> = ({
 		setValue,
 		formState: { errors },
 	} = useForm<GalleryGridSchema>({
-		defaultValues,
+		defaultValues: {
+			title: defaultValues.title,
+			image_id: defaultValues.image_upload?.id ?? null,
+		},
 		resolver: zodResolver(galleryGridValidation),
 	})
+
+	useEffect(() => {
+		const fetchCount = async () => {
+			const {
+				count,
+				error: paginationError,
+			}: PostgrestResponse<Model<ImageUploadSchema>> = await supabase
+				.from('image_upload')
+				.select('*', { count: 'exact', head: true })
+
+			if (paginationError) {
+				// TODO: handle error
+				return
+			}
+
+			setCount(count ?? 0)
+		}
+
+		fetchCount()
+	}, [])
 
 	useEffect(() => {
 		const fetchGalleryData = async () => {
@@ -56,14 +82,13 @@ const GalleryGridForm: React.FC<IProps> = ({
 				await supabase
 					.from('image_upload')
 					.select('*')
-					.range(startIndex, endIndex)
+					.range((page - 1) * pageSize, page * pageSize)
 
 			setPageData(data)
 		}
 
 		fetchGalleryData()
-	}, [supabase, startIndex, endIndex])
-	console.log(pageData)
+	}, [supabase, page])
 
 	return (
 		<form
@@ -123,9 +148,15 @@ const GalleryGridForm: React.FC<IProps> = ({
 						))}
 					</ul>
 				</div>
-				Pagination
-				{/* TODO:Pagination, nebo jiné řešení... */}
 			</div>
+
+			<CSRPagination
+				page={page}
+				onPageChange={(page) => setPage(page)}
+				count={count}
+				pageSize={pageSize}
+			/>
+
 			{error && (
 				<span className='text-red-500 animate-res-fade-out'>
 					An error occurred while saving the data.
@@ -136,6 +167,7 @@ const GalleryGridForm: React.FC<IProps> = ({
 					Data saved successfully
 				</span>
 			)}
+
 			<div className='flex gap-4 justify-end'>
 				<button
 					type='submit'
