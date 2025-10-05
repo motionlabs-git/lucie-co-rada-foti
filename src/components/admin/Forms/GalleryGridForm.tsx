@@ -121,33 +121,31 @@ const GalleryGridForm: React.FC<IProps> = ({
 			</div>
 			<div>
 				<label>Gallery</label>
-				<div className='overflow-y-scroll max-h-96 mt-1'>
-					<ul className='w-full grid grid-cols-[repeat(auto-fill,minmax(12rem,2fr))] gap-4'>
-						{pageData?.map((image) => (
-							<li
-								key={image.id}
-								className='w-full aspect-square border border-white/5 hover:border-white/20 duration-300 rounded-lg overflow-hidden cursor-pointer select-none'
+				<ul className='w-full grid grid-cols-[repeat(auto-fill,minmax(12rem,2fr))] gap-4'>
+					{pageData?.map((image) => (
+						<li
+							key={image.id}
+							className='w-full aspect-square border border-white/5 hover:border-white/20 duration-300 rounded-lg overflow-hidden cursor-pointer select-none'
+						>
+							<button
+								type='button'
+								className='w-full h-full'
+								onClick={() => {
+									setValue('image_id', image.id)
+									setSelectedImage(image)
+								}}
 							>
-								<button
-									type='button'
-									className='w-full h-full'
-									onClick={() => {
-										setValue('image_id', image.id)
-										setSelectedImage(image)
-									}}
-								>
-									<Image
-										src={image.url}
-										alt={image.name}
-										width={500}
-										height={500}
-										className='w-full h-full object-cover object-center'
-									/>
-								</button>
-							</li>
-						))}
-					</ul>
-				</div>
+								<Image
+									src={image.url}
+									alt={image.name}
+									width={500}
+									height={500}
+									className='w-full h-full object-cover object-center'
+								/>
+							</button>
+						</li>
+					))}
+				</ul>
 			</div>
 
 			<CSRPagination
