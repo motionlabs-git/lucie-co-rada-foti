@@ -2,6 +2,10 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+@theme inline {
+	--font-satoshiBold: var(--font-satoshi-bold);
+}
+
 .bg-widget {
 	@apply bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5;
 
