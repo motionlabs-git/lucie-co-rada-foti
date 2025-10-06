@@ -13,7 +13,7 @@ const Navbar: React.FC = async () => {
 	return (
 		<nav className='w-full h-14 flex justify-between items-center border-b border-black/10 dark:border-white/10 px-4'>
 			<section>
-				<Link aria-label='Logo' href='https://motionlabs.cz'>
+				<Link aria-label='Logo' href='/admin/seo'>
 					<Image
 						src={Logo}
 						alt='Logo'

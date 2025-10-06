@@ -13,7 +13,7 @@ const menuList = [
 		id: 'gallery',
 	},
 	{
-		title: 'O lucce',
+		title: 'O mně',
 		id: 'about',
 	},
 	{

@@ -57,7 +57,7 @@ const DraggableItem = ({
 						<p className=''> - {item.price} CZK</p>
 					</Link>
 				</div>
-
+				{/* TODO:Delete */}
 				<DeletePriceInput handleDelete={deletePrice} />
 			</div>
 		)

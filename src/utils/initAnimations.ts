@@ -18,57 +18,43 @@ const initAnimations = () => {
 		})
 	})
 
-
-
-
 	//Gallery
-		const mm = gsap.matchMedia()
+	gsap.to('.galleryColumn', {
+		scrollTrigger: {
+			trigger: '#gallery',
+			start: 'top top',
+			end: 'bottom bottom',
+			scrub: 1,
+		},
+		translateY: 0,
+	})
 
-		mm.add('(min-width: 768px)', () => {
-			gsap.to('.galleryColumn', {
-				scrollTrigger: {
-					trigger: '#gallery',
-					start: 'top top',
-					end: 'bottom bottom',
-					scrub: 1,
-				},
-				translateY: 0,
-			})
+	const middleColumn = document.getElementById('galleryMiddleColumn')
+	const middleColumnFill = document.getElementById('galleryMiddleColumnFill')
 
-			const middleColumn = document.getElementById('galleryMiddleColumn')
-			const middleColumnFill = document.getElementById(
-				'galleryMiddleColumnFill'
-			)
+	if (!middleColumn || !middleColumnFill) return
 
-			if (!middleColumn || !middleColumnFill) return
+	gsap.to('#galleryMiddleColumn', {
+		scrollTrigger: {
+			trigger: '#gallery',
+			start: 'top top',
+			end: 'bottom bottom',
+			scrub: 1,
+		},
+		translateY:
+			0 + middleColumn?.clientHeight - middleColumnFill?.clientHeight - 8,
+	})
 
-			gsap.to('#galleryMiddleColumn', {
-				scrollTrigger: {
-					trigger: '#gallery',
-					start: 'top top',
-					end: 'bottom bottom',
-					scrub: 1,
-				},
-				translateY:
-					0 +
-					middleColumn?.clientHeight -
-					middleColumnFill?.clientHeight -
-					8,
-			})
-
-			gsap.to('#heroModal', {
-				scrollTrigger: {
-					trigger: '#gallery',
-					start: 'top top',
-					end: '5% top',
-					scrub: 1,
-				},
-				opacity: 0,
-				scale: 0.8,
-			})
-		})
-
-
+	gsap.to('#heroModal', {
+		scrollTrigger: {
+			trigger: '#gallery',
+			start: 'top top',
+			end: '5% top',
+			scrub: 1,
+		},
+		opacity: 0,
+		scale: 0.8,
+	})
 }
 
 export default initAnimations

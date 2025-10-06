@@ -48,13 +48,6 @@ const ImageModal = ({
 					</div>
 				</button>
 
-				<div
-					id='imageModalImg'
-					className='bg-red-400 rounded-2xl max-h-[80vh] absolute z-50'
-				>
-					{' '}
-				</div>
-
 				<Image
 					width={1200}
 					height={1200}

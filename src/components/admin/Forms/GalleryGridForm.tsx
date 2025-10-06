@@ -82,7 +82,7 @@ const GalleryGridForm: React.FC<IProps> = ({
 				await supabase
 					.from('image_upload')
 					.select('*')
-					.range((page - 1) * pageSize, page * pageSize)
+					.range((page - 1) * pageSize, page * pageSize - 1)
 
 			setPageData(data)
 		}

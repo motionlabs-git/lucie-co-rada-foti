@@ -32,7 +32,7 @@ function Hero() {
 		>
 			<div
 				className='flex flex-col items-center'
-				onMouseEnter={animateLogo}
+				// onMouseEnter={animateLogo}
 			>
 				<Logo
 					id='HeroLogo'
@@ -40,17 +40,19 @@ function Hero() {
 					pathClass='HeroLogoPath'
 				></Logo>
 				<h1 className='leading-tight whitespace-nowrap'>
-					<em className='text-[10vw] md:text-6xl'>
+					<em className='text-[clamp(1.5rem,10vw,3.75rem)]'>
 						Lucie co ráda fotí
 					</em>
 				</h1>
 				<h2 className='text-center'>
-					<em className='text-4xl'>Vaše </em>
-					<strong className='text-3xl text-orange relative inline-block'>
+					<em className='text-[clamp(1.5rem,6vw,2.5rem)]'>Vaše </em>
+					<strong className='text-[clamp(1.25rem,5.5vw,1.875rem)] text-orange relative inline-block'>
 						svatební a rodinná
 						<div className='absolute w-[120%] opacity-85 blur-3xl h-[120%] rounded-full bg-orange -top-[10%] -left-[10%] select-none pointer-events-none'></div>
 					</strong>{' '}
-					<em className='text-4xl'>fotografka.</em>
+					<em className='text-[clamp(1.5rem,6vw,2.5rem)]'>
+						fotografka
+					</em>
 				</h2>
 			</div>
 		</div>

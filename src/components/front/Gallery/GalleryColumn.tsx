@@ -6,15 +6,16 @@ import { GalleryGridImage } from '@/types/gallery-grid'
 const GalleryColumn = ({
 	galleryData,
 	className,
+	wrapperClassname,
 	handleClick,
 }: {
 	galleryData: GalleryGridImage[]
 	className: string
+	wrapperClassname?: string
 	handleClick: (id: number) => void
 }) => {
-	console.log(galleryData)
 	return (
-		<div className='md:h-screen w-full md:items-end flex flex-1'>
+		<div className={`h-screen w-full items-end ${wrapperClassname}`}>
 			<div
 				className={`h-fit w-full flex flex-col gap-4 galleryColumn pb-2 ${className}`}
 			>

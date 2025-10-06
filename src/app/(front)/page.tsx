@@ -56,6 +56,7 @@ export const generateMetadata = async () => {
 
 async function HomePage() {
 	const supabase = await createServerClient()
+
 	const { data: galleryData } = (await supabase
 		.from('gallery_grid')
 		.select('id, title, image_id(url)')
@@ -80,6 +81,7 @@ async function HomePage() {
 		<LoaderProvider>
 			<main className='flex flex-col items-center'>
 				<Gallery galleryData={galleryData} />
+
 				<About />
 
 				<Pricelist

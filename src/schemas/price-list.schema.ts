@@ -2,8 +2,8 @@ import * as z from 'zod'
 
 export const priceListValidation = z.object({
 	title: z.string().trim().nonempty('Title is required'),
-	subtitle: z.string().trim().optional(),
-	description: z.string().trim().optional(),
+	// subtitle: z.string().trim().optional(),
+	// description: z.string().trim().optional(),
 	items: z.array(
 		z.object({
 			id: z.number().int(),

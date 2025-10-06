@@ -41,13 +41,13 @@ export const ReferencesData = [
 		avatarImage: '/images/References/MagdalenaKroupova/avatar.png',
 		image: '/images/References/MagdalenaKroupova/cover.webp',
 	},
-	{
-		title: 'Karin Štěrbová',
-		description:
-			'Lucka je talentovaná, mladá, pohotová žena, která Vám udělá nádherné fotky. Krásné, přirozené a to chcete! Zlepšení od prvního focení, kdy jsme fotili těhotenské fotky, poté svatbu a nyní fotky s dětmi (velice akční), tak nám spadla brada. Zachytila přesně dané momenty a vše, co nás vystihuje! 🙂 Naše doporučení? Dáváme 10/10 😍 A na další focení se určitě vrátíme! Moc děkujeme ♥️📸',
-		avatarImage: '/images/References/KarinSterbova/avatar.png',
-		image: '/images/References/KarinSterbova/cover.webp',
-	},
+	// {
+	// 	title: 'Karin Štěrbová',
+	// 	description:
+	// 		'Lucka je talentovaná, mladá, pohotová žena, která Vám udělá nádherné fotky. Krásné, přirozené a to chcete! Zlepšení od prvního focení, kdy jsme fotili těhotenské fotky, poté svatbu a nyní fotky s dětmi (velice akční), tak nám spadla brada. Zachytila přesně dané momenty a vše, co nás vystihuje! 🙂 Naše doporučení? Dáváme 10/10 😍 A na další focení se určitě vrátíme! Moc děkujeme ♥️📸',
+	// 	avatarImage: '/images/References/KarinSterbova/avatar.png',
+	// 	image: '/images/References/KarinSterbova/cover.webp',
+	// },
 	{
 		title: 'Eliška Veřmiřovská',
 		description:
@@ -55,13 +55,13 @@ export const ReferencesData = [
 		avatarImage: '/images/References/EliskaVermirovska/avatar.png',
 		image: '/images/References/EliskaVermirovska/cover.webp',
 	},
-	{
-		title: 'Klára Palágyiová',
-		description:
-			'Lucka je skvělá fotografka, fotili jsme s ní novorozenecké i rodinné focení a vždy jsme byli moc spokojeni. Lucka umí udělat skvělou a uvolněnou atsmoféru, takže zapomenete na nervozitu. Navíc je spolehlivá, přátelská a má smysl pro humor, takže si focení maximálně užijete. Těšíme se na příště, moc doporučujeme ❤️',
-		avatarImage: '/images/References/KlaraPalagyiova/avatar.png',
-		image: '/images/References/KlaraPalagyiova/cover.webp',
-	},
+	// {
+	// 	title: 'Klára Palágyiová',
+	// 	description:
+	// 		'Lucka je skvělá fotografka, fotili jsme s ní novorozenecké i rodinné focení a vždy jsme byli moc spokojeni. Lucka umí udělat skvělou a uvolněnou atsmoféru, takže zapomenete na nervozitu. Navíc je spolehlivá, přátelská a má smysl pro humor, takže si focení maximálně užijete. Těšíme se na příště, moc doporučujeme ❤️',
+	// 	avatarImage: '/images/References/KlaraPalagyiova/avatar.png',
+	// 	image: '/images/References/KlaraPalagyiova/cover.webp',
+	// },
 	{
 		title: 'Johana Plešková',
 		description:

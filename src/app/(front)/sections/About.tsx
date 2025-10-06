@@ -24,6 +24,7 @@ const About = () => {
 					filter: 'blur(10px)',
 					scale: 0.8,
 					opacity: 0,
+					delay: 0.25,
 				},
 				'<'
 			)
@@ -48,22 +49,21 @@ const About = () => {
 
 	return (
 		<div id='about' className='h-auto w-full px-4 md:px-10'>
-			<div
-				id='aboutPart1'
-				className='flex flex-col items-center justify-center sticky top-0 h-screen'
-			>
-				<h1 className='text-lightOrange text-nowrap text-center'>
-					<em className='text-center block'>Ahoj, jsem</em>
+			<div id='aboutPart1' className=' h-[130vh]'>
+				<div className='flex flex-col items-center justify-center sticky top-0 h-screen'>
+					<h1 className='text-lightOrange text-nowrap text-center'>
+						<em className='text-center block'>Ahoj, jsem</em>
 
-					<em className='text-[12vw]'>Lucie co ráda fotí</em>
-				</h1>
-				<p className='mt-6 text-center max-w-6xl text-lg'>
-					S foťákem v ruce se světem potuluju už dobrých 10 let. Proto
-					si myslím, že bych ti mohla pomoct zachytit důležité
-					okamžiky tvého života. Nejraději fotím svatby a rodiny, ale
-					libuju si i v párech a portrétech. Kdyby tě cokoliv
-					zajímalo, neváhej mě kontaktovat!
-				</p>
+						<em className='text-[12vw]'>Lucie co ráda fotí</em>
+					</h1>
+					<p className='mt-6 text-center max-w-6xl text-lg'>
+						S foťákem v ruce se světem potuluju už dobrých 10 let.
+						Proto si myslím, že bych ti mohla pomoct zachytit
+						důležité okamžiky tvého života. Nejraději fotím svatby a
+						rodiny, ale libuju si i v párech a portrétech. Kdyby tě
+						cokoliv zajímalo, neváhej mě kontaktovat!
+					</p>
+				</div>
 			</div>
 
 			<div
@@ -73,7 +73,7 @@ const About = () => {
 				<div className='w-full aspect-video'>
 					<Image
 						src='/images/AboutLucie.webp'
-						alt='O lucce'
+						alt='O mně'
 						width={1000}
 						height={500}
 						className='w-full h-full object-cover rounded-2xl'

@@ -1,79 +1,79 @@
 'use client'
 
-import React from 'react'
-// import gsap from 'gsap'
-// import ImageModal from '@/components/front/Gallery/ImageModal'
+import React, { useState } from 'react'
+import gsap from 'gsap'
 import GalleryColumn from '@/components/front/Gallery/GalleryColumn'
 import GalleryMiddleColumn from '@/components/front/Gallery/GalleryMiddleColumn'
 import Hero from './Hero'
 import { GalleryGridImage } from '@/types/gallery-grid'
+import ImageModal from '@/components/front/Gallery/ImageModal'
 
 const Gallery = ({
 	galleryData,
 }: {
 	galleryData: GalleryGridImage[] | null
 }) => {
-	// const [selectedImage, setSelectedImage] = useState<null | number>(null)
+	const [selectedImage, setSelectedImage] = useState<null | number>(null)
 
-	// const closeImage = () => {
-	// 	gsap.to('#imageModal', {
-	// 		opacity: 0,
-	// 		pointerEvents: 'none',
-	// 		onComplete: () => {
-	// 			setSelectedImage(null)
-	// 		},
-	// 	})
-	// }
-
-	console.log(galleryData)
+	const closeImage = () => {
+		gsap.to('#imageModal', {
+			opacity: 0,
+			pointerEvents: 'none',
+			onComplete: () => {
+				setSelectedImage(null)
+			},
+		})
+	}
 
 	if (!galleryData) return null
 
 	return (
-		<div id='gallery' className='relative w-full md:h-[300vh]'>
-			{/* {selectedImage && (
-					<ImageModal
-						img={galleryData[selectedImage - 1].url}
-						title={galleryData[selectedImage - 1].name}
-						nextImage={() => {
-							if (selectedImage === galleryData.length) {
-								setSelectedImage(1)
-							} else setSelectedImage((prev) => prev && prev + 1)
-						}}
-						prevImage={() => {
-							if (selectedImage === 1) {
-								setSelectedImage(galleryData.length)
-							} else setSelectedImage((prev) => prev && prev - 1)
-						}}
-						handleCloseImage={closeImage}
-					></ImageModal>
-				)} */}
+		<div id='gallery' className='relative w-full h-[300vh]'>
+			{selectedImage && (
+				<ImageModal
+					img={galleryData[selectedImage - 1].image_id?.url}
+					title={galleryData[selectedImage - 1].title}
+					nextImage={() => {
+						if (selectedImage === galleryData.length) {
+							setSelectedImage(1)
+						} else setSelectedImage((prev) => prev && prev + 1)
+					}}
+					prevImage={() => {
+						if (selectedImage === 1) {
+							setSelectedImage(galleryData.length)
+						} else setSelectedImage((prev) => prev && prev - 1)
+					}}
+					handleCloseImage={closeImage}
+				></ImageModal>
+			)}
 
-			<div className='md:sticky top-0 md:h-screen overflow-y-hidden px-4'>
+			<div className='sticky top-0 h-screen overflow-y-hidden px-4'>
 				<Hero></Hero>
 
 				<div className='w-full flex gap-4'>
 					<GalleryColumn
 						galleryData={galleryData.slice(0, 4)}
-						className='md:translate-y-[98%]'
-						handleClick={() => {
-							return
+						className='translate-y-[98%]'
+						wrapperClassname='flex flex-1'
+						handleClick={(id) => {
+							setSelectedImage(id)
 						}}
 					/>
 
 					<GalleryMiddleColumn
 						galleryData={galleryData.slice(4, 8)}
-						className='md:translate-y-[-15%]'
-						handleClick={() => {
-							return
+						className='translate-y-[-62%] md:translate-y-[-15%]'
+						handleClick={(id) => {
+							setSelectedImage(id)
 						}}
 					></GalleryMiddleColumn>
 
 					<GalleryColumn
 						galleryData={galleryData.slice(8, 12)}
-						className='md:translate-y-[90%]'
-						handleClick={() => {
-							return
+						className='translate-y-[90%]'
+						wrapperClassname='md:flex hidden flex-1'
+						handleClick={(id) => {
+							setSelectedImage(id)
 						}}
 					/>
 				</div>

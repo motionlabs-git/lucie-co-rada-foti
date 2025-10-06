@@ -13,7 +13,7 @@ const GalleryMiddleColumn = ({
 	handleClick: (id: number) => void
 }) => {
 	return (
-		<div className='hidden md:flex h-screen items-end flex-1'>
+		<div className='flex h-screen items-end flex-1'>
 			<div
 				id='galleryMiddleColumn'
 				className={`h-fit w-full flex flex-col gap-4 ${className}`}
@@ -29,7 +29,7 @@ const GalleryMiddleColumn = ({
 								handleClick(img.id)
 							}}
 							className={`relative w-full h-auto ${
-								index % 2 === 0
+								index % 2 === 1
 									? 'aspect-[4/5]'
 									: 'aspect-[5/4]'
 							} overflow-hidden rounded-xl cursor-pointer group select-none`}
@@ -64,7 +64,7 @@ const GalleryMiddleColumn = ({
 							handleClick(img.id)
 						}}
 						className={`relative w-full h-auto ${
-							index % 2 === 0 ? 'aspect-[4/5]' : 'aspect-[5/4]'
+							index % 2 === 1 ? 'aspect-[4/5]' : 'aspect-[5/4]'
 						} overflow-hidden rounded-xl cursor-pointer group`}
 					>
 						<div className='w-full h-full duration-300 group-hover:blur-xs'>

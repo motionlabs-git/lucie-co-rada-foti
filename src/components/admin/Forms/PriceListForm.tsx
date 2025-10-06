@@ -16,7 +16,6 @@ import {
 	PriceListSchema,
 	priceListValidation,
 } from '@/schemas/price-list.schema'
-import Textarea from '../Inputs/Textarea'
 import Select from '../Inputs/Select'
 import { ImSpinner2 } from 'react-icons/im'
 import DropImageSingle from '../Inputs/DropImageSingle'
@@ -102,7 +101,7 @@ const PriceListForm: NextPage<IProps> = ({
 				/>
 			</div>
 
-			<div>
+			{/* <div>
 				<label>Subtitle</label>
 				<Input
 					{...register('subtitle')}
@@ -122,7 +121,7 @@ const PriceListForm: NextPage<IProps> = ({
 					className='resize-none mt-1'
 					rows={3}
 				/>
-			</div>
+			</div> */}
 
 			<div>
 				<label>Items</label>
@@ -182,11 +181,19 @@ const PriceListForm: NextPage<IProps> = ({
 					defaultValue={''}
 					className='mt-1'
 				>
-					<option value='' disabled>
+					<option
+						value=''
+						disabled
+						className='bg-stone-800 text-white'
+					>
 						Vyberte
 					</option>
-					<option value='1'>Svatební focení</option>
-					<option value='2'>Ostatní focení</option>
+					<option value='1' className='bg-stone-800 text-white'>
+						Svatební focení
+					</option>
+					<option value='2' className='bg-stone-800 text-white'>
+						Ostatní focení
+					</option>
 				</Select>
 			</div>
 
