@@ -26,9 +26,14 @@ import { Model } from '@/schemas/model'
 interface IProps {
 	category: Model<PriceListCategorySchema>
 	priceList: Model<PriceListSchema>[]
+	onRefresh: () => void
 }
 
-const DroppableContainer: React.FC<IProps> = ({ category, priceList }) => {
+const DroppableContainer: React.FC<IProps> = ({
+	category,
+	priceList,
+	onRefresh,
+}) => {
 	const [items, setItems] = useState<string[]>(
 		category.item_order?.map((item) => item.toString()) ?? []
 	)
@@ -46,8 +51,7 @@ const DroppableContainer: React.FC<IProps> = ({ category, priceList }) => {
 		})
 
 		if (!result.success) {
-			// TODO:
-			console.error('Validation error:', result.error)
+			// TODO: handle error
 			return
 		}
 
@@ -58,8 +62,7 @@ const DroppableContainer: React.FC<IProps> = ({ category, priceList }) => {
 			.eq('id', category.id)
 
 		if (error) {
-			// TODO:
-			console.error('Supabase error:', error)
+			// TODO: handle error
 		}
 	}
 
@@ -98,6 +101,7 @@ const DroppableContainer: React.FC<IProps> = ({ category, priceList }) => {
 									(item) => item.id.toString() === id
 								)}
 								disabled={items.length === 1}
+								onRefresh={onRefresh}
 							/>
 						))}
 					</SortableContext>

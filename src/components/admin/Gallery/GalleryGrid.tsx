@@ -70,28 +70,31 @@ const GalleryGrid = () => {
 		handleUpdateGrid()
 	}
 
-	if (loading) {
-		return <div>Loading...</div>
-	}
-
 	return (
 		<>
 			<div className='flex gap-4 mt-8'>
 				<fieldset className='flex flex-col flex-1 gap-4'>
-					{gridData?.slice(0, 4).map((item, index) => {
+					{[0, 1, 2, 3].map((item, index) => {
 						return (
 							<ImageSlot
-								key={item.id}
+								key={item}
 								aspect={
 									index % 2 === 0
 										? 'aspect-[4/5]'
 										: 'aspect-[5/4]'
 								}
-								item={item}
-								handleDelete={() => handleDelete(item.id)}
+								item={gridData ? gridData[item] : undefined}
+								loading={loading}
+								handleDelete={() => {
+									if (gridData && gridData[item]) {
+										handleDelete(gridData[item].id)
+									}
+								}}
 								handleOpenPicker={() => {
-									setSelectedId(item.id)
-									setIsOpenModal(true)
+									if (gridData && gridData[item]) {
+										setSelectedId(gridData[item].id)
+										setIsOpenModal(true)
+									}
 								}}
 							></ImageSlot>
 						)
@@ -99,20 +102,27 @@ const GalleryGrid = () => {
 				</fieldset>
 
 				<fieldset className='flex flex-col flex-1 gap-4'>
-					{gridData?.slice(4, 8).map((item, index) => {
+					{[4, 5, 6, 7].map((item, index) => {
 						return (
 							<ImageSlot
-								key={item.id}
+								key={item}
 								aspect={
 									index % 2 === 1
 										? 'aspect-[4/5]'
 										: 'aspect-[5/4]'
 								}
-								item={item}
-								handleDelete={() => handleDelete(item.id)}
+								item={gridData ? gridData[item] : undefined}
+								loading={loading}
+								handleDelete={() => {
+									if (gridData && gridData[item]) {
+										handleDelete(gridData[item].id)
+									}
+								}}
 								handleOpenPicker={() => {
-									setSelectedId(item.id)
-									setIsOpenModal(true)
+									if (gridData && gridData[item]) {
+										setSelectedId(gridData[item].id)
+										setIsOpenModal(true)
+									}
 								}}
 							></ImageSlot>
 						)
@@ -120,20 +130,27 @@ const GalleryGrid = () => {
 				</fieldset>
 
 				<fieldset className='flex flex-col flex-1 gap-4'>
-					{gridData?.slice(8, 12).map((item, index) => {
+					{[8, 9, 10, 11].map((item, index) => {
 						return (
 							<ImageSlot
-								key={item.id}
+								key={item}
 								aspect={
 									index % 2 === 0
 										? 'aspect-[4/5]'
 										: 'aspect-[5/4]'
 								}
-								item={item}
-								handleDelete={() => handleDelete(item.id)}
+								item={gridData ? gridData[item] : undefined}
+								loading={loading}
+								handleDelete={() => {
+									if (gridData && gridData[item]) {
+										handleDelete(gridData[item].id)
+									}
+								}}
 								handleOpenPicker={() => {
-									setSelectedId(item.id)
-									setIsOpenModal(true)
+									if (gridData && gridData[item]) {
+										setSelectedId(gridData[item].id)
+										setIsOpenModal(true)
+									}
 								}}
 							></ImageSlot>
 						)

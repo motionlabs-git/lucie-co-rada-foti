@@ -27,6 +27,9 @@ const PriceListPage = () => {
 		Model<PriceListCategorySchema>[] | null
 	>(null)
 	const [categoryLoading, setCategoryLoading] = useState(true)
+	const [refresh, setRefresh] = useState(0)
+
+	const handleRefresh = () => setRefresh((prev) => prev + 1)
 
 	useEffect(() => {
 		;(async () => {
@@ -62,6 +65,20 @@ const PriceListPage = () => {
 		})()
 	}, [router])
 
+	useEffect(() => {
+		;(async () => {
+			const supabase = await createClient()
+
+			const {
+				data: priceListData,
+			}: PostgrestResponse<Model<PriceListSchema>> = await supabase
+				.from('price_list')
+				.select('*')
+
+			setPriceListData(priceListData || [])
+		})()
+	}, [refresh])
+
 	return (
 		<>
 			<section className='w-full rounded-2xl bg-widget p-4'>
@@ -87,6 +104,7 @@ const PriceListPage = () => {
 									key={category.id}
 									category={category}
 									priceList={priceListData}
+									onRefresh={handleRefresh}
 								/>
 							))}
 					</div>

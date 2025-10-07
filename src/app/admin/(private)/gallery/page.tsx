@@ -1,3 +1,4 @@
+import { deleteImage } from '@/actions/galleryActions'
 import GalleryGrid from '@/components/admin/Gallery/GalleryGrid'
 import SSRPagination from '@/components/admin/Pagination/SSRPagination'
 import { ImageUploadSchema } from '@/schemas/image-upload.schema'
@@ -66,20 +67,25 @@ const GalleryPage: NextPage<{
 								key={image.id}
 								className='relative w-full aspect-square border border-white/5 hover:border-white/20 duration-300 rounded-lg overflow-hidden'
 							>
-								<button
-									type='button'
-									aria-label='Delete image'
-									className='absolute z-10 top-4 right-4 flex items-center justify-center border-white border rounded-full p-1 text-white bg-stone-800/50 backdrop-blur-sm'
-									// onClick={() => {
-									// 	// TODO:DELETE obrázku
-									// 	return
-									// }}
+								<form
+									action={deleteImage}
+									className='absolute z-10 top-4 right-4'
 								>
-									<FiPlus
-										className='rotate-45'
-										size={18}
-									></FiPlus>
-								</button>
+									<input
+										type='hidden'
+										name='id'
+										value={image.id}
+									/>
+									<button
+										aria-label='Delete image'
+										className='flex items-center justify-center border-white border rounded-full p-1 text-white bg-stone-800/50 backdrop-blur-sm cursor-pointer'
+									>
+										<FiPlus
+											className='rotate-45'
+											size={18}
+										/>
+									</button>
+								</form>
 								<Image
 									src={image.url}
 									alt={image.name}

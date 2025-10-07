@@ -1,29 +1,38 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import { useSortable } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
 import { PriceListSchema } from '@/schemas/price-list.schema'
 import Link from 'next/link'
 import { Model } from '@/schemas/model'
 import { FiCode } from 'react-icons/fi'
-import { axiosFileClient } from '@/utils/axios/client'
 import DeletePriceInput from '../../Inputs/DeletePriceInput'
+import { axiosClient } from '@/utils/axios/client'
 
 const DraggableItem = ({
 	id,
 	item,
 	disabled,
+	onRefresh,
 }: {
 	id: string
 	item?: Model<PriceListSchema>
 	disabled: boolean
+	onRefresh?: () => void
 }) => {
 	const { attributes, listeners, setNodeRef, transform, transition } =
 		useSortable({ id, disabled })
 
+	const [deleteLoading, setDeleteLoading] = useState(false)
+
 	const deletePrice = () => {
-		axiosFileClient.delete(`/api/v1/price-list/${id}`)
+		setDeleteLoading(true)
+
+		axiosClient.delete(`/api/v1/price-list/${id}`).finally(() => {
+			setDeleteLoading(false)
+			if (typeof onRefresh === 'function') onRefresh()
+		})
 	}
 
 	if (item)
@@ -57,8 +66,11 @@ const DraggableItem = ({
 						<p className=''> - {item.price} CZK</p>
 					</Link>
 				</div>
-				{/* TODO:Delete */}
-				<DeletePriceInput handleDelete={deletePrice} />
+
+				<DeletePriceInput
+					handleDelete={deletePrice}
+					loading={deleteLoading}
+				/>
 			</div>
 		)
 }
