@@ -6,11 +6,13 @@ import { FiPlus } from 'react-icons/fi'
 const ImageSlot = ({
 	aspect,
 	item,
+	loading,
 	handleDelete,
 	handleOpenPicker,
 }: {
 	aspect: string
-	item: GalleryGridUploadJoin
+	item?: GalleryGridUploadJoin
+	loading: boolean
 	handleDelete: () => void
 	handleOpenPicker: () => void
 }) => {
@@ -20,7 +22,9 @@ const ImageSlot = ({
 				className={`${aspect} w-full flex items-center justify-center rounded-xl bg-black/50 border-dashed border-3 border-stone-800 text-stone-800 hover:border-stone-700 hover:bg-black/40 hover:text-stone-700 cursor-pointer duration-300 overflow-hidden select-none`}
 				onClick={handleOpenPicker}
 			>
-				{item.image_upload ? (
+				{loading ? (
+					<div></div>
+				) : item && item.image_upload ? (
 					<Image
 						className='w-full h-full object-cover'
 						src={item.image_upload?.url}
@@ -33,7 +37,7 @@ const ImageSlot = ({
 				)}
 			</div>
 
-			{item.image_upload && (
+			{!loading && item && item.image_upload && (
 				<button
 					type='button'
 					aria-label='Delete image'

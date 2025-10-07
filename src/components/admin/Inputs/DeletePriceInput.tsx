@@ -1,7 +1,13 @@
 import React, { useState } from 'react'
 import { FiCheck, FiPlus, FiTrash2 } from 'react-icons/fi'
+import { ImSpinner2 } from 'react-icons/im'
 
-const DeletePriceInput = ({ handleDelete }: { handleDelete: () => void }) => {
+interface IProps {
+	handleDelete: () => void
+	loading: boolean
+}
+
+const DeletePriceInput: React.FC<IProps> = ({ handleDelete, loading }) => {
 	const [isOpened, setIsOpened] = useState(false)
 
 	return (
@@ -14,7 +20,11 @@ const DeletePriceInput = ({ handleDelete }: { handleDelete: () => void }) => {
 						aria-label='Yes'
 						className='h-8 w-8 flex items-center justify-center border border-white text-white rounded-lg  opacity-60 hover:opacity-100 duration-200'
 					>
-						<FiCheck size={16}></FiCheck>
+						{loading ? (
+							<ImSpinner2 size={16} className='animate-spin' />
+						) : (
+							<FiCheck size={16}></FiCheck>
+						)}
 					</button>
 					<button
 						onClick={() => setIsOpened(false)}

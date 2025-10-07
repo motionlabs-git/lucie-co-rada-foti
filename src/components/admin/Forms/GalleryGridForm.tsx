@@ -40,8 +40,9 @@ const GalleryGridForm: React.FC<IProps> = ({
 		null
 	)
 	const [count, setCount] = useState(0)
-	const [selectedImage, setSelectedImage] =
-		useState<null | ImageUploadSchema>(defaultValues.image_upload ?? null)
+	const [selectedImage, setSelectedImage] = useState<
+		null | (ImageUploadSchema & { id: number })
+	>(defaultValues.image_upload ?? null)
 
 	const {
 		handleSubmit,
@@ -125,7 +126,11 @@ const GalleryGridForm: React.FC<IProps> = ({
 					{pageData?.map((image) => (
 						<li
 							key={image.id}
-							className='w-full aspect-square border border-white/5 hover:border-white/20 duration-300 rounded-lg overflow-hidden cursor-pointer select-none'
+							className={`w-full aspect-square border ${
+								selectedImage && selectedImage.id === image.id
+									? 'border-white shadow-[0_0_4px_1px] shadow-white'
+									: 'border-white/5 hover:border-white/20'
+							} duration-300 rounded-lg overflow-hidden cursor-pointer select-none`}
 						>
 							<button
 								type='button'

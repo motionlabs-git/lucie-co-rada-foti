@@ -16,6 +16,7 @@ interface IProps {
 
 const SSRPagination: React.FC<IProps> = ({ count, page, pageSize, href }) => {
 	if (!count) return null
+
 	return (
 		<div className='flex justify-center mt-6'>
 			<nav className='inline-flex gap-2'>

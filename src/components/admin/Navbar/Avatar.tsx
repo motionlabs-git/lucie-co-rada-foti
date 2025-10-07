@@ -29,6 +29,7 @@ const Avatar = () => {
 			>
 				<FiUser className='text-lg opacity-80' />
 			</button>
+
 			{isOpen && (
 				<ul className='absolute right-0 top-10 pt-2 '>
 					<li className='bg-stone-300 dark:bg-stone-900 rounded-lg border border-black/10 dark:border-white/5 p-2'>
