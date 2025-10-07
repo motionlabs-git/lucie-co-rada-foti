@@ -53,7 +53,7 @@ const Gallery = ({
 				<div className='w-full flex gap-4'>
 					<GalleryColumn
 						galleryData={galleryData.slice(0, 4)}
-						className='translate-y-[98%]'
+						className='translate-y-[80%] sm:translate-y-[88%] lg:translate-y-[98%]'
 						wrapperClassname='flex flex-1'
 						handleClick={(id) => {
 							setSelectedImage(id)
@@ -62,7 +62,7 @@ const Gallery = ({
 
 					<GalleryMiddleColumn
 						galleryData={galleryData.slice(4, 8)}
-						className='translate-y-[-62%] md:translate-y-[-15%]'
+						className='translate-y-[-70%] sm:translate-y-[-50%] md:translate-y-[-22%]  lg:translate-y-[-22%] xl:translate-y-[-15%]'
 						handleClick={(id) => {
 							setSelectedImage(id)
 						}}

@@ -8,21 +8,20 @@ const Avatar = () => {
 	const [isOpen, setIsOpen] = useState(false)
 
 	const handleAvatarClick = () => setIsOpen((prev) => !prev)
-	// TODO: BLUR
-	const handleBlur = (e) => {
-		console.log(e.target.id)
-		e.stopPropagation()
-		if (e.target.id !== 'signOutBtn') {
-			signOut()
-		} else {
-			setIsOpen(false)
-		}
-	}
 
 	return (
-		<div className='relative'>
+		<div
+			className='relative'
+			tabIndex={0}
+			onBlur={(e) => {
+				if (!e.currentTarget.contains(e.relatedTarget)) {
+					setIsOpen(false)
+				}
+			}}
+		>
 			<button
 				type='button'
+				tabIndex={0}
 				id='signOutBtn'
 				onClick={handleAvatarClick}
 				className={`w-10 h-10 flex items-center justify-center rounded-full hover:bg-black/5
@@ -31,11 +30,10 @@ const Avatar = () => {
 				<FiUser className='text-lg opacity-80' />
 			</button>
 			{isOpen && (
-				<ul className='absolute right-0 top-13 bg-stone-300 dark:bg-stone-900 rounded-lg border border-black/10 dark:border-white/5 p-2'>
-					<li>
+				<ul className='absolute right-0 top-10 pt-2 '>
+					<li className='bg-stone-300 dark:bg-stone-900 rounded-lg border border-black/10 dark:border-white/5 p-2'>
 						<form action={signOut}>
 							<button
-								onBlur={(e) => handleBlur(e)}
 								type='submit'
 								className='flex items-center gap-2'
 							>

@@ -92,7 +92,7 @@ const Pricelist = ({
 					</div>
 				</div>
 
-				<div className='flex justify-center items-center gap-8'>
+				<div className='flex justify-center items-center gap-4 md:gap-8'>
 					<button
 						type='button'
 						aria-label='Show previous slide'
