@@ -27,11 +27,15 @@ const Gallery = ({
 
 	if (!galleryData) return null
 
+	const imgSrc = selectedImage
+		? galleryData[selectedImage - 1]?.image_id?.url
+		: null
+
 	return (
 		<div id='gallery' className='relative w-full h-[300vh]'>
-			{selectedImage && (
+			{selectedImage && imgSrc && (
 				<ImageModal
-					img={galleryData[selectedImage - 1].image_id?.url}
+					img={imgSrc}
 					title={galleryData[selectedImage - 1].title}
 					nextImage={() => {
 						if (selectedImage === galleryData.length) {
