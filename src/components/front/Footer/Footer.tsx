@@ -69,13 +69,13 @@ const Footer = () => {
 								<Link
 									aria-label='Email'
 									className='flex items-center gap-2'
-									href='&#77;&#65;&#73;&#108;&#116;&#79;&#58;&#108;&#117;&#99;&#105;&#101;&#64;&#114;&#97;&#100;&#97;&#102;&#111;&#116;&#105;&#46;&#99;&#122;'
+									href='&#109;&#97;&#105;&#76;&#84;&#79;&#58;&#112;&#97;&#110;&#109;&#111;&#110;&#102;&#111;&#116;&#111;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;'
 								>
 									<span className='p-1 bg-invertedOrange group-hover:bg-invertedOrange/80 group-hover:scale-95 rounded-md text-black duration-200'>
 										<FiMail size={16}></FiMail>
 									</span>
 									<span className='group-hover:text-invertedOrange! duration'>
-										&#108;&#117;&#99;&#105;&#101;&#64;&#114;&#97;&#100;&#97;&#102;&#111;&#116;&#105;&#46;&#99;&#122;
+										&#112;&#97;&#110;&#109;&#111;&#110;&#102;&#111;&#116;&#111;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;
 									</span>
 								</Link>
 							</li>
@@ -84,7 +84,7 @@ const Footer = () => {
 								<Link
 									aria-label='Phone'
 									className='hover:text-invertedOrange! flex items-center gap-2'
-									href={'tel:720661661'}
+									href={'tel:+420720661661'}
 								>
 									<span className='p-1 bg-invertedOrange group-hover:bg-invertedOrange/80 group-hover:scale-95 rounded-md text-black duration-200'>
 										<FiPhone size={16}></FiPhone>
