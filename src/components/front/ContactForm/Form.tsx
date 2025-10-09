@@ -75,7 +75,7 @@ const Form = () => {
 			<div className='relative p-2'>
 				{isSubmitSuccessful && (
 					<div className='absolute top-0 left-0 bg-bone/50 backdrop-blur-xs z-20 w-full h-full flex flex-col gap-4 justify-center items-center opacity-0 animate-fade-in'>
-						<p className='font-satoshiBold text-lg'>
+						<p className='font-satoshiBold text-md md:text-lg'>
 							Formulář byl úspěšně odeslán{' '}
 							<FiCheck className=' inline' size={20}></FiCheck>
 						</p>
