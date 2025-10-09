@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image'
 import { PriceListSchema } from '@/schemas/price-list.schema'
 
 const PricelistSlide = ({ data }: { data: PriceListSchema }) => {
+	const [isLoading, setIsLoading] = useState(true)
+
 	if (!data.image_url || !data.image_name) return
 
 	return (
@@ -14,8 +16,13 @@ const PricelistSlide = ({ data }: { data: PriceListSchema }) => {
 						width={800}
 						height={800}
 						alt={data.image_name}
-						className='w-full h-full object-cover'
-					></Image>
+						className={`w-full h-full object-cover transition-opacity duration-500 ${
+							isLoading ? 'opacity-0' : 'opacity-100'
+						}`}
+						onLoadingComplete={() => setIsLoading(false)}
+						placeholder='blur'
+						blurDataURL='/images/AboutLucie.webp'
+					/>
 				</div>
 			</div>
 			<div className='md:flex-1 w-full flex flex-col items-center gap-2 md:gap-4'>

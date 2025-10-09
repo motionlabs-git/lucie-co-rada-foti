@@ -19,7 +19,7 @@ const ImageModal = ({
 	return (
 		<div
 			id='imageModal'
-			className='select-none fixed z-50 w-screen h-screen top-0 left-0 px-10 py-10 flex justify-center items-center bg-black/50 backdrop-blur-md'
+			className='select-none w-full fixed z-50 h-screen top-0 left-0 p-4 md:p-10 flex justify-center items-center bg-black/50 backdrop-blur-md'
 		>
 			<button
 				type='button'
@@ -33,7 +33,7 @@ const ImageModal = ({
 				></CrossIcon>
 			</button>
 
-			<div className='flex items-center'>
+			<div className='flex items-center justify-center w-full'>
 				<button
 					type='button'
 					aria-label='Next image'
@@ -48,13 +48,15 @@ const ImageModal = ({
 					</div>
 				</button>
 
-				<Image
-					width={1200}
-					height={1200}
-					className='h-full w-3xl max-h-[80vh] object-cover rounded-2xl'
-					src={img}
-					alt={title}
-				/>
+				<div className='h-full w-full md:w-3xl max-h-[80vh]'>
+					<Image
+						width={1200}
+						height={1200}
+						className=' w-full h-full md:w-3xl max-h-[80vh] object-cover rounded-2xl'
+						src={img}
+						alt={title}
+					/>
+				</div>
 
 				<button
 					type='button'
