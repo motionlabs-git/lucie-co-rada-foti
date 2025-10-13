@@ -24,7 +24,7 @@ const DropImageMulti: React.FC<IProps> = ({ files, setValue, loading }) => {
 		onDrop,
 		accept: {
 			'image/jpeg': ['.jpg', '.jpeg'],
-			// 'image/png': ['.png'],
+			'image/webp': ['.webp'],
 		},
 	})
 

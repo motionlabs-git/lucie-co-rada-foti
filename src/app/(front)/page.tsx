@@ -26,15 +26,34 @@ export const generateMetadata = async () => {
 		.single()
 
 	// TODO:Dodělat defaultní data
+
 	return {
 		title: {
 			template: '%s | Lucie co ráda fotí',
 			default:
 				data?.title ??
-				'Lucie co ráda fotí | Vaše svatební a rodinná fotografka',
+				'Svatební a rodinné focení Nový Jičín | Lucie co ráda fotí',
 		},
-		description: data?.description ?? '',
-		keywords: data?.keywords ?? '',
+		description:
+			data?.description ??
+			'Svatební a rodinná fotografka z okolí Nového Jičína. Zachycuji přirozené emoce a skutečné okamžiky vašeho života. Profesionální svatební a rodinné focení.',
+		keywords: data?.keywords
+			? data.keywords.split(',')
+			: [
+					'svatební focení Nový Jičín',
+					'svatební fotografka Nový Jičín',
+					'rodinné focení Nový Jičín',
+					'rodinný fotograf Nový Jičín',
+					'focení párů Nový Jičín',
+					'lifestyle focení',
+					'přirozené focení',
+					'portrétní fotografka',
+					'focení v přírodě',
+					'focení s dětmi',
+					'svatební fotografie',
+					'rodinné fotografie',
+					'fotograf Moravskoslezský kraj',
+			  ],
 		authors: [
 			{
 				name: 'MotionLabs',

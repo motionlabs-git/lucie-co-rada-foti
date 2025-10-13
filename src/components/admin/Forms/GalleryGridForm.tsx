@@ -108,14 +108,14 @@ const GalleryGridForm: React.FC<IProps> = ({
 			</div>
 			<div>
 				<label>Selected image</label>
-				<div className='w-full max-w-3xs aspect-square bg-black/50 rounded-lg overflow-hidden mt-1'>
+				<div className='w-fit max-w-3xs rounded-lg overflow-hidden mt-1'>
 					{selectedImage && (
 						<Image
 							src={selectedImage.url}
 							alt={selectedImage.name}
 							width={500}
 							height={500}
-							className='w-full h-full object-cover object-center'
+							className='w-fit h-full object-contain object-center rounded-lg overflow-hidden'
 						/>
 					)}
 				</div>
@@ -126,15 +126,11 @@ const GalleryGridForm: React.FC<IProps> = ({
 					{pageData?.map((image) => (
 						<li
 							key={image.id}
-							className={`w-full aspect-square border ${
-								selectedImage && selectedImage.id === image.id
-									? 'border-white shadow-[0_0_4px_1px] shadow-white'
-									: 'border-white/5 hover:border-white/20'
-							} duration-300 rounded-lg overflow-hidden cursor-pointer select-none`}
+							className={`w-full aspect-square flex justify-center duration-300 rounded-lg overflow-hidden cursor-pointer select-none`}
 						>
 							<button
 								type='button'
-								className='w-full h-full'
+								className='w-fit h-full'
 								onClick={() => {
 									setValue('image_id', image.id)
 									setSelectedImage(image)
@@ -145,7 +141,12 @@ const GalleryGridForm: React.FC<IProps> = ({
 									alt={image.name}
 									width={500}
 									height={500}
-									className='w-full h-full object-cover object-center'
+									className={`w-fit h-full object-contain object-center duration-300 border rounded-lg ${
+										selectedImage &&
+										selectedImage.id === image.id
+											? 'border-white shadow-[0_0_4px_1px] shadow-white'
+											: 'border-white/5 hover:border-white/20'
+									}`}
 								/>
 							</button>
 						</li>

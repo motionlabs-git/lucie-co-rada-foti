@@ -72,7 +72,7 @@ const About = () => {
 			>
 				<div className='w-full aspect-video'>
 					<Image
-						src='/images/AboutLucie.webp'
+						src='/images/AboutLucie2.jpg'
 						alt='O mně'
 						width={1000}
 						height={500}

@@ -65,7 +65,7 @@ const GalleryPage: NextPage<{
 						{pageData.map((image) => (
 							<li
 								key={image.id}
-								className='relative w-full aspect-square border border-white/5 hover:border-white/20 duration-300 rounded-lg overflow-hidden'
+								className='relative w-full flex justify-center aspect-square rounded-lg overflow-hidden'
 							>
 								<form
 									action={deleteImage}
@@ -78,6 +78,7 @@ const GalleryPage: NextPage<{
 									/>
 									<button
 										aria-label='Delete image'
+										type='submit'
 										className='flex items-center justify-center border-white border rounded-full p-1 text-white bg-stone-800/50 backdrop-blur-sm cursor-pointer'
 									>
 										<FiPlus
@@ -91,7 +92,7 @@ const GalleryPage: NextPage<{
 									alt={image.name}
 									width={500}
 									height={500}
-									className='w-full h-full object-cover object-center'
+									className='w-fit h-full object-contain object-center border border-white/5 hover:border-white/20 duration-300 rounded-lg'
 								/>
 							</li>
 						))}

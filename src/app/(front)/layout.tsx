@@ -23,8 +23,9 @@ const promenadeItalic = localFont({
 	variable: '--font-promenade-italic',
 })
 
-export default function FrontLayout({}: // children,
-Readonly<{
+export default function FrontLayout({
+	children,
+}: Readonly<{
 	children: React.ReactNode
 }>) {
 	return (
@@ -39,7 +40,7 @@ Readonly<{
 						bg-bone
                 `}
 				>
-					<div className='flex flex-col gap-8 w-full h-screen justify-center items-center'>
+					{/* <div className='flex flex-col gap-8 w-full h-screen justify-center items-center'>
 						<h1 className='!text-[4vw]'>
 							Stránky se připravují ke spuštění
 						</h1>
@@ -47,8 +48,8 @@ Readonly<{
 						<a href='https://motionlabs.cz/' target='_blank'>
 							<h1 className='!text-[2vw]'>www.motionlabs.cz</h1>
 						</a>
-					</div>
-					{/* {children} */}
+					</div> */}
+					{children}
 				</body>
 			</html>
 		</>

@@ -33,6 +33,7 @@ const DropImageSingle: React.FC<IProps> = ({
 		onDrop,
 		accept: {
 			'image/jpeg': ['.jpg', '.jpeg'],
+			'image/webp': ['.webp'],
 		},
 	})
 
