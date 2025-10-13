@@ -32,8 +32,8 @@ const GalleryColumn = ({
 						<div className='w-full h-full duration-300 group-hover:blur-xs'>
 							{img.image_id && (
 								<Image
-									width={800}
-									height={800}
+									width={1000}
+									height={1000}
 									className='w-full h-full object-cover duration-300 rounded-xl'
 									src={img.image_id.url}
 									alt={img.title}

@@ -65,7 +65,7 @@ const GalleryPage: NextPage<{
 						{pageData.map((image) => (
 							<li
 								key={image.id}
-								className='relative w-full flex justify-center aspect-square rounded-lg overflow-hidden'
+								className='relative w-full flex justify-center aspect-square rounded-lg overflow-hidden border border-white/5 hover:border-white/20 duration-300'
 							>
 								<form
 									action={deleteImage}
@@ -87,12 +87,13 @@ const GalleryPage: NextPage<{
 										/>
 									</button>
 								</form>
+
 								<Image
 									src={image.url}
 									alt={image.name}
 									width={500}
 									height={500}
-									className='w-fit h-full object-contain object-center border border-white/5 hover:border-white/20 duration-300 rounded-lg'
+									className='w-fit h-full object-contain object-center'
 								/>
 							</li>
 						))}

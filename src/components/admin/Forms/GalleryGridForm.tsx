@@ -126,7 +126,11 @@ const GalleryGridForm: React.FC<IProps> = ({
 					{pageData?.map((image) => (
 						<li
 							key={image.id}
-							className={`w-full aspect-square flex justify-center duration-300 rounded-lg overflow-hidden cursor-pointer select-none`}
+							className={`w-full aspect-square flex justify-center duration-300 rounded-lg overflow-hidden cursor-pointer border select-none ${
+								selectedImage && selectedImage.id === image.id
+									? 'border-white shadow-[0_0_4px_1px] shadow-white'
+									: 'border-white/5 hover:border-white/20'
+							}`}
 						>
 							<button
 								type='button'
@@ -141,12 +145,7 @@ const GalleryGridForm: React.FC<IProps> = ({
 									alt={image.name}
 									width={500}
 									height={500}
-									className={`w-fit h-full object-contain object-center duration-300 border rounded-lg ${
-										selectedImage &&
-										selectedImage.id === image.id
-											? 'border-white shadow-[0_0_4px_1px] shadow-white'
-											: 'border-white/5 hover:border-white/20'
-									}`}
+									className={`w-fit h-full object-contain object-center`}
 								/>
 							</button>
 						</li>
