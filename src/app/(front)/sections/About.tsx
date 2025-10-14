@@ -72,10 +72,10 @@ const About = () => {
 			>
 				<div className='w-full aspect-video'>
 					<Image
-						src='/images/AboutLucie2.jpg'
+						src='/images/AboutLucie.webp'
 						alt='O mně'
-						width={1000}
-						height={500}
+						width={1500}
+						height={800}
 						className='w-full h-full object-cover rounded-2xl'
 					></Image>
 				</div>
