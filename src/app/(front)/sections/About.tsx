@@ -81,7 +81,6 @@ const About = () => {
 				</div>
 
 				<h1 id='aboutPart2Title' className='mt-4'>
-					{' '}
 					{aboutLucka.split(' ').map((w: string, i: number) => (
 						<span
 							key={i}

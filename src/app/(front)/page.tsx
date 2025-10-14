@@ -64,11 +64,10 @@ export const generateMetadata = async () => {
 			card: 'summary_large_image',
 		},
 		openGraph: {
-			title: 'Lucie co ráda fotí',
-			description: '',
-			images: [
-				`https://raw.githubusercontent.com/motionlabs-git/habartovi/refs/heads/master/public/images/OpenGraphImage.webp`,
-			],
+			title: 'Svatební a rodinné focení Nový Jičín | Lucie co ráda fotí',
+			description:
+				'Svatební a rodinná fotografka z okolí Nového Jičína. Zachycuji přirozené emoce a skutečné okamžiky vašeho života. Profesionální svatební a rodinné focení.',
+			images: '/images/LCRF_OG_image.jpg',
 		},
 	}
 }
