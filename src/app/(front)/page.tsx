@@ -25,8 +25,6 @@ export const generateMetadata = async () => {
 		.eq('path', '/')
 		.single()
 
-	// TODO:Dodělat defaultní data
-
 	return {
 		title: {
 			template: '%s | Lucie co ráda fotí',
