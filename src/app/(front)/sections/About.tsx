@@ -40,8 +40,8 @@ const About = () => {
 			filter: 'blur(0px)',
 			scrollTrigger: {
 				trigger: '#aboutPart2Title',
-				start: 'top center',
-				end: 'bottom center',
+				start: 'top 80%',
+				end: 'bottom 80%',
 				scrub: 3,
 			},
 		})
@@ -54,7 +54,7 @@ const About = () => {
 					<h1 className='text-lightOrange text-nowrap text-center'>
 						<em className='text-center block'>Ahoj, jsem</em>
 
-						<em className='text-[12vw]'>Lucie co ráda fotí</em>
+						<em className='text-[10vw]'>Lucie co ráda fotí</em>
 					</h1>
 					<p className='mt-6 text-center max-w-6xl text-lg'>
 						S foťákem v ruce se světem potuluju už dobrých 10 let.
@@ -80,11 +80,11 @@ const About = () => {
 					></Image>
 				</div>
 
-				<h1 id='aboutPart2Title' className='mt-4'>
+				<h1 id='aboutPart2Title' className='mt-4 leading-10'>
 					{aboutLucka.split(' ').map((w: string, i: number) => (
 						<span
 							key={i}
-							className='aboutPart2TitleSpan opacity-40 blur-sm text-3xl sm:text-6xl'
+							className='aboutPart2TitleSpan opacity-40 blur-sm text-2xl sm:text-4xl '
 						>
 							{w + ' '}
 						</span>

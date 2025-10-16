@@ -75,7 +75,7 @@ const CookieBar = () => {
 									type='button'
 									aria-label='Disagree with cookies'
 									onClick={disagreeCookies}
-									className=' border border-black rounded-lg px-4 py-2'
+									className=' border hover:bg-black duration-200 hover:text-white border-black rounded-lg px-4 py-2'
 								>
 									Nesouhlasím
 								</button>
