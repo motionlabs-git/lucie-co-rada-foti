@@ -46,10 +46,10 @@ function Hero() {
 				</h1>
 				<h2 className='text-center'>
 					<em className='text-[clamp(1.5rem,6vw,2.5rem)]'>Vaše </em>
-					<strong className='text-[clamp(1.25rem,5.5vw,1.875rem)] text-orange relative inline-block'>
+					<em className='text-[clamp(1.5rem,6vw,2.5rem)] text-orange relative inline-block'>
 						svatební a rodinná
 						<div className='absolute w-[120%] opacity-85 blur-3xl h-[120%] rounded-full bg-orange -top-[10%] -left-[10%] select-none pointer-events-none'></div>
-					</strong>{' '}
+					</em>{' '}
 					<em className='text-[clamp(1.5rem,6vw,2.5rem)]'>
 						fotografka
 					</em>
