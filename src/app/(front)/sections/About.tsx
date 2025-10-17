@@ -75,7 +75,7 @@ const About = () => {
 						src='/images/AboutLucie2.webp'
 						alt='O mně'
 						width={1500}
-						height={800}
+						height={844}
 						className='w-full h-full object-cover rounded-2xl'
 					></Image>
 				</div>
