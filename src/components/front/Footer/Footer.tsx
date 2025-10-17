@@ -8,6 +8,7 @@ import gsap from 'gsap'
 import Link from 'next/link'
 import { ScrollTrigger } from 'gsap/all'
 import { FiMail, FiPhone } from 'react-icons/fi'
+import Image from 'next/image'
 
 const Footer = () => {
 	const CurrentYear = new Date().getFullYear()
@@ -151,6 +152,13 @@ const Footer = () => {
 									target='_blank'
 									href={'https://motionlabs.cz/'}
 								>
+									<Image
+										src={'/images/motionlabs-logo.svg'}
+										alt={'Motion Labs logo'}
+										width={100}
+										height={100}
+										className='w-6 inline-block mx-1 mb-0.5'
+									></Image>
 									MotionLabs.cz
 								</Link>
 							</li>

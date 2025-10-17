@@ -9,7 +9,9 @@ const satoshiRegular = localFont({
 export default function AdminNotFoundPage() {
 	return (
 		<html lang='cs'>
-			<body className={`antialiased ${satoshiRegular.className}`}>
+			<body
+				className={`antialiased bg-red-500 ${satoshiRegular.className}`}
+			>
 				Not Found
 			</body>
 		</html>
