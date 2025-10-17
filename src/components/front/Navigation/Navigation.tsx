@@ -104,6 +104,8 @@ function Navigation({ lenis }: Props) {
 
 					<button
 						className='relative h-12 font-satoshiBold border-black hover:bg-lightOrange duration-300 hover:border-lightOrange hover:text-black text-white border rounded-lg px-6 bg-black'
+						type='button'
+						aria-label='Navigation button - Contact'
 						onClick={() => scrollTo('contact')}
 					>
 						Kontakt
