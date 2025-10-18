@@ -14,6 +14,7 @@ const initAnimations = () => {
 				start: 'top 75%',
 				end: 'bottom 75%',
 				scrub: 0.5,
+				markers: true,
 			},
 		})
 	})
@@ -34,15 +35,31 @@ const initAnimations = () => {
 
 	if (!middleColumn || !middleColumnFill) return
 
-	gsap.to('#galleryMiddleColumn', {
-		scrollTrigger: {
-			trigger: '#gallery',
-			start: 'top top',
-			end: 'bottom bottom',
-			scrub: 1,
-		},
-		translateY:
-			0 + middleColumn?.clientHeight - middleColumnFill?.clientHeight - 8,
+	const mm = gsap.matchMedia()
+
+	mm.add('(max-width: 767px)', () => {
+		gsap.to('#galleryMiddleColumn', {
+			scrollTrigger: {
+				trigger: '#gallery',
+				start: 'top top',
+				end: 'bottom bottom',
+				scrub: 1,
+			},
+			translateY:
+				middleColumn?.clientHeight - middleColumnFill?.clientHeight - 8,
+		})
+	})
+	mm.add('(min-width: 768px)', () => {
+		gsap.to('#galleryMiddleColumn', {
+			scrollTrigger: {
+				trigger: '#gallery',
+				start: 'top top',
+				end: 'bottom bottom',
+				scrub: 1,
+			},
+			translateY:
+				middleColumn?.clientHeight - middleColumnFill?.clientHeight - 8,
+		})
 	})
 
 	gsap.to('#heroModal', {

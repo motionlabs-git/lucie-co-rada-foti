@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import gsap from 'gsap'
 import GalleryColumn from '@/components/front/Gallery/GalleryColumn'
 import GalleryMiddleColumn from '@/components/front/Gallery/GalleryMiddleColumn'
@@ -16,6 +16,53 @@ const Gallery = ({
 }) => {
 	const [selectedImage, setSelectedImage] = useState<null | number>(null)
 	const [showThirdColumn, setShowThirdColumn] = useState(false)
+
+	useEffect(() => {
+		const tl = gsap
+			.timeline({
+				paused: true,
+				scrollTrigger: {
+					trigger: '#about',
+					start: 'top top',
+					end: '+=50% top',
+					scrub: 1,
+					markers: true,
+				},
+			})
+			.to(
+				'#aboutPart1',
+				{
+					translateY: '100',
+					filter: 'blur(10px)',
+					scale: 0.8,
+					opacity: 0,
+					delay: 0.25,
+				},
+				'<'
+			)
+			.to('#aboutPart2', {
+				opacity: 1,
+				scale: 1,
+				filter: 'blur(0px)',
+			})
+
+		gsap.to('.aboutPart2TitleSpan', {
+			stagger: 0.07,
+			opacity: 1,
+			filter: 'blur(0px)',
+			scrollTrigger: {
+				trigger: '#aboutPart2Title',
+				start: 'top 80%',
+				end: 'bottom 80%',
+				scrub: 3,
+			},
+		})
+
+		return () => {
+			tl.scrollTrigger?.kill()
+			tl.kill()
+		}
+	}, [showThirdColumn])
 
 	const closeImage = () => {
 		gsap.to('#imageModal', {
@@ -87,39 +134,45 @@ const Gallery = ({
 			</div>
 
 			{showThirdColumn ? (
-				<div className='grid grid-cols-2 gap-4 px-4 md:hidden'>
+				<div className='grid grid-cols-2 gap-4 px-4 mt-2 md:hidden'>
 					<div className='grid grid-cols-1 gap-4'>
-						{galleryData.slice(8, 10).map((img, index) => (
-							<GalleryImage
-								key={index}
-								onClick={() => {
-									setSelectedImage(img.id)
-								}}
-								className={
-									index % 2 === 0
-										? 'aspect-[4/5]'
-										: 'aspect-[5/4]'
-								}
-								img={img}
-							/>
-						))}
+						{galleryData
+							.slice(8, 10)
+							.reverse()
+							.map((img, index) => (
+								<GalleryImage
+									key={index}
+									onClick={() => {
+										setSelectedImage(img.id)
+									}}
+									className={
+										index % 2 === 1
+											? 'aspect-[4/5]'
+											: 'aspect-[5/4]'
+									}
+									img={img}
+								/>
+							))}
 					</div>
 
 					<div className='grid grid-cols-1 gap-4'>
-						{galleryData.slice(10, 12).map((img, index) => (
-							<GalleryImage
-								key={index}
-								onClick={() => {
-									setSelectedImage(img.id)
-								}}
-								className={
-									index % 2 === 0
-										? 'aspect-[4/5]'
-										: 'aspect-[5/4]'
-								}
-								img={img}
-							/>
-						))}
+						{galleryData
+							.slice(10, 12)
+
+							.map((img, index) => (
+								<GalleryImage
+									key={index}
+									onClick={() => {
+										setSelectedImage(img.id)
+									}}
+									className={
+										index % 2 === 0
+											? 'aspect-[4/5]'
+											: 'aspect-[5/4]'
+									}
+									img={img}
+								/>
+							))}
 					</div>
 				</div>
 			) : (
@@ -128,7 +181,10 @@ const Gallery = ({
 						type='button'
 						aria-label='Show more'
 						className='px-6 py-2 border-black  rounded-xl border-2 font-bold text-base'
-						onClick={() => setShowThirdColumn(true)}
+						onClick={() => {
+							setShowThirdColumn(true)
+							window.dispatchEvent(new Event('layoutChanged'))
+						}}
 					>
 						Více
 					</button>

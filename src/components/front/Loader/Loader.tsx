@@ -36,7 +36,6 @@ const Loader = ({ isLoaded }: { isLoaded: boolean }) => {
 					opacity: 0,
 					scale: 1.2,
 					onComplete: () => {
-						console.log('started')
 						lenis?.start()
 
 						setIsActive(false)
