@@ -1,11 +1,8 @@
 'use client'
-import Lenis from 'lenis'
-import React, { RefObject, useEffect, useState } from 'react'
-import HamburgerIcon from './HamburgerIcon'
 
-interface Props {
-	lenis: RefObject<Lenis | null>
-}
+import React, { useEffect, useState } from 'react'
+import HamburgerIcon from './HamburgerIcon'
+import { useLenis } from 'lenis/react'
 
 const menuList = [
 	{
@@ -26,12 +23,13 @@ const menuList = [
 	},
 ]
 
-const MobileNavigation = ({ lenis }: Props) => {
+const MobileNavigation = () => {
+	const lenis = useLenis()
 	const [isOpened, setIsOpened] = useState(false)
 
 	const openMenu = () => {
 		setIsOpened(true)
-		lenis.current?.stop()
+		lenis?.stop()
 	}
 
 	const closeMenu = () => {
@@ -41,14 +39,14 @@ const MobileNavigation = ({ lenis }: Props) => {
 			document.getElementById('mobileMenuModal')?.classList.add('hide')
 		}, 300)
 
-		lenis.current?.start()
+		lenis?.start()
 	}
 
 	const scrollTo = (id: string) => {
 		closeMenu()
 
-		lenis.current?.start()
-		lenis.current?.scrollTo(`#${id}`)
+		lenis?.start()
+		lenis?.scrollTo(`#${id}`)
 	}
 
 	useEffect(() => {

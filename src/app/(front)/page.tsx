@@ -15,6 +15,7 @@ import Pricelist from './sections/Pricelist'
 import { PricelistCategoryType } from '@/types/pricelist-category'
 import { Model } from '@/schemas/model'
 import { GalleryGridImage } from '@/types/gallery-grid'
+import { ReactLenis } from 'lenis/react'
 
 export const generateMetadata = async () => {
 	const supabase = await createServerClient()
@@ -94,24 +95,26 @@ async function HomePage() {
 		.order('id', { ascending: true })
 
 	return (
-		<LoaderProvider>
-			<main className='flex flex-col items-center'>
-				<Gallery galleryData={galleryData} />
+		<ReactLenis root options={{ lerp: 0.1, duration: 1.5 }}>
+			<LoaderProvider>
+				<main className='flex flex-col items-center'>
+					<Gallery galleryData={galleryData} />
 
-				<About />
+					<About />
 
-				<Pricelist
-					pricelistData={{
-						pricelist: pricelist,
-						categories: pricelistCategories,
-					}}
-				/>
+					<Pricelist
+						pricelistData={{
+							pricelist: pricelist,
+							categories: pricelistCategories,
+						}}
+					/>
 
-				<ContactForm />
+					<ContactForm />
 
-				<References />
-			</main>
-		</LoaderProvider>
+					<References />
+				</main>
+			</LoaderProvider>
+		</ReactLenis>
 	)
 }
 

@@ -69,10 +69,10 @@ const Pricelist = ({
 
 			<div
 				id='pricelist-slider'
-				className=' relative flex flex-col items-center justify-center gap-6'
+				className=' relative flex flex-col items-center justify-center gap-6 select-none'
 			>
 				<div className='embla pricelist w-full relative' ref={emblaRef}>
-					<div className='embla__container pointer-events-none'>
+					<div className='embla__container'>
 						{selectedCategory &&
 							selectedCategory.item_order.map((id) => {
 								const slide = pricelist?.find(

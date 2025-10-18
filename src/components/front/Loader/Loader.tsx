@@ -1,24 +1,22 @@
 'use client'
-import Lenis from 'lenis'
-import React, { RefObject, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import gsap from 'gsap'
 import initAnimations from '@/utils/initAnimations'
+import { useLenis } from 'lenis/react'
 
 const text = ['Tři', 'Dva', 'Jedna', 'Úsměv!']
 
-const Loader = ({
-	lenis,
-	isLoaded,
-}: {
-	lenis: RefObject<Lenis | null>
-	isLoaded: boolean
-}) => {
+const Loader = ({ isLoaded }: { isLoaded: boolean }) => {
 	const [isActive, setIsActive] = useState(true)
 	const [index, setIndex] = useState(0)
+
+	const lenis = useLenis()
 
 	console.log(isLoaded)
 
 	useEffect(() => {
+		lenis?.scrollTo(0, { immediate: true })
+
 		gsap.to('#loaderProgress', {
 			width: '100%',
 			repeat: -1,
@@ -29,26 +27,13 @@ const Loader = ({
 		const tl = gsap.timeline({
 			// repeat: -1,
 			onComplete: () => {
-				function raf(time: number) {
-					if (!lenis.current) return
+				initAnimations()
 
-					lenis.current.raf(time)
-					requestAnimationFrame(raf)
-				}
-				requestAnimationFrame(raf)
-
-				lenis.current?.scrollTo(0, {
-					immediate: true,
+				gsap.to('#loader', {
+					opacity: 0,
+					scale: 1.2,
 					onComplete: () => {
-						initAnimations()
-
-						gsap.to('#loader', {
-							opacity: 0,
-							scale: 1.2,
-							onComplete: () => {
-								setIsActive(false)
-							},
-						})
+						setIsActive(false)
 					},
 				})
 			},

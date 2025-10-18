@@ -22,7 +22,7 @@ const ContactForm = () => {
 				<p className='text-gray-600 mt-4 blurryItem'>
 					Tento formulář slouží pouze jako poptávka focení. Napiš mi
 					prosím svou představu o focení, lokaci, vhodný termín a
-					případné detaily. Budu tě kontaktovat zpět ;-)
+					případné detaily. Budu tě kontaktovat zpět 📸
 				</p>
 			</div>
 

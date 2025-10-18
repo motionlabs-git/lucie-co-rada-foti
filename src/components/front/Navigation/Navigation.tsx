@@ -1,19 +1,16 @@
 'use client'
-import Lenis from 'lenis'
-import React, { RefObject, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import HamburgerIcon from './HamburgerIcon'
+import { useLenis } from 'lenis/react'
 
-interface Props {
-	lenis: RefObject<Lenis | null>
-}
-
-function Navigation({ lenis }: Props) {
+function Navigation() {
 	const [isOpened] = useState(false)
+	const lenis = useLenis()
 
 	const scrollTo = (id: string) => {
-		lenis.current?.scrollTo(`#` + id)
+		lenis?.scrollTo(`#` + id)
 	}
 
 	const navTl = gsap.timeline({ paused: true, defaults: { duration: 0.2 } })

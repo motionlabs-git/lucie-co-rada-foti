@@ -151,7 +151,7 @@ const Form = () => {
 						htmlFor='email'
 						className='invertText font-promenadeItalic text-lg sm:text-xl'
 					>
-						Email
+						E-mail
 					</label>
 
 					<div className='relative flex justify-center overflow-hidden rounded-xl mt-1 sm:mt-2'>
@@ -159,7 +159,7 @@ const Form = () => {
 							readOnly={isSubmitting ? true : false}
 							className='invertText peer z-20 py-2 sm:py-3 px-3 sm:px-4 shadow-md border-stone-400 border rounded-xl block w-full focus:border-stone-700 duration-200 bg-stone-300/30 backdrop-blur-2xl font-satoshiBold font-semibold text-lg sm:text-xl placeholder:text-black/40'
 							type='text'
-							placeholder='Email'
+							placeholder='E-mail'
 							id='email'
 							autoComplete='off'
 							{...register('email')}

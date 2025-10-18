@@ -35,7 +35,7 @@ const Footer = () => {
 			toggleActions: 'play play play reverse',
 			onEnter: () => {
 				gsap.to(document.body, {
-					backgroundColor: 'black',
+					backgroundColor: '#1e1711',
 				})
 				gsap.to('.invertText', {
 					filter: 'invert(1)',

@@ -1,14 +1,17 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
 import { PriceListSchema } from '@/schemas/price-list.schema'
+import { useLenis } from 'lenis/react'
 
 const PricelistSlide = ({ data }: { data: PriceListSchema }) => {
 	const [isLoading, setIsLoading] = useState(true)
 
+	const lenis = useLenis()
+
 	if (!data.image_url || !data.image_name) return
 
 	return (
-		<div className='embla__slide flex flex-col md:flex-row-reverse items-center select-none gap-4 p-4 md:gap-8 md:p-8'>
+		<div className='embla__slide flex flex-col md:flex-row-reverse items-center gap-4 p-4 md:gap-8 md:p-8'>
 			<div className='w-full md:flex-1 flex items-center justify-center'>
 				<div className='w-full aspect-video md:aspect-square md:max-w-xs rounded-2xl overflow-hidden shadow-lg'>
 					<Image
@@ -38,12 +41,26 @@ const PricelistSlide = ({ data }: { data: PriceListSchema }) => {
 					</ul>
 				) : null}
 
-				<p className='self-end font-promenadeItalic text-2xl md:text-3xl lg:text-4xl'>
-					{data.price
-						.toString()
-						.replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}{' '}
-					Kč
-				</p>
+				<div className='flex flex-col justify-end w-full gap-4'>
+					<p className='self-end font-promenadeItalic text-2xl md:text-3xl lg:text-4xl'>
+						{data.price
+							.toString()
+							.replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}{' '}
+						Kč
+					</p>
+
+					<button
+						aria-label='Go to contatct form'
+						type='submit'
+						className='group relative w-full rounded-xl'
+						onClick={() => lenis?.scrollTo('#contact')}
+					>
+						<div className='absolute w-full h-full rounded-xl bg-lightOrange group-hover:blur-xs duration-400 blur-none'></div>
+						<p className='relative font-satoshiBold font-semibold text-black py-3 duration-400'>
+							To chci
+						</p>
+					</button>
+				</div>
 			</div>
 		</div>
 	)

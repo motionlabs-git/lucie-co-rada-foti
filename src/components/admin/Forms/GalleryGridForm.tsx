@@ -106,20 +106,36 @@ const GalleryGridForm: React.FC<IProps> = ({
 					className='mt-1'
 				/>
 			</div>
-			<div>
-				<label>Selected image</label>
-				<div className='w-fit max-w-3xs rounded-lg overflow-hidden mt-1'>
-					{selectedImage && (
-						<Image
-							src={selectedImage.url}
-							alt={selectedImage.name}
-							width={500}
-							height={500}
-							className='w-fit h-full object-contain object-center rounded-lg overflow-hidden'
-						/>
-					)}
+
+			<div className='flex gap-4 items-start justify-between'>
+				<div>
+					<label>Selected image</label>
+					<div className='w-fit max-w-3xs rounded-lg overflow-hidden mt-1'>
+						{selectedImage && (
+							<Image
+								src={selectedImage.url}
+								alt={selectedImage.name}
+								width={500}
+								height={500}
+								className='w-fit h-full object-contain object-center rounded-lg overflow-hidden'
+							/>
+						)}
+					</div>
 				</div>
+
+				<button
+					type='submit'
+					className='self-end flex justify-center items-center gap-2 bg-white/90 hover:bg-white text-gray-900 rounded-lg duration-300 h-12 px-6'
+				>
+					{loading ? (
+						<ImSpinner2 className='animate-spin text-lg' />
+					) : (
+						'Save'
+					)}
+					<FiSave className='text-lg' />
+				</button>
 			</div>
+
 			<div>
 				<label>Gallery</label>
 				<ul className='w-full grid grid-cols-[repeat(auto-fill,minmax(12rem,2fr))] gap-4'>
@@ -170,20 +186,6 @@ const GalleryGridForm: React.FC<IProps> = ({
 					Data saved successfully
 				</span>
 			)}
-
-			<div className='flex gap-4 justify-end'>
-				<button
-					type='submit'
-					className='self-end flex justify-center items-center gap-2 bg-white/90 hover:bg-white text-gray-900 rounded-lg duration-300 h-12 px-6'
-				>
-					{loading ? (
-						<ImSpinner2 className='animate-spin text-lg' />
-					) : (
-						'Save'
-					)}
-					<FiSave className='text-lg' />
-				</button>
-			</div>
 		</form>
 	)
 }

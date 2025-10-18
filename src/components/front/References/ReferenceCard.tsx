@@ -16,7 +16,7 @@ const ReferenceCard = ({
 }) => {
 	return (
 		<div
-			className={`relative flex items-center justify-center aspect-square h-full w-auto group select-none p-4 ${
+			className={`relative flex items-center justify-center aspect-[4/5] h-full w-auto group select-none p-4 ${
 				counter === 0
 					? 'flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_31%] xl:flex-[0_0_20%]'
 					: counter === 1
@@ -51,7 +51,7 @@ const ReferenceCard = ({
 					</h3>
 				</div>
 
-				<p className='line-clamp-15 sm:line-clamp-8 md:line-clamp-10 lg:line-clamp-8 xl:line-clamp-12 text-white font-bellefair mt-2 lg:opacity-0 lg:group-hover:opacity-100 group-hover:delay-400 duration-300'>
+				<p className='line-clamp-15 sm:line-clamp-13 md:line-clamp-15 lg:line-clamp-12 xl:line-clamp-18 text-white font-bellefair mt-2 lg:opacity-0 lg:group-hover:opacity-100 group-hover:delay-400 duration-300'>
 					{description}
 				</p>
 			</div>
