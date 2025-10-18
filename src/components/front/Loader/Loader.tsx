@@ -14,8 +14,11 @@ const Loader = ({ isLoaded }: { isLoaded: boolean }) => {
 
 	console.log(isLoaded)
 
+	lenis?.scrollTo(0, {
+		immediate: true,
+	})
 	useEffect(() => {
-		lenis?.scrollTo(0, { immediate: true })
+		lenis?.stop()
 
 		gsap.to('#loaderProgress', {
 			width: '100%',
@@ -33,6 +36,9 @@ const Loader = ({ isLoaded }: { isLoaded: boolean }) => {
 					opacity: 0,
 					scale: 1.2,
 					onComplete: () => {
+						console.log('started')
+						lenis?.start()
+
 						setIsActive(false)
 					},
 				})
@@ -51,7 +57,7 @@ const Loader = ({ isLoaded }: { isLoaded: boolean }) => {
 					opacity: 1,
 					duration: 0.4,
 				})
-				.delay(0.1)
+				.delay(0.5)
 		}
 	}, [lenis])
 

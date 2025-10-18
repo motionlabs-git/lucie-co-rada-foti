@@ -24,7 +24,7 @@ const PricelistSlide = ({ data }: { data: PriceListSchema }) => {
 						}`}
 						onLoadingComplete={() => setIsLoading(false)}
 						placeholder='blur'
-						blurDataURL='/images/AboutLucie.webp'
+						blurDataURL='/images/AboutLucie2.webp'
 					/>
 				</div>
 			</div>
