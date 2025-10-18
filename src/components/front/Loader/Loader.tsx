@@ -59,7 +59,7 @@ const Loader = ({ isLoaded }: { isLoaded: boolean }) => {
 				})
 				.delay(0.5)
 		}
-	}, [lenis])
+	}, [])
 
 	if (isActive)
 		return (
