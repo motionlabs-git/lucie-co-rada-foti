@@ -8,6 +8,8 @@ import Hero from './Hero'
 import { GalleryGridImage } from '@/types/gallery-grid'
 import ImageModal from '@/components/front/Gallery/ImageModal'
 import GalleryImage from '@/components/front/Gallery/GalleryImage'
+import ScrollTrigger from 'gsap/dist/ScrollTrigger'
+gsap.registerPlugin(ScrollTrigger)
 
 const Gallery = ({
 	galleryData,
@@ -26,7 +28,6 @@ const Gallery = ({
 					start: 'top top',
 					end: '+=50% top',
 					scrub: 1,
-					markers: true,
 				},
 			})
 			.to(
@@ -60,6 +61,7 @@ const Gallery = ({
 
 		return () => {
 			tl.scrollTrigger?.kill()
+			ScrollTrigger.refresh()
 			tl.kill()
 		}
 	}, [showThirdColumn])
