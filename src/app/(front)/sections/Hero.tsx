@@ -28,7 +28,7 @@ function Hero() {
 	return (
 		<div
 			id='heroModal'
-			className=' w-full h-full top-0 left-0 absolute flex justify-center items-center'
+			className='w-full h-full top-0 left-0 absolute flex justify-center items-center'
 		>
 			<div
 				className='flex flex-col items-center'

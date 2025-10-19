@@ -18,6 +18,7 @@ const initAnimations = () => {
 			animation: gsap.to(item, {
 				filter: 'blur(0px)',
 				duration: 0.2,
+				willChange: 'filter',
 			}),
 		})
 	})
@@ -34,11 +35,13 @@ const initAnimations = () => {
 		.to('#galleryMiddleColumn', {
 			translateY:
 				middleColumn?.clientHeight - middleColumnFill?.clientHeight - 8,
+			willChange: 'transform',
 		})
 		.to(
 			'.galleryColumn',
 			{
 				translateY: 0,
+				willChange: 'transform',
 			},
 			'<'
 		)
