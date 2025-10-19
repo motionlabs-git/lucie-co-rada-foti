@@ -5,14 +5,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
 		{
 			url: 'https://luciefoti.cz/',
 			lastModified: new Date(),
-			changeFrequency: 'yearly',
+			changeFrequency: 'monthly',
 			priority: 1,
 		},
 		{
 			url: 'https://luciefoti.cz/gdpr',
 			lastModified: new Date(),
-			changeFrequency: 'yearly',
-			priority: 10,
+			changeFrequency: 'monthly',
+			priority: 0.1,
 		},
 	]
 }
