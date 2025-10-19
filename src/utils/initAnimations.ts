@@ -42,14 +42,10 @@ const initAnimations = () => {
 		willChange: 'transform',
 	})
 
-	const galleryTl = gsap.timeline().to(
-		'.galleryColumn',
-		{
-			translateY: 0,
-			willChange: 'transform',
-		},
-		'<'
-	)
+	const galleryTl = gsap.timeline().to('.galleryColumn', {
+		translateY: 0,
+		willChange: 'transform',
+	})
 
 	ScrollTrigger.create({
 		trigger: '#gallery',
