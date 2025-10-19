@@ -30,27 +30,26 @@ const initAnimations = () => {
 
 	if (!middleColumn || !middleColumnFill) return
 
-	const galleryTl = gsap
-		.timeline()
-		.to(
-			'.galleryColumn',
-			{
-				translateY: 0,
-				willChange: 'transform',
-			},
-			'<'
-		)
-		.to(
-			'#galleryMiddleColumn',
-			{
-				translateY:
-					middleColumn?.clientHeight -
-					middleColumnFill?.clientHeight -
-					8,
-				willChange: 'transform',
-			},
-			'<'
-		)
+	gsap.to('#galleryMiddleColumn', {
+		scrollTrigger: {
+			trigger: '#gallery',
+			start: 'top top',
+			end: 'bottom bottom',
+			scrub: 1,
+		},
+		translateY:
+			middleColumn?.clientHeight - middleColumnFill?.clientHeight - 8,
+		willChange: 'transform',
+	})
+
+	const galleryTl = gsap.timeline().to(
+		'.galleryColumn',
+		{
+			translateY: 0,
+			willChange: 'transform',
+		},
+		'<'
+	)
 
 	ScrollTrigger.create({
 		trigger: '#gallery',
