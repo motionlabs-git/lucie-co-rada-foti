@@ -68,6 +68,11 @@ export const generateMetadata = async () => {
 				'Svatební a rodinná fotografka z okolí Nového Jičína. Zachycuji přirozené emoce a skutečné okamžiky vašeho života. Profesionální svatební a rodinné focení.',
 			images: '/images/LCRF_OG_image.jpg',
 		},
+		icons: {
+			src: '/images/icon-512.png',
+			sizes: '512x512',
+			type: 'image/png',
+		},
 	}
 }
 
