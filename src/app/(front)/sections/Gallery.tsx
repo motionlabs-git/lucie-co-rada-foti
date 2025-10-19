@@ -59,6 +59,11 @@ const Gallery = ({
 			},
 		})
 
+		window.addEventListener('resize', function () {
+			ScrollTrigger.refresh()
+			ScrollTrigger.sort()
+		})
+
 		return () => {
 			tl.scrollTrigger?.kill()
 			ScrollTrigger.refresh()

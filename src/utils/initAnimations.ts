@@ -23,46 +23,34 @@ const initAnimations = () => {
 	})
 
 	//Gallery
-	gsap.to('.galleryColumn', {
-		scrollTrigger: {
-			trigger: '#gallery',
-			start: 'top top',
-			end: 'bottom bottom',
-			scrub: 1,
-		},
-		translateY: 0,
-	})
 
 	const middleColumn = document.getElementById('galleryMiddleColumn')
 	const middleColumnFill = document.getElementById('galleryMiddleColumnFill')
 
 	if (!middleColumn || !middleColumnFill) return
 
-	const mm = gsap.matchMedia()
+	const galleryTl = gsap
+		.timeline()
+		.to('#galleryMiddleColumn', {
+			translateY:
+				middleColumn?.clientHeight - middleColumnFill?.clientHeight - 8,
+		})
+		.to(
+			'.galleryColumn',
+			{
+				translateY: 0,
+			},
+			'<'
+		)
 
-	mm.add('(max-width: 767px)', () => {
-		gsap.to('#galleryMiddleColumn', {
-			scrollTrigger: {
-				trigger: '#gallery',
-				start: 'top top',
-				end: 'bottom bottom',
-				scrub: 1,
-			},
-			translateY:
-				middleColumn?.clientHeight - middleColumnFill?.clientHeight - 8,
-		})
-	})
-	mm.add('(min-width: 768px)', () => {
-		gsap.to('#galleryMiddleColumn', {
-			scrollTrigger: {
-				trigger: '#gallery',
-				start: 'top top',
-				end: 'bottom bottom',
-				scrub: 1,
-			},
-			translateY:
-				middleColumn?.clientHeight - middleColumnFill?.clientHeight - 8,
-		})
+	ScrollTrigger.create({
+		trigger: '#gallery',
+		start: 'top top',
+		end: 'bottom bottom',
+		scrub: 1,
+		toggleActions: 'play none none reverse',
+
+		animation: galleryTl,
 	})
 
 	gsap.to('#heroModal', {

@@ -9,6 +9,7 @@ import Link from 'next/link'
 import ScrollTrigger from 'gsap/dist/ScrollTrigger'
 import { FiMail, FiPhone } from 'react-icons/fi'
 import Image from 'next/image'
+
 gsap.registerPlugin(ScrollTrigger)
 
 const Footer = () => {
