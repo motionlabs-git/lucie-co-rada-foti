@@ -32,15 +32,21 @@ const initAnimations = () => {
 
 	const galleryTl = gsap
 		.timeline()
-		.to('#galleryMiddleColumn', {
-			translateY:
-				middleColumn?.clientHeight - middleColumnFill?.clientHeight - 8,
-			willChange: 'transform',
-		})
 		.to(
 			'.galleryColumn',
 			{
 				translateY: 0,
+				willChange: 'transform',
+			},
+			'<'
+		)
+		.to(
+			'#galleryMiddleColumn',
+			{
+				translateY:
+					middleColumn?.clientHeight -
+					middleColumnFill?.clientHeight -
+					8,
 				willChange: 'transform',
 			},
 			'<'
