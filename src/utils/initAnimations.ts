@@ -63,6 +63,7 @@ const initAnimations = () => {
 			end: '5% top',
 			scrub: 1,
 		},
+		willChange: 'transform, filter',
 		opacity: 0,
 		scale: 0.8,
 	})

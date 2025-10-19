@@ -48,6 +48,7 @@ const Loader = ({ isLoaded }: { isLoaded: boolean }) => {
 			tl.to('#loadingText', {
 				opacity: 0,
 				duration: 0.4,
+				willChange: 'transform',
 				onComplete: () => {
 					setIndex((prev) => (prev + 1) % text.length)
 				},
@@ -55,6 +56,7 @@ const Loader = ({ isLoaded }: { isLoaded: boolean }) => {
 				.to('#loadingText', {
 					opacity: 1,
 					duration: 0.4,
+					willChange: 'transform',
 				})
 				.delay(0.5)
 		}
