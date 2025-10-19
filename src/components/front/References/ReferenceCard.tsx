@@ -24,7 +24,7 @@ const ReferenceCard = ({
 					: 'flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_35%] xl:flex-[0_0_24%]'
 			}`}
 		>
-			<div className='absolute w-full h-full max-h-[60vh] top-0 left-0  lg:group-hover:blur-md duration-300 bg-black rounded-lg'>
+			<div className='absolute w-full h-full max-h-fit top-0 left-0  lg:group-hover:blur-md duration-300 bg-black rounded-lg'>
 				<Image
 					src={image}
 					alt={title}
