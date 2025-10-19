@@ -59,11 +59,6 @@ const Gallery = ({
 			},
 		})
 
-		// window.addEventListener('resize', function () {
-		// 	ScrollTrigger.refresh()
-		// 	ScrollTrigger.sort()
-		// })
-
 		return () => {
 			tl.scrollTrigger?.kill()
 			ScrollTrigger.refresh()
@@ -141,7 +136,7 @@ const Gallery = ({
 			</div>
 
 			{showThirdColumn ? (
-				<div className='grid grid-cols-2 gap-4 px-4 mt-2 md:hidden'>
+				<div className='opacity-0 animate-fade-in grid grid-cols-2 gap-4 px-4 mt-2 md:hidden'>
 					<div className='grid grid-cols-1 gap-4'>
 						{galleryData
 							.slice(8, 10)
