@@ -4,6 +4,15 @@ import ScrollTrigger from 'gsap/dist/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
 const initAnimations = () => {
+	if (typeof window !== 'undefined') {
+		const ua = navigator.userAgent.toLowerCase()
+		const isInstagram = ua.includes('instagram')
+
+		if (isInstagram) {
+			ScrollTrigger.normalizeScroll(true)
+		}
+	}
+
 	const blurryItem = document.getElementsByClassName('blurryItem')
 	const blurryItemsArray = Array.from(blurryItem)
 
