@@ -69,9 +69,8 @@ export const generateMetadata = async () => {
 			images: '/images/LCRF_OG_image.jpg',
 		},
 		icons: {
-			src: '/images/icon-512.png',
-			sizes: '512x512',
-			type: 'image/png',
+			icon: '/favicon.ico',
+			apple: '/apple-touch-icon.png',
 		},
 	}
 }
