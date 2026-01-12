@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import React from 'react'
 import MobileNavigation from '../Navigation/MobileNavigation'
 import Navigation from '../Navigation/Navigation'
 
@@ -8,11 +8,9 @@ import Footer from '../Footer/Footer'
 import CookieBar from '../CookieBar'
 
 const LoaderProvider = ({ children }: { children: React.JSX.Element }) => {
-	const [isLoaded] = useState(false)
-
 	return (
 		<>
-			<Loader isLoaded={isLoaded}></Loader>
+			<Loader></Loader>
 
 			<CookieBar></CookieBar>
 			<MobileNavigation />

@@ -6,13 +6,11 @@ import { useLenis } from 'lenis/react'
 
 const text = ['Tři', 'Dva', 'Jedna', 'Úsměv!']
 
-const Loader = ({ isLoaded }: { isLoaded: boolean }) => {
+const Loader = () => {
 	const [isActive, setIsActive] = useState(true)
 	const [index, setIndex] = useState(0)
 
 	const lenis = useLenis()
-
-	console.log(isLoaded)
 
 	lenis?.scrollTo(0, {
 		immediate: true,
