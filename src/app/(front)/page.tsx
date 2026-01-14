@@ -73,7 +73,7 @@ export const generateMetadata = async () => {
 			apple: '/apple-touch-icon.png',
 		},
 		alternates: {
-			canonical: 'https://luciefoti.cz',
+			canonical: 'https://www.luciefoti.cz/',
 		},
 	}
 }
