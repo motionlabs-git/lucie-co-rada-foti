@@ -52,7 +52,7 @@ export const generateMetadata = async () => {
 					'svatební fotografie',
 					'rodinné fotografie',
 					'fotograf Moravskoslezský kraj',
-			  ],
+				],
 		authors: [
 			{
 				name: 'MotionLabs',

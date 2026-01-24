@@ -3,9 +3,11 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import z from 'zod'
 import emailjs from '@emailjs/browser'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import Link from 'next/link'
 import { FiCheck } from 'react-icons/fi'
+import { PriceListSchema } from '@/schemas/price-list.schema'
+import { Model } from '@/schemas/model'
 
 const FormInputs = z.object({
 	name: z.string().nonempty('Toto pole je povinné'),
@@ -14,6 +16,7 @@ const FormInputs = z.object({
 		.regex(/^(?:\d\s*){9}$/, 'Neplatné telefonní číslo')
 		.nonempty('Toto pole je povinné'),
 	email: z.email('Neplatný email').nonempty('Toto pole je povinné'),
+	photo_package: z.string().nonempty('Prosím vyber balíček'),
 	text: z
 		.string()
 		.min(5, { message: 'Minimální délka je 5 znaků' })
@@ -23,7 +26,13 @@ const FormInputs = z.object({
 
 type Inputs = z.infer<typeof FormInputs>
 
-const Form = () => {
+const Form = ({
+	priceListData,
+}: {
+	priceListData: Model<PriceListSchema>[] | null
+}) => {
+	const [selectedCategory, setSelectedCategory] = useState(1)
+
 	const formRef = useRef<null | HTMLFormElement>(null)
 	const {
 		register,
@@ -175,6 +184,95 @@ const Form = () => {
 
 				<fieldset className='mt-3 blurryItem'>
 					<label
+						htmlFor='photoPackageSelector'
+						className='invertText font-promenadeItalic text-lg sm:text-xl'
+					>
+						Výběr fotobalíčku
+					</label>
+
+					<div className='flex gap-4 mt-1 sm:mt-2'>
+						<span>
+							<input
+								type='radio'
+								name='photoPackageSelector'
+								id='radio1'
+								className='cursor-pointer accent-orange'
+								onChange={() => setSelectedCategory(1)}
+								checked={selectedCategory === 1}
+							/>
+							<label
+								htmlFor='radio1'
+								className='invertText font-promenadeItalic text-lg sm:text-xl ml-2 cursor-pointer'
+							>
+								Svatební focení
+							</label>
+						</span>
+
+						<span>
+							<input
+								type='radio'
+								name='photoPackageSelector'
+								id='radio2'
+								className='cursor-pointer  accent-orange'
+								onChange={() => setSelectedCategory(2)}
+								checked={selectedCategory === 2}
+							/>
+							<label
+								htmlFor='radio2'
+								className='invertText font-promenadeItalic text-lg sm:text-xl ml-2 cursor-pointer'
+							>
+								Rodinné focení
+							</label>
+						</span>
+					</div>
+				</fieldset>
+
+				<fieldset className='mt-1 sm:mt-2 blurryItem'>
+					{/* TODO: odeslat hodnoty, upravit template */}
+
+					<div className='relative flex justify-center overflow-hidden rounded-xl mt-1 sm:mt-2'>
+						<select
+							id='categorySelector'
+							className='invertText peer z-20 py-2 sm:py-3 px-3 sm:px-4 shadow-md border-stone-400 border rounded-xl block w-full focus:border-stone-700 duration-200 bg-stone-300/30 backdrop-blur-2xl font-satoshiBold font-semibold text-lg sm:text-xl placeholder:text-black/40'
+							{...register('photo_package')}
+						>
+							{priceListData &&
+								priceListData
+									.filter(
+										(item) =>
+											item.category === selectedCategory
+									)
+									.sort((a, b) => a.price - b.price)
+									.map((item) => (
+										<option
+											key={item.id}
+											value={
+												item.title + ' - ' + item.price
+											}
+										>
+											{item.title} (
+											{item.price
+												.toString()
+												.replace(
+													/\B(?=(\d{3})+(?!\d))/g,
+													' '
+												)}{' '}
+											Kč)
+										</option>
+									))}
+						</select>
+
+						<div className='w-1/3 z-10 aspect-square h-auto rounded-full bg-orange absolute bottom-0 translate-y-1/2 opacity-30 blur-3xl peer-focus:opacity-20 peer-focus:w-2/3 duration-300'></div>
+					</div>
+					{errors.email && (
+						<p className='text-orange text-base mt-2'>
+							{errors.email.message}
+						</p>
+					)}
+				</fieldset>
+
+				<fieldset className='mt-3 blurryItem'>
+					<label
 						htmlFor='textarea'
 						className='invertText font-promenadeItalic text-lg sm:text-xl'
 					>
@@ -185,7 +283,7 @@ const Form = () => {
 						<textarea
 							readOnly={isSubmitting ? true : false}
 							className='invertText peer z-20 py-2 sm:py-3 px-3 sm:px-4 max-h-[10em] shadow-md border-stone-400 border rounded-xl block w-full focus:border-stone-700 duration-200 bg-stone-300/30 backdrop-blur-2xl font-satoshiBold font-semibold text-lg sm:text-xl placeholder:text-black/40'
-							placeholder='Zpráva'
+							placeholder='Napiš mi prosím svou představu o focení, lokaci, vhodný termín a případné detaily.'
 							rows={5}
 							maxLength={300}
 							id='textarea'

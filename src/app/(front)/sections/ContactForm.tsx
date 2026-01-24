@@ -1,7 +1,16 @@
 import Form from '@/components/front/ContactForm/Form'
+import { Model } from '@/schemas/model'
+import { PriceListSchema } from '@/schemas/price-list.schema'
+import { createServerClient } from '@/utils/supabase/server'
+import { PostgrestResponse } from '@supabase/supabase-js'
+
 import React from 'react'
 
-const ContactForm = () => {
+const ContactForm = async () => {
+	const supabase = await createServerClient()
+	const { data: price_list }: PostgrestResponse<Model<PriceListSchema>> =
+		await supabase.from('price_list').select('*')
+
 	return (
 		<section
 			id='contact'
@@ -26,7 +35,7 @@ const ContactForm = () => {
 				</p>
 			</div>
 
-			<Form></Form>
+			<Form priceListData={price_list}></Form>
 		</section>
 	)
 }
