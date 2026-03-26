@@ -14,7 +14,7 @@ export default function PrivateAdminLayout({
 	children: React.ReactNode
 }>) {
 	return (
-		<html lang='cs'>
+		<html lang='cs' className='dark'>
 			<body
 				className={`antialiased w-screen h-screen overflow-hidden flex flex-col bg-stone-300 dark:bg-stone-950 text-stone-700 dark:text-stone-300
                     ${satoshiRegular.className}
