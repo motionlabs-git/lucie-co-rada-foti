@@ -2,7 +2,7 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import z from 'zod'
-import emailjs from '@emailjs/browser'
+import axios from 'axios'
 import { useRef, useState } from 'react'
 import Link from 'next/link'
 import { FiCheck } from 'react-icons/fi'
@@ -45,33 +45,25 @@ const Form = ({
 		mode: 'onSubmit',
 	})
 
-	const onSubmit: SubmitHandler<Inputs> = async () => {
-		await emailjs.init({
-			publicKey: process.env.EMAILJS_PUBLIC_KEY!,
-			blockHeadless: true,
-		})
+	const onSubmit: SubmitHandler<Inputs> = async (data) => {
+		const payload = {
+			name: data.name,
+			email: data.email,
+			phone: data.phone ?? '',
+			photo_package: data.photo_package,
+			text: data.text,
+		}
 
 		try {
-			if (!formRef.current) {
-				throw new Error('missing form')
-			}
+			const res = await axios.post('/api/v1/email', payload)
 
-			await emailjs
-				.sendForm(
-					process.env.EMAILJS_SERVICE_ID!,
-					process.env.EMAILJS_TEMPLATE_ID!,
-					formRef.current
-				)
-				.then(
-					() => {
-						reset()
-					},
-					(error) => {
-						throw new Error('Něco se pokazilo', error)
-					}
-				)
-		} catch (e: unknown) {
-			if (e instanceof TypeError) setError('root', { message: e.message })
+			console.log(res)
+
+			if (res.status === 200) {
+				reset()
+			}
+		} catch (e) {
+			setError('root', { message: 'Něco se pokazilo' })
 		}
 	}
 
@@ -228,8 +220,6 @@ const Form = ({
 				</fieldset>
 
 				<fieldset className='mt-1 sm:mt-2 blurryItem'>
-					{/* TODO: odeslat hodnoty, upravit template */}
-
 					<div className='relative flex justify-center overflow-hidden rounded-xl mt-1 sm:mt-2'>
 						<select
 							id='categorySelector'
@@ -264,9 +254,9 @@ const Form = ({
 
 						<div className='w-1/3 z-10 aspect-square h-auto rounded-full bg-orange absolute bottom-0 translate-y-1/2 opacity-30 blur-3xl peer-focus:opacity-20 peer-focus:w-2/3 duration-300'></div>
 					</div>
-					{errors.email && (
+					{errors.photo_package && (
 						<p className='text-orange text-base mt-2'>
-							{errors.email.message}
+							{errors.photo_package.message}
 						</p>
 					)}
 				</fieldset>

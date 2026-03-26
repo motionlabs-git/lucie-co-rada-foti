@@ -27,6 +27,7 @@ export const generateMetadata = async () => {
 		.single()
 
 	return {
+		metadataBase: 'https://www.luciefoti.cz/',
 		title: {
 			template: '%s | Lucie co ráda fotí',
 			default:
