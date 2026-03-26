@@ -63,6 +63,8 @@ const Form = ({
 				reset()
 			}
 		} catch (e) {
+			console.log(e)
+
 			setError('root', { message: 'Něco se pokazilo' })
 		}
 	}
