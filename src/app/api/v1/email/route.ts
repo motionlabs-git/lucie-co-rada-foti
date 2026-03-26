@@ -7,6 +7,13 @@ export async function POST(request: NextRequest) {
 
 		console.log(body)
 
+		console.log({
+			service: process.env.EMAILJS_SERVICE_ID,
+			template: process.env.EMAILJS_TEMPLATE_ID,
+			key: process.env.EMAILJS_PUBLIC_KEY,
+			privateKey: process.env.EMAILJS_PRIVATE_KEY,
+		})
+
 		const res = await emailjs.send(
 			process.env.EMAILJS_SERVICE_ID!,
 			process.env.EMAILJS_TEMPLATE_ID!,
