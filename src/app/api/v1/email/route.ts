@@ -1,27 +1,19 @@
 import { NextRequest, NextResponse } from 'next/server'
 import emailjs from '@emailjs/nodejs'
 
+emailjs.init({
+	publicKey: process.env.EMAILJS_PUBLIC_KEY,
+	privateKey: process.env.EMAILJS_PRIVATE_KEY,
+})
+
 export async function POST(request: NextRequest) {
 	try {
 		const body = await request.json()
 
-		console.log(body)
-
-		console.log({
-			service: process.env.EMAILJS_SERVICE_ID,
-			template: process.env.EMAILJS_TEMPLATE_ID,
-			key: process.env.EMAILJS_PUBLIC_KEY,
-			privateKey: process.env.EMAILJS_PRIVATE_KEY,
-		})
-
 		const res = await emailjs.send(
 			process.env.EMAILJS_SERVICE_ID!,
 			process.env.EMAILJS_TEMPLATE_ID!,
-			body,
-			{
-				publicKey: process.env.EMAILJS_PUBLIC_KEY!,
-				privateKey: process.env.EMAILJS_PRIVATE_KEY!,
-			}
+			body
 		)
 
 		if (res.status !== 200) {
