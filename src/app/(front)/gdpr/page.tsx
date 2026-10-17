@@ -5,6 +5,9 @@ import React from 'react'
 
 export const metadata: Metadata = {
 	title: 'Lucie co ráda fotí | GDPR',
+	alternates: {
+		canonical: 'https://www.luciefoti.cz/gdpr',
+	},
 }
 
 const GDPR = () => {
