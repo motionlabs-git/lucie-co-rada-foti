@@ -1,30 +1,18 @@
 'use client'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import z from 'zod'
 import axios from 'axios'
 import { useRef, useState } from 'react'
 import Link from 'next/link'
 import { FiCheck } from 'react-icons/fi'
 import { PriceListSchema } from '@/schemas/price-list.schema'
 import { Model } from '@/schemas/model'
+import {
+	contactFormValidation,
+	ContactFormSchema,
+} from '@/schemas/contact-form.schema'
 
-const FormInputs = z.object({
-	name: z.string().nonempty('Toto pole je povinné'),
-	phone: z
-		.string()
-		.regex(/^(?:\d\s*){9}$/, 'Neplatné telefonní číslo')
-		.nonempty('Toto pole je povinné'),
-	email: z.email('Neplatný email').nonempty('Toto pole je povinné'),
-	photo_package: z.string().nonempty('Prosím vyber balíček'),
-	text: z
-		.string()
-		.min(5, { message: 'Minimální délka je 5 znaků' })
-		.max(300, { message: 'Maximální délka je 300 znaků' })
-		.nonempty('Toto pole je povinné'),
-})
-
-type Inputs = z.infer<typeof FormInputs>
+type Inputs = ContactFormSchema
 
 const Form = ({
 	priceListData,
@@ -41,25 +29,14 @@ const Form = ({
 		reset,
 		setError,
 	} = useForm<Inputs>({
-		resolver: zodResolver(FormInputs),
+		resolver: zodResolver(contactFormValidation),
 		mode: 'onSubmit',
 	})
 
 	const onSubmit: SubmitHandler<Inputs> = async (data) => {
-		const payload = {
-			name: data.name,
-			email: data.email,
-			phone: data.phone ?? '',
-			photo_package: data.photo_package,
-			text: data.text,
-		}
-
 		try {
-			const res = await axios.post('/api/v1/email', payload)
-
-			if (res.status === 200) {
-				reset()
-			}
+			await axios.post('/api/v1/email', data)
+			reset()
 		} catch (e) {
 			console.log(e)
 
